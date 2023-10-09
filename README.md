@@ -2,6 +2,10 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+First of all you need to install all packages. You can run:
+
+### `npm install`
+
 ## Available Scripts
 
 In the project directory, you can run:
