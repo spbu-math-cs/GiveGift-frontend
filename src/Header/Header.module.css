@@ -1,0 +1,4 @@
+.header {
+    grid-area: header;
+    box-shadow: rgba(6, 5, 50, 0.1) 0 4px 30px;
+}

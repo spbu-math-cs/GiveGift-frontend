@@ -1,0 +1,24 @@
+.button {
+    background-color: #ff772b;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: 'Comfortaa', 'sans-serif';
+    font-size: 55px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 100%; /* 55px */
+    letter-spacing: -0.55px;
+}
+
+.button:hover {
+    background-color: #c7561f;
+}
+
+/* Втупую накидана идея кнопки */

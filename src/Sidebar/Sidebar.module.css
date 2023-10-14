@@ -1,0 +1,5 @@
+.sidebar {
+    grid-area: sidebar;
+    background-color: orange;
+    font-family: 'Montserrat', sans-serif;
+}
