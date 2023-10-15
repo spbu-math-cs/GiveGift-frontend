@@ -1,12 +1,12 @@
 import React from "react";
 import styles from './Sidebar.module.css';
-import Tag from "./Tag/Tag";
+import TagList from "./TagList/TagList";
 
 const Sidebar = () => {
     return (
         <div className={styles.sidebar}>
-            Предпочтения:
-            <Tag />
+            <span style={{fontSize: "25px", color: "373737"}}>Предпочтения:</span>
+            <TagList />
         </div>
     )
 }

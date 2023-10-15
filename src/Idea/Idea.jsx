@@ -1,12 +1,12 @@
 import React from "react";
-import styles from './Idea.module.css'
 import GenerateIdeaBtn from "./GenerateIdeaBtn/GenerateIdeaBtn";
-import IdeaDescription from "./IdeaDescription/IdeaDescription";
+import IdeaInfo from "./IdeaInfo/IdeaInfo";
+import styles from "./Idea.module.css"
 
 const Idea = () => {
     return (
-        <div>
-            <IdeaDescription />
+        <div className={styles.idea}>
+            <IdeaInfo />
             <GenerateIdeaBtn/>
         </div>
     )

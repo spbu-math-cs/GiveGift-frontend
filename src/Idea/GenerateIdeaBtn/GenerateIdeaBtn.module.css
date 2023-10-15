@@ -1,24 +1,25 @@
 .button {
-    background-color: #ff772b;
-    border: none;
+    background-color: #FF9D43;
     color: white;
-    padding: 15px 32px;
+
+    width: 400px;
+    height: 70px;
+
+    border: none;
     text-align: center;
-    text-decoration: none;
     display: inline-block;
     cursor: pointer;
 
-    font-feature-settings: 'clig' off, 'liga' off;
+    border-radius: 10px;
+
     font-family: 'Comfortaa', 'sans-serif';
-    font-size: 55px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 100%; /* 55px */
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 100%;
     letter-spacing: -0.55px;
 }
 
 .button:hover {
-    background-color: #c7561f;
+    background-color: #ff881a;
+    transition-duration: 0.4s;
 }
-
-/* Втупую накидана идея кнопки */

@@ -4,11 +4,14 @@
     grid-template-areas:
           "header header"
           "sidebar content"; /*TODO: Footer чуть позже: в макете тоже изменим; будет наверняка темно-серого цвета*/
-    grid-template-rows: 50px auto;
+    grid-template-rows: 70px auto;
     grid-template-columns: 1fr 3fr;
 }
 
 .app-wrapper-content {
     grid-area: content;
-    background-color: aquamarine;
+
+    display: grid;
+    justify-content: center;
+    align-content: center;
 }

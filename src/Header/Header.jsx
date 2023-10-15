@@ -3,7 +3,7 @@ import styles from './Header.module.css';
 
 const Header = () => {
     return <header className={styles.header}>
-        ДариДары
+        <span className={styles.logo}>ДариДары</span>
     </header>
 };
 
