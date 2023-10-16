@@ -27,7 +27,7 @@ export const PlusBtn = (props) => {
     return (
         <div className={styles.tag}>
             {<select ref={newTag}>
-                {props.allTagList.map(tag => <option>{tag}</option>)}
+                {props.allTagList.map(tag => <option key={tag}>{tag}</option>)}
             </select>}
             <img className={styles.plusBtn} onClick={ addTag } src={plus_btn} alt="+"/>
         </div>
