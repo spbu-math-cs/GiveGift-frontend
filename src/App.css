@@ -1,3 +1,18 @@
-.field {
-  background-color: aqua;
+.app-wrapper {
+    display: grid;
+    height: 100vh;
+    width: 100%;
+    grid-template-areas:
+          "header header"
+          "sidebar content"; /*TODO: Footer чуть позже: в макете тоже изменим; будет наверняка темно-серого цвета*/
+    grid-template-rows: 70px auto;
+    grid-template-columns: 1fr 3fr;
+}
+
+.app-wrapper-content {
+    grid-area: content;
+
+    display: grid;
+    justify-content: center;
+    align-content: center;
 }
