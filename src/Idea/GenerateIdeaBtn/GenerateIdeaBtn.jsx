@@ -1,9 +1,13 @@
 import React from "react";
 import styles from './GenerateIdeaBtn.module.css'
 
-const GenerateIdeaBtn = () => {
+const GenerateIdeaBtn = (props) => {
+    let generateIdea = () => {
+        props.generateIdea()
+    }
+
     return (
-        <button className={styles.button}>Выдай идею!</button>
+        <button onClick={ generateIdea } className={styles.button}>{props.btnText}</button>
     )
 }
 

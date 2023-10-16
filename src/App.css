@@ -1,6 +1,7 @@
 .app-wrapper {
     display: grid;
     height: 100vh;
+    width: 100%;
     grid-template-areas:
           "header header"
           "sidebar content"; /*TODO: Footer чуть позже: в макете тоже изменим; будет наверняка темно-серого цвета*/
