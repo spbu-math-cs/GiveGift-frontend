@@ -4,4 +4,3 @@ import './index.css';
 
 render(state)
 generateIdea()
-

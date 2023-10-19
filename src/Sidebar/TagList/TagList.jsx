@@ -1,6 +1,7 @@
 import React from "react";
 import styles from './TagList.module.css'
-import {Tag, PlusBtn} from "./Tag/Tag";
+import { Tag } from "./Tag/Tag";
+import { PlusBtn } from "./Tag/PlusBtn";
 
 const TagList = (props) => {
     return (
