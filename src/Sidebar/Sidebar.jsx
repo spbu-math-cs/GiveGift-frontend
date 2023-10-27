@@ -1,12 +1,17 @@
 import React from "react";
 import styles from './Sidebar.module.css';
-import TagList from "./TagList/TagList";
+import SearchSettings from "./SearchSettings/SearchSettings";
+import ActiveButton from "../UI/Button/ActiveButton/ActiveButton";
 
-const Sidebar = (props) => {
+
+const Sidebar = () => {
     return (
         <div className={styles.sidebar}>
-            <span style={{fontSize: "25px", color: "373737"}}>Предпочтения:</span>
-            <TagList sideBar={props.sideBar} addTag={props.addTag} deleteTag={props.deleteTag}/>
+            <div className={styles.sidebar_content}>
+                <ActiveButton className={styles.sidebar_btn} onClick={() => alert()}>Выдай идею!</ActiveButton>
+                <SearchSettings/>
+                <ActiveButton className={styles.sidebar_btn} onClick={() => alert()}>Сохранить</ActiveButton>
+            </div>
         </div>
     )
 }

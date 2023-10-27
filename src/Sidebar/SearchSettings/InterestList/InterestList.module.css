@@ -1,0 +1,5 @@
+.interest_list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px 10px;
+}

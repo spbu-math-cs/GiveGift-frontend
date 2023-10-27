@@ -1,16 +1,16 @@
 .header {
     grid-area: header;
     position: relative;
-    box-shadow: rgba(6, 5, 50, 0.2) 0 4px 30px;
+    box-shadow: 0 4px 70px 0 rgba(0, 0, 0, 0.07);
     display: grid;
     align-content: center;
 }
 
 .header .logo {
-    padding-left: 30px;
-    color: #FF9D43;
+    margin-left: 40px;
+    color: #FB6535;
     font-family: 'Raleway', sans-serif;
-    font-size: 35px;
-    font-weight: 900;
+    font-size: 40px;
+    font-weight: 700;
     letter-spacing: 2px;
 }

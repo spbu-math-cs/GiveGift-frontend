@@ -1,39 +1,19 @@
 import React from 'react';
-// import {useState, useEffect} from 'react'
 import './App.css';
 import Header from "./Header/Header";
 import Sidebar from "./Sidebar/Sidebar";
-import Idea from "./Idea/Idea";
-// import {BrowserRouter} from "react-router-dom";
+import Ideas from "./Ideas/Ideas";
 
-function App(props) {
-
-    /*const [data, setData] = useState([{}])
-
-    useEffect(() => {
-      fetch("/app").then(
-        res => res.json()
-      ).then(
-        data => {
-          setData(data)
-          console.log(data)
-        }
-      )
-    }, [])*/
-
-    // BrowserRouter потом подкрутим
+function App() {
 
     return (
-        // <BrowserRouter>
-            <div className="app-wrapper">
-                <Header/>
-                <Sidebar sideBar={props.sideBar} addTag={props.addTag} deleteTag={props.deleteTag}/>
-                <div className="app-wrapper-content">
-                    <Idea idea={props.idea} generateIdea={props.generateIdea}/>
-                </div>
+        <div className="app-wrapper">
+            <Header/>
+            <Sidebar/>
+            <div className="app-wrapper-content">
+                <Ideas/>
             </div>
-        // </BrowserRouter>
-
+        </div>
     );
 }
 

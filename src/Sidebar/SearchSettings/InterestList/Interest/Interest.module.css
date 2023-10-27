@@ -1,0 +1,30 @@
+.interest {
+    background-color: #fa6131;
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    border-radius: 7px;
+    height: 30px;
+
+    display: grid;
+    align-content: center;
+}
+
+
+.interest_content {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 10fr 5fr;
+
+    margin: 10px;
+}
+
+.xBtn {
+    display: grid;
+    justify-self: end;
+    margin-top: 1px;
+    cursor: pointer;
+    height: 8px;
+    width: 8px;
+}
+
