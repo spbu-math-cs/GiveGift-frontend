@@ -10,7 +10,7 @@ function App() {
         <div className="app-wrapper">
             <Header/>
             <Sidebar/>
-            <div className="app-wrapper-content">
+            <div className="app-wrapper-content y_slider">
                 <Ideas/>
             </div>
         </div>

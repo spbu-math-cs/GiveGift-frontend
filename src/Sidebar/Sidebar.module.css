@@ -1,7 +1,6 @@
 .sidebar {
     display: grid;
     justify-items: center;
-    overflow-y: auto;
 }
 
 .sidebar_content {
