@@ -42,8 +42,8 @@ const Ideas = () => {
             <span className={styles.found_ideas_header}>По вашему запросу найдено</span>
 
             <div className={styles.ideas}>
-                {ideas.map(idea =>
-                    <Idea url={idea.url} title={idea.title} img_src={idea.img_src}>
+                {ideas.map((idea, ind) => // Имеем право юзать индекс в мапе как key, т.к. контент не будет удаляться/изменяться до нажатия на кнопку генерации, а при нажатии весь прошлый контент уйдет, что позволяет нам сказать, что такой key-статичен и уникален
+                    <Idea key={ind} url={idea.url} title={idea.title} img_src={idea.img_src}>
                         {idea.description}
                     </Idea>
                 )}

@@ -7,7 +7,9 @@ const Sidebar = () => {
     return (
         <div className={`${styles.sidebar} y_slider`}>
             <div className={styles.sidebar_content}>
-                <ActiveButton className={styles.sidebar_btn} onClick={() => alert()}>Выдай идею!</ActiveButton>
+                <ActiveButton className={styles.sidebar_btn} onClick={(e) => {
+                    console.log(e)
+                }}>Выдай идею!</ActiveButton>
                 <SearchSettings/>
                 <ActiveButton className={styles.sidebar_btn} onClick={() => alert()}>Сохранить</ActiveButton>
             </div>

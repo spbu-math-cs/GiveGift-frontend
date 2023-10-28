@@ -1,8 +1,10 @@
 .idea {
-    width: 325px;
+    width: 400px;
     background-color: #fff;
     border-radius: 10px;
 }
+
+/*TODO: MEDIA-ЗАПРОСЫ*/
 
 .ideaContent {
     display: flex;
