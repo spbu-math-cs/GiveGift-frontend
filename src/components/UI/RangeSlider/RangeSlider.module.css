@@ -1,0 +1,11 @@
+.range_slider_content {
+    display: grid;
+    justify-items: center;
+    grid-row-gap: 5px;
+}
+
+.range_slider_inputs {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}

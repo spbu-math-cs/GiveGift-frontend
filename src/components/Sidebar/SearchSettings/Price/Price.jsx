@@ -10,8 +10,6 @@ const Price = () => {
             <SettingsHeader text="Цена"/>
             <RangeSlider/>
             <div className={styles.range_inputs}>
-                <input/>
-                <input/>
             </div>
         </div>
     );
