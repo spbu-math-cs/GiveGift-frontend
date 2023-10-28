@@ -9,7 +9,7 @@ const InterestList = () => {
     return (
         <div className={setting_styles.setting_content}>
             <SettingsHeader text="Интересы"/>
-            <div className={styles.interest_list}>
+            <div className={`${styles.interest_list} y_slider`}>
                 <Interest text='Кино'/>
                 <Interest text='Цветы'/>
                 <Interest text='Сладости'/>
