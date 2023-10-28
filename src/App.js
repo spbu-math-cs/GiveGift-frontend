@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
-import Header from "./Header/Header";
-import Sidebar from "./Sidebar/Sidebar";
-import Ideas from "./Ideas/Ideas";
+import Header from "./components/Header/Header";
+import Sidebar from "./components/Sidebar/Sidebar";
+import Ideas from "./components/Ideas/Ideas";
 
 function App() {
 

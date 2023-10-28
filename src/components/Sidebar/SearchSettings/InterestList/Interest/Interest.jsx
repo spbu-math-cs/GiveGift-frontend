@@ -1,6 +1,6 @@
 import React from "react";
 import styles from './Interest.module.css'
-import x_btn from '../../../../assets/x_btn.png'
+import x_btn from '../../../../../assets/x_btn.png'
 
 export const Interest = ({text}) => {
     return (
