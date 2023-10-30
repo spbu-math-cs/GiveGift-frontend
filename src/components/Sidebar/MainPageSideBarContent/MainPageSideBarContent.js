@@ -25,7 +25,6 @@ const MainPageSideBarContent = () => {
         setNumOfIdeas(newNumOfIdeas);
     };
 
-
     const minPrice = 0, maxPrice = 150000;
     const [priceRangeValue, setPriceRangeValue] = useState([minPrice, maxPrice]);
 

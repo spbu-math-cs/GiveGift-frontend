@@ -26,7 +26,7 @@ export default function RangeSlider(props) {
                         size={"small"}
                         value={props.priceRangeValue[0]}
                         onChange={(e) => {
-                            props.handlePriceRangeChange([Number(e.target.value), props.priceRangeValue[1]]);
+                            props.handlePriceRangeChange(e, [Number(e.target.value), props.priceRangeValue[1]]);
                         }}
                     />
                     <TextField
@@ -38,7 +38,7 @@ export default function RangeSlider(props) {
                         size={"small"}
                         value={props.priceRangeValue[1]}
                         onChange={(e) => {
-                            props.handlePriceRangeChange([props.priceRangeValue[0], Number(e.target.value)]);
+                            props.handlePriceRangeChange(e, [props.priceRangeValue[0], Number(e.target.value)]);
                         }}
                     />
                 </div>
