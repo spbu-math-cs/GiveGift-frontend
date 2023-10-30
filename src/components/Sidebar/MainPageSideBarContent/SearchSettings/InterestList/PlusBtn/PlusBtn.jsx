@@ -1,10 +1,10 @@
 import React from 'react';
-import plus_btn from "../../../../../assets/plus_btn.png";
+import plus_btn from "../../../../../../assets/plus_btn.png";
 import styles from "./PlusBtn.module.css"
 
-const PlusBtn = () => {
+const PlusBtn = ({add}) => {
     return (
-        <div className={styles.plusBtn}>
+        <div onClick={() => add('Test')} className={styles.plusBtn}>
             <img src={plus_btn} alt="+"/>
         </div>
     );

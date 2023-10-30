@@ -1,6 +1,6 @@
 import React from 'react';
-import NumOfIdeasSlider from "../../../UI/Slider/Slider";
-import SettingsHeader from "../../../UI/SettingsHeader/SettingsHeader";
+import NumOfIdeasSlider from "../../../../UI/Slider/Slider";
+import SettingsHeader from "../../../../UI/SettingsHeader/SettingsHeader";
 import styles from "../SearchSettings.module.css";
 
 const NumOfIdeas = () => {

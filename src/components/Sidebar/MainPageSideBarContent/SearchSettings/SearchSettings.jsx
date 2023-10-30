@@ -3,10 +3,10 @@ import InterestList from "./InterestList/InterestList";
 import Price from "./Price/Price";
 import NumOfIdeas from "./NumOfIdeas/NumOfIdeas";
 
-const SearchSettings = () => {
+const SearchSettings = ({userInterests, remove, add}) => {
     return (
         <>
-            <InterestList/>
+            <InterestList userInterests={userInterests} remove={remove} add={add}/>
             <Price/>
             <NumOfIdeas/>
         </>
