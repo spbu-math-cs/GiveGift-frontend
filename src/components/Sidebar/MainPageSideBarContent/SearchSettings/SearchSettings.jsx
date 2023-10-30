@@ -3,12 +3,25 @@ import InterestList from "./InterestList/InterestList";
 import Price from "./Price/Price";
 import NumOfIdeas from "./NumOfIdeas/NumOfIdeas";
 
-const SearchSettings = ({userInterests, remove, add}) => {
+const SearchSettings = (props) => {
     return (
         <>
-            <InterestList userInterests={userInterests} remove={remove} add={add}/>
-            <Price/>
-            <NumOfIdeas/>
+            <InterestList
+                userInterests={props.userInterests}
+                remove={props.remove}
+                add={props.add}/>
+            <Price
+                minPrice={props.minPrice}
+                maxPrice={props.maxPrice}
+                priceRangeValue={props.priceRangeValue}
+                handlePriceRangeChange={props.handlePriceRangeChange}
+            />
+            <NumOfIdeas
+                minNumOfIdeas={props.minNumOfIdeas}
+                maxNumOfIdeas={props.maxNumOfIdeas}
+                numOfIdeas={props.numOfIdeas}
+                handleChangeNumOfIdeas={props.handleChangeNumOfIdeas}
+            />
         </>
     );
 };

@@ -3,11 +3,11 @@ import NumOfIdeasSlider from "../../../../UI/Slider/Slider";
 import SettingsHeader from "../../../../UI/SettingsHeader/SettingsHeader";
 import styles from "../SearchSettings.module.css";
 
-const NumOfIdeas = () => {
+const NumOfIdeas = (props) => {
     return (
         <div className={styles.setting_content}>
             <SettingsHeader text="Количество идей"/>
-            <NumOfIdeasSlider/>
+            <NumOfIdeasSlider {...props}/>
         </div>
     );
 };

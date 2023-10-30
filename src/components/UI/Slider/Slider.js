@@ -23,23 +23,16 @@ const CustomSlider = styled(Slider)({
     },
 });
 
-export default function NumOfIdeasSlider() {
-    const minValue = 1, maxValue = 20;
-    const [value, setValue] = React.useState(minValue);
-
-    const handleChange = (event, newValue) => {
-        setValue(newValue);
-    };
-
+export default function NumOfIdeasSlider({minNumOfIdeas, maxNumOfIdeas, numOfIdeas, handleChangeNumOfIdeas}) {
     return (
         <ThemeProvider theme={redTheme}>
         <CustomSlider
             valueLabelDisplay="auto"
             aria-label="num of ideas slider"
-            value={value}
-            onChange={handleChange}
-            min={minValue}
-            max={maxValue}
+            value={numOfIdeas}
+            onChange={handleChangeNumOfIdeas}
+            min={minNumOfIdeas}
+            max={maxNumOfIdeas}
             sx={{display: "grid", justifySelf: "center"}}
         />
         </ThemeProvider>

@@ -1,5 +1,6 @@
-export const checkPrice = (minPrice, maxPrice, newStartPrice, newEndPrice) => {
-    console.log({newStartPrice, newEndPrice});
+export const checkPrice = (minPrice, maxPrice, newPrice) => {
+    let [newStartPrice, newEndPrice] = newPrice;
+
     if (newEndPrice < newStartPrice) {
         newStartPrice = newEndPrice - 1;
     }
