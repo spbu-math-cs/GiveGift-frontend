@@ -1,5 +1,6 @@
 .sidebar {
     display: grid;
     justify-items: center;
+    grid-area: sidebar;
 }
 

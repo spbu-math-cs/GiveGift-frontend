@@ -4,6 +4,7 @@
     align-content: start;
     justify-content: center;
     grid-gap: 35px 40px;
+    grid-area: content;
 
     margin: 20px 0;
     width: 100%;

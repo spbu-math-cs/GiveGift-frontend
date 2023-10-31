@@ -1,0 +1,21 @@
+.signup {
+    display: grid;
+    grid-template-areas: "title" "content";
+    background-image: url(../assets/background.png);
+    align-content: start;
+    justify-content: center;
+    width: 100%;
+}
+
+.signup .title {
+    grid-area: title;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #ffffff;
+    font-family: "Montserrat-SemiBold", Helvetica, serif;
+    font-size: 60px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    line-height: 87px;
+    text-align: center;
+}
