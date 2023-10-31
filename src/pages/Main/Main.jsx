@@ -2,17 +2,15 @@ import Sidebar from "../../components/Sidebar/Sidebar";
 import MainPageSideBarContent from "../../components/Sidebar/MainPageSideBarContent/MainPageSideBarContent";
 import Ideas from "../../components/Ideas/Ideas";
 import React from "react";
-import './Main.css'
+import styles from './Main.module.css'
 
-function Main() {
+const Main = () => {
     return (
-        <div className="main">
+        <div className={styles.main + " " + "app-wrapper-content"}>
             <Sidebar>
                 <MainPageSideBarContent/>
             </Sidebar>
-            <div className="app-wrapper-content y_slider">
-                <Ideas/>
-            </div>
+            <Ideas/>
         </div>
     );
 }

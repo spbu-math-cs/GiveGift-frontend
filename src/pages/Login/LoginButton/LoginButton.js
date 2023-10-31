@@ -1,6 +1,8 @@
 import React from 'react';
 import './LoginButton.css'
 
+
+// TODO: НЕЛЬЗЯ ТАК
 let login = () => {
     window.location.assign('http://localhost:3000/')
 }

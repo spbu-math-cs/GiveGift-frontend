@@ -2,5 +2,6 @@
     display: grid;
     justify-items: center;
     grid-area: sidebar;
+    background-color: #fbf8f4;
 }
 
