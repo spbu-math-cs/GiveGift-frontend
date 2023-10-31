@@ -6,6 +6,8 @@ import {checkPrice} from "../../../utils/checkers";
 
 const MainPageSideBarContent = () => {
 
+    const allInterests = ['Кино', 'Цветы', 'Сладости', 'Рок', 'Мультфильмы', 'Тест']
+
     const [userInterests, setUserInterests] = useState(
         ['Кино', 'Цветы', 'Сладости', 'Рок', 'Мультфильмы']
     )
@@ -15,6 +17,7 @@ const MainPageSideBarContent = () => {
     const addUserInterest = (newInterest) => {
         if (!userInterests.includes(newInterest)) {
             setUserInterests([...userInterests, newInterest])
+            setAddInterestModalWindowVisibility(false)
         }
     }
 
@@ -32,6 +35,8 @@ const MainPageSideBarContent = () => {
         setPriceRangeValue(checkPrice(minPrice, maxPrice, newValue));
     };
 
+    const [InterestModalWindowVisibility, setAddInterestModalWindowVisibility] = useState(false);
+
     // TODO: Возможно, придется перенести ее куда-нибудь
     function getIdeaGenProperties() {
         return {
@@ -40,6 +45,8 @@ const MainPageSideBarContent = () => {
             price_range: priceRangeValue
         }
     }
+
+    const optionInterests = allInterests.filter(item => !userInterests.includes(item))
 
     return (
         <div className={styles.mainpage_sidebar_content}>
@@ -50,8 +57,11 @@ const MainPageSideBarContent = () => {
             </ActiveButton>
             <SearchSettings
                 userInterests={userInterests}
+                optionInterests={optionInterests}
                 remove={removeUserInterest}
                 add={addUserInterest}
+                InterestModalWindowVisibility={InterestModalWindowVisibility}
+                setAddInterestModalWindowVisibility={setAddInterestModalWindowVisibility}
 
                 minNumOfIdeas={minNumOfIdeas}
                 maxNumOfIdeas={maxNumOfIdeas}

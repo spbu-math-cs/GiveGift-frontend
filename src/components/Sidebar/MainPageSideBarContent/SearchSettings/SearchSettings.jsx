@@ -9,7 +9,11 @@ const SearchSettings = (props) => {
             <InterestList
                 userInterests={props.userInterests}
                 remove={props.remove}
-                add={props.add}/>
+                add={props.add}
+                optionInterests={props.optionInterests}
+                setAddInterestModalWindowVisibility={props.setAddInterestModalWindowVisibility}
+                InterestModalWindowVisibility={props.InterestModalWindowVisibility}
+            />
             <Price
                 minPrice={props.minPrice}
                 maxPrice={props.maxPrice}
