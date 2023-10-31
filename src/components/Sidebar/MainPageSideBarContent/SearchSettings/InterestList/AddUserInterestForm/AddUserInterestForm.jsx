@@ -8,14 +8,19 @@ const AddUserInterestForm = ({add, optionInterests}) => {
 
     const [userInterest, setUserInterest] = useState('');
 
-    const addNewUserInterest = (e) =>{
+    const addNewUserInterest = (e) => {
         e.preventDefault();
-        add(userInterest)
+        if (userInterest) {
+            add(userInterest);
+            setUserInterest('');
+        }
     }
 
     return (
         <form className={styles.add_interest_form}>
-            <AutoCompleteSearch setUserInterest={setUserInterest} optionInterests={optionInterests}/>
+            <AutoCompleteSearch userInterest={userInterest}
+                                setUserInterest={setUserInterest}
+                                optionInterests={optionInterests}/>
             <ActiveButton onClick={addNewUserInterest} className={styles.add_interest_form_button}>ОК</ActiveButton>
         </form>
     );
