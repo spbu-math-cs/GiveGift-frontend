@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Slider from '@mui/material/Slider';
 import {styled, ThemeProvider} from "@mui/material";
-import {redTheme} from "../../../muiThemes/themes";
+import {redTheme} from "../muiThemes/themes";
 
 
 const CustomSlider = styled(Slider)({

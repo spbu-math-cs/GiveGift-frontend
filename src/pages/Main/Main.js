@@ -1,6 +1,6 @@
-import Sidebar from "../components/Sidebar/Sidebar";
-import MainPageSideBarContent from "../components/Sidebar/MainPageSideBarContent/MainPageSideBarContent";
-import Ideas from "../components/Ideas/Ideas";
+import Sidebar from "../../components/Sidebar/Sidebar";
+import MainPageSideBarContent from "../../components/Sidebar/MainPageSideBarContent/MainPageSideBarContent";
+import Ideas from "../../components/Ideas/Ideas";
 import React from "react";
 import './Main.css'
 

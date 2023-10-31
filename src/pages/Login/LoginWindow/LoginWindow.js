@@ -15,7 +15,7 @@ function LoginWindow() {
 
                 <div className="div">
                     <span className="text-wrapper-1"><input type="checkbox"/>Запомнить меня</span>
-                    <NavLink className="text-wrapper-2" onClick={() => {alert('Грустно :(')}}>Забыли пароль?</NavLink>
+                    <NavLink className="text-wrapper-2" onClick={() => {alert('Грустно :(')}} to={"/"}>Забыли пароль?</NavLink>
                 </div>
 
                 <LoginButton />

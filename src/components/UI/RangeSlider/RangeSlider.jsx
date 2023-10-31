@@ -2,7 +2,7 @@ import * as React from 'react';
 import Slider from '@mui/material/Slider';
 import {TextField, ThemeProvider} from "@mui/material";
 import styles from "./RangeSlider.module.css"
-import {redTheme} from "../../../muiThemes/themes";
+import {redTheme} from "../muiThemes/themes";
 
 
 export default function RangeSlider(props) {

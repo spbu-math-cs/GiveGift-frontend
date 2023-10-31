@@ -11,22 +11,4 @@
     background: rgba(192, 150, 111, 0.20);
 }
 
-.y_slider {
-    overflow-y: auto;
-}
-
-.y_slider::-webkit-scrollbar {
-    width: 10px;
-}
-
-.y_slider::-webkit-scrollbar-track {
-    background-color: #d9d9d9;
-    border-radius: 100px;
-}
-
-.y_slider::-webkit-scrollbar-thumb {
-    background-color: #beb4b3;
-    border-radius: 100px;
-}
-
 /*TODO: MEDIA-ЗАПРОСЫ*/

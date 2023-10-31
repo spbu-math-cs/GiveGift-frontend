@@ -1,7 +1,7 @@
 import * as React from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
-import {redTheme} from "../../../muiThemes/themes";
+import {redTheme} from "../muiThemes/themes";
 import {ThemeProvider} from "@mui/material";
 
 export const AutoCompleteSearch = ({userInterest, setUserInterest, optionInterests}) => {
