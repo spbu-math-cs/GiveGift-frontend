@@ -15,7 +15,7 @@ const InterestList = ({
     return (
         <div className={setting_styles.setting_content}>
             <SettingsHeader text="Интересы"/>
-            <div className={`${styles.interest_list} y_slider`}>
+            <div className={`${styles.interest_list} slider`}>
                 {userInterests.map(curr_interest =>
                     <Interest key={curr_interest} remove={remove}>{curr_interest}</Interest>
                 )}
