@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import {AutoCompleteSearch} from "../../../../../UI/AutoCompleteSearch/AutoCompleteSearch";
-import ActiveButton from "../../../../../UI/Button/ActiveButton/ActiveButton";
+import {AutoCompleteSearch} from "../../../../../../UI/AutoCompleteSearch/AutoCompleteSearch";
+import ActiveButton from "../../../../../../UI/Button/ActiveButton/ActiveButton";
 import styles from "./AddUserInterestForm.module.css"
 
 

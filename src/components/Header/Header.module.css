@@ -1,15 +1,16 @@
 .header {
     grid-area: header;
     box-shadow: 0 4px 70px 0 rgba(0, 0, 0, 0.07);
+
     display: grid;
     grid-template: "logo account";
-    grid-template-columns: 4fr minmax(300px, 1fr);
-    align-content: center;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
 }
 
 .header .logo {
     grid-area: logo;
-    margin-left: 40px;
     color: #FB6535;
     font-family: 'Raleway', sans-serif;
     font-size: 40px;
@@ -18,14 +19,17 @@
     text-decoration: none;
 }
 
-.header .text_wrapper {
+.header .account_settings {
     grid-area: account;
-    margin-right: 40px;
-    color: #FB6535;
-    font-family: 'Raleway', sans-serif;
-    font-size: 20px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-align: right;
-    text-decoration: none;
+    position: relative;
+    display: inline-block;
 }
+
+.header .account_icon {
+    cursor: pointer;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+

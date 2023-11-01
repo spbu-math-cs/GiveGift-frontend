@@ -4,12 +4,12 @@ import styles from "./InterestList.module.css"
 import setting_styles from "../SearchSettings.module.css"
 import SettingsHeader from "../../../../UI/SettingsHeader/SettingsHeader";
 import PlusBtn from "./PlusBtn/PlusBtn";
-import AddInterestModal from "../../../../UI/ModalWindow/AddInterestModal/AddInterestModal";
-import AddUserInterestForm from "./AddUserInterestForm/AddUserInterestForm";
+import AddInterestModal from "./AddUserInterest/AddInterestModal/AddInterestModal";
+import AddUserInterestForm from "./AddUserInterest/AddUserInterestForm/AddUserInterestForm";
 
 const InterestList = ({
                           userInterests, optionInterests, remove, add,
-                          InterestModalWindowVisibility, setAddInterestModalWindowVisibility
+                          InterestModalWindowVisibility, setInterestModalWindowVisibility
                       }) => {
 
     return (
@@ -19,10 +19,10 @@ const InterestList = ({
                 {userInterests.map(curr_interest =>
                     <Interest key={curr_interest} remove={remove}>{curr_interest}</Interest>
                 )}
-                <PlusBtn onClick={() => setAddInterestModalWindowVisibility(true)}/>
+                <PlusBtn onClick={() => setInterestModalWindowVisibility(true)}/>
 
                 <AddInterestModal visible={InterestModalWindowVisibility}
-                                  setVisible={setAddInterestModalWindowVisibility}>
+                                  setVisible={setInterestModalWindowVisibility}>
                     <AddUserInterestForm optionInterests={optionInterests} add={add}/>
                 </AddInterestModal>
             </div>

@@ -15,9 +15,4 @@
     min-width: 250px;
 }
 
-.add_interest_modal.active {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 

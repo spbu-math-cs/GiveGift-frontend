@@ -9,6 +9,8 @@ import Account from "./pages/Account/Account";
 
 function App() {
 
+    // TODO: Наверное, тут будут хранится данные user'а в виде object
+
     return (
         <BrowserRouter>
             <div className="app-wrapper">

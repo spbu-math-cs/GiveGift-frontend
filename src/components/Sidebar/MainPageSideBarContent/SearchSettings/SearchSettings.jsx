@@ -11,7 +11,7 @@ const SearchSettings = (props) => {
                 remove={props.remove}
                 add={props.add}
                 optionInterests={props.optionInterests}
-                setAddInterestModalWindowVisibility={props.setAddInterestModalWindowVisibility}
+                setInterestModalWindowVisibility={props.setInterestModalWindowVisibility}
                 InterestModalWindowVisibility={props.InterestModalWindowVisibility}
             />
             <Price

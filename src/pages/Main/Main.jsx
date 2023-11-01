@@ -6,7 +6,7 @@ import styles from './Main.module.css'
 
 const Main = () => {
     return (
-        <div className={styles.main + " " + "app-wrapper-content"}>
+        <div className={`${styles.main} app-wrapper-content`}>
             <Sidebar>
                 <MainPageSideBarContent/>
             </Sidebar>

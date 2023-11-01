@@ -17,7 +17,7 @@ const MainPageSideBarContent = () => {
     const addUserInterest = (newInterest) => {
         if (!userInterests.includes(newInterest)) {
             setUserInterests([...userInterests, newInterest])
-            setAddInterestModalWindowVisibility(false)
+            setInterestModalWindowVisibility(false)
         }
     }
 
@@ -35,7 +35,7 @@ const MainPageSideBarContent = () => {
         setPriceRangeValue(checkPrice(minPrice, maxPrice, newValue));
     };
 
-    const [InterestModalWindowVisibility, setAddInterestModalWindowVisibility] = useState(false);
+    const [InterestModalWindowVisibility, setInterestModalWindowVisibility] = useState(false);
 
     // TODO: Возможно, придется перенести ее куда-нибудь
     function getIdeaGenProperties() {
@@ -61,7 +61,7 @@ const MainPageSideBarContent = () => {
                 remove={removeUserInterest}
                 add={addUserInterest}
                 InterestModalWindowVisibility={InterestModalWindowVisibility}
-                setAddInterestModalWindowVisibility={setAddInterestModalWindowVisibility}
+                setInterestModalWindowVisibility={setInterestModalWindowVisibility}
 
                 minNumOfIdeas={minNumOfIdeas}
                 maxNumOfIdeas={maxNumOfIdeas}
