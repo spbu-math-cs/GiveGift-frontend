@@ -1,39 +1,28 @@
 import React from 'react';
-// import {useState, useEffect} from 'react'
+import {BrowserRouter, Route, Routes} from "react-router-dom";
 import './App.css';
-import Header from "./Header/Header";
-import Sidebar from "./Sidebar/Sidebar";
-import Idea from "./Idea/Idea";
-// import {BrowserRouter} from "react-router-dom";
+import Header from "./components/Header/Header";
+import SignUp from "./pages/SignUp/SignUp";
+import Login from "./pages/Login/Login";
+import Main from "./pages/Main/Main";
+import Account from "./pages/Account/Account";
 
-function App(props) {
+function App() {
 
-    /*const [data, setData] = useState([{}])
-
-    useEffect(() => {
-      fetch("/app").then(
-        res => res.json()
-      ).then(
-        data => {
-          setData(data)
-          console.log(data)
-        }
-      )
-    }, [])*/
-
-    // BrowserRouter потом подкрутим
+    // TODO: Наверное, тут будут хранится данные user'а в виде object
 
     return (
-        // <BrowserRouter>
+        <BrowserRouter>
             <div className="app-wrapper">
                 <Header/>
-                <Sidebar sideBar={props.sideBar} addTag={props.addTag} deleteTag={props.deleteTag}/>
-                <div className="app-wrapper-content">
-                    <Idea idea={props.idea} generateIdea={props.generateIdea}/>
-                </div>
+                <Routes>
+                    <Route exact path='' element={<Main/>}/>
+                    <Route exact path='login' element={<Login/>}/>
+                    <Route exact path='signup' element={<SignUp/>}/>
+                    <Route exact path='account' element={<Account/>}/>
+                </Routes>
             </div>
-        // </BrowserRouter>
-
+        </BrowserRouter>
     );
 }
 

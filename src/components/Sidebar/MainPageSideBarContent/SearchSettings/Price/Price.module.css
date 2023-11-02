@@ -1,0 +1,5 @@
+.range_inputs {
+    display: grid;
+    grid-template-columns: 80px 80px;
+    justify-content: space-between;
+}

@@ -1,0 +1,16 @@
+.acc_menu_dropdown {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    border-radius: 15px;
+    background: #FFF;
+    box-shadow: 0 4px 21px 0 rgba(0, 0, 0, 0.20);
+    margin-top: 5px;
+}
+
+:global(.active_dropdown) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

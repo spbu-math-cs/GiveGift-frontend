@@ -1,9 +1,0 @@
-.sidebar {
-    grid-area: sidebar;
-    background-color: #FFF6EE;
-    font-family: 'Montserrat', sans-serif;
-    padding: 15px;
-    display: grid;
-    align-content: start;
-    gap: 10px;
-}

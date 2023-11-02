@@ -1,0 +1,35 @@
+.ideas_list {
+    grid-area: ideas_list;
+    display: grid;
+    grid-template-areas:
+        "found_header"
+        "ideas";
+}
+
+.found_ideas_header {
+    grid-area: found_header;
+    margin: 30px 30px 10px;
+    color: #796964;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Montserrat, sans-serif;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%;
+}
+
+.ideas {
+    grid-area: ideas;
+    display: grid;
+
+    grid-template-columns: repeat(auto-fit, 400px);
+    align-content: start;
+    justify-content: center;
+    grid-gap: 35px 40px;
+
+
+    margin: 20px 0;
+    width: 100%;
+}
+
+/*TODO: MEDIA-ЗАПРОСЫ*/

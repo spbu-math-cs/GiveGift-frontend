@@ -1,0 +1,4 @@
+.setting_content {
+    display: grid;
+    grid-row-gap: 5px;
+}

@@ -1,0 +1,40 @@
+.acc_menu_list {
+    display: grid;
+    border-radius: 15px;
+    font-family: Montserrat, sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 100%;
+    letter-spacing: 1px;
+    margin: 15px 0;
+}
+
+.acc_menu_item {
+    text-decoration: none;
+    color: black;
+
+    padding: 12px 35px 12px 15px
+}
+
+.accent_item {
+    color: #ff6332;
+}
+
+.acc_menu_item:hover {
+    background-color: #f6f6f6;
+}
+
+/*
+.acc_menu_item:first-child:hover {
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+}
+
+.acc_menu_item:last-child:hover {
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+}*/
+
+
+
+
