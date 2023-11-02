@@ -16,10 +16,10 @@ function App() {
             <div className="app-wrapper">
                 <Header/>
                 <Routes>
-                        <Route exact path='' element={<Main/>}/>
-                        <Route exact path='login' element={<Login/>}/>
-                        <Route exact path='signup' element={<SignUp/>}/>
-                        <Route exact path='account' element={<Account/>}/>
+                    <Route exact path='' element={<Main/>}/>
+                    <Route exact path='login' element={<Login/>}/>
+                    <Route exact path='signup' element={<SignUp/>}/>
+                    <Route exact path='account' element={<Account/>}/>
                 </Routes>
             </div>
         </BrowserRouter>

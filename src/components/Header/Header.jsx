@@ -2,8 +2,8 @@ import React, {useRef, useState} from "react";
 import styles from './Header.module.css';
 import {NavLink} from "react-router-dom";
 import default_user_logo from '../../assets/user.svg'
-import AccMenuModal from "./AccMenuDropDown/AccMenuModal/AccMenuModal";
-import AccMenuList from "./AccMenuDropDown/AccMenuList/AccMenuList";
+import DropDownAccMenu from "../UI/DropDownAccMenu/DropDownAccMenu";
+import AccMenuList from "./AccMenuList/AccMenuList";
 import {useClickOutside} from "../../hooks/useClickOutside";
 
 const Header = () => {
@@ -21,10 +21,9 @@ const Header = () => {
                 <img onClick={() => setAccountModalWindowVisibility(!accountModalWindowVisibility)}
                      className={styles.account_icon}
                      src={default_user_logo} alt="user"/>
-                <AccMenuModal visible={accountModalWindowVisibility}
-                              setVisible={setAccountModalWindowVisibility}>
-                    <AccMenuList/>
-                </AccMenuModal>
+                <DropDownAccMenu visible={accountModalWindowVisibility}>
+                    <AccMenuList setVisible={setAccountModalWindowVisibility}/>
+                </DropDownAccMenu>
             </div>
         </div>
     );

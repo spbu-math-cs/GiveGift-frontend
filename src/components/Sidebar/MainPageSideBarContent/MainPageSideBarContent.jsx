@@ -6,8 +6,10 @@ import {checkPrice} from "../../../utils/checkers";
 
 const MainPageSideBarContent = () => {
 
+    // TODO: Это будет в локальном хранилище
     const allInterests = ['Кино', 'Цветы', 'Сладости', 'Рок', 'Мультфильмы', 'Тест', 'Абвгд', 'Оружия', 'Духи', 'Украшения']
 
+    // TODO: Это либо в локальном хранилище, наверное
     const [userInterests, setUserInterests] = useState(
         ['Кино', 'Цветы', 'Сладости', 'Рок', 'Мультфильмы']
     )
