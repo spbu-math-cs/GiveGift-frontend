@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useRef} from 'react';
+import {useClickOutside} from "../../../../hooks/useClickOutside";
 
-const ModalWindow = ({children, visible, setVisible, className}) => {
+const ModalWindow = ({children, visible, className}) => {
     const rootClasses = [className]
 
     if (visible) {
@@ -8,8 +9,8 @@ const ModalWindow = ({children, visible, setVisible, className}) => {
     }
 
     return (
-        <div className={rootClasses.join(' ')} onClick={() => setVisible(false)}>
-            <div onClick={(e) => e.stopPropagation()}>
+        <div className={rootClasses.join(' ')}>
+            <div onClick={(event) => event.stopPropagation()}>
                 {children}
             </div>
         </div>
