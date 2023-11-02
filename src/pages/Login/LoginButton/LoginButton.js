@@ -1,15 +1,16 @@
 import React from 'react';
 import './LoginButton.css'
+import {NavLink} from "react-router-dom";
 
 
 // TODO: НЕЛЬЗЯ ТАК
-let login = () => {
-    window.location.assign('http://localhost:3000/')
+const login = () => {
+    // TODO наверняка перейдет в utils, но пока пусть тут побудет
 }
 
 const LoginButton = () => {
     return (
-        <button className='active_btn' onClick={ login }>Войти</button>
+        <NavLink end to={'/'}><button className='active_btn'>Войти</button></NavLink>
     );
 };
 

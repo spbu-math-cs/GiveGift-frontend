@@ -7,9 +7,7 @@ const AccMenuModal = ({children, visible, setVisible}) => {
     return (
         <ModalWindow visible={visible} setVisible={setVisible}
                      className={`${styles.acc_menu_modal}`}>
-            <div className={styles.content}>
-                {children}
-            </div>
+            <div onClick={() => setVisible(false)}>{children}</div>
         </ModalWindow>
     )
 };
