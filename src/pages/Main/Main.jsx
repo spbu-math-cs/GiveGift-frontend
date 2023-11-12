@@ -21,8 +21,21 @@ const Main = () => {
         fetchInterests()
     }, []);
 
-    // TODO: localstorage
+
     const [userInterests, setUserInterests] = useState([])
+
+    useEffect(() => {
+        const userInterests = JSON.parse(localStorage.getItem('userInterests'));
+        if (userInterests) {
+            setUserInterests(userInterests);
+        }
+    }, []);
+
+    useEffect(() => {
+        localStorage.setItem('userInterests', JSON.stringify(userInterests));
+    }, [userInterests]);
+
+
     const removeUserInterest = (interest) => {
         setUserInterests(userInterests.filter(i => i !== interest))
     }
