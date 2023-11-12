@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from './ActiveButton.module.css'
 
-const ActiveButton = ({children, className, ...props}) => {
+const ActiveButton = ({children, className, btnRef, ...props}) => {
     return (
-        <button {...props} className={styles.active_btn + ' ' +  className}>
+        <button ref={btnRef} {...props} className={styles.active_btn + ' ' +  className}>
             {children}
         </button>
     );
