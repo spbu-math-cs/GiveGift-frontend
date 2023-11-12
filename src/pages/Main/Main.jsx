@@ -1,19 +1,28 @@
 import Sidebar from "../../components/Sidebar/Sidebar";
 import MainPageSideBarContent from "../../components/Sidebar/MainPageSideBarContent/MainPageSideBarContent";
 import Ideas from "../../components/Ideas/Ideas";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import styles from './Main.module.css'
 import {checkPrice} from "../../utils/checkers";
 import {useFetching} from "../../hooks/useFetching";
 import IdeaService from "../../API/IdeaService";
+import InterestService from "../../API/InterestService";
 
 const Main = () => {
 
-    // TODO: В целом, гет не помешает, думаю
-    const allInterests = ['Кино', 'Цветы', 'Сладости', 'Рок', 'Мультфильмы', 'Тест', 'Абвгд', 'Оружия', 'Духи', 'Украшения']
+    const [allInterests, setAllInterests] = useState([])
+
+    const [fetchInterests, ,] = useFetching(async () => {
+        const response = await InterestService.getAll();
+        setAllInterests(response.data && response.data.all_interests);
+    })
+
+    useEffect(() => {
+        fetchInterests()
+    }, []);
 
     // TODO: localstorage
-    const [userInterests, setUserInterests] = useState(['Кино', 'Цветы', 'Сладости', 'Рок', 'Мультфильмы'])
+    const [userInterests, setUserInterests] = useState([])
     const removeUserInterest = (interest) => {
         setUserInterests(userInterests.filter(i => i !== interest))
     }
@@ -23,6 +32,8 @@ const Main = () => {
             setInterestModalWindowVisibility(false)
         }
     }
+
+    const optionInterests = allInterests.filter(item => !userInterests.includes(item))
 
     // TODO: В БУДУЩЕМ ОТКАЖЕМСЯ ОТ ИДЕИ КОЛИЧЕСТВА ИДЕЙ
     const minNumOfIdeas = 1, maxNumOfIdeas = 5;
@@ -42,8 +53,6 @@ const Main = () => {
 
     const [InterestModalWindowVisibility, setInterestModalWindowVisibility] = useState(false);
 
-
-    const optionInterests = allInterests.filter(item => !userInterests.includes(item))
 
     const [ideas, setIdeas] = useState([])
 
