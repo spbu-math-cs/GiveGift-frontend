@@ -87,6 +87,7 @@ const Main = () => {
         <Ideas
             ideas={ideas}
             isIdeasLoading={isIdeasLoading}
+            ideaError={ideaError}
         />
     </div>);
 }
