@@ -2,6 +2,7 @@
     width: 400px;
     background-color: #fff;
     border-radius: 10px;
+    height: fit-content;
 }
 
 /*TODO: MEDIA-ЗАПРОСЫ*/
@@ -25,4 +26,5 @@
 
 .ideaContent img {
     border-radius: 10px;
+    /* Мб откажусь потом от этого, т.к. изображение шакалит */
 }

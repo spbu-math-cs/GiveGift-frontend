@@ -14,7 +14,11 @@
     font-size: 25px;
 }
 
-.active_btn:hover {
+.active_btn:disabled {
+    cursor: default;
+}
+
+.active_btn:hover:not([disabled]) {
     background-color: #cb451a;
     transition-duration: 0.4s;
 }

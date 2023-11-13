@@ -6,7 +6,7 @@ import DropDownAccMenu from "../UI/DropDownAccMenu/DropDownAccMenu";
 import AccMenuList from "./AccMenuList/AccMenuList";
 import {useClickOutside} from "../../hooks/useClickOutside";
 
-const Header = () => {
+const Header = ({token, removeToken}) => {
 
     const [accountModalWindowVisibility, setAccountModalWindowVisibility] = useState(false);
     const accMenuRef = useRef(null)
@@ -22,7 +22,7 @@ const Header = () => {
                      className={styles.account_icon}
                      src={default_user_logo} alt="user"/>
                 <DropDownAccMenu visible={accountModalWindowVisibility}>
-                    <AccMenuList setVisible={setAccountModalWindowVisibility}/>
+                    <AccMenuList token={token} removeToken={removeToken} setVisible={setAccountModalWindowVisibility}/>
                 </DropDownAccMenu>
             </div>
         </div>

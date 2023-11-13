@@ -1,0 +1,34 @@
+.not_found {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    row-gap: 20px;
+    flex-direction: column;
+}
+
+.not_found img {
+    height: 240px;
+    width: 290px;
+}
+
+.not_found_text {
+    margin-left: 5px;
+    font-family: Montserrat, sans-serif;
+    letter-spacing: -0.4px;
+    display: grid;
+    justify-items: center;
+}
+
+.not_found_text .main {
+    color: #350000;
+    font-size: 26px;
+    font-weight: 700;
+    margin-top: 3px;
+}
+
+.not_found_text .secondary {
+    color: #795c5c;
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 5px;
+}

@@ -1,4 +1,5 @@
 import React from 'react';
+import './ModalWindow.module.css'
 
 const ModalWindow = ({children, setVisible, visible, className}) => {
     const rootClasses = [className]
