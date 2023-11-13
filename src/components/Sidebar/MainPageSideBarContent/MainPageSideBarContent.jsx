@@ -1,79 +1,33 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styles from './MainPageSideBarContent.module.css'
 import ActiveButton from "../../UI/Button/ActiveButton/ActiveButton";
 import SearchSettings from "./SearchSettings/SearchSettings";
-import {checkPrice} from "../../../utils/checkers";
 
-const MainPageSideBarContent = () => {
-
-    // TODO: Это будет в локальном хранилище
-    const allInterests = ['Кино', 'Цветы', 'Сладости', 'Рок', 'Мультфильмы', 'Тест', 'Абвгд', 'Оружия', 'Духи', 'Украшения']
-
-    // TODO: Это либо в локальном хранилище, наверное
-    const [userInterests, setUserInterests] = useState(
-        ['Кино', 'Цветы', 'Сладости', 'Рок', 'Мультфильмы']
-    )
-    const removeUserInterest = (interest) => {
-        setUserInterests(userInterests.filter(i => i !== interest))
-    }
-    const addUserInterest = (newInterest) => {
-        if (!userInterests.includes(newInterest)) {
-            setUserInterests([...userInterests, newInterest])
-            setInterestModalWindowVisibility(false)
-        }
-    }
-
-    const minNumOfIdeas = 1, maxNumOfIdeas = 5;
-    const [numOfIdeas, setNumOfIdeas] = useState(minNumOfIdeas)
-
-    const handleChangeNumOfIdeas = (event, newNumOfIdeas) => {
-        setNumOfIdeas(newNumOfIdeas);
-    };
-
-    const minPrice = 0, maxPrice = 150000;
-    const [priceRangeValue, setPriceRangeValue] = useState([minPrice, maxPrice]);
-
-    const handlePriceRangeChange = (event, newValue) => {
-        setPriceRangeValue(checkPrice(minPrice, maxPrice, newValue));
-    };
-
-    const [InterestModalWindowVisibility, setInterestModalWindowVisibility] = useState(false);
-
-    // TODO: Возможно, придется перенести ее куда-нибудь
-    function getIdeaGenProperties() {
-        return {
-            interests: userInterests,
-            num_of_ideas: numOfIdeas,
-            price_range: priceRangeValue
-        }
-    }
-
-    const optionInterests = allInterests.filter(item => !userInterests.includes(item))
+const MainPageSideBarContent = (props) => {
 
     return (
         <div className={styles.mainpage_sidebar_content}>
-            <ActiveButton className={styles.mainpage_sidebar_btn} onClick={() => {
-                console.log(getIdeaGenProperties())
-            }}>
+            <ActiveButton className={styles.mainpage_sidebar_btn} disabled={props.isIdeasLoading}
+                          onClick={() => props.generateIdeas(props.ideaGenProperties)}>
                 Выдай идею!
             </ActiveButton>
             <SearchSettings
-                userInterests={userInterests}
-                optionInterests={optionInterests}
-                remove={removeUserInterest}
-                add={addUserInterest}
-                InterestModalWindowVisibility={InterestModalWindowVisibility}
-                setInterestModalWindowVisibility={setInterestModalWindowVisibility}
+                userInterests={props.userInterests}
+                optionInterests={props.optionInterests}
+                remove={props.remove}
+                add={props.add}
+                InterestModalWindowVisibility={props.InterestModalWindowVisibility}
+                setInterestModalWindowVisibility={props.setInterestModalWindowVisibility}
 
-                minNumOfIdeas={minNumOfIdeas}
-                maxNumOfIdeas={maxNumOfIdeas}
-                numOfIdeas={numOfIdeas}
-                handleChangeNumOfIdeas={handleChangeNumOfIdeas}
+                minNumOfIdeas={props.minNumOfIdeas}
+                maxNumOfIdeas={props.maxNumOfIdeas}
+                numOfIdeas={props.numOfIdeas}
+                handleChangeNumOfIdeas={props.handleChangeNumOfIdeas}
 
-                minPrice={minPrice}
-                maxPrice={maxPrice}
-                priceRangeValue={priceRangeValue}
-                handlePriceRangeChange={handlePriceRangeChange}
+                minPrice={props.minPrice}
+                maxPrice={props.maxPrice}
+                priceRangeValue={props.priceRangeValue}
+                handlePriceRangeChange={props.handlePriceRangeChange}
             />
             <ActiveButton className={styles.mainpage_sidebar_btn} onClick={() => alert('TODO')}>
                 Сохранить

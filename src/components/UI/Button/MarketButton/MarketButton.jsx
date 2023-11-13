@@ -5,12 +5,12 @@ import {openInNewTab} from "../../../../utils/pages"
 import shopping_cart from '../../../../assets/shopping_cart.png'
 
 
-const MarketButton = ({url}) => {
+const MarketButton = ({market_link, children}) => {
     return (
-        <ActiveButton className={styles.market_button} onClick={() => openInNewTab(url)}>
+        <ActiveButton className={styles.market_button} onClick={() => openInNewTab(market_link)}>
             <div className={styles.market_button_content}>
                 <img src={shopping_cart} alt=""/>
-                <span>Яндекс.Маркет</span>
+                <span>{children}</span>
             </div>
         </ActiveButton>
     );
