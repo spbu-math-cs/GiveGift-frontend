@@ -1,4 +1,13 @@
-.signup .subtitle {
+.signUpWindow {
+    grid-area: content;
+    width: 400px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 4px 4px 64px 1px #00000026;
+    padding: 20px 30px;
+}
+
+.signUpWindow div[type="title"] {
     color: #373737;
     font-family: "Montserrat-Bold", Helvetica, serif;
     font-size: 28px;
@@ -10,11 +19,16 @@
     margin-bottom: 10px;
 }
 
-.signup .overlap {
-    grid-area: content;
+.signUpWindow error {
+    color: red;
+    font-family: "Montserrat-Bold", Helvetica, serif;
+    font-size: 15px;
+    font-style: italic;
+    letter-spacing: 1px;
+    white-space: nowrap;
 }
 
-.signup .rectangle {
+.signUpWindow input {
     background-color: #ffffff;
     border: 1px solid #7a7a7a;
     border-radius: 5px;
@@ -25,15 +39,7 @@
     width: 100%;
 }
 
-.signup .overlap-group {
-    width: 400px;
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 4px 4px 64px 1px #00000026;
-    padding: 20px 30px;
-}
-
-.signup .div {
+.signUpWindow div {
     display: grid;
     grid-template-areas: "title content";
     font-family: "Montserrat-Regular", Helvetica, serif;
@@ -45,7 +51,7 @@
     margin: 15px 0;
 }
 
-.signup .text-wrapper {
+.signUpWindow span {
     grid-area: title;
     color: #707070;
     font-family: "Montserrat-Regular", Helvetica, serif;
@@ -56,18 +62,7 @@
     text-align: left;
 }
 
-.signup .text-wrapper-1 {
-    grid-area: title;
-    color: #414141;
-    font-family: "Montserrat-Regular", Helvetica, serif;
-    font-size: 20px;
-    font-weight: 400;
-    letter-spacing: 0;
-    line-height: 30px;
-    text-align: left;
-}
-
-.signup .text-wrapper-2 {
+.signUpWindow .navLink {
     grid-area: content;
     color: #ff6331;
     font-family: "Montserrat-Medium", Helvetica, serif;

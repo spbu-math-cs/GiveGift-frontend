@@ -2,12 +2,12 @@ import React from 'react';
 import './Login.css';
 import LoginWindow from "./LoginWindow/LoginWindow";
 
-function Login() {
+function Login(props) {
 
     return (
         <div className="login">
             <div className="title">Вход</div>
-            <LoginWindow />
+            <LoginWindow setToken={props.setToken}/>
         </div>
     );
 }
