@@ -35,6 +35,20 @@ const Main = () => {
         localStorage.setItem('userInterests', JSON.stringify(userInterests));
     }, [userInterests]);
 
+    // Если юзер новый - покажем приветственный экран, а после первой генерации отключим его
+    const [isNewUser, setIsNewUser] = useState(true);
+
+    useEffect(() => {
+        const isNewUser = JSON.parse(localStorage.getItem('isNewUser'));
+        if (isNewUser !== null) {
+            setIsNewUser(isNewUser);
+        }
+    }, []);
+
+    useEffect(() => {
+        localStorage.setItem('isNewUser', JSON.stringify(isNewUser));
+    }, [isNewUser]);
+    // ----------------------------------------
 
     const removeUserInterest = (interest) => {
         setUserInterests(userInterests.filter(i => i !== interest))
@@ -104,12 +118,15 @@ const Main = () => {
                 isIdeasLoading={isIdeasLoading}
                 generateIdeas={generateIdeas}
                 ideaGenProperties={ideaGenProperties}
+
+                setIsNewUser={setIsNewUser}
             />
         </Sidebar>
         <Ideas
             ideas={ideas}
             isIdeasLoading={isIdeasLoading}
             ideaError={ideaError}
+            isNewUser={isNewUser}
         />
     </div>);
 }

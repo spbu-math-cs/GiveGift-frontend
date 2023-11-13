@@ -1,0 +1,27 @@
+.loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    row-gap: 20px;
+    flex-direction: column;
+}
+
+.loader img {
+    height: 250px;
+    width: 270px;
+}
+
+.loading_msg {
+    display: grid;
+    justify-items: center;
+    grid-row-gap: 10px;
+}
+
+.loading_text {
+    margin-left: 5px;
+    color: #350000;;
+    font-family: Montserrat, sans-serif;
+    font-size: 21px;
+    font-weight: 700;
+    letter-spacing: 0;
+}

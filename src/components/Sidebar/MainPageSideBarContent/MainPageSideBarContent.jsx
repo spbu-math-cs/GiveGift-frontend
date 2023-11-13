@@ -8,7 +8,10 @@ const MainPageSideBarContent = (props) => {
     return (
         <div className={styles.mainpage_sidebar_content}>
             <ActiveButton className={styles.mainpage_sidebar_btn} disabled={props.isIdeasLoading}
-                          onClick={() => props.generateIdeas(props.ideaGenProperties)}>
+                          onClick={() => {
+                              props.setIsNewUser(false);
+                              props.generateIdeas(props.ideaGenProperties)
+                          }}>
                 Выдай идею!
             </ActiveButton>
             <SearchSettings

@@ -1,8 +1,2 @@
-.ideas_list {
-    grid-area: ideas_list;
-    display: grid;
-    grid-template-areas:
-        "found_header"
-        "ideas";
+.ideas {
 }
-

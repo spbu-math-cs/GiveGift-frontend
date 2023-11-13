@@ -24,4 +24,13 @@
     width: 100%;
 }
 
+.idea_list {
+    display: grid;
+    grid-area: ideas_list;
+    grid-template-areas:
+        "found_header"
+        "ideas";
+}
+
+
 /*TODO: MEDIA-ЗАПРОСЫ*/

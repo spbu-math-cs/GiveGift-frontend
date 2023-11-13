@@ -1,19 +1,24 @@
 import React from 'react';
-import styles from './Ideas.module.css'
 import Loader from "../UI/Loader/Loader";
 import IdeaList from "./IdeaList/IdeaList";
 import IdeasError from "../UI/IdeasError/IdeasError";
+import GettingStarted from "../UI/GettingStarted/GettingStarted";
 
-const Ideas = ({ideas, isIdeasLoading, ideaError}) => {
+
+// TODO: Возможно, при начальном рендеринге, кидать приветственный экран (в localstorage хранить, зашел ли пользователь впервые)
+
+const Ideas = ({ideas, isIdeasLoading, ideaError, isNewUser}) => {
     return (
-        <div className={`${styles.ideas_list} slider`}>
-            {isIdeasLoading
-                ? <Loader/>
-                : ideaError
-                    ? <IdeasError/>
-                    : <IdeaList ideas={ideas}/>
+        <>
+            {isNewUser
+                ? <GettingStarted/>
+                : isIdeasLoading
+                    ? <Loader/>
+                    : ideaError
+                        ? <IdeasError errorMsg={ideaError}/>
+                        : <IdeaList ideas={ideas}/>
             }
-        </div>
+        </>
     );
 };
 

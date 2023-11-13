@@ -9,4 +9,8 @@ export const redTheme = createTheme({
             main: '#ffa68a',
         }
     },
+    typography: {
+        fontFamily: "Montserrat, sans-serif",
+        fontWeightRegular: 500,
+    }
 });

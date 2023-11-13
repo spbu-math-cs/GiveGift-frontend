@@ -1,0 +1,12 @@
+:global(.active_modal) {
+    animation: fadein 0.2s ease-in-out;
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
