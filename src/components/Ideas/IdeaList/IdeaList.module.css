@@ -4,7 +4,7 @@
     color: #796964;
     font-feature-settings: 'clig' off, 'liga' off;
     font-family: Montserrat, sans-serif;
-    font-size: 25px;
+    font-size: 20px;
     font-style: normal;
     font-weight: 500;
     line-height: 100%;
@@ -14,14 +14,13 @@
     grid-area: ideas;
     display: grid;
 
-    grid-template-columns: repeat(auto-fit, 320px);
+    grid-template-columns: repeat(auto-fit, 300px);
     align-content: start;
     justify-content: center;
     grid-gap: 35px 40px;
 
 
     margin: 20px 0;
-    width: 100%;
 }
 
 .idea_list {
