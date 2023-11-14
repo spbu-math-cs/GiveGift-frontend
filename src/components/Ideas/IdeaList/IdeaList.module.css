@@ -14,7 +14,7 @@
     grid-area: ideas;
     display: grid;
 
-    grid-template-columns: repeat(auto-fit, 400px);
+    grid-template-columns: repeat(auto-fit, 320px);
     align-content: start;
     justify-content: center;
     grid-gap: 35px 40px;
