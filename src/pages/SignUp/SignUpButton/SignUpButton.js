@@ -3,7 +3,7 @@ import './SignUpButton.css'
 
 const SignUpButton = (props) => {
     return (
-        <button className='active_btn' onClick={ props.signup }>Создать аккаунт</button>
+        <button {...props} className='active_btn'>Создать аккаунт</button>
     );
 };
 

@@ -9,10 +9,7 @@ import Account from "./pages/Account/Account";
 import useToken from "./hooks/useToken";
 
 function App() {
-
-    const { token, removeToken, setToken } = useToken();
-
-    // TODO: Наверное, тут будут хранится данные user'а в виде object
+    const {token, removeToken, setToken} = useToken();
 
     return (
         <BrowserRouter>

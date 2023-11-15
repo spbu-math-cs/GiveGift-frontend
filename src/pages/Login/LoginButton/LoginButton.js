@@ -3,7 +3,7 @@ import './LoginButton.css'
 
 const LoginButton = (props) => {
     return (
-        <button className='active_btn' onClick={ props.login }>Войти</button>
+        <button {...props} className='active_btn'>Войти</button>
     );
 };
 
