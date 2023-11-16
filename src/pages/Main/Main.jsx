@@ -14,7 +14,7 @@ const Main = () => {
 
     const [fetchInterests, ,] = useFetching(async () => {
         const response = await InterestService.getAll();
-        setAllInterests(response.data && response.data.all_interests);
+        setAllInterests(response.data && response.data['all_interests']);
     })
 
     useEffect(() => {

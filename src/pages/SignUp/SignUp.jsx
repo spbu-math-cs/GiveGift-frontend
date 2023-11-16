@@ -3,11 +3,10 @@ import styles from './SignUp.module.css'
 import SignUpForm from "../../components/SignUpForm/SignUpForm";
 import '../../App.css'
 
-function SignUp(props) {
-
+function SignUp({setToken}) {
     return (
         <div className={`${styles.signUp} app-wrapper-content slider`}>
-            <SignUpForm setToken={props.setToken}/>
+            <SignUpForm setToken={setToken}/>
         </div>
     );
 }
