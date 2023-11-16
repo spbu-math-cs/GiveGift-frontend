@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
 import {NavLink, useNavigate} from "react-router-dom";
-import {useFetching} from "../../../hooks/useFetching";
-import UserService from "../../../API/UserService";
+import {useFetching} from "../../hooks/useFetching";
+import UserService from "../../API/UserService";
 import {Alert, OutlinedInput, ThemeProvider} from "@mui/material";
-import {redTheme} from "../../../components/UI/muiThemes/themes";
+import {redTheme} from "../UI/muiThemes/themes";
 import styles from './SignUpForm.module.css'
-import EmailInput from "../../../components/UI/Input/EmailInput/EmailInput";
-import PasswordInput from "../../../components/UI/Input/PasswordInput/PasswordInput";
-import SignUpButton from "../../../components/UI/Button/SignUpButton/SignUpButton";
+import EmailInput from "../UI/Input/EmailInput/EmailInput";
+import PasswordInput from "../UI/Input/PasswordInput/PasswordInput";
+import SignUpButton from "../UI/Button/SignUpButton/SignUpButton";
 
 
 function SignUpForm(props) {

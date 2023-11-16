@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
 import styles from './LoginForm.module.css';
 import {NavLink, useNavigate} from "react-router-dom";
-import {useFetching} from "../../../hooks/useFetching";
-import UserService from "../../../API/UserService";
+import {useFetching} from "../../hooks/useFetching";
+import UserService from "../../API/UserService";
 import {Alert, ThemeProvider} from "@mui/material";
-import {redTheme} from "../../../components/UI/muiThemes/themes";
-import PasswordInput from "../../../components/UI/Input/PasswordInput/PasswordInput";
-import EmailInput from "../../../components/UI/Input/EmailInput/EmailInput";
-import LoginButton from "../../../components/UI/Button/LoginButton/LoginButton";
+import {redTheme} from "../UI/muiThemes/themes";
+import PasswordInput from "../UI/Input/PasswordInput/PasswordInput";
+import EmailInput from "../UI/Input/EmailInput/EmailInput";
+import LoginButton from "../UI/Button/LoginButton/LoginButton";
 
 function LoginForm(props) {
     const navigate = useNavigate()

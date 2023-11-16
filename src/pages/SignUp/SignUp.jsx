@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './SignUp.module.css'
-import SignUpForm from "./SignUpForm/SignUpForm";
+import SignUpForm from "../../components/SignUpForm/SignUpForm";
 import '../../App.css'
 
 function SignUp(props) {
