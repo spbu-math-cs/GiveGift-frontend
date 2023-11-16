@@ -25,7 +25,11 @@ const Header = ({token, logout, removeToken, userInfo}) => {
                          src={default_user_logo} alt="user"/>
 
                     {Object.keys(userInfo).length !== 0
-                        ? <div>Пользователь зареган</div>
+                        ?
+                        <div className={styles.nickname_and_id}>
+                            <span className={styles.nickname}>{userInfo.nickname}</span>
+                            <span className={styles.id}>ID {userInfo.id}</span>
+                        </div>
                         : <></>
                     }
                 </div>
