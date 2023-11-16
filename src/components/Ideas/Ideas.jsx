@@ -5,8 +5,6 @@ import IdeasError from "../UI/IdeasError/IdeasError";
 import GettingStarted from "../UI/GettingStarted/GettingStarted";
 
 
-// TODO: Возможно, при начальном рендеринге, кидать приветственный экран (в localstorage хранить, зашел ли пользователь впервые)
-
 const Ideas = ({ideas, isIdeasLoading, ideaError, isNewUser}) => {
     return (
         <>
