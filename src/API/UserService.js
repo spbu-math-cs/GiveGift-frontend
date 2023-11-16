@@ -25,4 +25,20 @@ export default class UserService {
 
         return await axios.post('http://127.0.0.1:5000/register', newUser);
     }
+
+    static async logout(token) {
+        return await axios.post('http://127.0.0.1:5000/logout', {}, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
+    }
+
+    static async getUserInfo(token) {
+        return await axios.get('http://127.0.0.1:5000/account', {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
+    }
 }

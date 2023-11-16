@@ -1,13 +1,13 @@
 import React from 'react';
-import './Login.css';
-import LoginWindow from "./LoginWindow/LoginWindow";
+import styles from './Login.module.css'
+import LoginForm from "./LoginForm/LoginForm";
+import '../../App.css'
 
 function Login(props) {
 
     return (
-        <div className="login">
-            <div className="title">Вход</div>
-            <LoginWindow setToken={props.setToken}/>
+        <div className={`${styles.login} app-wrapper-content slider`}>
+            <LoginForm setToken={props.setToken}/>
         </div>
     );
 }

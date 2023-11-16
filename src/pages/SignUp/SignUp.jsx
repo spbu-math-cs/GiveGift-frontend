@@ -1,13 +1,13 @@
 import React from 'react';
-import './SignUp.css';
-import SignUpWindow from "./SignUpWindow/SignUpWindow";
+import styles from './SignUp.module.css'
+import SignUpForm from "./SignUpForm/SignUpForm";
+import '../../App.css'
 
 function SignUp(props) {
 
     return (
-        <div className="signup">
-            <div className="title">Регистрация</div>
-            <SignUpWindow setToken={props.setToken}/>
+        <div className={`${styles.signUp} app-wrapper-content slider`}>
+            <SignUpForm setToken={props.setToken}/>
         </div>
     );
 }
