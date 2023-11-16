@@ -4,7 +4,7 @@ import styles from './AccMenuList.module.css'
 
 
 // TODO: Если пользователь зарегистрирован, то тут чуть другой дропдаун
-const AccMenuList = ({token, removeToken, setVisible}) => {
+const AccMenuList = ({token, removeToken, setVisible, logout}) => {
     return (
         <div className={styles.acc_menu_list} onClick={() => setVisible(false)}>
             {token
@@ -19,7 +19,10 @@ const AccMenuList = ({token, removeToken, setVisible}) => {
                     <NavLink end to='/' className={styles.acc_menu_item}>
                         <div>Профили</div>
                     </NavLink>
-                    <div onClick={() => removeToken()} className={`${styles.acc_menu_item} ${styles.accent_item}`}>
+                    <div onClick={() => {
+                        logout(token);
+                        removeToken();
+                    }} className={`${styles.acc_menu_item} ${styles.accent_item}`}>
                         <div>Выход</div>
                     </div>
                 </>

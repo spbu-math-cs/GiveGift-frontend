@@ -7,7 +7,7 @@ export const redTheme = createTheme({
         },
         secondary: {
             main: '#ffa68a',
-        }
+        },
     },
     typography: {
         fontFamily: "Montserrat, sans-serif",

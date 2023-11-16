@@ -1,5 +1,4 @@
 .idea {
-    width: 400px;
     background-color: #fff;
     border-radius: 10px;
     height: fit-content;
@@ -10,17 +9,17 @@
 .ideaContent {
     display: flex;
     flex-direction: column;
-    row-gap: 10px;
+    row-gap: 7px;
     margin: 15px;
 }
 
 .ideaContent .title {
-    font-size: 28px;
+    font-size: 22px;
     font-weight: 700;
 }
 
 .ideaContent .description {
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 400;
 }
 

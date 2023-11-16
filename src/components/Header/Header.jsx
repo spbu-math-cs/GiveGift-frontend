@@ -6,23 +6,37 @@ import DropDownAccMenu from "../UI/DropDownAccMenu/DropDownAccMenu";
 import AccMenuList from "./AccMenuList/AccMenuList";
 import {useClickOutside} from "../../hooks/useClickOutside";
 
-const Header = ({token, removeToken}) => {
+const Header = ({token, logout, removeToken, userInfo}) => {
 
     const [accountModalWindowVisibility, setAccountModalWindowVisibility] = useState(false);
     const accMenuRef = useRef(null)
 
     useClickOutside(accMenuRef, () => setAccountModalWindowVisibility(false))
 
+    // TODO: Если у пользователя собственный profilepic, отображать его
     return (
         <div className={styles.header}>
             <NavLink className={styles.logo} to='/'>ДариДары</NavLink>
 
             <div ref={accMenuRef} className={styles.account_settings}>
-                <img onClick={() => setAccountModalWindowVisibility(!accountModalWindowVisibility)}
-                     className={styles.account_icon}
-                     src={default_user_logo} alt="user"/>
+                <div className={styles.acc_main_info}>
+                    <img onClick={() => setAccountModalWindowVisibility(!accountModalWindowVisibility)}
+                         className={styles.account_icon}
+                         src={default_user_logo} alt="user"/>
+
+                    {Object.keys(userInfo).length !== 0
+                        ?
+                        <div className={styles.nickname_and_id}>
+                            <span className={styles.nickname}>{userInfo.nickname}</span>
+                            <span className={styles.id}>ID {userInfo.id}</span>
+                        </div>
+                        : <></>
+                    }
+                </div>
+
                 <DropDownAccMenu visible={accountModalWindowVisibility}>
-                    <AccMenuList token={token} removeToken={removeToken} setVisible={setAccountModalWindowVisibility}/>
+                    <AccMenuList token={token} logout={logout} removeToken={removeToken}
+                                 setVisible={setAccountModalWindowVisibility}/>
                 </DropDownAccMenu>
             </div>
         </div>

@@ -1,0 +1,6 @@
+.signUp {
+    display: grid;
+    background-image: url(../../assets/background.png);
+    justify-content: center;
+    justify-items: center;
+}
