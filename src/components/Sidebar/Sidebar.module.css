@@ -5,3 +5,17 @@
     background-color: #fbf8f4;
 }
 
+.sidebar_content {
+    grid-row-gap: 20px;
+    display: grid;
+    width: 75%;
+    margin: 20px 0;
+    grid-template-rows: min-content auto;
+}
+
+.sidebar_header {
+    color: #373737;
+    font-family: Montserrat, sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+}

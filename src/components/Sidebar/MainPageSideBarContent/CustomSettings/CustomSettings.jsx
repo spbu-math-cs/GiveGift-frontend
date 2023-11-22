@@ -1,19 +1,12 @@
 import React from 'react';
-import styles from './MainPageSideBarContent.module.css'
-import Separator from "../../UI/Separator/Separator";
-import SelectFriendTextBtn from "../../UI/TextButton/SelectFriendTextBtn/SelectFriendTextBtn";
-import CustomSettings from "./CustomSettings/CustomSettings";
+import styles from "./CustomSettings.module.css";
+import SearchSettings from "./SearchSettings/SearchSettings";
+import ActiveButton from "../../../UI/Button/ActiveButton/ActiveButton";
 
-const MainPageSideBarContent = (props) => {
-
+const CustomSettings = (props) => {
     return (
-        <div className={styles.mainpage_sidebar_content}>
-
-            <SelectFriendTextBtn isIdeasLoading={props.isIdeasLoading}/>
-
-            <Separator>или</Separator>
-
-            <CustomSettings
+        <div className={styles.custom_settings}>
+            <SearchSettings
                 userInterests={props.userInterests}
                 optionInterests={props.optionInterests}
                 remove={props.remove}
@@ -30,14 +23,17 @@ const MainPageSideBarContent = (props) => {
                 maxPrice={props.maxPrice}
                 priceRangeValue={props.priceRangeValue}
                 handlePriceRangeChange={props.handlePriceRangeChange}
-
-                isIdeasLoading={props.isIdeasLoading}
-                setIsNewUser={props.setIsNewUser}
-                generateIdeas={props.generateIdeas}
-                ideaGenProperties={props.ideaGenProperties}
             />
+
+            <ActiveButton className={styles.mainpage_sidebar_btn} disabled={props.isIdeasLoading}
+                          onClick={() => {
+                              props.setIsNewUser(false);
+                              props.generateIdeas(props.ideaGenProperties)
+                          }}>
+                Выдай идею!
+            </ActiveButton>
         </div>
     );
 };
 
-export default MainPageSideBarContent;
+export default CustomSettings;

@@ -1,0 +1,10 @@
+.custom_settings {
+    display: grid;
+    align-content: start;
+    grid-row-gap: 20px;
+}
+
+.mainpage_sidebar_btn {
+    width: 100%;
+    height: 50px;
+}

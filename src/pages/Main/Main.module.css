@@ -1,7 +1,7 @@
 .main {
     display: grid;
     grid-template-areas: "sidebar ideas_list";
-    grid-template-columns: minmax(250px, 3fr) 9fr;
+    grid-template-columns: minmax(25%, 300px) auto;
 }
 
 

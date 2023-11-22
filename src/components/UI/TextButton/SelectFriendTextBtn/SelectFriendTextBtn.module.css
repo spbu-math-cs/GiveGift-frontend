@@ -1,0 +1,23 @@
+.select_friend_text_btn {
+    display: flex;
+    column-gap: 7px;
+    align-items: center;
+}
+
+.select_friend_text_btn span {
+    color: #373737;
+    font-family: Montserrat, sans-serif;
+    font-size: 25px;
+    font-weight: 600;
+    letter-spacing: -0.4px;
+}
+
+.select_friend_text_btn:global(.active_btn):hover {
+    cursor: pointer;
+    text-decoration: underline 2px;
+}
+
+.select_friend_text_btn img {
+    height: 32px;
+    width: 32px;
+}

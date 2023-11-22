@@ -96,7 +96,7 @@ const Main = () => {
     })
 
     return (<div className={`${styles.main} app-wrapper-content`}>
-        <Sidebar>
+        <Sidebar header={"Фильтры идей"}>
             <MainPageSideBarContent
                 userInterests={userInterests}
                 optionInterests={optionInterests}

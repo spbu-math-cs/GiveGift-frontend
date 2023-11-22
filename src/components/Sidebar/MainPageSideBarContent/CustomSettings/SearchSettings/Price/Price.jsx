@@ -1,7 +1,7 @@
 import React from 'react';
-import SettingsHeader from "../../../../UI/SettingsHeader/SettingsHeader";
+import SettingsHeader from "../../../../../UI/SettingsHeader/SettingsHeader";
 import search_settings_style from "../SearchSettings.module.css"
-import RangeSlider from "../../../../UI/RangeSlider/RangeSlider";
+import RangeSlider from "../../../../../UI/RangeSlider/RangeSlider";
 
 const Price = (props) => {
     return (

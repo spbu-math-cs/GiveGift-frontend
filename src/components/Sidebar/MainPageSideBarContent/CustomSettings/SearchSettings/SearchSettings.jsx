@@ -2,6 +2,8 @@ import React from 'react';
 import InterestList from "./InterestList/InterestList";
 import Price from "./Price/Price";
 import NumOfIdeas from "./NumOfIdeas/NumOfIdeas";
+import AddUserInterestForm from "./InterestList/AddUserInterest/AddUserInterestForm/AddUserInterestForm";
+import AddInterestModal from "./InterestList/AddUserInterest/AddInterestModal/AddInterestModal";
 
 const SearchSettings = (props) => {
     return (
@@ -9,10 +11,7 @@ const SearchSettings = (props) => {
             <InterestList
                 userInterests={props.userInterests}
                 remove={props.remove}
-                add={props.add}
-                optionInterests={props.optionInterests}
                 setInterestModalWindowVisibility={props.setInterestModalWindowVisibility}
-                InterestModalWindowVisibility={props.InterestModalWindowVisibility}
             />
             <Price
                 minPrice={props.minPrice}
@@ -20,14 +19,21 @@ const SearchSettings = (props) => {
                 priceRangeValue={props.priceRangeValue}
                 handlePriceRangeChange={props.handlePriceRangeChange}
             />
-            <NumOfIdeas
+            <AddInterestModal visible={props.InterestModalWindowVisibility}
+                              setVisible={props.setInterestModalWindowVisibility}>
+                <AddUserInterestForm optionInterests={props.optionInterests} add={props.add}/>
+            </AddInterestModal>
+        </>
+    );
+};
+
+
+/*
+* <NumOfIdeas
                 minNumOfIdeas={props.minNumOfIdeas}
                 maxNumOfIdeas={props.maxNumOfIdeas}
                 numOfIdeas={props.numOfIdeas}
                 handleChangeNumOfIdeas={props.handleChangeNumOfIdeas}
             />
-        </>
-    );
-};
-
+* */
 export default SearchSettings;
