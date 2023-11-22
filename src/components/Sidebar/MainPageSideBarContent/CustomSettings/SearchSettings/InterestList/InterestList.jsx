@@ -4,8 +4,6 @@ import styles from "./InterestList.module.css"
 import setting_styles from "../SearchSettings.module.css"
 import SettingsHeader from "../../../../../UI/SettingsHeader/SettingsHeader";
 import PlusBtn from "./PlusBtn/PlusBtn";
-import AddInterestModal from "./AddUserInterest/AddInterestModal/AddInterestModal";
-import AddUserInterestForm from "./AddUserInterest/AddUserInterestForm/AddUserInterestForm";
 
 const InterestList = ({
                           userInterests, remove, setInterestModalWindowVisibility

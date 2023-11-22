@@ -1,6 +1,6 @@
 import React, {useRef, useState} from "react";
 import styles from './Header.module.css';
-import {NavLink} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 import default_user_logo from '../../assets/user.svg'
 import DropDownAccMenu from "../UI/DropDownAccMenu/DropDownAccMenu";
 import AccMenuList from "./AccMenuList/AccMenuList";
@@ -10,6 +10,7 @@ const Header = ({token, logout, removeToken, userInfo}) => {
 
     const [accountModalWindowVisibility, setAccountModalWindowVisibility] = useState(false);
     const accMenuRef = useRef(null)
+    const loginNavigate = useNavigate();
 
     useClickOutside(accMenuRef, () => setAccountModalWindowVisibility(false))
 
@@ -20,9 +21,10 @@ const Header = ({token, logout, removeToken, userInfo}) => {
 
             <div ref={accMenuRef} className={styles.account_settings}>
                 <div className={styles.acc_main_info}>
-                    <img onClick={() => setAccountModalWindowVisibility(!accountModalWindowVisibility)}
-                         className={styles.account_icon}
-                         src={default_user_logo} alt="user"/>
+                    <img
+                        onClick={() => token ? setAccountModalWindowVisibility(!accountModalWindowVisibility) : loginNavigate('/login')}
+                        className={styles.account_icon}
+                        src={default_user_logo} alt="user"/>
 
                     {Object.keys(userInfo).length !== 0
                         ?

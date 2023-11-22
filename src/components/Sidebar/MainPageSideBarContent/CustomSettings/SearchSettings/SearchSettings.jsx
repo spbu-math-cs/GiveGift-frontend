@@ -1,7 +1,6 @@
 import React from 'react';
 import InterestList from "./InterestList/InterestList";
 import Price from "./Price/Price";
-import NumOfIdeas from "./NumOfIdeas/NumOfIdeas";
 import AddUserInterestForm from "./InterestList/AddUserInterest/AddUserInterestForm/AddUserInterestForm";
 import AddInterestModal from "./InterestList/AddUserInterest/AddInterestModal/AddInterestModal";
 
