@@ -2,7 +2,6 @@ import Sidebar from "../../components/Sidebar/Sidebar";
 import MainPageSideBarContent from "../../components/Sidebar/MainPageSideBarContent/MainPageSideBarContent";
 import Ideas from "../../components/Ideas/Ideas";
 import React, {useEffect, useState} from "react";
-import styles from './Main.module.css'
 import {checkPrice} from "../../utils/checkers";
 import {useFetching} from "../../hooks/useFetching";
 import IdeaService from "../../API/IdeaService";
@@ -64,7 +63,7 @@ const Main = () => {
 
     // TODO: В БУДУЩЕМ ОТКАЖЕМСЯ ОТ ИДЕИ КОЛИЧЕСТВА ИДЕЙ
     const minNumOfIdeas = 1, maxNumOfIdeas = 5;
-    const [numOfIdeas, setNumOfIdeas] = useState(minNumOfIdeas)
+    const [numOfIdeas, setNumOfIdeas] = useState(maxNumOfIdeas)
 
     const handleChangeNumOfIdeas = (event, newNumOfIdeas) => {
         setNumOfIdeas(newNumOfIdeas);
@@ -95,7 +94,7 @@ const Main = () => {
         setIdeas(response.data);
     })
 
-    return (<div className={`${styles.main} app-wrapper-content`}>
+    return (<div className={`content-with-sidebar app-wrapper-content`}>
         <Sidebar header={"Фильтры идей"}>
             <MainPageSideBarContent
                 userInterests={userInterests}

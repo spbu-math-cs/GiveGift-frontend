@@ -25,7 +25,7 @@
 
 .idea_list {
     display: grid;
-    grid-area: ideas_list;
+    grid-area: main_content;
     grid-template-areas:
         "found_header"
         "ideas";

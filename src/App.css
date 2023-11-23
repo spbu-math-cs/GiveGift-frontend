@@ -11,6 +11,12 @@
     background: rgba(192, 150, 111, 0.20);
 }
 
+.content-with-sidebar {
+    display: grid;
+    grid-template-areas: "sidebar main_content";
+    grid-template-columns: minmax(25%, 300px) auto;
+}
+
 .slider {
     overflow: auto;
 }

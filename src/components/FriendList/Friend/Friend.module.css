@@ -1,0 +1,40 @@
+.friend {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.friend_info {
+    display: flex;
+    align-items: center;
+    column-gap: 12px;
+    font-family: Montserrat, sans-serif;
+    font-weight: 600;
+}
+
+.friend_icon {
+    cursor: pointer;
+    height: 64px;
+    width: 64px;
+    border-radius: 50%;
+}
+
+.friend_nickname {
+    color: #373737;
+    font-size: 23px;
+    cursor: pointer;
+}
+
+.friend_nickname:hover {
+    text-decoration: underline 2px;
+}
+
+.friend_action {
+    color: #FF6332;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.friend_action:hover {
+    text-decoration: underline 1px;
+}

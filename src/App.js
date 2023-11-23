@@ -9,6 +9,7 @@ import Account from "./pages/Account/Account";
 import useToken from "./hooks/useToken";
 import {useFetching} from "./hooks/useFetching";
 import UserService from "./API/UserService";
+import Friends from "./pages/Friends/Friends";
 
 function App() {
     const {token, removeToken, setToken} = useToken();
@@ -28,6 +29,9 @@ function App() {
         token ? fetchUserInfo(token) : setUserInfo({});
     }, [token]);
 
+
+    // TODO: Not found page error component
+    // TODO: Страница аккаунта и страница с друзьями только для залогиненных пользователей
     return (
         <BrowserRouter>
             <div className="app-wrapper">
@@ -36,7 +40,9 @@ function App() {
                     <Route exact path='' element={<Main/>}/>
                     <Route exact path='login' element={<Login setToken={setToken}/>}/>
                     <Route exact path='signup' element={<SignUp setToken={setToken}/>}/>
+                    <Route exact path='friends' element={<Friends/>}/>
                     <Route exact path='account' element={<Account/>}/>
+                    <Route path='*' element={<div>Test</div>}/>
                 </Routes>
             </div>
         </BrowserRouter>
