@@ -16,7 +16,6 @@
 
 .friend_list_wrapper_content {
     width: 85%;
-    align-self: center;
     margin: 5% 0;
     display: grid;
     grid-row-gap: 25px;

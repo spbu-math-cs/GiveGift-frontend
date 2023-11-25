@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import styles from './FriendList.module.css'
 import Friend from "./Friend/Friend";
 import SearchBar from "../UI/SearchBar/SearchBar";
+import {useFriendSearch} from "../../hooks/useFriendSearch";
 
 const FriendList = () => {
 
@@ -33,15 +34,20 @@ const FriendList = () => {
         },
     ])
 
+    const [searchQuery, setSearchQuery] = useState('');
+
+    const searchResults = useFriendSearch(friendList, searchQuery);
+
+    // TODO: Удаление друга будет происходить посредством api
     return (
         <div className={`${styles.friend_list_wrapper}`}>
             <div className={`${styles.friend_list_wrapper_bubble} slider`}>
                 <div className={styles.friend_list_wrapper_content}>
-                    <SearchBar/>
+                    <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>
 
                     <div className={styles.friend_list}>
-                        {friendList.map(friend =>
-                            <Friend key={friend.id} nickname={friend.nickname} friend_id={friend.id}/>
+                        {searchResults.map(friend =>
+                            <Friend key={friend.id} nickname={friend.nickname} friend_id={friend.id} />
                         )}
                     </div>
                 </div>

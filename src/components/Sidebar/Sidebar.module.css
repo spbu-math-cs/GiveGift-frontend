@@ -8,14 +8,14 @@
 .sidebar_content {
     grid-row-gap: 20px;
     display: grid;
-    width: 75%;
-    margin: 20px 0;
+    width: 80%;
+    margin-top: 20px;
     grid-template-rows: min-content auto;
 }
 
 .sidebar_header {
     color: #373737;
     font-family: Montserrat, sans-serif;
-    font-size: 29px;
+    font-size: 25px;
     font-weight: 700;
 }
