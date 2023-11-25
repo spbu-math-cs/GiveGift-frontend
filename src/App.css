@@ -9,6 +9,7 @@
 .app-wrapper-content {
     grid-area: content;
     background: rgba(192, 150, 111, 0.20);
+    word-break: break-all;
 }
 
 .content-with-sidebar {
