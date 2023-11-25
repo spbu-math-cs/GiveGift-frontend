@@ -8,11 +8,12 @@ const SearchBar = ({searchQuery, setSearchQuery}) => {
         <div>
             <ThemeProvider theme={redTheme}>
                 <TextField
-                    fullWidth
+
                     variant="outlined"
                     placeholder="Поиск друзей..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
+                    sx={{ width: 'fill-available' }}
                     InputProps={{
                         endAdornment: (<SearchRoundedIcon fontSize={"large"} style={{color: '#afafaf'}}/>),
                         style: {

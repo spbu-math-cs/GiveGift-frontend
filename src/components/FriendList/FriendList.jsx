@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import styles from './FriendList.module.css'
 import Friend from "./Friend/Friend";
-import SearchBar from "../UI/SearchBar/SearchBar";
 import {useFriendSearch} from "../../hooks/useFriendSearch";
+import FriendSearch from "../FriendSearch/FriendSearch";
 
 const FriendList = () => {
 
@@ -43,11 +43,12 @@ const FriendList = () => {
         <div className={`${styles.friend_list_wrapper}`}>
             <div className={`${styles.friend_list_wrapper_bubble} slider`}>
                 <div className={styles.friend_list_wrapper_content}>
-                    <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>
+
+                    <FriendSearch searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>
 
                     <div className={styles.friend_list}>
                         {searchResults.map(friend =>
-                            <Friend key={friend.id} nickname={friend.nickname} friend_id={friend.id} />
+                            <Friend key={friend.id} nickname={friend.nickname} friend_id={friend.id}/>
                         )}
                     </div>
                 </div>

@@ -4,6 +4,7 @@ import {NavLink} from "react-router-dom";
 import default_user_logo from '../../assets/user.svg'
 import DropDownAccMenu from "../UI/DropDownAccMenu/DropDownAccMenu";
 import {Avatar, IconButton} from "@mui/material";
+import UserInfo from "./UserInfo/UserInfo";
 
 const Header = ({token, logout, removeToken, userInfo}) => {
 
@@ -17,7 +18,6 @@ const Header = ({token, logout, removeToken, userInfo}) => {
     };
 
     // TODO: Если у пользователя собственный profilepic, отображать его
-
     return (
         <div className={styles.header}>
             <NavLink className={styles.logo} to='/'>ДариДары</NavLink>
@@ -25,32 +25,27 @@ const Header = ({token, logout, removeToken, userInfo}) => {
             <div className={styles.account_settings}>
                 <div className={styles.acc_main_info}>
 
-                    <IconButton id="account-menu-button"
-                                onClick={handleClick}
-                                size="small"
-                                aria-controls={open ? 'account-menu' : undefined}
-                                aria-haspopup="true"
-                                aria-expanded={open ? 'true' : undefined}
-                    >
-                        <Avatar src={default_user_logo}
-                                alt="user"
-                                sx={{width: 50, height: 50}}/>
-                    </IconButton>
+                    <NavLink to={token ? null : '/login'}>
+                        <IconButton id="account-menu-button"
+                                    onClick={handleClick}
+                                    size="small"
+                                    aria-controls={open ? 'account-menu' : undefined}
+                                    aria-haspopup="true"
+                                    aria-expanded={open ? 'true' : undefined}
+                        >
+                            <Avatar src={default_user_logo}
+                                    alt="user"
+                                    sx={{width: 50, height: 50}}/>
+                        </IconButton></NavLink>
 
-                    <DropDownAccMenu open={open} handleClose={handleClose} anchorEl={anchorEl} logout={logout}
-                                     token={token} removeToken={removeToken}/>
-
-                    {Object.keys(userInfo).length !== 0
-                        ?
-                        <div className={styles.nickname_and_id}>
-                            <span className={styles.nickname}>{userInfo.nickname}</span>
-                            <span className={styles.id}>ID {userInfo.id}</span>
-                        </div>
+                    {token
+                        ? <DropDownAccMenu open={open} handleClose={handleClose} anchorEl={anchorEl} logout={logout}
+                                           token={token} removeToken={removeToken}/>
                         : <></>
                     }
+
+                    <UserInfo userInfo={userInfo}/>
                 </div>
-
-
             </div>
         </div>
     );

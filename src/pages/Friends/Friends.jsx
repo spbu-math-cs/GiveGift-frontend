@@ -2,17 +2,9 @@ import React, {useState} from 'react';
 import Sidebar from "../../components/Sidebar/Sidebar";
 import '../../App.css'
 import FriendList from "../../components/FriendList/FriendList";
-import styles from './Friends.module.css'
-import IncomingRequestsList from "../../components/IncomingRequestsList/IncomingRequestsList";
-import OutgoingRequestsList from "../../components/OutgoingRequestsList/OutgoingRequestsList";
+import FriendPageSideBarContent from "../../components/Sidebar/FriendPageSideBarContent/FriendPageSideBarContent";
 
 const Friends = () => {
-
-    const activeClass = 'active_request_list';
-
-    const [incomingRequestsClasses, setIncomingRequestsClasses] = useState([styles.request_bubble, activeClass]);
-    const [outgoingRequestsClasses, setOutgoingRequestsClasses] = useState([styles.request_bubble]);
-
     const [incomingRequests, setIncomingRequests] = useState(
         [
             {
@@ -84,30 +76,12 @@ const Friends = () => {
     return (
         <div className={'app-wrapper-content content-with-sidebar'}>
             <Sidebar header={'Заявки в друзья'}>
-                <div className={styles.friend_requests}>
-
-                    <div className={styles.request_bubble_block}>
-                        <div className={incomingRequestsClasses.join(' ')} onClick={() => {
-                            setIncomingRequestsClasses([...incomingRequestsClasses, activeClass]);
-                            setOutgoingRequestsClasses(outgoingRequestsClasses.filter((curr_class) => curr_class !== activeClass));
-                        }}>
-                            <span>Входящие</span>
-                        </div>
-                        <div className={outgoingRequestsClasses.join(' ')} onClick={() => {
-                            setOutgoingRequestsClasses([...outgoingRequestsClasses, activeClass]);
-                            setIncomingRequestsClasses(incomingRequestsClasses.filter((curr_class) => curr_class !== activeClass));
-                        }}>
-                            <span>Исходящие</span>
-                        </div>
-                    </div>
-
-                    <div className={styles.requests_list}>
-                    {incomingRequestsClasses.includes(activeClass)
-                        ? <IncomingRequestsList incomingRequests={incomingRequests}/>
-                        : <OutgoingRequestsList outgoingRequests={outgoingRequests}/>
-                    }
-                    </div>
-                </div>
+                <FriendPageSideBarContent
+                    incomingRequests={incomingRequests}
+                    setIncomingRequests={setIncomingRequests}
+                    outgoingRequests={outgoingRequests}
+                    setOutgoingRequests={setOutgoingRequests}
+                />
             </Sidebar>
 
             <FriendList/>

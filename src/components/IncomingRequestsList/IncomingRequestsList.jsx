@@ -1,9 +1,8 @@
 import React from 'react';
 import UserRequest from "../UserRequest/UserRequest";
-import {Fade, IconButton, Menu, MenuItem, ThemeProvider} from "@mui/material";
+import {IconButton} from "@mui/material";
 import MoreHorizRoundedIcon from '@mui/icons-material/MoreHorizRounded';
-import {redTheme} from "../UI/muiThemes/themes";
-
+import MoreUserRequestMenu from "./MoreUserRequestMenu/MoreUserRequestMenu";
 
 const IncomingRequestsList = ({incomingRequests}) => {
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -31,26 +30,8 @@ const IncomingRequestsList = ({incomingRequests}) => {
                 )
             }
 
-            <ThemeProvider theme={redTheme}>
-                <Menu
-                    id="more_user_request_menu"
-                    anchorEl={anchorEl}
-                    open={open}
-                    TransitionComponent={Fade}
-                    onClose={handleClose}
-                    PaperProps={{
-                        sx: {borderRadius: '15px'}
-                    }}
-                    MenuListProps={{
-                        'aria-labelledby': `more_user_request_btn`,
-                    }}
-                >
-                    <MenuItem onClick={handleClose}>Принять</MenuItem>
-                    <MenuItem onClick={handleClose}>Отклонить</MenuItem>
-                </Menu>
-            </ThemeProvider>
+            <MoreUserRequestMenu open={open} handleClose={handleClose} anchorEl={anchorEl}/>
         </>
-
     );
 };
 

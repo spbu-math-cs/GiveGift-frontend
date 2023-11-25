@@ -26,3 +26,16 @@
     grid-row-gap: 10px;
     /*padding: 0 5px;*/
 }
+
+.friend_search {
+    display: grid;
+    grid-template-columns: 7fr 1fr;
+    grid-column-gap: 10px;
+    grid-template-rows: max-content;
+}
+
+.add_friend_btn {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+}
