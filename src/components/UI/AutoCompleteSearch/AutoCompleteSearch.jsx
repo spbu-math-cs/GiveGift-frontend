@@ -14,7 +14,7 @@ export const AutoCompleteSearch = ({userInterest, setUserInterest, optionInteres
                     freeSolo
                     id="select_interest"
 
-                    value={userInterest || null}
+                    //value={userInterest || null}
                     onChange={(event, newValue) =>
                         setUserInterest(newValue)
                     }
