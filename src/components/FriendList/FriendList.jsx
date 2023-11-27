@@ -4,7 +4,7 @@ import Friend from "./Friend/Friend";
 import {useFriendSearch} from "../../hooks/useFriendSearch";
 import FriendSearch from "../FriendSearch/FriendSearch";
 
-const FriendList = () => {
+const FriendList = ({FriendModalWindowVisibility, setFriendModalWindowVisibility}) => {
 
     const [friendList, setFriendList] = useState([
         {
@@ -38,13 +38,23 @@ const FriendList = () => {
 
     const searchResults = useFriendSearch(friendList, searchQuery);
 
+    const addUserFriend = (newFriend) => {
+        alert('Ok')
+    }
+
     // TODO: Удаление друга будет происходить посредством api
     return (
         <div className={`${styles.friend_list_wrapper}`}>
             <div className={`${styles.friend_list_wrapper_bubble} slider`}>
                 <div className={styles.friend_list_wrapper_content}>
 
-                    <FriendSearch searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>
+                    <FriendSearch
+                        searchQuery={searchQuery}
+                        setSearchQuery={setSearchQuery}
+                        FriendModalWindowVisibility={FriendModalWindowVisibility}
+                        setFriendModalWindowVisibility={setFriendModalWindowVisibility}
+                        add={addUserFriend}
+                    />
 
                     <div className={styles.friend_list}>
                         {searchResults.map(friend =>

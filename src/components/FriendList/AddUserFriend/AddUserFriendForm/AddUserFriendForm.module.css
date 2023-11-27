@@ -1,0 +1,10 @@
+.add_friend_form {
+    display: grid;
+    grid-row-gap: 20px;
+    justify-items: end;
+}
+
+.add_friend_form_button {
+    width: 3em;
+    height: 1.5em;
+}

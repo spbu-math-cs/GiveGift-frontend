@@ -1,0 +1,16 @@
+.checkBtn {
+    background-color: #fa6131;
+    border-radius: 0 15px 15px 0;
+    cursor: pointer;
+
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    width: 70px;
+    height: 100%;
+}
+
+.checkBtn img {
+    width: 16px;
+    height: 16px;
+}

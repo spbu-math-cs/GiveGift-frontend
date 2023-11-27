@@ -72,6 +72,8 @@ const Friends = () => {
         }]
     )
 
+    const [FriendModalWindowVisibility, setFriendModalWindowVisibility] = useState(false);
+
     // TODO: tab - новая компонента
     return (
         <div className={'app-wrapper-content content-with-sidebar'}>
@@ -84,7 +86,10 @@ const Friends = () => {
                 />
             </Sidebar>
 
-            <FriendList/>
+            <FriendList
+                FriendModalWindowVisibility={FriendModalWindowVisibility}
+                setFriendModalWindowVisibility={setFriendModalWindowVisibility}
+            />
         </div>
     );
 };
