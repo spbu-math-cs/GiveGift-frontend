@@ -5,17 +5,14 @@ import {useFriendSearch} from "../../hooks/useFriendSearch";
 import FriendSearch from "../FriendSearch/FriendSearch";
 
 
-const FriendList = ({removeFriend, friendList, sendFriendRequest, token, FriendModalWindowVisibility, setFriendModalWindowVisibility}) => {
+const FriendList = ({removeFriend, friendList, sendFriendRequest, sendRequestError,
+                        isSendRequestLoading, token,
+                        FriendModalWindowVisibility, setFriendModalWindowVisibility}) => {
 
     const [searchQuery, setSearchQuery] = useState('');
 
     const searchResults = useFriendSearch(friendList, searchQuery);
 
-    const addUserFriend = (newFriend) => {
-        alert('Ok')
-    }
-
-    // TODO: Удаление друга будет происходить посредством api
     return (
         <div className={`${styles.friend_list_wrapper}`}>
             <div className={`${styles.friend_list_wrapper_bubble} slider`}>
@@ -26,12 +23,15 @@ const FriendList = ({removeFriend, friendList, sendFriendRequest, token, FriendM
                         setSearchQuery={setSearchQuery}
                         FriendModalWindowVisibility={FriendModalWindowVisibility}
                         setFriendModalWindowVisibility={setFriendModalWindowVisibility}
-                        add={addUserFriend}
+                        sendFriendRequest={sendFriendRequest}
+                        sendRequestError={sendRequestError}
+                        isSendRequestLoading={isSendRequestLoading}
+                        token={token}
                     />
 
                     <div className={styles.friend_list}>
                         {searchResults.map(friend =>
-                            <Friend key={friend.id} nickname={friend.nickname} friend_id={friend.id}/>
+                            <Friend key={friend.id} nickname={friend.nickname} friend_id={friend.id} token={token} removeFriend={removeFriend}/>
                         )}
                     </div>
                 </div>

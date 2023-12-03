@@ -3,9 +3,9 @@ import check_btn from "../../../../assets/check_btn.png";
 import styles from "./CheckBtn.module.css"
 import ActiveButton from "../ActiveButton/ActiveButton";
 
-const CheckBtn = ({onClick}) => {
+const CheckBtn = (props) => {
     return (
-        <ActiveButton onClick={onClick} className={styles.checkBtn}>
+        <ActiveButton {...props} className={styles.checkBtn}>
             <img src={check_btn} alt="ok"/>
         </ActiveButton>
     );

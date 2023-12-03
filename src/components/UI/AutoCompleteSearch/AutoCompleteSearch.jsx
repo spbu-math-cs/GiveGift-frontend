@@ -13,8 +13,8 @@ export const AutoCompleteSearch = ({userInterest, setUserInterest, optionInteres
                     multiple
                     freeSolo
                     id="select_interest"
+                    value={userInterest}
 
-                    //value={userInterest || null}
                     onChange={(event, newValue) =>
                         setUserInterest(newValue)
                     }
@@ -23,7 +23,7 @@ export const AutoCompleteSearch = ({userInterest, setUserInterest, optionInteres
                     sx={{width: 300, '& fieldset': { borderRadius: '15px 0 0 15px' }}}
                     renderInput={(params) => <TextField {...params} label="Укажите интересы..."/>}
                 />
-                <CheckBtn onCLick={onClick}/>
+                <CheckBtn onClick={onClick}/>
             </FormGroup>
         </ThemeProvider>
     );

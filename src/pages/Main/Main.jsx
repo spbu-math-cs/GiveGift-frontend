@@ -53,10 +53,8 @@ const Main = ({token}) => {
         setUserInterests(userInterests.filter(i => i !== interest))
     }
     const addUserInterest = (newInterest) => {
-        if (!userInterests.includes(newInterest)) {
-            setUserInterests([...userInterests, newInterest])
-            setInterestModalWindowVisibility(false)
-        }
+        setUserInterests([...userInterests, ...newInterest])
+        setInterestModalWindowVisibility(false)
     }
 
     const optionInterests = allInterests.filter(item => !userInterests.includes(item))

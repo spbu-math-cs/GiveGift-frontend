@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styles from "../FriendList/FriendList.module.css";
 import SearchBar from "../UI/SearchBar/SearchBar";
 import ActiveButton from "../UI/Button/ActiveButton/ActiveButton";
@@ -7,21 +7,32 @@ import AddFriendModal from "../FriendList/AddUserFriend/AddFriendModal/AddFriend
 import AddUserFriendForm from "../FriendList/AddUserFriend/AddUserFriendForm/AddUserFriendForm";
 
 const FriendSearch = (props) => {
-
-    const [friendID, setFriendID] = useState(3);
+    const [showAlert, setShowAlert] = useState(false);
 
     return (
         <>
             <div className={styles.friend_search}>
                 <SearchBar searchQuery={props.searchQuery} setSearchQuery={props.setSearchQuery}/>
 
-                <ActiveButton className={styles.add_friend_btn} onClick={() => props.setFriendModalWindowVisibility(true)}>
+                <ActiveButton className={styles.add_friend_btn}
+                              onClick={() => {
+                                  props.setFriendModalWindowVisibility(true);
+                                  setShowAlert(false);
+                              }}>
+
                     <PersonAddRoundedIcon fontSize={'large'} style={{marginRight: '5px'}}/>
                 </ActiveButton>
             </div>
             <AddFriendModal visible={props.FriendModalWindowVisibility}
                             setVisible={props.setFriendModalWindowVisibility}>
-                <AddUserFriendForm add={props.add}/>
+                <AddUserFriendForm sendFriendRequest={props.sendFriendRequest}
+                                   sendRequestError={props.sendRequestError}
+                                   isSendRequestLoading={props.isSendRequestLoading}
+                                   token={props.token}
+                                   sendRequestResponseData={props.sendRequestResponseData}
+                                   showAlert={showAlert}
+                                   setShowAlert={setShowAlert}
+                />
             </AddFriendModal>
         </>
     );

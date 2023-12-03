@@ -26,7 +26,7 @@ const Friends = ({token}) => {
 
     // todo: мб сократить можно
     // todo: обрабатывать ошибку нужно
-    const [sendFriendRequest, , sendRequestError] = useFetching(async (token, friend_id) => {
+    const [sendFriendRequest, isSendRequestLoading, sendRequestError] = useFetching(async (token, friend_id) => {
         await FriendService.sendFriendRequest(token, friend_id);
         await fetchFriendLists(token);
     })
@@ -75,9 +75,12 @@ const Friends = ({token}) => {
                 FriendModalWindowVisibility={FriendModalWindowVisibility}
                 setFriendModalWindowVisibility={setFriendModalWindowVisibility}
                 friendList={friends}
-                        sendFriendRequest={sendFriendRequest}
-                        removeFriend={removeFriend}
-                        token={token}
+                sendFriendRequest={sendFriendRequest}
+                isSendRequestLoading={isSendRequestLoading}
+                sendRequestError={sendRequestError}
+
+                removeFriend={removeFriend}
+                token={token}
             />
         </div>
     );
