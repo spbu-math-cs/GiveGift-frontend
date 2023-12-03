@@ -1,0 +1,17 @@
+.closedBtn {
+    cursor: pointer;
+    border: none;
+    background: none;
+
+    display: grid;
+    height: 100%;
+
+    position: relative;
+    left: 95%;
+    top: 0;
+}
+
+.closedBtn img {
+    width: 16px;
+    height: 16px;
+}

@@ -51,6 +51,8 @@ const Friends = ({token}) => {
         await fetchFriendLists(token);
     })
 
+    const [FriendModalWindowVisibility, setFriendModalWindowVisibility] = useState(false);
+
     // TODO: tab - новая компонента
     return (
         <div className={'app-wrapper-content content-with-sidebar'}>
@@ -69,7 +71,10 @@ const Friends = ({token}) => {
                 />
             </Sidebar>
 
-            <FriendList friendList={friends}
+            <FriendList
+                FriendModalWindowVisibility={FriendModalWindowVisibility}
+                setFriendModalWindowVisibility={setFriendModalWindowVisibility}
+                friendList={friends}
                         sendFriendRequest={sendFriendRequest}
                         removeFriend={removeFriend}
                         token={token}
