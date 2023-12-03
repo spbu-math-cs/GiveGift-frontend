@@ -4,52 +4,27 @@ import Friend from "./Friend/Friend";
 import {useFriendSearch} from "../../hooks/useFriendSearch";
 import FriendSearch from "../FriendSearch/FriendSearch";
 
-const FriendList = () => {
+const FriendList = ({removeFriend, friendList, sendFriendRequest, token}) => {
 
-    const [friendList, setFriendList] = useState([
-        {
-            id: 1,
-            nickname: 'Иван Иванов',
-        }, {
-            id: 2,
-            nickname: 'Иван Иванов',
-        }, {
-            id: 3,
-            nickname: 'Иван Иванов',
-        }, {
-            id: 4,
-            nickname: 'Иван Иванов',
-        }, {
-            id: 5,
-            nickname: 'Иван Иванов',
-        }, {
-            id: 6,
-            nickname: 'Иван Иванов',
-        }, {
-            id: 7,
-            nickname: 'Иван Иванов',
-        }, {
-            id: 8,
-            nickname: 'Иван Иванов',
-        },
-    ])
 
     const [searchQuery, setSearchQuery] = useState('');
 
     const searchResults = useFriendSearch(friendList, searchQuery);
 
-    // TODO: Удаление друга будет происходить посредством api
     return (
         <div className={`${styles.friend_list_wrapper}`}>
             <div className={`${styles.friend_list_wrapper_bubble} slider`}>
                 <div className={styles.friend_list_wrapper_content}>
 
-                    <FriendSearch searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>
+                    <FriendSearch sendFriendRequest={sendFriendRequest} token={token}
+                                  searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>
 
                     <div className={styles.friend_list}>
-                        {searchResults.map(friend =>
-                            <Friend key={friend.id} nickname={friend.nickname} friend_id={friend.id}/>
-                        )}
+                        {(searchResults)
+                            ? searchResults.map(friend =>
+                                <Friend key={friend.id} token={token} removeFriend={removeFriend} nickname={friend.nickname} friend_id={friend.id}/>
+                            )
+                            : <span>Друзей нет, по чему ты там искать собрался</span>}
                     </div>
                 </div>
             </div>

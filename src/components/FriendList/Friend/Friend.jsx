@@ -3,7 +3,8 @@ import styles from './Friend.module.css'
 import default_user_logo from "../../../assets/user.svg";
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import {IconButton} from "@mui/material";
-const Friend = ({friend_id, nickname}) => {
+
+const Friend = ({friend_id, token, removeFriend, nickname}) => {
     return (
         <div className={styles.friend}>
             <div className={styles.friend_info}>
@@ -12,15 +13,18 @@ const Friend = ({friend_id, nickname}) => {
                     src={default_user_logo} alt="user"/>
 
                 <div style={{display: 'grid'}}>
-                    <span className={styles.friend_nickname} onClick={() => {alert('Друг')}}>{nickname}</span>
+                    <span className={styles.friend_nickname} onClick={() => {
+                        alert('Друг')
+                    }}>{nickname}</span>
                     <span className={styles.friend_action} onClick={() => alert('Подобрал те хуев за щеку, проверяй')}>Подобрать подарок</span>
                 </div>
             </div>
 
-            <IconButton onClick={() => {alert('Не телки гроб будут тащить а кенты...')}}>
+            <IconButton onClick={() => {
+                removeFriend(token, friend_id)
+            }}>
                 <CloseRoundedIcon fontSize={'large'} style={{color: '#a6a6a6'}}/>
             </IconButton>
-
         </div>
     );
 };

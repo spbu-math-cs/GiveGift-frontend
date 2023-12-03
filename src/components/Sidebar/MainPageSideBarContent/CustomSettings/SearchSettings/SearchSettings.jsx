@@ -26,13 +26,4 @@ const SearchSettings = (props) => {
     );
 };
 
-
-/*
-* <NumOfIdeas
-                minNumOfIdeas={props.minNumOfIdeas}
-                maxNumOfIdeas={props.maxNumOfIdeas}
-                numOfIdeas={props.numOfIdeas}
-                handleChangeNumOfIdeas={props.handleChangeNumOfIdeas}
-            />
-* */
 export default SearchSettings;

@@ -14,11 +14,6 @@ const CustomSettings = (props) => {
                 InterestModalWindowVisibility={props.InterestModalWindowVisibility}
                 setInterestModalWindowVisibility={props.setInterestModalWindowVisibility}
 
-                minNumOfIdeas={props.minNumOfIdeas}
-                maxNumOfIdeas={props.maxNumOfIdeas}
-                numOfIdeas={props.numOfIdeas}
-                handleChangeNumOfIdeas={props.handleChangeNumOfIdeas}
-
                 minPrice={props.minPrice}
                 maxPrice={props.maxPrice}
                 priceRangeValue={props.priceRangeValue}
@@ -28,7 +23,7 @@ const CustomSettings = (props) => {
             <ActiveButton className={styles.mainpage_sidebar_btn} disabled={props.isIdeasLoading}
                           onClick={() => {
                               props.setIsNewUser(false);
-                              props.generateIdeas(props.ideaGenProperties)
+                              props.generateIdeas({userIdeaProperties: props.ideaGenProperties})
                           }}>
                 Выдай идею!
             </ActiveButton>

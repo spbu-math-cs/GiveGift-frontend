@@ -32,15 +32,16 @@ function App() {
 
     // TODO: Not found page error component
     // TODO: Страница аккаунта и страница с друзьями только для залогиненных пользователей
+    // TODO: Запрещать незалогиненным пользователям переходить на страницу с друзьями
     return (
         <BrowserRouter>
             <div className="app-wrapper">
                 <Header logout={logout} userInfo={userInfo} removeToken={removeToken} token={token}/>
                 <Routes>
-                    <Route exact path='' element={<Main/>}/>
+                    <Route exact path='' element={<Main token={token}/>}/>
                     <Route exact path='login' element={<Login setToken={setToken}/>}/>
                     <Route exact path='signup' element={<SignUp setToken={setToken}/>}/>
-                    <Route exact path='friends' element={<Friends/>}/>
+                    <Route exact path='friends' element={<Friends token={token}/>}/>
                     <Route exact path='account' element={<Account/>}/>
                     <Route path='*' element={<div>Test</div>}/>
                 </Routes>

@@ -9,7 +9,9 @@ const MainPageSideBarContent = (props) => {
     return (
         <div className={styles.mainpage_sidebar_content}>
 
-            <SelectFriendTextBtn isIdeasLoading={props.isIdeasLoading}/>
+            <SelectFriendTextBtn
+                generateIdeas={props.generateIdeas} setIsNewUser={props.setIsNewUser}
+                selectedFriendID={props.selectedFriendID} token={props.token} isIdeasLoading={props.isIdeasLoading}/>
 
             <Separator>или</Separator>
 
@@ -20,11 +22,6 @@ const MainPageSideBarContent = (props) => {
                 add={props.add}
                 InterestModalWindowVisibility={props.InterestModalWindowVisibility}
                 setInterestModalWindowVisibility={props.setInterestModalWindowVisibility}
-
-                minNumOfIdeas={props.minNumOfIdeas}
-                maxNumOfIdeas={props.maxNumOfIdeas}
-                numOfIdeas={props.numOfIdeas}
-                handleChangeNumOfIdeas={props.handleChangeNumOfIdeas}
 
                 minPrice={props.minPrice}
                 maxPrice={props.maxPrice}

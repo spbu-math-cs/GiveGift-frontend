@@ -1,17 +1,21 @@
-import React from 'react';
+import React, {useState} from 'react';
 import UserRequest from "../UserRequest/UserRequest";
 import {IconButton} from "@mui/material";
 import MoreHorizRoundedIcon from '@mui/icons-material/MoreHorizRounded';
 import MoreUserRequestMenu from "./MoreUserRequestMenu/MoreUserRequestMenu";
 
-const IncomingRequestsList = ({incomingRequests}) => {
+const IncomingRequestsList = ({incomingRequests, rejectFriendRequest, acceptFriendRequest, token}) => {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
-    const handleClick = (event) => {
+
+    const [selectedUserID, setSelectedUserID] = useState();
+    const handleClick = (event, user_id) => {
+        setSelectedUserID(user_id);
         setAnchorEl(event.currentTarget);
     };
-    const handleClose = () => {
+    const handleClose = (isAccepted, user_id) => {
         setAnchorEl(null);
+        (isAccepted) ? acceptFriendRequest(token, user_id) : rejectFriendRequest(token, user_id);
     };
 
     return (
@@ -23,14 +27,16 @@ const IncomingRequestsList = ({incomingRequests}) => {
                                     aria-controls={open ? 'more_user_request_menu' : undefined}
                                     aria-haspopup="true"
                                     aria-expanded={open ? 'true' : undefined}
-                                    onClick={handleClick}>
+                                    onClick={(e) => handleClick(e, curr_user.id)}>
                             <MoreHorizRoundedIcon fontSize={'small'} style={{color: '#a6a6a6'}}/>
                         </IconButton>
                     </UserRequest>
                 )
             }
 
-            <MoreUserRequestMenu open={open} handleClose={handleClose} anchorEl={anchorEl}/>
+            <MoreUserRequestMenu user_id={selectedUserID}
+                                 open={open} handleClose={handleClose} anchorEl={anchorEl}
+                                 rejectFriendRequest={rejectFriendRequest} acceptFriendRequest={acceptFriendRequest}/>
         </>
     );
 };

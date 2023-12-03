@@ -7,7 +7,7 @@ import {useFetching} from "../../hooks/useFetching";
 import IdeaService from "../../API/IdeaService";
 import InterestService from "../../API/InterestService";
 
-const Main = () => {
+const Main = ({token}) => {
 
     const [allInterests, setAllInterests] = useState([])
 
@@ -61,15 +61,6 @@ const Main = () => {
 
     const optionInterests = allInterests.filter(item => !userInterests.includes(item))
 
-    // TODO: В БУДУЩЕМ ОТКАЖЕМСЯ ОТ ИДЕИ КОЛИЧЕСТВА ИДЕЙ
-    const minNumOfIdeas = 1, maxNumOfIdeas = 5;
-    const [numOfIdeas, setNumOfIdeas] = useState(maxNumOfIdeas)
-
-    const handleChangeNumOfIdeas = (event, newNumOfIdeas) => {
-        setNumOfIdeas(newNumOfIdeas);
-    };
-    // --------------------------------------------------
-
     const minPrice = 0, maxPrice = 150000;
     const [priceRangeValue, setPriceRangeValue] = useState([minPrice, maxPrice]);
 
@@ -79,20 +70,27 @@ const Main = () => {
 
     const [InterestModalWindowVisibility, setInterestModalWindowVisibility] = useState(false);
 
-
     const [ideas, setIdeas] = useState([])
 
-    // TODO: Опять же, скоро избавимся от num_of_ideas
     const ideaGenProperties = {
         interests: userInterests,
-        num_of_ideas: numOfIdeas,
         price_range: priceRangeValue
     }
 
-    const [generateIdeas, isIdeasLoading, ideaError] = useFetching(async (userIdeaProperties) => {
-        const response = await IdeaService.getIdeas(userIdeaProperties);
+    const [generateIdeas, isIdeasLoading, ideaError] = useFetching(async ({
+                                                                              userIdeaProperties,
+                                                                              friend_id,
+                                                                              token
+                                                                          }) => {
+        const response = await
+            ((friend_id && token)
+                ? IdeaService.getIdeasForFriend(token, friend_id)
+                : IdeaService.getIdeas(userIdeaProperties));
         setIdeas(response.data);
     })
+
+    // TODO: заглушка, понятное дело
+    const [selectedFriendID, setSelectedFriendID] = useState(2);
 
     return (<div className={`content-with-sidebar app-wrapper-content`}>
         <Sidebar header={"Фильтры идей"}>
@@ -104,11 +102,6 @@ const Main = () => {
                 InterestModalWindowVisibility={InterestModalWindowVisibility}
                 setInterestModalWindowVisibility={setInterestModalWindowVisibility}
 
-                minNumOfIdeas={minNumOfIdeas}
-                maxNumOfIdeas={maxNumOfIdeas}
-                numOfIdeas={numOfIdeas}
-                handleChangeNumOfIdeas={handleChangeNumOfIdeas}
-
                 minPrice={minPrice}
                 maxPrice={maxPrice}
                 priceRangeValue={priceRangeValue}
@@ -119,6 +112,9 @@ const Main = () => {
                 ideaGenProperties={ideaGenProperties}
 
                 setIsNewUser={setIsNewUser}
+
+                token={token}
+                selectedFriendID={selectedFriendID}
             />
         </Sidebar>
         <Ideas

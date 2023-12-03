@@ -5,7 +5,7 @@ import styles from "./MoreUserRequestMenu.module.css";
 import CheckRoundedIcon from "@mui/icons-material/CheckRounded";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 
-const MoreUserRequestMenu = ({anchorEl, open, handleClose}) => {
+const MoreUserRequestMenu = ({user_id, anchorEl, open, handleClose, acceptFriendRequest, rejectFriendRequest}) => {
     return (
         <ThemeProvider theme={redTheme}>
             <Menu
@@ -26,11 +26,11 @@ const MoreUserRequestMenu = ({anchorEl, open, handleClose}) => {
                     'aria-labelledby': `more_user_request_btn`,
                 }}
             >
-                <MenuItem className={styles.request_more_item} onClick={handleClose}>
+                <MenuItem className={styles.request_more_item} onClick={() => {handleClose(true, user_id)}}>
                     <CheckRoundedIcon fontSize={'small'}/>
                     <span>Принять</span>
                 </MenuItem>
-                <MenuItem className={styles.request_more_item} onClick={handleClose}>
+                <MenuItem className={styles.request_more_item} onClick={() => handleClose(false, user_id)}>
                     <CloseRoundedIcon fontSize={'small'}/>
                     <span>Отклонить</span>
                 </MenuItem>

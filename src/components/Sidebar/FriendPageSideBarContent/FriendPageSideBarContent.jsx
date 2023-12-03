@@ -3,7 +3,16 @@ import styles from "./FriendPageSideBarContent.module.css";
 import IncomingRequestsList from "../../IncomingRequestsList/IncomingRequestsList";
 import OutgoingRequestsList from "../../OutgoingRequestsList/OutgoingRequestsList";
 
-const FriendPageSideBarContent = ({incomingRequests, outgoingRequests, setOutgoingRequests, setIncomingRequests}) => {
+const FriendPageSideBarContent = ({
+                                      incomingRequests,
+                                      outgoingRequests,
+                                      setOutgoingRequests,
+                                      setIncomingRequests,
+                                      revokeFriendRequest,
+                                      acceptFriendRequest,
+                                      rejectFriendRequest,
+                                      token
+                                  }) => {
     const activeClass = 'active_request_list';
 
     const [incomingRequestsClasses, setIncomingRequestsClasses] = useState([styles.request_tab_item, activeClass]);
@@ -28,8 +37,14 @@ const FriendPageSideBarContent = ({incomingRequests, outgoingRequests, setOutgoi
 
             <div className={styles.requests_list}>
                 {incomingRequestsClasses.includes(activeClass)
-                    ? <IncomingRequestsList incomingRequests={incomingRequests}/>
-                    : <OutgoingRequestsList outgoingRequests={outgoingRequests}/>
+                    ? <IncomingRequestsList incomingRequests={incomingRequests}
+                                            acceptFriendRequest={acceptFriendRequest}
+                                            rejectFriendRequest={rejectFriendRequest}
+                                            token={token}/>
+                    : <OutgoingRequestsList outgoingRequests={outgoingRequests}
+                                            revokeFriendRequest={revokeFriendRequest}
+                                            token={token}
+                    />
                 }
             </div>
         </div>
