@@ -10,13 +10,11 @@
     align-content: center;
 }
 
-
 .interest_content {
-    display: grid;
+    display: flex;
     align-items: center;
-    grid-template-columns: 10fr 5fr;
-
     margin: 10px;
+    column-gap: 7px;
 }
 
 .xBtn {
