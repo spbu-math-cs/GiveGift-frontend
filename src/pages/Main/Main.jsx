@@ -4,10 +4,9 @@ import Ideas from "../../components/Ideas/Ideas";
 import React, {useEffect, useState} from "react";
 import {checkPrice} from "../../utils/checkers";
 import {useFetching} from "../../hooks/useFetching";
-import IdeaService from "../../API/IdeaService";
 import InterestService from "../../API/InterestService";
 
-const Main = ({token}) => {
+const Main = ({token, friends, ideas, generateIdeas, isIdeasLoading, ideaError}) => {
 
     const [allInterests, setAllInterests] = useState([])
 
@@ -68,27 +67,12 @@ const Main = ({token}) => {
 
     const [InterestModalWindowVisibility, setInterestModalWindowVisibility] = useState(false);
 
-    const [ideas, setIdeas] = useState([])
+    const [SelectFriendModalWindowVisibility, setSelectFriendModalWindowVisibility] = useState(false);
 
     const ideaGenProperties = {
         interests: userInterests,
         price_range: priceRangeValue
     }
-
-    const [generateIdeas, isIdeasLoading, ideaError] = useFetching(async ({
-                                                                              userIdeaProperties,
-                                                                              friend_id,
-                                                                              token
-                                                                          }) => {
-        const response = await
-            ((friend_id && token)
-                ? IdeaService.getIdeasForFriend(token, friend_id)
-                : IdeaService.getIdeas(userIdeaProperties));
-        setIdeas(response.data);
-    })
-
-    // TODO: заглушка, понятное дело
-    const [selectedFriendID, setSelectedFriendID] = useState(2);
 
     return (<div className={`content-with-sidebar app-wrapper-content`}>
         <Sidebar header={"Фильтры идей"}>
@@ -112,7 +96,10 @@ const Main = ({token}) => {
                 setIsNewUser={setIsNewUser}
 
                 token={token}
-                selectedFriendID={selectedFriendID}
+
+                friends={friends}
+                SelectFriendModalWindowVisibility={SelectFriendModalWindowVisibility}
+                setSelectFriendModalWindowVisibility={setSelectFriendModalWindowVisibility}
             />
         </Sidebar>
         <Ideas

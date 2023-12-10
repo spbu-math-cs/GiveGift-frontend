@@ -3,8 +3,11 @@ import styles from './Friend.module.css'
 import default_user_logo from "../../../assets/user.svg";
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import {IconButton} from "@mui/material";
+import {useNavigate} from "react-router-dom";
 
-const Friend = ({friend_id, token, removeFriend, nickname}) => {
+const Friend = ({friend_id, token, generateIdeas, removeFriend, nickname}) => {
+    const navigate = useNavigate()
+
     return (
         <div className={styles.friend}>
             <div className={styles.friend_info}>
@@ -16,7 +19,10 @@ const Friend = ({friend_id, token, removeFriend, nickname}) => {
                     <span className={styles.friend_nickname} onClick={() => {
                         alert('Друг')
                     }}>{nickname}</span>
-                    <span className={styles.friend_action} onClick={() => alert('Подобрал те хуев за щеку, проверяй')}>Подобрать подарок</span>
+                    <span className={styles.friend_action} onClick={() => generateIdeas({
+                        friend_id: friend_id,
+                        token: token
+                    }) && navigate('/')}>Подобрать подарок</span>
                 </div>
             </div>
 

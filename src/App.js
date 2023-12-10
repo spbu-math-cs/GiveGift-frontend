@@ -10,6 +10,7 @@ import useToken from "./hooks/useToken";
 import {useFetching} from "./hooks/useFetching";
 import UserService from "./API/UserService";
 import Friends from "./pages/Friends/Friends";
+import IdeaService from "./API/IdeaService";
 
 function App() {
     const {token, removeToken, setToken} = useToken();
@@ -29,6 +30,21 @@ function App() {
         token ? fetchUserInfo(token) : setUserInfo({});
     }, [token]);
 
+    const [ideas, setIdeas] = useState([])
+
+    const [generateIdeas, isIdeasLoading, ideaError] = useFetching(async ({
+                                                                              userIdeaProperties,
+                                                                              friend_id,
+                                                                              token
+                                                                          }) => {
+        const response = await
+            ((friend_id && token)
+                ? IdeaService.getIdeasForFriend(token, friend_id)
+                : IdeaService.getIdeas(userIdeaProperties));
+        setIdeas(response.data);
+    })
+
+    const [friends, setFriends] = useState([]);
 
     // TODO: Not found page error component
     // TODO: Страница аккаунта и страница с друзьями только для залогиненных пользователей
@@ -38,10 +54,16 @@ function App() {
             <div className="app-wrapper">
                 <Header logout={logout} userInfo={userInfo} removeToken={removeToken} token={token}/>
                 <Routes>
-                    <Route exact path='' element={<Main token={token}/>}/>
+                    <Route exact path='' element={<Main token={token} ideas={ideas}
+                                                        friends={friends}
+                                                        generateIdeas={generateIdeas}
+                                                        isIdeasLoading={isIdeasLoading}
+                                                        ideaError={ideaError}/>}/>
                     <Route exact path='login' element={<Login setToken={setToken}/>}/>
                     <Route exact path='signup' element={<SignUp setToken={setToken}/>}/>
-                    <Route exact path='friends' element={<Friends token={token}/>}/>
+                    <Route exact path='friends' element={<Friends token={token} friends={friends}
+                                                                  setFriends={setFriends}
+                                                                  generateIdeas={generateIdeas}/>}/>
                     <Route exact path='account' element={<Account/>}/>
                     <Route path='*' element={<div>Test</div>}/>
                 </Routes>

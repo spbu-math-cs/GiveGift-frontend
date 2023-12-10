@@ -6,7 +6,7 @@ import FriendSearch from "../FriendSearch/FriendSearch";
 
 
 const FriendList = ({removeFriend, friendList, sendFriendRequest, sendRequestError,
-                        isSendRequestLoading, token,
+                        isSendRequestLoading, token, generateIdeas,
                         FriendModalWindowVisibility, setFriendModalWindowVisibility}) => {
 
     const [searchQuery, setSearchQuery] = useState('');
@@ -31,7 +31,8 @@ const FriendList = ({removeFriend, friendList, sendFriendRequest, sendRequestErr
 
                     <div className={styles.friend_list}>
                         {searchResults.map(friend =>
-                            <Friend key={friend.id} nickname={friend.nickname} friend_id={friend.id} token={token} removeFriend={removeFriend}/>
+                            <Friend key={friend.id} nickname={friend.nickname} friend_id={friend.id} token={token}
+                                    generateIdeas={generateIdeas} removeFriend={removeFriend}/>
                         )}
                     </div>
                 </div>
