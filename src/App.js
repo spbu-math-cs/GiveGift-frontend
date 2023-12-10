@@ -18,7 +18,7 @@ function App() {
     const [userInfo, setUserInfo] = useState({})
 
     const [fetchUserInfo, ,] = useFetching(async (token) => {
-        const response = await UserService.getUserInfo(token);
+        const response = await UserService.getUserInfo(token, 0);
         setUserInfo(response.data);
     })
 
@@ -64,7 +64,7 @@ function App() {
                     <Route exact path='friends' element={<Friends token={token} friends={friends}
                                                                   setFriends={setFriends}
                                                                   generateIdeas={generateIdeas}/>}/>
-                    <Route exact path='account' element={<Account/>}/>
+                    <Route exact path='account/:id' element={<Account token={token}/>}/>
                     <Route path='*' element={<div>Test</div>}/>
                 </Routes>
             </div>

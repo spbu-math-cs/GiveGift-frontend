@@ -16,7 +16,8 @@ const SelectFriendForm = ({friendList, token, generateIdeas, setIsNewUser, setVi
 
             <div className={styles.mini_friend_list}>
                 {searchResults.map(friend =>
-                    <MiniFriend friend_id={friend.id}
+                    <MiniFriend key={friend.id}
+                                friend_id={friend.id}
                                 nickname={friend.nickname}
                                 token={token}
                                 generateIdeas={generateIdeas}
