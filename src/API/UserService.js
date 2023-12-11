@@ -34,8 +34,8 @@ export default class UserService {
         });
     }
 
-    static async getUserInfo(token) {
-        return await axios.get('http://127.0.0.1:5000/account', {
+    static async getUserInfo(token, id) {
+        return await axios.get(`http://127.0.0.1:5000/get_user_info/${id}`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }

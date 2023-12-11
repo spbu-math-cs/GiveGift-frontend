@@ -6,10 +6,8 @@ import FriendPageSideBarContent from "../../components/Sidebar/FriendPageSideBar
 import FriendService from "../../API/FriendService";
 import {useFetching} from "../../hooks/useFetching";
 
-const Friends = ({token}) => {
+const Friends = ({token, generateIdeas, friends, setFriends}) => {
 
-
-    const [friends, setFriends] = useState([]);
     const [incomingRequests, setIncomingRequests] = useState([]);
     const [outgoingRequests, setOutgoingRequests] = useState([]);
 
@@ -80,6 +78,7 @@ const Friends = ({token}) => {
                 sendRequestError={sendRequestError}
 
                 removeFriend={removeFriend}
+                generateIdeas={generateIdeas}
                 token={token}
             />
         </div>

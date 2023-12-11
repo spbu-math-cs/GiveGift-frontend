@@ -9,7 +9,7 @@ import LogoutIcon from "@mui/icons-material/Logout";
 const DropDownAccList = ({handleClose, logout, token, removeToken}) => {
     return (
         <>
-            <NavLink end to='/account' className={styles.acc_menu_item_link}>
+            <NavLink end to='/account/0' className={styles.acc_menu_item_link}>
                 <MenuItem onClick={handleClose} className={styles.acc_menu_item} disableRipple>
                     <PersonIcon/>
                     <span>Профиль</span>

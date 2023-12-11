@@ -8,7 +8,6 @@ const SearchBar = ({searchQuery, setSearchQuery, size="large"}) => {
         <div>
             <ThemeProvider theme={redTheme}>
                 <TextField
-
                     variant="outlined"
                     placeholder="Поиск друзей..."
                     value={searchQuery}

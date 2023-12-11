@@ -3,15 +3,24 @@ import styles from './MainPageSideBarContent.module.css'
 import Separator from "../../UI/Separator/Separator";
 import SelectFriendTextBtn from "../../UI/TextButton/SelectFriendTextBtn/SelectFriendTextBtn";
 import CustomSettings from "./CustomSettings/CustomSettings";
+import SelectFriendModal from "./SelectFriendModal/SelectFriendModal";
+import SelectFriendForm from "./SelectFriendForm/SelectFriendForm";
 
 const MainPageSideBarContent = (props) => {
 
     return (
         <div className={styles.mainpage_sidebar_content}>
 
-            <SelectFriendTextBtn
-                generateIdeas={props.generateIdeas} setIsNewUser={props.setIsNewUser}
-                selectedFriendID={props.selectedFriendID} token={props.token} isIdeasLoading={props.isIdeasLoading}/>
+            <SelectFriendModal visible={props.SelectFriendModalWindowVisibility}
+                               setVisible={props.setSelectFriendModalWindowVisibility}>
+                <SelectFriendForm friendList={props.friends}
+                                  token={props.token}
+                                  generateIdeas={props.generateIdeas}
+                                  setIsNewUser={props.setIsNewUser}
+                                  setVisible={props.setSelectFriendModalWindowVisibility}/>
+            </SelectFriendModal>
+
+            <SelectFriendTextBtn isIdeasLoading={props.isIdeasLoading} setVisible={props.setSelectFriendModalWindowVisibility} />
 
             <Separator>или</Separator>
 

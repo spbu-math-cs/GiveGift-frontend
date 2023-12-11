@@ -30,7 +30,7 @@ const AccountPageSideBarContent = () => {
                 <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} size={"small"}/>
                 <div className={styles.user_friendlist}>
                     {searchResults.map(friend =>
-                        <div className={styles.friend}>
+                        <div key={friend.id} className={styles.friend}>
                             <img src={user_icon} alt={'friend'}/>
                             <div className={styles.friend_info}>
                                 <div className={styles.friend_nickname} key={friend.id}>{friend.nickname}</div>

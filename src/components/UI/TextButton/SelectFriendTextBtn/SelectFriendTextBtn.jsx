@@ -2,7 +2,7 @@ import React from 'react';
 import styles from "./SelectFriendTextBtn.module.css";
 import friend from "../../../../assets/friend.png";
 
-const SelectFriendTextBtn = ({generateIdeas, selectedFriendID, token, isIdeasLoading, setIsNewUser}) => {
+const SelectFriendTextBtn = ({isIdeasLoading, setVisible}) => {
 
     const rootClasses = [styles.select_friend_text_btn]
 
@@ -13,11 +13,7 @@ const SelectFriendTextBtn = ({generateIdeas, selectedFriendID, token, isIdeasLoa
     return (
         <div className={rootClasses.join(' ')}
              onClick={() => {
-                 rootClasses.includes('active_btn') && generateIdeas(
-                     {
-                         friend_id: selectedFriendID,
-                         token: token
-                     }) && setIsNewUser(false)
+                 rootClasses.includes('active_btn') && setVisible(true)
              }}>
             <img src={friend} alt={"friend"}/>
             <span>Выбрать друга...</span>
