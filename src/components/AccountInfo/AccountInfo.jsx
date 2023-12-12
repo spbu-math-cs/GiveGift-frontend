@@ -9,6 +9,7 @@ import CardGiftcardRoundedIcon from '@mui/icons-material/CardGiftcardRounded';
 import PersonRemoveRoundedIcon from '@mui/icons-material/PersonRemoveRounded';
 import MoreUserRequestMenu from "../IncomingRequestsList/MoreUserRequestMenu/MoreUserRequestMenu";
 import PeopleOutlineRoundedIcon from '@mui/icons-material/PeopleOutlineRounded';
+import EditRoundedIcon from '@mui/icons-material/EditRounded';
 
 const AccountInfo = ({
                          accInfo,
@@ -50,7 +51,13 @@ const AccountInfo = ({
                             <span>18 лет</span>
 
                             {accInfo.id === myID
-                                ? <div>Тест</div>
+                                ?
+                                <FriendActionButton
+                                    onClick={() => revokeFriendRequest(token, accInfo.id)}>
+                                    <EditRoundedIcon onClick={() => alert('TODO')}
+                                                     color="white"/>
+                                    <span>Изменить профиль</span>
+                                </FriendActionButton>
                                 : myFriends.findIndex((myFriend, _) => myFriend.id === accInfo.id) === -1
                                     ? myOutgoingRequests.findIndex((myFriend, _) => myFriend.id === accInfo.id) !== -1
                                         ? <FriendActionButton
