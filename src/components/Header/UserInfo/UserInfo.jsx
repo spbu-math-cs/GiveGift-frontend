@@ -1,10 +1,11 @@
 import React from 'react';
 import styles from "./UserInfo.module.css";
+import {isObjectEmpty} from "../../../utils/checkers";
 
 const UserInfo = ({userInfo}) => {
     return (
         <>
-            {Object.keys(userInfo).length !== 0
+            {!isObjectEmpty(userInfo)
                 ?
                 <div className={styles.nickname_and_id}>
                     <span className={styles.nickname}>{userInfo.nickname}</span>

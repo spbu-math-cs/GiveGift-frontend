@@ -5,6 +5,7 @@ import default_user_logo from '../../assets/user.svg'
 import DropDownAccMenu from "../UI/DropDownAccMenu/DropDownAccMenu";
 import {Avatar, IconButton} from "@mui/material";
 import UserInfo from "./UserInfo/UserInfo";
+import {isObjectEmpty} from "../../utils/checkers";
 
 const Header = ({token, logout, removeToken, userInfo}) => {
 
@@ -26,7 +27,7 @@ const Header = ({token, logout, removeToken, userInfo}) => {
             <div className={styles.account_settings}>
                 <div className={styles.acc_main_info}>
                     <IconButton id="account-menu-button"
-                                onClick={(e) => {token ? handleClick(e) : navigate('/login')}}
+                                onClick={(e) => {!isObjectEmpty(userInfo) ? handleClick(e) : navigate('/login')}}
                                 size="small"
                                 aria-controls={open ? 'account-menu' : undefined}
                                 aria-haspopup="true"
@@ -37,7 +38,7 @@ const Header = ({token, logout, removeToken, userInfo}) => {
                                 sx={{width: 50, height: 50}}/>
                     </IconButton>
 
-                    {token
+                    {!isObjectEmpty(userInfo)
                         ? <DropDownAccMenu open={open} handleClose={handleClose} anchorEl={anchorEl} logout={logout}
                                            token={token} removeToken={removeToken}/>
                         : <></>

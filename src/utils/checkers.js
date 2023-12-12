@@ -10,3 +10,7 @@ export const checkPrice = (minPrice, maxPrice, newPrice) => {
         (newEndPrice > maxPrice) ? maxPrice : newEndPrice
     ];
 }
+
+export const isObjectEmpty = (object) => {
+    return Object.keys(object).length === 0
+}

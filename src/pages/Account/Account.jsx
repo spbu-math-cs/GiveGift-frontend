@@ -5,6 +5,7 @@ import AccountPageSideBarContent from "../../components/Sidebar/AccountPageSideB
 import {useParams} from "react-router-dom";
 import {useFetching} from "../../hooks/useFetching";
 import UserService from "../../API/UserService";
+import {isObjectEmpty} from "../../utils/checkers";
 
 
 function Account(props) {
@@ -30,14 +31,14 @@ function Account(props) {
                     token={props.token}
                     myID={props.userInfo.id}
                     sendFriendRequest={props.sendFriendRequest}
-                    isAccInfoLoading={!accInfoError && (isAccInfoLoading || Object.keys(accInfo).length === 0)}
+                    isAccInfoLoading={!accInfoError && (isAccInfoLoading || isObjectEmpty(accInfo))}
                     generateIdeas={props.generateIdeas}
                 />
 
             </Sidebar>
 
 
-            <AccountInfo isAccInfoLoading={!accInfoError && (isAccInfoLoading || Object.keys(accInfo).length === 0)}
+            <AccountInfo isAccInfoLoading={!accInfoError && (isAccInfoLoading || isObjectEmpty(accInfo))}
                          token={props.token}
                          accInfo={accInfo}
                          accInfoError={accInfoError}
