@@ -5,7 +5,7 @@ import SearchBar from "../../UI/SearchBar/SearchBar";
 import {useFriendSearch} from "../../../hooks/useFriendSearch";
 import {NavLink} from "react-router-dom";
 
-const AccountPageSideBarContent = ({myFriends, userFriends, myID, isAccInfoLoading}) => {
+const AccountPageSideBarContent = ({myFriends, userFriends, myID, isAccInfoLoading, token, sendFriendRequest}) => {
 
     const [searchQuery, setSearchQuery] = useState('');
 
@@ -23,10 +23,9 @@ const AccountPageSideBarContent = ({myFriends, userFriends, myID, isAccInfoLoadi
                                 <NavLink to={`/account/${friend.id}`} className={styles.friend_nickname}
                                          key={friend.id}>{friend.nickname}</NavLink>
                                 {myFriends.findIndex((myFriend, _) => myFriend.id === friend.id) !== -1 || friend.id === myID ?
-                                    <span className={styles.friend_suggestion}>Подобрать подарок</span>
+                                    <span className={styles.friend_suggestion} onClick={() => alert('надо сделать')}>Подобрать подарок</span>
                                     : <span className={styles.friend_suggestion}
-                                            onClick={() => alert('Когда нить добавлю')}>Добавить в друзья</span>
-
+                                            onClick={() => sendFriendRequest(token, friend.id)}>Добавить в друзья</span>
                                 }
                             </div>
                         </div>

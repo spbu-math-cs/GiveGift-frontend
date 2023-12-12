@@ -18,7 +18,6 @@ function Account({token, userInfo}) {
     })
 
     // TODO: ctrl c + ctrl v написано мб надо контекст использовать для списка друзей и токена
-
     const [myFriends, setMyFriends] = useState([])
     const [myIncomingRequests, setMyIncomingRequests] = useState([]);
     const [myOutgoingRequests, setMyOutgoingRequests] = useState([]);
@@ -67,7 +66,9 @@ function Account({token, userInfo}) {
                 <AccountPageSideBarContent
                     userFriends={accInfo.friends}
                     myFriends={myFriends}
+                    token={token}
                     myID={userInfo.id}
+                    sendFriendRequest={sendFriendRequest}
                     isAccInfoLoading={!accInfoError && (isAccInfoLoading || Object.keys(accInfo).length === 0)}
                 />
 
