@@ -5,11 +5,10 @@ import AccountPageSideBarContent from "../../components/Sidebar/AccountPageSideB
 import {useParams} from "react-router-dom";
 import {useFetching} from "../../hooks/useFetching";
 import UserService from "../../API/UserService";
-import FriendService from "../../API/FriendService";
 
 
-function Account({token, userInfo}) {
-    const params = useParams()
+function Account(props) {
+    const {id} = useParams()
     const [accInfo, setAccInfo] = useState({})
 
     const [fetchAccInfo, isAccInfoLoading, accInfoError] = useFetching(async (token, id) => {
@@ -17,77 +16,41 @@ function Account({token, userInfo}) {
         setAccInfo(response.data)
     })
 
-    // TODO: ctrl c + ctrl v написано мб надо контекст использовать для списка друзей и токена
-    const [myFriends, setMyFriends] = useState([])
-    const [myIncomingRequests, setMyIncomingRequests] = useState([]);
-    const [myOutgoingRequests, setMyOutgoingRequests] = useState([]);
-
-    const [fetchFriendLists, ,] = useFetching(async (token) => {
-        const response = await FriendService.getAllFriendLists(token);
-        setMyFriends(response.data['friends']);
-        setMyIncomingRequests(response.data['incoming_requests']);
-        setMyOutgoingRequests(response.data['outgoing_requests']);
-    })
-
-    const [sendFriendRequest, ,] = useFetching(async (token, id) => {
-        await FriendService.sendFriendRequest(token, id);
-        await fetchFriendLists(token);
-    })
-
-    const [revokeFriendRequest, ,] = useFetching(async (token, id) => {
-        await FriendService.revokeFriendRequest(token, id);
-        await fetchFriendLists(token);
-    })
-
-    const [removeFriend, ,] = useFetching(async (token, id) => {
-        await FriendService.removeFriend(token, id);
-        await fetchFriendLists(token);
-    })
-
-    const [acceptFriendRequest, ,] = useFetching(async (token, id) => {
-        await FriendService.acceptFriendRequest(token, id);
-        await fetchFriendLists(token);
-    })
-
-    const [rejectFriendRequest, ,] = useFetching(async (token, id) => {
-        await FriendService.rejectFriendRequest(token, id);
-        await fetchFriendLists(token);
-    })
-
-
     useEffect(() => {
-        fetchAccInfo(token, params.id);
-        fetchFriendLists(token);
-    }, [params]);
+        fetchAccInfo(props.token, id);
+        props.fetchFriendLists(props.token);
+    }, [id]);
 
     return (
         <div className={'app-wrapper-content content-with-sidebar'}>
             <Sidebar header={'Друзья'}>
                 <AccountPageSideBarContent
                     userFriends={accInfo.friends}
-                    myFriends={myFriends}
-                    token={token}
-                    myID={userInfo.id}
-                    sendFriendRequest={sendFriendRequest}
+                    myFriends={props.myFriends}
+                    token={props.token}
+                    myID={props.userInfo.id}
+                    sendFriendRequest={props.sendFriendRequest}
                     isAccInfoLoading={!accInfoError && (isAccInfoLoading || Object.keys(accInfo).length === 0)}
+                    generateIdeas={props.generateIdeas}
                 />
 
             </Sidebar>
 
 
             <AccountInfo isAccInfoLoading={!accInfoError && (isAccInfoLoading || Object.keys(accInfo).length === 0)}
-                         token={token}
+                         token={props.token}
                          accInfo={accInfo}
                          accInfoError={accInfoError}
-                         sendFriendRequest={sendFriendRequest}
-                         revokeFriendRequest={revokeFriendRequest}
-                         myFriends={myFriends}
-                         acceptFriendRequest={acceptFriendRequest}
-                         rejectFriendRequest={rejectFriendRequest}
-                         myOutgoingRequests={myOutgoingRequests}
-                         myIncomingRequests={myIncomingRequests}
-                         removeFriend={removeFriend}
-                         myID={userInfo.id}
+                         sendFriendRequest={props.sendFriendRequest}
+                         revokeFriendRequest={props.revokeFriendRequest}
+                         myFriends={props.myFriends}
+                         acceptFriendRequest={props.acceptFriendRequest}
+                         rejectFriendRequest={props.rejectFriendRequest}
+                         myOutgoingRequests={props.myOutgoingRequests}
+                         myIncomingRequests={props.myIncomingRequests}
+                         removeFriend={props.removeFriend}
+                         myID={props.userInfo.id}
+                         generateIdeas={props.generateIdeas}
             />
 
         </div>

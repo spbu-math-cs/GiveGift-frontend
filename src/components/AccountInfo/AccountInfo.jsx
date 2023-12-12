@@ -11,6 +11,7 @@ import MoreUserRequestMenu from "../IncomingRequestsList/MoreUserRequestMenu/Mor
 import PeopleOutlineRoundedIcon from '@mui/icons-material/PeopleOutlineRounded';
 import EditRoundedIcon from '@mui/icons-material/EditRounded';
 import CancelRoundedIcon from '@mui/icons-material/CancelRounded';
+import {useNavigate} from "react-router-dom";
 
 const AccountInfo = ({
                          accInfo,
@@ -25,11 +26,14 @@ const AccountInfo = ({
                          myID,
                          removeFriend,
                          myOutgoingRequests,
-                         myIncomingRequests
+                         myIncomingRequests,
+                         generateIdeas
                      }) => {
 
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
+
+    const navigate = useNavigate()
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -82,7 +86,10 @@ const AccountInfo = ({
                                                 <span>Добавить в друзья</span>
                                             </FriendActionButton>
                                     : <div className={styles.friend_main_activities}>
-                                        <FriendActionButton onClick={() => alert('подарок надо подобрать')}>
+                                        <FriendActionButton onClick={() => generateIdeas({
+                                            friend_id: accInfo.id,
+                                            token: token
+                                        }) && navigate('/')}>
                                             <CardGiftcardRoundedIcon color="white"/>
                                             <span>Подобрать подарок</span>
                                         </FriendActionButton>

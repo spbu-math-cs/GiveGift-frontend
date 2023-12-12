@@ -11,6 +11,7 @@ import {useFetching} from "./hooks/useFetching";
 import UserService from "./API/UserService";
 import Friends from "./pages/Friends/Friends";
 import IdeaService from "./API/IdeaService";
+import FriendService from "./API/FriendService";
 
 function App() {
     const {token, removeToken, setToken} = useToken();
@@ -46,6 +47,41 @@ function App() {
 
     const [friends, setFriends] = useState([]);
 
+    const [incomingRequests, setIncomingRequests] = useState([]);
+    const [outgoingRequests, setOutgoingRequests] = useState([]);
+
+    const [fetchFriendLists, ,] = useFetching(async (token) => {
+        const response = await FriendService.getAllFriendLists(token);
+        setFriends(response.data['friends']);
+        setIncomingRequests(response.data['incoming_requests']);
+        setOutgoingRequests(response.data['outgoing_requests']);
+    })
+
+    const [sendFriendRequest, isSendRequestLoading, sendRequestError] = useFetching(async (token, friend_id) => {
+        await FriendService.sendFriendRequest(token, friend_id);
+        await fetchFriendLists(token);
+    })
+
+    const [revokeFriendRequest, , revokeRequestError] = useFetching(async (token, friend_id) => {
+        await FriendService.revokeFriendRequest(token, friend_id);
+        await fetchFriendLists(token);
+    })
+
+    const [acceptFriendRequest, , acceptFriendRequestError] = useFetching(async (token, friend_id) => {
+        await FriendService.acceptFriendRequest(token, friend_id);
+        await fetchFriendLists(token);
+    })
+
+    const [rejectFriendRequest, , rejectFriendRequestError] = useFetching(async (token, friend_id) => {
+        await FriendService.rejectFriendRequest(token, friend_id);
+        await fetchFriendLists(token);
+    })
+
+    const [removeFriend, , removeFriendError] = useFetching(async (token, friend_id) => {
+        await FriendService.removeFriend(token, friend_id);
+        await fetchFriendLists(token);
+    })
+
     // TODO: Not found page error component
     // TODO: Страница аккаунта и страница с друзьями только для залогиненных пользователей
     // TODO: Запрещать незалогиненным пользователям переходить на страницу с друзьями
@@ -61,11 +97,40 @@ function App() {
                                                         ideaError={ideaError}/>}/>
                     <Route exact path='login' element={<Login setToken={setToken}/>}/>
                     <Route exact path='signup' element={<SignUp setToken={setToken}/>}/>
-                    <Route exact path='friends' element={<Friends token={token} friends={friends}
-                                                                  setFriends={setFriends}
-                                                                  generateIdeas={generateIdeas}/>}/>
-                    <Route exact path='account/:id' element={<Account userInfo={userInfo}
-                        token={token}/>}/>
+                    <Route exact path='friends' element={
+                        <Friends token={token}
+                                 friends={friends}
+                                 generateIdeas={generateIdeas}
+                                 incomingRequests={incomingRequests}
+                                 outgoingRequests={outgoingRequests}
+                                 sendFriendRequest={sendFriendRequest}
+                                 isSendRequestLoading={isSendRequestLoading}
+                                 sendRequestError={sendRequestError}
+                                 revokeFriendRequest={revokeFriendRequest}
+                                 revokeRequestError={revokeRequestError}
+                                 acceptFriendRequest={acceptFriendRequest}
+                                 acceptFriendRequestError={acceptFriendRequestError}
+                                 rejectFriendRequest={rejectFriendRequest}
+                                 rejectFriendRequestError={rejectFriendRequestError}
+                                 removeFriend={removeFriend}
+                                 removeFriendError={removeFriendError}
+                                 fetchFriendLists={fetchFriendLists}
+                        />}/>
+                    <Route exact path='account/:id' element={
+                        <Account userInfo={userInfo}
+                                 generateIdeas={generateIdeas}
+                                 token={token}
+                                 sendFriendRequest={sendFriendRequest}
+                                 isSendRequestLoading={isSendRequestLoading}
+                                 revokeFriendRequest={revokeFriendRequest}
+                                 acceptFriendRequest={acceptFriendRequest}
+                                 rejectFriendRequest={rejectFriendRequest}
+                                 removeFriend={removeFriend}
+                                 fetchFriendLists={fetchFriendLists}
+                                 myFriends={friends}
+                                 myIncomingRequests={incomingRequests}
+                                 myOutgoingRequests={outgoingRequests}
+                        />}/>
                     <Route path='*' element={<div>Test</div>}/>
                 </Routes>
             </div>
