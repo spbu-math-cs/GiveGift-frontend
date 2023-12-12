@@ -42,6 +42,10 @@
     animation: fadein 1s linear;
 }
 
+.fast_fadein {
+    animation: fadein 0.2s linear;
+}
+
 @keyframes fadein {
     from {
         opacity: 0;

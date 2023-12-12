@@ -25,14 +25,14 @@ const DropDownAccList = ({handleClose, logout, token, removeToken}) => {
 
             <Divider sx={{my: 0.5}}/>
 
-            <MenuItem onClick={() => {
+            <NavLink to={'/'} style={{textDecoration: "none"}}><MenuItem onClick={() => {
                 handleClose();
                 logout(token);
                 removeToken();
             }} disableRipple className={styles.acc_menu_item} style={{color: '#ff6332'}}>
                 <LogoutIcon/>
                 <span>Выйти</span>
-            </MenuItem>
+            </MenuItem></NavLink>
         </>
     );
 };

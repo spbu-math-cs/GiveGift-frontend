@@ -43,7 +43,7 @@ const AccountInfo = ({
             <div className={`${styles.acc_info_wrapper_bubble} slider`}>
                 {accInfoError
                     ? <IdeasError/>
-                    : !isAccInfoLoading && <div className={styles.acc_info_content}>
+                    : !isAccInfoLoading && <div className={`${styles.acc_info_content} fast_fadein`}>
                     <div className={styles.acc_main_info}>
                         <img className={styles.acc_profile_pic} src={profile_pic} alt={'user'}/>
                         <div className={styles.main_info_desc}>

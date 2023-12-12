@@ -16,7 +16,7 @@ const FriendList = ({removeFriend, friendList, sendFriendRequest, sendRequestErr
     return (
         <div className={`${styles.friend_list_wrapper}`}>
             <div className={`${styles.friend_list_wrapper_bubble} slider`}>
-                <div className={styles.friend_list_wrapper_content}>
+                <div className={`${styles.friend_list_wrapper_content} fast_fadein`}>
 
                     <FriendSearch
                         searchQuery={searchQuery}
