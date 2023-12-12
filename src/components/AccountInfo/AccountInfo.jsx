@@ -10,6 +10,7 @@ import PersonRemoveRoundedIcon from '@mui/icons-material/PersonRemoveRounded';
 import MoreUserRequestMenu from "../IncomingRequestsList/MoreUserRequestMenu/MoreUserRequestMenu";
 import PeopleOutlineRoundedIcon from '@mui/icons-material/PeopleOutlineRounded';
 import EditRoundedIcon from '@mui/icons-material/EditRounded';
+import CancelRoundedIcon from '@mui/icons-material/CancelRounded';
 
 const AccountInfo = ({
                          accInfo,
@@ -53,16 +54,15 @@ const AccountInfo = ({
                             {accInfo.id === myID
                                 ?
                                 <FriendActionButton
-                                    onClick={() => revokeFriendRequest(token, accInfo.id)}>
-                                    <EditRoundedIcon onClick={() => alert('TODO')}
-                                                     color="white"/>
+                                    onClick={() => alert('TODO')}>
+                                    <EditRoundedIcon color="white"/>
                                     <span>Изменить профиль</span>
                                 </FriendActionButton>
                                 : myFriends.findIndex((myFriend, _) => myFriend.id === accInfo.id) === -1
                                     ? myOutgoingRequests.findIndex((myFriend, _) => myFriend.id === accInfo.id) !== -1
                                         ? <FriendActionButton
                                             onClick={() => revokeFriendRequest(token, accInfo.id)}>
-                                            <PersonAddRoundedIcon color="white"/>
+                                            <CancelRoundedIcon color="white"/>
                                             <span>Отозвать заявку</span>
                                         </FriendActionButton>
                                         : myIncomingRequests.findIndex((myFriend, _) => myFriend.id === accInfo.id) !== -1

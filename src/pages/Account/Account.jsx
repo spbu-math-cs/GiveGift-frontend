@@ -33,31 +33,26 @@ function Account({token, userInfo}) {
     const [sendFriendRequest, ,] = useFetching(async (token, id) => {
         await FriendService.sendFriendRequest(token, id);
         await fetchFriendLists(token);
-        await fetchAccInfo(token, id);
     })
 
     const [revokeFriendRequest, ,] = useFetching(async (token, id) => {
         await FriendService.revokeFriendRequest(token, id);
         await fetchFriendLists(token);
-        await fetchAccInfo(token, id);
     })
 
     const [removeFriend, ,] = useFetching(async (token, id) => {
         await FriendService.removeFriend(token, id);
         await fetchFriendLists(token);
-        await fetchAccInfo(token, id);
     })
 
     const [acceptFriendRequest, ,] = useFetching(async (token, id) => {
         await FriendService.acceptFriendRequest(token, id);
         await fetchFriendLists(token);
-        await fetchAccInfo(token, id);
     })
 
     const [rejectFriendRequest, ,] = useFetching(async (token, id) => {
         await FriendService.rejectFriendRequest(token, id);
         await fetchFriendLists(token);
-        await fetchAccInfo(token, id);
     })
 
 
@@ -69,14 +64,13 @@ function Account({token, userInfo}) {
     return (
         <div className={'app-wrapper-content content-with-sidebar'}>
             <Sidebar header={'Друзья'}>
-                {!accInfoError && (isAccInfoLoading || Object.keys(accInfo).length === 0) ?
-                    <></> :
-                    <AccountPageSideBarContent
-                        userFriends={accInfo.friends}
-                        myFriends={myFriends}
-                        myID={userInfo.id}
-                    />
-                }
+                <AccountPageSideBarContent
+                    userFriends={accInfo.friends}
+                    myFriends={myFriends}
+                    myID={userInfo.id}
+                    isAccInfoLoading={!accInfoError && (isAccInfoLoading || Object.keys(accInfo).length === 0)}
+                />
+
             </Sidebar>
 
 

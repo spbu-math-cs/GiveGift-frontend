@@ -22,8 +22,7 @@ const Friends = ({token, generateIdeas, friends, setFriends}) => {
         fetchFriendLists(token);
     }, []);
 
-    // todo: мб сократить можно
-    // todo: обрабатывать ошибку нужно
+
     const [sendFriendRequest, isSendRequestLoading, sendRequestError] = useFetching(async (token, friend_id) => {
         await FriendService.sendFriendRequest(token, friend_id);
         await fetchFriendLists(token);
@@ -51,7 +50,6 @@ const Friends = ({token, generateIdeas, friends, setFriends}) => {
 
     const [FriendModalWindowVisibility, setFriendModalWindowVisibility] = useState(false);
 
-    // TODO: tab - новая компонента
     return (
         <div className={'app-wrapper-content content-with-sidebar'}>
             <Sidebar header={'Заявки в друзья'}>

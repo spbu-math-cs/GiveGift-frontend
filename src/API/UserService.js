@@ -11,7 +11,6 @@ export default class UserService {
         return await axios.post('http://127.0.0.1:5000/login', user);
     }
 
-    // TODO: ник на этапе регистрации будем брать из email
     static async signUp(nickname, email, password) {
 
         const newUser = {

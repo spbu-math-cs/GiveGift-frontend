@@ -2,7 +2,7 @@
     display: grid;
     grid-template-areas:
           "header"
-          "content"; /*TODO: Footer чуть позже: в макете тоже изменим; будет наверняка темно-серого цвета*/
+          "content";
     grid-template-rows: 80px calc(100vh - 80px);
 }
 

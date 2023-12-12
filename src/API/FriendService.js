@@ -1,7 +1,6 @@
 import axios from "axios";
 
 
-// TODO: сделать 
 export default class FriendService {
     static async getAllFriendLists(token) {
         return await axios.get(
