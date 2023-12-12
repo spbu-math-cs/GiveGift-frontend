@@ -64,7 +64,8 @@ function App() {
                     <Route exact path='friends' element={<Friends token={token} friends={friends}
                                                                   setFriends={setFriends}
                                                                   generateIdeas={generateIdeas}/>}/>
-                    <Route exact path='account/:id' element={<Account token={token}/>}/>
+                    <Route exact path='account/:id' element={<Account userInfo={userInfo}
+                        token={token}/>}/>
                     <Route path='*' element={<div>Test</div>}/>
                 </Routes>
             </div>

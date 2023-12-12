@@ -11,7 +11,7 @@ const Ideas = ({ideas, isIdeasLoading, ideaError, isNewUser}) => {
             {isNewUser
                 ? <GettingStarted/>
                 : isIdeasLoading
-                    ? <Loader/>
+                    ? <Loader loadingText={"Придумываем идеи..."}/>
                     : ideaError
                         ? <IdeasError errorMsg={ideaError}/>
                         : <IdeaList ideas={ideas}/>

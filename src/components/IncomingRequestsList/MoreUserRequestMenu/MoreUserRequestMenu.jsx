@@ -5,7 +5,7 @@ import styles from "./MoreUserRequestMenu.module.css";
 import CheckRoundedIcon from "@mui/icons-material/CheckRounded";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 
-const MoreUserRequestMenu = ({user_id, anchorEl, open, handleClose, acceptFriendRequest, rejectFriendRequest}) => {
+const MoreUserRequestMenu = ({user_id, anchorEl, open, handleClose}) => {
     return (
         <ThemeProvider theme={redTheme}>
             <Menu

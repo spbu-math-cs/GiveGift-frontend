@@ -27,6 +27,8 @@
 
 .friend_nickname {
     cursor: pointer;
+    text-decoration: none;
+    color: inherit;
 }
 
 .friend_suggestion {

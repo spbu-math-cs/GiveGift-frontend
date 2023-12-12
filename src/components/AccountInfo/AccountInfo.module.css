@@ -28,16 +28,8 @@
     margin-bottom: 10px;
 }
 
-.acc_ID {
-    background-color: #ff6332;
-    width: fit-content;
-    padding: 5px 10px;
-    border-radius: 5px;
-    color: white;
-    font-size: 15px;
-    font-weight: 600;
+.friend_main_activities {
     display: flex;
-    align-items: center;
     column-gap: 5px;
 }
 

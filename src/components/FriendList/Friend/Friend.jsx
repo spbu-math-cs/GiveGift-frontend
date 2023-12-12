@@ -16,9 +16,7 @@ const Friend = ({friend_id, token, generateIdeas, removeFriend, nickname}) => {
                     src={default_user_logo} alt="user"/>
 
                 <div style={{display: 'grid'}}>
-                    <span className={styles.friend_nickname} onClick={() => {
-                        alert('Друг')
-                    }}>{nickname}</span>
+                    <span className={styles.friend_nickname} onClick={() => navigate(`/account/${friend_id}`)}>{nickname}</span>
                     <span className={styles.friend_action} onClick={() => generateIdeas({
                         friend_id: friend_id,
                         token: token

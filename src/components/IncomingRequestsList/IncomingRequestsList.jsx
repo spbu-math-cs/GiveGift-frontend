@@ -5,7 +5,7 @@ import MoreHorizRoundedIcon from '@mui/icons-material/MoreHorizRounded';
 import MoreUserRequestMenu from "./MoreUserRequestMenu/MoreUserRequestMenu";
 
 const IncomingRequestsList = ({incomingRequests, rejectFriendRequest, acceptFriendRequest, token}) => {
-    const [anchorEl, setAnchorEl] = React.useState(null);
+    const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
 
     const [selectedUserID, setSelectedUserID] = useState();
@@ -35,8 +35,7 @@ const IncomingRequestsList = ({incomingRequests, rejectFriendRequest, acceptFrie
             }
 
             <MoreUserRequestMenu user_id={selectedUserID}
-                                 open={open} handleClose={handleClose} anchorEl={anchorEl}
-                                 rejectFriendRequest={rejectFriendRequest} acceptFriendRequest={acceptFriendRequest}/>
+                                 open={open} handleClose={handleClose} anchorEl={anchorEl}/>
         </>
     );
 };
