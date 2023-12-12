@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
 import './App.css';
 import Header from "./components/Header/Header";
 import SignUp from "./pages/SignUp/SignUp";
@@ -12,6 +12,7 @@ import UserService from "./API/UserService";
 import Friends from "./pages/Friends/Friends";
 import IdeaService from "./API/IdeaService";
 import FriendService from "./API/FriendService";
+import {isObjectEmpty} from "./utils/checkers";
 
 function App() {
     const {token, removeToken, setToken} = useToken();
@@ -82,57 +83,65 @@ function App() {
         await fetchFriendLists(token);
     })
 
-    // TODO: Not found page error component
-    // TODO: Страница аккаунта и страница с друзьями только для залогиненных пользователей
-    // TODO: Запрещать незалогиненным пользователям переходить на страницу с друзьями
     return (
         <BrowserRouter>
             <div className="app-wrapper">
                 <Header logout={logout} userInfo={userInfo} removeToken={removeToken} token={token}/>
+
                 <Routes>
-                    <Route exact path='' element={<Main token={token} ideas={ideas}
-                                                        friends={friends}
-                                                        fetchFriendLists={fetchFriendLists}
-                                                        generateIdeas={generateIdeas}
-                                                        isIdeasLoading={isIdeasLoading}
-                                                        ideaError={ideaError}/>}/>
+                    <Route exact path='/' element={<Main token={token} ideas={ideas}
+                                                         friends={friends}
+                                                         fetchFriendLists={fetchFriendLists}
+                                                         generateIdeas={generateIdeas}
+                                                         isIdeasLoading={isIdeasLoading}
+                                                         ideaError={ideaError}/>}/>
                     <Route exact path='login' element={<Login setToken={setToken}/>}/>
                     <Route exact path='signup' element={<SignUp setToken={setToken}/>}/>
-                    <Route exact path='friends' element={
-                        <Friends token={token}
-                                 friends={friends}
-                                 generateIdeas={generateIdeas}
-                                 incomingRequests={incomingRequests}
-                                 outgoingRequests={outgoingRequests}
-                                 sendFriendRequest={sendFriendRequest}
-                                 isSendRequestLoading={isSendRequestLoading}
-                                 sendRequestError={sendRequestError}
-                                 revokeFriendRequest={revokeFriendRequest}
-                                 revokeRequestError={revokeRequestError}
-                                 acceptFriendRequest={acceptFriendRequest}
-                                 acceptFriendRequestError={acceptFriendRequestError}
-                                 rejectFriendRequest={rejectFriendRequest}
-                                 rejectFriendRequestError={rejectFriendRequestError}
-                                 removeFriend={removeFriend}
-                                 removeFriendError={removeFriendError}
-                                 fetchFriendLists={fetchFriendLists}
-                        />}/>
-                    <Route exact path='account/:id' element={
-                        <Account userInfo={userInfo}
-                                 generateIdeas={generateIdeas}
-                                 token={token}
-                                 sendFriendRequest={sendFriendRequest}
-                                 isSendRequestLoading={isSendRequestLoading}
-                                 revokeFriendRequest={revokeFriendRequest}
-                                 acceptFriendRequest={acceptFriendRequest}
-                                 rejectFriendRequest={rejectFriendRequest}
-                                 removeFriend={removeFriend}
-                                 fetchFriendLists={fetchFriendLists}
-                                 myFriends={friends}
-                                 myIncomingRequests={incomingRequests}
-                                 myOutgoingRequests={outgoingRequests}
-                        />}/>
-                    <Route path='*' element={<div>Test</div>}/>
+
+                    {!isObjectEmpty(userInfo) &&
+                        <>
+                            <Route exact path='friends' element={
+                                <Friends token={token}
+                                         friends={friends}
+                                         generateIdeas={generateIdeas}
+                                         incomingRequests={incomingRequests}
+                                         outgoingRequests={outgoingRequests}
+                                         sendFriendRequest={sendFriendRequest}
+                                         isSendRequestLoading={isSendRequestLoading}
+                                         sendRequestError={sendRequestError}
+                                         revokeFriendRequest={revokeFriendRequest}
+                                         revokeRequestError={revokeRequestError}
+                                         acceptFriendRequest={acceptFriendRequest}
+                                         acceptFriendRequestError={acceptFriendRequestError}
+                                         rejectFriendRequest={rejectFriendRequest}
+                                         rejectFriendRequestError={rejectFriendRequestError}
+                                         removeFriend={removeFriend}
+                                         removeFriendError={removeFriendError}
+                                         fetchFriendLists={fetchFriendLists}
+                                />}/>
+                            <Route exact path='account/:id' element={
+                                <Account userInfo={userInfo}
+                                         generateIdeas={generateIdeas}
+                                         token={token}
+                                         sendFriendRequest={sendFriendRequest}
+                                         isSendRequestLoading={isSendRequestLoading}
+                                         revokeFriendRequest={revokeFriendRequest}
+                                         acceptFriendRequest={acceptFriendRequest}
+                                         rejectFriendRequest={rejectFriendRequest}
+                                         removeFriend={removeFriend}
+                                         fetchFriendLists={fetchFriendLists}
+                                         myFriends={friends}
+                                         myIncomingRequests={incomingRequests}
+                                         myOutgoingRequests={outgoingRequests}
+                                />}
+                            />
+
+                        </>
+                    }
+                    <Route
+                        path="*"
+                        element={<Navigate to="/" replace/>}
+                    />
                 </Routes>
             </div>
         </BrowserRouter>
