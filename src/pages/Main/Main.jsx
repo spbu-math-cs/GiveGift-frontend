@@ -6,7 +6,7 @@ import {checkPrice} from "../../utils/checkers";
 import {useFetching} from "../../hooks/useFetching";
 import InterestService from "../../API/InterestService";
 
-const Main = ({token, friends, ideas, generateIdeas, isIdeasLoading, ideaError}) => {
+const Main = ({token, friends, ideas, generateIdeas, fetchFriendLists, isIdeasLoading, ideaError}) => {
 
     const [allInterests, setAllInterests] = useState([])
 
@@ -17,6 +17,7 @@ const Main = ({token, friends, ideas, generateIdeas, isIdeasLoading, ideaError})
 
     useEffect(() => {
         fetchInterests()
+        fetchFriendLists(token)
     }, []);
 
 

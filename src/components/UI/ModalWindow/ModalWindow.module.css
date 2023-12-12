@@ -23,6 +23,8 @@
 }
 
 .add_interest_modal .content {
+    display: grid;
+    grid-row-gap: 30px;
     padding: 20px 30px 45px 30px;
     background: white;
     border-radius: 16px;
@@ -44,5 +46,11 @@
     font-style: normal;
     font-weight: 500;
     line-height: 100%; /* 40px */
-    padding-bottom: 20px;
+
+}
+.modal_title_section {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    justify-content: space-between;
 }

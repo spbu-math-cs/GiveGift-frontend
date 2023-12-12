@@ -12,8 +12,10 @@ const ModalWindow = ({children, setVisible, visible, title}) => {
     return (
         <div className={rootClasses.join(' ')} onClick={() => setVisible(false)}>
             <div className={styles.content} onClick={(event) => event.stopPropagation()}>
-                <ClosedBtn onClick={() => setVisible(false)}/>
-                <div className={styles.title}>{title}</div>
+                <div className={styles.modal_title_section}>
+                    <div className={styles.title}>{title}</div>
+                    <ClosedBtn onClick={() => setVisible(false)}/>
+                </div>
                 {children}
             </div>
         </div>

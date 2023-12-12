@@ -14,7 +14,7 @@ const SelectFriendForm = ({friendList, token, generateIdeas, setIsNewUser, setVi
         <div>
             <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>
 
-            <div className={styles.mini_friend_list}>
+            <div className={`${styles.mini_friend_list} slider`}>
                 {searchResults.map(friend =>
                     <MiniFriend key={friend.id}
                                 friend_id={friend.id}

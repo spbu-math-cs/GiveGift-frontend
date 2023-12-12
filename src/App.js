@@ -92,6 +92,7 @@ function App() {
                 <Routes>
                     <Route exact path='' element={<Main token={token} ideas={ideas}
                                                         friends={friends}
+                                                        fetchFriendLists={fetchFriendLists}
                                                         generateIdeas={generateIdeas}
                                                         isIdeasLoading={isIdeasLoading}
                                                         ideaError={ideaError}/>}/>
