@@ -20,7 +20,9 @@ const MainPageSideBarContent = (props) => {
                                   setVisible={props.setSelectFriendModalWindowVisibility}/>
             </SelectFriendModal>
 
-            <SelectFriendTextBtn isIdeasLoading={props.isIdeasLoading} setVisible={props.setSelectFriendModalWindowVisibility} />
+            <SelectFriendTextBtn isIdeasLoading={props.isIdeasLoading}
+                                 setVisible={props.setSelectFriendModalWindowVisibility}
+                                 isLoggedIn={Boolean(props.token)}/>
 
             <Separator>или</Separator>
 

@@ -2,7 +2,7 @@ import React from 'react';
 import styles from "./SelectFriendTextBtn.module.css";
 import friend from "../../../../assets/friend.png";
 
-const SelectFriendTextBtn = ({isIdeasLoading, setVisible}) => {
+const SelectFriendTextBtn = ({isIdeasLoading, setVisible, isLoggedIn}) => {
 
     const rootClasses = [styles.select_friend_text_btn]
 
@@ -13,7 +13,9 @@ const SelectFriendTextBtn = ({isIdeasLoading, setVisible}) => {
     return (
         <div className={rootClasses.join(' ')}
              onClick={() => {
-                 rootClasses.includes('active_btn') && setVisible(true)
+                 isLoggedIn
+                     ? rootClasses.includes('active_btn') && setVisible(true)
+                     : alert('Сначала войдите в аккаунт!')
              }}>
             <img src={friend} alt={"friend"}/>
             <span>Выбрать друга...</span>
