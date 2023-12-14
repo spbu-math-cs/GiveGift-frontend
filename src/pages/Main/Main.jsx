@@ -16,10 +16,10 @@ const Main = ({token, ideas, userInfo, generateIdeas, fetchUserInfo, isIdeasLoad
     })
 
     useEffect(() => {
-        fetchInterests()
+        fetchInterests();
 
         token && fetchUserInfo(token);
-    }, []);
+    }, []); // eslint-disable-line
 
 
     const [userInterests, setUserInterests] = useState([])

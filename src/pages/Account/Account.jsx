@@ -21,7 +21,7 @@ function Account(props) {
         props.fetchUserInfo(props.token);
         fetchAccInfo(props.token, id);
         props.fetchFriendLists(props.token);
-    }, [id]);
+    }, [id]);  // eslint-disable-line
 
     return (
         <div className={'app-wrapper-content content-with-sidebar'}>

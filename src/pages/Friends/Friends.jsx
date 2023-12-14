@@ -11,7 +11,7 @@ const Friends = (props) => {
     useEffect(() => {
         props.fetchUserInfo(props.token);
         props.fetchFriendLists(props.token);
-    }, []);
+    }, []); // eslint-disable-line
 
     return (
         <div className={'app-wrapper-content content-with-sidebar'}>

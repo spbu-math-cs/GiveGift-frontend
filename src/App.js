@@ -34,7 +34,7 @@ function App() {
 
     useEffect(() => {
         token ? fetchUserInfo(token) : setUserInfo({});
-    }, [token]);
+    }, [token]); // eslint-disable-line
 
     const [ideas, setIdeas] = useState([])
 
