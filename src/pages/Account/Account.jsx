@@ -18,6 +18,7 @@ function Account(props) {
     })
 
     useEffect(() => {
+        props.fetchUserInfo(props.token);
         fetchAccInfo(props.token, id);
         props.fetchFriendLists(props.token);
     }, [id]);

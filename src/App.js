@@ -12,7 +12,7 @@ import UserService from "./API/UserService";
 import Friends from "./pages/Friends/Friends";
 import IdeaService from "./API/IdeaService";
 import FriendService from "./API/FriendService";
-import {isObjectEmpty} from "./utils/checkers";
+import {isTokenError} from "./utils/checkers";
 
 function App() {
     const {token, removeToken, setToken} = useToken();
@@ -20,8 +20,12 @@ function App() {
     const [userInfo, setUserInfo] = useState({})
 
     const [fetchUserInfo, ,] = useFetching(async (token) => {
-        const response = await UserService.getUserInfo(token, 0);
-        setUserInfo(response.data);
+        try {
+            const response = await UserService.getUserInfo(token, 0);
+            setUserInfo(response.data);
+        } catch (err) {
+            isTokenError(err.response) && removeToken()
+        }
     })
 
     const [logout, ,] = useFetching(async (token) => {
@@ -89,18 +93,19 @@ function App() {
                 <Header logout={logout} userInfo={userInfo} removeToken={removeToken} token={token}/>
 
                 <Routes>
-                    <Route exact path='/' element={<Main token={token} ideas={ideas}
-                                                         friends={friends}
-                                                         fetchFriendLists={fetchFriendLists}
-                                                         generateIdeas={generateIdeas}
-                                                         isIdeasLoading={isIdeasLoading}
-                                                         ideaError={ideaError}/>}/>
-                    <Route exact path='login' element={<Login setToken={setToken}/>}/>
-                    <Route exact path='signup' element={<SignUp setToken={setToken}/>}/>
+                    <Route path='/' element={<Main token={token} ideas={ideas}
+                                                   generateIdeas={generateIdeas}
+                                                   isIdeasLoading={isIdeasLoading}
+                                                   ideaError={ideaError}
+                                                   userInfo={userInfo}
+                                                   fetchUserInfo={fetchUserInfo}
+                    />}/>
+                    <Route path='login' element={<Login setToken={setToken}/>}/>
+                    <Route path='signup' element={<SignUp setToken={setToken}/>}/>
 
-                    {!isObjectEmpty(userInfo) &&
+                    {token ?
                         <>
-                            <Route exact path='friends' element={
+                            <Route path='friends' element={
                                 <Friends token={token}
                                          friends={friends}
                                          generateIdeas={generateIdeas}
@@ -118,8 +123,10 @@ function App() {
                                          removeFriend={removeFriend}
                                          removeFriendError={removeFriendError}
                                          fetchFriendLists={fetchFriendLists}
-                                />}/>
-                            <Route exact path='account/:id' element={
+                                         fetchUserInfo={fetchUserInfo}
+                                />}
+                            />
+                            <Route path='account/:id' element={
                                 <Account userInfo={userInfo}
                                          generateIdeas={generateIdeas}
                                          token={token}
@@ -133,10 +140,11 @@ function App() {
                                          myFriends={friends}
                                          myIncomingRequests={incomingRequests}
                                          myOutgoingRequests={outgoingRequests}
+                                         fetchUserInfo={fetchUserInfo}
                                 />}
                             />
 
-                        </>
+                        </> : <></>
                     }
                     <Route
                         path="*"

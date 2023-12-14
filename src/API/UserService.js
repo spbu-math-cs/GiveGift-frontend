@@ -17,7 +17,7 @@ export default class UserService {
             nickname: nickname,
             email: email,
             password: password,
-            birth_date: '01-01',
+            birth_date: '01-01-1975',
             about: '',
             interests: []
         }

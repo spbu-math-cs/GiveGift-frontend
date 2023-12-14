@@ -27,7 +27,7 @@ const Header = ({token, logout, removeToken, userInfo}) => {
             <div className={styles.account_settings}>
                 <div className={styles.acc_main_info}>
                     <IconButton id="account-menu-button"
-                                onClick={(e) => {!isObjectEmpty(userInfo) ? handleClick(e) : navigate('/login')}}
+                                onClick={(e) => {token ? handleClick(e) : navigate('/login')}}
                                 size="small"
                                 aria-controls={open ? 'account-menu' : undefined}
                                 aria-haspopup="true"

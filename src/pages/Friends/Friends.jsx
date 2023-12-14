@@ -9,6 +9,7 @@ const Friends = (props) => {
     const [FriendModalWindowVisibility, setFriendModalWindowVisibility] = useState(false);
 
     useEffect(() => {
+        props.fetchUserInfo(props.token);
         props.fetchFriendLists(props.token);
     }, []);
 

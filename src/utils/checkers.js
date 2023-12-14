@@ -11,6 +11,10 @@ export const checkPrice = (minPrice, maxPrice, newPrice) => {
     ];
 }
 
+export const isTokenError = (error) => {
+    return error && error.status === 422
+}
+
 export const isObjectEmpty = (object) => {
     return Object.keys(object).length === 0
 }
