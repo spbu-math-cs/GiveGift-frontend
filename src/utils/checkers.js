@@ -11,8 +11,8 @@ export const checkPrice = (minPrice, maxPrice, newPrice) => {
     ];
 }
 
-export const isTokenError = (error) => {
-    return error && error.status === 422
+export const isTokenError = (error) => { // TODO: хммммммм мб переименовать
+    return error && error.status === 401
 }
 
 export const isObjectEmpty = (object) => {

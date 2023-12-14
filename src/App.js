@@ -22,7 +22,9 @@ function App() {
     const [fetchUserInfo, ,] = useFetching(async (token) => {
         try {
             const response = await UserService.getUserInfo(token, 0);
-            setUserInfo(response.data);
+            const {access_token, ...userData} = response.data;
+            access_token && setToken(access_token);
+            setUserInfo(userData);
         } catch (err) {
             isTokenError(err.response) && removeToken()
         }
