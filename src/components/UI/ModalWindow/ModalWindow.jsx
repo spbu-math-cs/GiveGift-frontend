@@ -1,8 +1,9 @@
 import React from 'react';
-import './ModalWindow.module.css'
+import styles from './ModalWindow.module.css'
+import ClosedBtn from "../Button/ClosedBtn/ClosedBtn";
 
-const ModalWindow = ({children, setVisible, visible, className}) => {
-    const rootClasses = [className]
+const ModalWindow = ({children, setVisible, visible, title}) => {
+    const rootClasses = [styles.add_interest_modal]
 
     if (visible) {
         rootClasses.push('active_modal');
@@ -10,7 +11,11 @@ const ModalWindow = ({children, setVisible, visible, className}) => {
 
     return (
         <div className={rootClasses.join(' ')} onClick={() => setVisible(false)}>
-            <div onClick={(event) => event.stopPropagation()}>
+            <div className={styles.content} onClick={(event) => event.stopPropagation()}>
+                <div className={styles.modal_title_section}>
+                    <div className={styles.title}>{title}</div>
+                    <ClosedBtn onClick={() => setVisible(false)}/>
+                </div>
                 {children}
             </div>
         </div>

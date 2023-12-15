@@ -1,0 +1,56 @@
+.mini_friend {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 400px;
+}
+
+.mini_friend_info {
+    display: flex;
+    align-items: center;
+    column-gap: 12px;
+    font-family: Montserrat, sans-serif;
+    font-weight: 600;
+}
+
+.mini_friend_icon {
+    cursor: pointer;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+}
+
+.mini_friend_nickname {
+    color: #373737;
+    font-size: 23px;
+    cursor: pointer;
+}
+
+.mini_friend_nickname:hover {
+    text-decoration: underline 2px;
+}
+
+.mini_friend_id {
+    color: #7E7C7A;
+    font-size: 23px;
+    cursor: pointer;
+}
+
+.mini_friend_action  {
+    background-color: #FF6332;
+    color: white;
+
+    border: none;
+    text-align: center;
+    cursor: pointer;
+    padding: 0;
+
+    border-radius: 10px;
+
+    font-family: 'Montserrat', 'sans-serif';
+    font-weight: 500;
+    font-size: 16px;
+
+    width: 110px;
+    height: 35px;
+}

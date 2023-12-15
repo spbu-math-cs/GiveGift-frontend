@@ -1,0 +1,48 @@
+.user_friendlist {
+    display: grid;
+    grid-row-gap: 10px;
+}
+
+.friend {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Montserrat, sans-serif;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 600;
+}
+
+.friend img {
+    width: 2.5em;
+    height: 2.5em;
+    border-radius: 50%;
+}
+
+.friend_info {
+    display: grid;
+}
+
+.friend_nickname {
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+}
+
+.friend_suggestion {
+    font-size: 0.75em;
+    color: #ff6332;
+    cursor: pointer;
+}
+
+.friend_suggestion:hover, .friend_nickname:hover {
+    text-decoration: underline 1px;
+}
+
+.acc_friendlist {
+    display: grid;
+    grid-row-gap: 15px;
+    margin-bottom: 15px;
+}

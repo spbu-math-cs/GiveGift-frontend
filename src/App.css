@@ -2,13 +2,20 @@
     display: grid;
     grid-template-areas:
           "header"
-          "content"; /*TODO: Footer чуть позже: в макете тоже изменим; будет наверняка темно-серого цвета*/
+          "content";
     grid-template-rows: 80px calc(100vh - 80px);
 }
 
 .app-wrapper-content {
     grid-area: content;
     background: rgba(192, 150, 111, 0.20);
+    word-break: break-word;
+}
+
+.content-with-sidebar {
+    display: grid;
+    grid-template-areas: "sidebar main_content";
+    grid-template-columns: minmax(25%, 300px) auto;
 }
 
 .slider {
@@ -33,6 +40,10 @@
 
 .fadein {
     animation: fadein 1s linear;
+}
+
+.fast_fadein {
+    animation: fadein 0.2s linear;
 }
 
 @keyframes fadein {

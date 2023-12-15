@@ -14,3 +14,13 @@
     justify-content: center;
     align-items: center;
 }
+
+.acc_menu_item_link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.acc_menu_item {
+    display: flex;
+    column-gap: 7px;
+}

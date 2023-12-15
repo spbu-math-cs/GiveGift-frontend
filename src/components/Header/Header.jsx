@@ -1,47 +1,54 @@
-import React, {useRef, useState} from "react";
+import React from "react";
 import styles from './Header.module.css';
-import {NavLink} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 import default_user_logo from '../../assets/user.svg'
 import DropDownAccMenu from "../UI/DropDownAccMenu/DropDownAccMenu";
-import AccMenuList from "./AccMenuList/AccMenuList";
-import {useClickOutside} from "../../hooks/useClickOutside";
+import {Avatar, IconButton} from "@mui/material";
+import UserInfo from "./UserInfo/UserInfo";
+import {isObjectEmpty} from "../../utils/checkers";
 
 const Header = ({token, logout, removeToken, userInfo}) => {
 
-    const [accountModalWindowVisibility, setAccountModalWindowVisibility] = useState(false);
-    const accMenuRef = useRef(null)
-
-    useClickOutside(accMenuRef, () => setAccountModalWindowVisibility(false))
+    const [anchorEl, setAnchorEl] = React.useState(null);
+    const open = Boolean(anchorEl);
+    const navigate = useNavigate()
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
 
     // TODO: Если у пользователя собственный profilepic, отображать его
     return (
         <div className={styles.header}>
             <NavLink className={styles.logo} to='/'>ДариДары</NavLink>
 
-            <div ref={accMenuRef} className={styles.account_settings}>
+            <div className={styles.account_settings}>
                 <div className={styles.acc_main_info}>
-                    <img onClick={() => setAccountModalWindowVisibility(!accountModalWindowVisibility)}
-                         className={styles.account_icon}
-                         src={default_user_logo} alt="user"/>
+                    <IconButton id="account-menu-button"
+                                onClick={(e) => {token ? handleClick(e) : navigate('/login')}}
+                                size="small"
+                                aria-controls={open ? 'account-menu' : undefined}
+                                aria-haspopup="true"
+                                aria-expanded={open ? 'true' : undefined}
+                    >
+                        <Avatar src={default_user_logo}
+                                alt="user"
+                                sx={{width: 50, height: 50}}/>
+                    </IconButton>
 
-                    {Object.keys(userInfo).length !== 0
-                        ?
-                        <div className={styles.nickname_and_id}>
-                            <span className={styles.nickname}>{userInfo.nickname}</span>
-                            <span className={styles.id}>ID {userInfo.id}</span>
-                        </div>
+                    {!isObjectEmpty(userInfo)
+                        ? <DropDownAccMenu open={open} handleClose={handleClose} anchorEl={anchorEl} logout={logout}
+                                           token={token} removeToken={removeToken}/>
                         : <></>
                     }
-                </div>
 
-                <DropDownAccMenu visible={accountModalWindowVisibility}>
-                    <AccMenuList token={token} logout={logout} removeToken={removeToken}
-                                 setVisible={setAccountModalWindowVisibility}/>
-                </DropDownAccMenu>
+                    <UserInfo userInfo={userInfo}/>
+                </div>
             </div>
         </div>
     );
 };
-
 
 export default Header;

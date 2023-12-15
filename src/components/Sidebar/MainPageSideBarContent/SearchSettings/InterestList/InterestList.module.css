@@ -1,6 +1,0 @@
-.interest_list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px 10px;
-    max-height: 9em;
-}

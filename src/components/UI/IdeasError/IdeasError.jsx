@@ -10,7 +10,7 @@ const IdeasError = ({errorMsg}) => {
                 <img src={error_img} alt="error"/>
                 <div className={styles.error_text}>
                     <span className={styles.main}>Упс... Что-то пошло не так...</span>
-                    <span className={styles.secondary}>Специализируйте параметры поиска и попробуйте еще раз</span>
+                    <span className={styles.secondary}>Попробуйте еще раз</span>
                 </div>
             </div>
         </div>

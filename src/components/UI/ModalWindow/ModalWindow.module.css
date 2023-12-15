@@ -10,3 +10,47 @@
         opacity: 1;
     }
 }
+
+.add_interest_modal {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: none;
+    background: rgba(0, 0, 0, 0.5);
+    z-index:2;
+}
+
+.add_interest_modal .content {
+    display: grid;
+    grid-row-gap: 30px;
+    padding: 20px 30px 45px 30px;
+    background: white;
+    border-radius: 16px;
+    min-width: 250px;
+}
+
+:global(.active_modal) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    padding-top: 10px;
+    color: #717171;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Montserrat, sans-serif;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%; /* 40px */
+
+}
+.modal_title_section {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    justify-content: space-between;
+}

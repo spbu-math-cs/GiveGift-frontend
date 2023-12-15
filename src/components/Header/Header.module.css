@@ -26,22 +26,6 @@
     align-items: center;
 }
 
-.nickname_and_id {
-    display: grid;
-    justify-items: end;
-    font-family: Montserrat, sans-serif;
-}
-
-.nickname_and_id .nickname {
-    font-weight: 600;
-    font-size: 20px;
-    color: #373737
-}
-.nickname_and_id .id {
-    font-size: 15px;
-    font-weight: 500;
-    color: #F65D2E;
-}
 
 .header .account_settings {
     grid-area: account;

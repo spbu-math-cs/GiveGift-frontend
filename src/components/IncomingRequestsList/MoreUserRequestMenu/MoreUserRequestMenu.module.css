@@ -1,0 +1,5 @@
+.request_more_item {
+    display: flex;
+    column-gap: 5px;
+    font-size: 14px;
+}

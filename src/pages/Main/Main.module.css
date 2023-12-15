@@ -1,8 +1,0 @@
-.main {
-    display: grid;
-    grid-template-areas: "sidebar ideas_list";
-    grid-template-columns: minmax(250px, 3fr) 9fr;
-}
-
-
-/*TODO: MEDIA-ЗАПРОСЫ*/

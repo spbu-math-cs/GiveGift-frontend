@@ -11,14 +11,13 @@ export default class UserService {
         return await axios.post('http://127.0.0.1:5000/login', user);
     }
 
-    // TODO: ник на этапе регистрации будем брать из email
     static async signUp(nickname, email, password) {
 
         const newUser = {
             nickname: nickname,
             email: email,
             password: password,
-            birth_date: '01-01',
+            birth_date: '', // birth_date в формате d-m-Y
             about: '',
             interests: []
         }
@@ -34,8 +33,8 @@ export default class UserService {
         });
     }
 
-    static async getUserInfo(token) {
-        return await axios.get('http://127.0.0.1:5000/account', {
+    static async getUserInfo(token, id) {
+        return await axios.get(`http://127.0.0.1:5000/get_user_info/${id}`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
