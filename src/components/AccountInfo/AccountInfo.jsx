@@ -53,7 +53,7 @@ const AccountInfo = ({
                         <img className={styles.acc_profile_pic} src={profile_pic} alt={'user'}/>
                         <div className={styles.main_info_desc}>
                             <span style={{fontSize: 25}}>{accInfo.nickname}</span>
-                            <span>18 лет</span>
+                            <span>{accInfo.birth_date}</span>
 
                             {accInfo.id === myID
                                 ?
@@ -104,7 +104,10 @@ const AccountInfo = ({
 
                     <div className={styles.acc_info_part}>
                         <span className={styles.info_part_header}>О себе</span>
-                        <span className={styles.acc_description}>{accInfo.about}</span>
+                        {accInfo.about ?
+                            <span className={styles.acc_description}>{accInfo.about}</span>
+                            : <span className={styles.acc_description} style={{color: "grey"}}>Здесь ничего нет</span>
+                        }
                     </div>
 
                     <div className={styles.acc_info_part}>
@@ -116,11 +119,6 @@ const AccountInfo = ({
                                 )
                             }
                         </div>
-                    </div>
-
-                    <div className={styles.acc_info_part}>
-                        <span className={styles.info_part_header}>Список желаний</span>
-                        <div>Мб будет мб нет КХХХХХХХХХХХХХХХХХХХХХХХХХХУЙ ЕГО</div>
                     </div>
                 </div>
                 }

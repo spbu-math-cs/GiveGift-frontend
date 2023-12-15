@@ -5,6 +5,7 @@ import React, {useEffect, useState} from "react";
 import {checkPrice} from "../../utils/checkers";
 import {useFetching} from "../../hooks/useFetching";
 import InterestService from "../../API/InterestService";
+import GettingStarted from "../../components/UI/GettingStarted/GettingStarted";
 
 const Main = ({token, ideas, userInfo, generateIdeas, fetchUserInfo, isIdeasLoading, ideaError}) => {
 
@@ -104,12 +105,14 @@ const Main = ({token, ideas, userInfo, generateIdeas, fetchUserInfo, isIdeasLoad
                 setSelectFriendModalWindowVisibility={setSelectFriendModalWindowVisibility}
             />
         </Sidebar>
-        <Ideas
-            ideas={ideas}
-            isIdeasLoading={isIdeasLoading}
-            ideaError={ideaError}
-            isNewUser={isNewUser}
-        />
+        {isNewUser
+            ? <GettingStarted/>
+            : <Ideas
+                ideas={ideas}
+                isIdeasLoading={isIdeasLoading}
+                ideaError={ideaError}
+            />
+        }
     </div>);
 }
 
