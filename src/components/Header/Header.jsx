@@ -5,7 +5,6 @@ import default_user_logo from '../../assets/user.svg'
 import DropDownAccMenu from "../UI/DropDownAccMenu/DropDownAccMenu";
 import {Avatar, IconButton} from "@mui/material";
 import UserInfo from "./UserInfo/UserInfo";
-import {isObjectEmpty} from "../../utils/checkers";
 
 const Header = ({token, logout, removeToken, userInfo}) => {
 
@@ -38,7 +37,7 @@ const Header = ({token, logout, removeToken, userInfo}) => {
                                 sx={{width: 50, height: 50}}/>
                     </IconButton>
 
-                    {!isObjectEmpty(userInfo)
+                    {token
                         ? <DropDownAccMenu open={open} handleClose={handleClose} anchorEl={anchorEl} logout={logout}
                                            token={token} removeToken={removeToken}/>
                         : <></>
