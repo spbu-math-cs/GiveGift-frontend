@@ -18,9 +18,7 @@ const Friends = (props) => {
             <Sidebar header={'Заявки в друзья'}>
                 <FriendPageSideBarContent
                     incomingRequests={props.incomingRequests}
-                    setIncomingRequests={props.setIncomingRequests}
                     outgoingRequests={props.outgoingRequests}
-                    setOutgoingRequests={props.setOutgoingRequests}
 
                     revokeFriendRequest={props.revokeFriendRequest}
                     token={props.token}

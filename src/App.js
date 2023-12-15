@@ -95,13 +95,15 @@ function App() {
                 <Header logout={logout} userInfo={userInfo} removeToken={removeToken} token={token}/>
 
                 <Routes>
-                    <Route path='/' element={<Main token={token} ideas={ideas}
-                                                   generateIdeas={generateIdeas}
-                                                   isIdeasLoading={isIdeasLoading}
-                                                   ideaError={ideaError}
-                                                   userInfo={userInfo}
-                                                   fetchUserInfo={fetchUserInfo}
-                    />}/>
+                    <Route path='/' element={
+                        <Main token={token} ideas={ideas}
+                              generateIdeas={generateIdeas}
+                              isIdeasLoading={isIdeasLoading}
+                              ideaError={ideaError}
+                              userInfo={userInfo}
+                              fetchUserInfo={fetchUserInfo}
+                        />
+                    }/>
                     <Route path='login' element={<Login setToken={setToken}/>}/>
                     <Route path='signup' element={<SignUp setToken={setToken}/>}/>
 

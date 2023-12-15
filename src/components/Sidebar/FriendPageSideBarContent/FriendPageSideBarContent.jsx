@@ -6,8 +6,6 @@ import OutgoingRequestsList from "../../OutgoingRequestsList/OutgoingRequestsLis
 const FriendPageSideBarContent = ({
                                       incomingRequests,
                                       outgoingRequests,
-                                      setOutgoingRequests,
-                                      setIncomingRequests,
                                       revokeFriendRequest,
                                       acceptFriendRequest,
                                       rejectFriendRequest,

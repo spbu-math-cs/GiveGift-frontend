@@ -35,9 +35,7 @@ function Account(props) {
                     isAccInfoLoading={!accInfoError && (isAccInfoLoading || isObjectEmpty(accInfo))}
                     generateIdeas={props.generateIdeas}
                 />
-
             </Sidebar>
-
 
             <AccountInfo isAccInfoLoading={!accInfoError && (isAccInfoLoading || isObjectEmpty(accInfo))}
                          token={props.token}
@@ -54,7 +52,6 @@ function Account(props) {
                          myID={props.userInfo.id}
                          generateIdeas={props.generateIdeas}
             />
-
         </div>
     );
 }
