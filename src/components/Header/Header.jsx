@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import styles from './Header.module.css';
 import {NavLink, useNavigate} from "react-router-dom";
 import default_user_logo from '../../assets/user.svg'
@@ -7,8 +7,7 @@ import {Avatar, IconButton} from "@mui/material";
 import UserInfo from "./UserInfo/UserInfo";
 
 const Header = ({token, logout, removeToken, userInfo}) => {
-
-    const [anchorEl, setAnchorEl] = React.useState(null);
+    const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
     const navigate = useNavigate()
     const handleClick = (event) => {

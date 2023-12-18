@@ -13,6 +13,7 @@ import Friends from "./pages/Friends/Friends";
 import IdeaService from "./API/IdeaService";
 import FriendService from "./API/FriendService";
 import {isTokenError} from "./utils/checkers";
+import InterestService from "./API/InterestService";
 
 function App() {
     const {token, removeToken, setToken} = useToken();
@@ -28,6 +29,11 @@ function App() {
         } catch (err) {
             isTokenError(err.response) && removeToken()
         }
+    })
+
+    // TODO: баг с отправкой и последующим обновлением данных аккаунта: несвоевременное обновление
+    const [setUserAccInfo, isSetUserInfoLoading, userInfoError, setUserInfoError] = useFetching(async (token, accInfo) => {
+        await UserService.setUserInfo(token, accInfo);
     })
 
     const [logout, ,] = useFetching(async (token) => {
@@ -89,6 +95,15 @@ function App() {
         await fetchFriendLists(token);
     })
 
+    const [allInterests, setAllInterests] = useState([])
+
+    const [fetchInterests, ,] = useFetching(async () => {
+        const response = await InterestService.getAll();
+        setAllInterests(response.data && response.data['all_interests']);
+    })
+
+    const [InterestModalWindowVisibility, setInterestModalWindowVisibility] = useState(false);
+
     return (
         <BrowserRouter>
             <div className="app-wrapper">
@@ -102,6 +117,10 @@ function App() {
                               ideaError={ideaError}
                               userInfo={userInfo}
                               fetchUserInfo={fetchUserInfo}
+                              allInterests={allInterests}
+                              fetchInterests={fetchInterests}
+                              InterestModalWindowVisibility={InterestModalWindowVisibility}
+                              setInterestModalWindowVisibility={setInterestModalWindowVisibility}
                         />
                     }/>
                     <Route path='login' element={<Login setToken={setToken}/>}/>
@@ -145,9 +164,18 @@ function App() {
                                          myIncomingRequests={incomingRequests}
                                          myOutgoingRequests={outgoingRequests}
                                          fetchUserInfo={fetchUserInfo}
+                                         allInterests={allInterests}
+                                         fetchInterests={fetchInterests}
+                                         InterestModalWindowVisibility={InterestModalWindowVisibility}
+                                         setInterestModalWindowVisibility={setInterestModalWindowVisibility}
+
+                                         setUserInfo={setUserInfo}
+                                         setUserAccInfo={setUserAccInfo}
+                                         userInfoError={userInfoError}
+                                         isSetUserInfoLoading={isSetUserInfoLoading}
+                                         setUserInfoError={setUserInfoError}
                                 />}
                             />
-
                         </> : <></>
                     }
                     <Route

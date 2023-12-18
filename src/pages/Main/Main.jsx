@@ -3,18 +3,10 @@ import MainPageSideBarContent from "../../components/Sidebar/MainPageSideBarCont
 import Ideas from "../../components/Ideas/Ideas";
 import React, {useEffect, useState} from "react";
 import {checkPrice} from "../../utils/checkers";
-import {useFetching} from "../../hooks/useFetching";
-import InterestService from "../../API/InterestService";
 import GettingStarted from "../../components/UI/GettingStarted/GettingStarted";
 
-const Main = ({token, ideas, userInfo, generateIdeas, fetchUserInfo, isIdeasLoading, ideaError}) => {
-
-    const [allInterests, setAllInterests] = useState([])
-
-    const [fetchInterests, ,] = useFetching(async () => {
-        const response = await InterestService.getAll();
-        setAllInterests(response.data && response.data['all_interests']);
-    })
+const Main = ({token, ideas, userInfo, generateIdeas, fetchUserInfo, isIdeasLoading, ideaError, allInterests, fetchInterests,
+              InterestModalWindowVisibility, setInterestModalWindowVisibility}) => {
 
     useEffect(() => {
         fetchInterests();
@@ -55,7 +47,7 @@ const Main = ({token, ideas, userInfo, generateIdeas, fetchUserInfo, isIdeasLoad
         setUserInterests(userInterests.filter(i => i !== interest))
     }
     const addUserInterest = (newInterest) => {
-        setUserInterests([...userInterests, ...newInterest])
+        setUserInterests([...userInterests, ...newInterest.filter(i => allInterests.includes(i))])
         setInterestModalWindowVisibility(false)
     }
 
@@ -68,7 +60,6 @@ const Main = ({token, ideas, userInfo, generateIdeas, fetchUserInfo, isIdeasLoad
         setPriceRangeValue(checkPrice(minPrice, maxPrice, newValue));
     };
 
-    const [InterestModalWindowVisibility, setInterestModalWindowVisibility] = useState(false);
 
     const [SelectFriendModalWindowVisibility, setSelectFriendModalWindowVisibility] = useState(false);
 

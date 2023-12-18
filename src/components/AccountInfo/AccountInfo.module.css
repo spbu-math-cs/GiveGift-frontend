@@ -35,8 +35,7 @@
 
 .acc_info_content {
     display: grid;
-    width: 90%;
-    justify-content: start;
+    width: inherit;
     margin: 30px 0;
     grid-row-gap: 20px;
 }

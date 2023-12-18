@@ -14,7 +14,7 @@ const InterestList = ({
             <SettingsHeader text="Интересы"/>
             <div className={`${styles.interest_list} slider`}>
                 {userInterests.map(curr_interest =>
-                    <Interest key={curr_interest} remove={remove}>{curr_interest}</Interest>
+                    <Interest key={curr_interest} is_editable={true} remove={remove}>{curr_interest}</Interest>
                 )}
                 <PlusBtn onClick={() => setInterestModalWindowVisibility(true)}/>
             </div>

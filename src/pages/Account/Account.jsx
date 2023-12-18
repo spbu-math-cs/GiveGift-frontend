@@ -9,19 +9,26 @@ import {isObjectEmpty} from "../../utils/checkers";
 
 
 function Account(props) {
-    const {id} = useParams()
-    const [accInfo, setAccInfo] = useState({})
+    const {id} = useParams();
+    const [accInfo, setAccInfo] = useState({});
+    const [isEdit, setIsEdit] = useState(false);
 
     const [fetchAccInfo, isAccInfoLoading, accInfoError] = useFetching(async (token, id) => {
         const response = await UserService.getUserInfo(token, id);
         setAccInfo(response.data)
     })
 
+    const saveAccChanges = () => {
+        props.setUserAccInfo(props.token, accInfo);
+        setIsEdit(false);
+    }
+
     useEffect(() => {
         props.fetchUserInfo(props.token);
         fetchAccInfo(props.token, id);
         props.fetchFriendLists(props.token);
-    }, [id]);  // eslint-disable-line
+        isEdit && props.fetchInterests();
+    }, [id, isEdit]);  // eslint-disable-line
 
     return (
         <div className={'app-wrapper-content content-with-sidebar'}>
@@ -40,6 +47,7 @@ function Account(props) {
             <AccountInfo isAccInfoLoading={!accInfoError && (isAccInfoLoading || isObjectEmpty(accInfo))}
                          token={props.token}
                          accInfo={accInfo}
+                         setAccInfo={setAccInfo}
                          accInfoError={accInfoError}
                          sendFriendRequest={props.sendFriendRequest}
                          revokeFriendRequest={props.revokeFriendRequest}
@@ -51,6 +59,17 @@ function Account(props) {
                          removeFriend={props.removeFriend}
                          myID={props.userInfo.id}
                          generateIdeas={props.generateIdeas}
+                         isEdit={isEdit}
+                         setIsEdit={setIsEdit}
+                         allInterests={props.allInterests}
+                         InterestModalWindowVisibility={props.InterestModalWindowVisibility}
+                         setInterestModalWindowVisibility={props.setInterestModalWindowVisibility}
+                         saveAccChanges={saveAccChanges}
+
+                         isSetUserInfoLoading={props.isSetUserInfoLoading}
+                         userInfoError={props.userInfoError}
+                         setUserInfoError={props.setUserInfoError}
+                         setUserAccInfo={props.setUserAccInfo}
             />
         </div>
     );
