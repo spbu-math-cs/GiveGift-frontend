@@ -20,7 +20,7 @@ function Account(props) {
 
     const saveAccChanges = () => {
         props.setUserAccInfo(props.token, accInfo);
-        setIsEdit(false);
+        setIsEdit(false); // TODO: видимо, setIsEdit раньше триггерится чем изменяется инфа аккаунта
     }
 
     useEffect(() => {

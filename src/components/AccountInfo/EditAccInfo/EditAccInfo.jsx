@@ -20,8 +20,8 @@ const EditAccInfo = (props) => {
     const addUserInterest = (newInterests) => {
         props.setAccInfo(prevAccInfo => {
                 let accInfoCopy = Object.assign({}, prevAccInfo);
-                accInfoCopy.interests = [...accInfoCopy.interests, ...newInterests];
-                //accInfoCopy.interests = [...accInfoCopy.interests, ...newInterests.filter(i => props.allInterests.includes(i))];
+                //accInfoCopy.interests = [...accInfoCopy.interests, ...newInterests];
+                accInfoCopy.interests = [...accInfoCopy.interests, ...newInterests.filter(i => props.allInterests.includes(i))];
 
                 return accInfoCopy;
             }
