@@ -28,11 +28,6 @@
     margin-bottom: 10px;
 }
 
-.friend_main_activities {
-    display: flex;
-    column-gap: 5px;
-}
-
 .acc_info_content {
     display: grid;
     width: inherit;
