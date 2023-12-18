@@ -38,7 +38,7 @@ const EditAccInfo = (props) => {
     }
 
     return (
-        <>
+        <form className={`${styles.acc_info_content} fast_fadein`}>
             <div className={styles.acc_main_info}>
                 <img className={styles.acc_profile_pic} src={profile_pic} alt={'user'}/>
                 <div className={styles.main_info_desc} style={{gridRowGap: 10}}>
@@ -75,7 +75,8 @@ const EditAccInfo = (props) => {
                     </LocalizationProvider>
 
                     <FriendActionButton
-                        onClick={() => {
+                        onClick={(e) => {
+                            e.preventDefault();
                             props.saveAccChanges(props.token, props.accInfo);
                         }}>
                         <SaveRoundedIcon color="white"/>
@@ -123,7 +124,7 @@ const EditAccInfo = (props) => {
                     </AddInterestModal>
                 </div>
             </div>
-        </>
+        </form>
     );
 };
 

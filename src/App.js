@@ -34,6 +34,7 @@ function App() {
     // TODO: баг с отправкой и последующим обновлением данных аккаунта: несвоевременное обновление
     const [setUserAccInfo, isSetUserInfoLoading, userInfoError, setUserInfoError] = useFetching(async (token, accInfo) => {
         await UserService.setUserInfo(token, accInfo);
+        setUserInfo(accInfo);
     })
 
     const [logout, ,] = useFetching(async (token) => {
@@ -70,6 +71,8 @@ function App() {
         setOutgoingRequests(response.data['outgoing_requests']);
     })
 
+
+    // TODO: так-то это все в хук отдельный можно все впихнуть
     const [sendFriendRequest, isSendRequestLoading, sendRequestError] = useFetching(async (token, friend_id) => {
         await FriendService.sendFriendRequest(token, friend_id);
         await fetchFriendLists(token);
@@ -107,7 +110,9 @@ function App() {
     return (
         <BrowserRouter>
             <div className="app-wrapper">
-                <Header logout={logout} userInfo={userInfo} removeToken={removeToken} token={token}/>
+                <Header logout={logout}
+                        userInfo={userInfo}
+                        removeToken={removeToken} token={token}/>
 
                 <Routes>
                     <Route path='/' element={

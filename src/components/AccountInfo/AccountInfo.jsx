@@ -15,9 +15,10 @@ const AccountInfo = (props) => {
                     {props.accInfoError
                         ? <IdeasError/>
                         : !props.isAccInfoLoading && !props.isSetUserInfoLoading &&
-                        <div className={`${styles.acc_info_content} fast_fadein`}>
+                        <>
                             {props.isEdit
-                                ? <EditAccInfo accInfo={props.accInfo}
+                                ? <EditAccInfo
+                                               accInfo={props.accInfo}
                                                setAccInfo={props.setAccInfo}
                                                saveAccChanges={props.saveAccChanges}
                                                token={props.token}
@@ -40,9 +41,8 @@ const AccountInfo = (props) => {
                                                sendFriendRequest={props.sendFriendRequest}
                                                generateIdeas={props.generateIdeas}
                                                removeFriend={props.removeFriend}
-                                />
-                            }
-                        </div>
+                                />}
+                        </>
                     }
                 </div>
             </div>

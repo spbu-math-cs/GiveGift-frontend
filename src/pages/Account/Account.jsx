@@ -20,7 +20,8 @@ function Account(props) {
 
     const saveAccChanges = () => {
         props.setUserAccInfo(props.token, accInfo);
-        setIsEdit(false); // TODO: видимо, setIsEdit раньше триггерится чем изменяется инфа аккаунта
+        //props.setUserInfo(accInfo);
+        setIsEdit(false);
     }
 
     useEffect(() => {
@@ -28,7 +29,9 @@ function Account(props) {
         fetchAccInfo(props.token, id);
         props.fetchFriendLists(props.token);
         isEdit && props.fetchInterests();
-    }, [id, isEdit]);  // eslint-disable-line
+    }, [id]);  // eslint-disable-line
+
+    // TODO: подумать над async
 
     return (
         <div className={'app-wrapper-content content-with-sidebar'}>
@@ -65,7 +68,8 @@ function Account(props) {
                          InterestModalWindowVisibility={props.InterestModalWindowVisibility}
                          setInterestModalWindowVisibility={props.setInterestModalWindowVisibility}
                          saveAccChanges={saveAccChanges}
-
+                         setUserInfo={props.setUserInfo}
+                         userInfo={props.userInfo}
                          isSetUserInfoLoading={props.isSetUserInfoLoading}
                          userInfoError={props.userInfoError}
                          setUserInfoError={props.setUserInfoError}

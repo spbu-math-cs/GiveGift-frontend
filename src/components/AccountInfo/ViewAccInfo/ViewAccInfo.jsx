@@ -10,7 +10,7 @@ import ViewAccActionBtn from "../../UI/Button/ViewAccActionBtn/ViewAccActionBtn"
 
 const ViewAccInfo = (props) => {
     return (
-        <>
+        <div className={`${styles.acc_info_content} fast_fadein`}>
             {!props.isSetUserInfoLoading && props.userInfoError &&
                 <Alert onClose={() => props.setUserInfoError("")} severity="error">
                     {props.userInfoError.data}
@@ -61,7 +61,7 @@ const ViewAccInfo = (props) => {
                     }
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 
