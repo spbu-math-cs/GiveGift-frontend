@@ -62,7 +62,7 @@ const EditAccInfo = ({setIsEdit}) => {
     }, []); // eslint-disable-line
 
     return (
-        <form className={`${styles.acc_info_content} fast_fadein`}>
+        <div className={`${styles.acc_info_content} fast_fadein`}>
             {!isChangeUserInfoLoading && changeUserInfoError &&
                 <Alert severity="error">
                     {changeUserInfoError.data}
@@ -153,7 +153,7 @@ const EditAccInfo = ({setIsEdit}) => {
                     </AddInterestModal>
                 </div>
             </div>
-        </form>
+        </div>
     );
 };
 
