@@ -4,11 +4,8 @@ import Autocomplete from '@mui/material/Autocomplete';
 import {redTheme} from "../muiThemes/themes";
 import {FormGroup, ThemeProvider} from "@mui/material";
 import CheckBtn from "../Button/CheckBtn/CheckBtn";
-import {useContext} from "react";
-import {InterestContext} from "../../../context/InterestContext/InterestContext";
 
-export const AutoCompleteSearch = ({selectedInterests, setSelectedInterests, onClick}) => {
-    const {optionInterests} = useContext(InterestContext);
+export const AutoCompleteSearch = ({optionInterests, selectedInterests, setSelectedInterests, onClick}) => {
 
     return (
         <ThemeProvider theme={redTheme}>

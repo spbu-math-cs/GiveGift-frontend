@@ -3,10 +3,9 @@ import {AutoCompleteSearch} from "../../../../../../../../UI/AutoCompleteSearch/
 import styles from "./AddUserInterestForm.module.css"
 
 
-const AddUserInterestForm = ({add}) => {
+const AddUserInterestForm = ({add, optionInterests}) => {
 
     const [selectedInterests, setSelectedInterests] = useState([]);
-
     const addNewUserInterest = (e) => {
         e.preventDefault();
         if (selectedInterests) {
@@ -20,6 +19,7 @@ const AddUserInterestForm = ({add}) => {
             <AutoCompleteSearch selectedInterests={selectedInterests}
                                 setSelectedInterests={setSelectedInterests}
                                 onChange={(e) => setSelectedInterests(e.currentTarget)}
+                                optionInterests={optionInterests}
                                 onClick={addNewUserInterest}
                                 className={styles.add_interest_form_button}/>
         </form>

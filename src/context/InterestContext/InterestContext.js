@@ -15,12 +15,10 @@ export const InterestContextProvider = ({children}) => {
 
     const [userInterests, setUserInterests,] = useLocalStorage('userInterests', []);
 
-    const optionInterests = allInterests.filter(item => !userInterests.includes(item));
-
     return (<InterestContext.Provider value={
         {
             allInterests, fetchInterests,
-            userInterests, setUserInterests, optionInterests
+            userInterests, setUserInterests
         }
     }>
         {children}

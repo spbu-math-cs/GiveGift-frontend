@@ -16,6 +16,8 @@ const Interests = () => {
         setUserInterests([...userInterests, ...newInterest.filter(i => allInterests.includes(i))])
         setInterestModalWindowVisibility(false)
     }
+    const optionInterests = allInterests.filter(item => !userInterests.includes(item));
+
 
     return (
         <>
@@ -25,7 +27,7 @@ const Interests = () => {
             />
             <AddInterestModal visible={InterestModalWindowVisibility}
                               setVisible={setInterestModalWindowVisibility}>
-                <AddUserInterestForm add={addUserInterest}/>
+                <AddUserInterestForm add={addUserInterest} optionInterests={optionInterests}/>
             </AddInterestModal>
         </>
     );

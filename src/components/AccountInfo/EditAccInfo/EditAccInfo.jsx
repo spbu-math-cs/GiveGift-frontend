@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import styles from "../AccountInfo.module.css";
 import profile_pic from "../../../assets/user.svg";
 import {Alert, TextField} from "@mui/material";
@@ -10,7 +10,8 @@ import SaveRoundedIcon from "@mui/icons-material/SaveRounded";
 import {
     Interest
 } from "../../Sidebar/MainPageSideBarContent/CustomSettings/SearchSettings/Interests/InterestList/Interest/Interest";
-import PlusBtn from "../../Sidebar/MainPageSideBarContent/CustomSettings/SearchSettings/Interests/InterestList/PlusBtn/PlusBtn";
+import PlusBtn
+    from "../../Sidebar/MainPageSideBarContent/CustomSettings/SearchSettings/Interests/InterestList/PlusBtn/PlusBtn";
 import AddInterestModal
     from "../../Sidebar/MainPageSideBarContent/CustomSettings/SearchSettings/Interests/InterestList/AddUserInterest/AddInterestModal/AddInterestModal";
 import AddUserInterestForm
@@ -21,9 +22,11 @@ import {UserContext} from "../../../context/UserContext/UserContext";
 
 const EditAccInfo = (props) => {
 
-    const {allInterests} = useContext(InterestContext);
+    const {allInterests, fetchInterests} = useContext(InterestContext);
     const {token} = useContext(AuthContext);
     const {isChangeUserInfoLoading, changeUserInfoError} = useContext(UserContext);
+
+    const [InterestModalWindowVisibility, setInterestModalWindowVisibility] = useState(false);
 
     const addUserInterest = (newInterests) => {
         props.setAccInfo(prevAccInfo => {
@@ -33,7 +36,7 @@ const EditAccInfo = (props) => {
                 return accInfoCopy;
             }
         )
-        props.setInterestModalWindowVisibility(false)
+        setInterestModalWindowVisibility(false)
     }
 
     const removeUserInterest = (interest) => {
@@ -43,6 +46,14 @@ const EditAccInfo = (props) => {
             return accInfoCopy;
         })
     }
+
+    useEffect(() => {
+        const fetchInfo = async () => {
+            props.isEdit && await fetchInterests();
+        }
+
+        fetchInfo().catch(console.error);
+    }, []); // eslint-disable-line
 
     return (
         <form className={`${styles.acc_info_content} fast_fadein`}>
@@ -125,11 +136,11 @@ const EditAccInfo = (props) => {
                         )
                     }
                     <PlusBtn onClick={() => {
-                        props.setInterestModalWindowVisibility(true);
+                        setInterestModalWindowVisibility(true);
                     }}/>
 
-                    <AddInterestModal visible={props.InterestModalWindowVisibility}
-                                      setVisible={props.setInterestModalWindowVisibility}>
+                    <AddInterestModal visible={InterestModalWindowVisibility}
+                                      setVisible={setInterestModalWindowVisibility}>
                         <AddUserInterestForm
                             optionInterests={allInterests.filter(item => !props.accInfo.interests.includes(item))}
                             add={addUserInterest}/>

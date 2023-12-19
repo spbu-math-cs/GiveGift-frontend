@@ -26,9 +26,6 @@ const AccountInfo = (props) => {
                                                saveAccChanges={props.saveAccChanges}
                                                isEdit={props.isEdit}
 
-                                               setInterestModalWindowVisibility={props.setInterestModalWindowVisibility}
-                                               InterestModalWindowVisibility={props.InterestModalWindowVisibility}
-
                                 />
                                 : <ViewAccInfo
                                                accInfo={props.accInfo}
