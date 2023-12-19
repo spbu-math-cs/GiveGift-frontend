@@ -1,5 +1,5 @@
 import React from 'react';
-import plus_btn from "../../../../../../../assets/plus_btn.png";
+import plus_btn from "../../../../../../../../assets/plus_btn.png";
 import styles from "./PlusBtn.module.css"
 
 const PlusBtn = (props) => {

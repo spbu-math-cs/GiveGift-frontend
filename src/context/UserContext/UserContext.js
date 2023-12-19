@@ -1,7 +1,8 @@
 import React, {createContext, useState} from "react";
 import {useFetching} from "../../hooks/useFetching";
 import UserService from "../../API/UserService";
-import {isTokenError} from "../../utils/checkers";
+import {isAuthError} from "../../utils/checkers";
+import {useLocalStorage} from "../../hooks/useLocalStorage";
 
 export const UserContext = createContext(null);
 
@@ -11,6 +12,8 @@ export const UserContextProvider = ({children}) => {
 
     const myID = userInfo.id;
 
+    const [isNewUser, setIsNewUser,] = useLocalStorage('isNewUser', true);
+
     const [fetchUserInfo, ,] = useFetching(async (token, setToken, removeToken) => {
         try {
             const response = await UserService.getUserInfo(token, 0);
@@ -18,7 +21,7 @@ export const UserContextProvider = ({children}) => {
             access_token && setToken(access_token);
             setUserInfo(userData);
         } catch (err) {
-            isTokenError(err.response) && removeToken()
+            isAuthError(err.response) && removeToken()
         }
     })
 
@@ -32,7 +35,8 @@ export const UserContextProvider = ({children}) => {
         {
             userInfo, setUserInfo, myID,
             fetchUserInfo,
-            changeUserInfo, isChangeUserInfoLoading, changeUserInfoError
+            changeUserInfo, isChangeUserInfoLoading, changeUserInfoError,
+            isNewUser, setIsNewUser
         }
     }>
         {children}

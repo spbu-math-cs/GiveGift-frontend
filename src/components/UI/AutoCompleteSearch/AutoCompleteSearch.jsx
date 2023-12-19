@@ -4,8 +4,12 @@ import Autocomplete from '@mui/material/Autocomplete';
 import {redTheme} from "../muiThemes/themes";
 import {FormGroup, ThemeProvider} from "@mui/material";
 import CheckBtn from "../Button/CheckBtn/CheckBtn";
+import {useContext} from "react";
+import {InterestContext} from "../../../context/InterestContext/InterestContext";
 
-export const AutoCompleteSearch = ({userInterest, setUserInterest, optionInterests, onClick}) => {
+export const AutoCompleteSearch = ({selectedInterests, setSelectedInterests, onClick}) => {
+    const {optionInterests} = useContext(InterestContext);
+
     return (
         <ThemeProvider theme={redTheme}>
             <FormGroup row>
@@ -13,10 +17,10 @@ export const AutoCompleteSearch = ({userInterest, setUserInterest, optionInteres
                     multiple
                     freeSolo
                     id="select_interest"
-                    value={userInterest}
+                    value={selectedInterests}
 
                     onChange={(event, newValue) =>
-                        setUserInterest(newValue)
+                        setSelectedInterests(newValue)
                     }
 
                     options={optionInterests.sort()}

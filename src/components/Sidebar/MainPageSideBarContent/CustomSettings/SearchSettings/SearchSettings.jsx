@@ -1,27 +1,15 @@
 import React from 'react';
-import InterestList from "./InterestList/InterestList";
 import Price from "./Price/Price";
-import AddUserInterestForm from "./InterestList/AddUserInterest/AddUserInterestForm/AddUserInterestForm";
-import AddInterestModal from "./InterestList/AddUserInterest/AddInterestModal/AddInterestModal";
+import Interests from "./Interests/Interests";
 
-const SearchSettings = (props) => {
+const SearchSettings = ({priceRangeValue, handlePriceRangeChange}) => {
     return (
         <>
-            <InterestList
-                userInterests={props.userInterests}
-                remove={props.remove}
-                setInterestModalWindowVisibility={props.setInterestModalWindowVisibility}
-            />
+            <Interests/>
             <Price
-                minPrice={props.minPrice}
-                maxPrice={props.maxPrice}
-                priceRangeValue={props.priceRangeValue}
-                handlePriceRangeChange={props.handlePriceRangeChange}
+                priceRangeValue={priceRangeValue}
+                handlePriceRangeChange={handlePriceRangeChange}
             />
-            <AddInterestModal visible={props.InterestModalWindowVisibility}
-                              setVisible={props.setInterestModalWindowVisibility}>
-                <AddUserInterestForm optionInterests={props.optionInterests} add={props.add}/>
-            </AddInterestModal>
         </>
     );
 };

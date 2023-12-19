@@ -1,13 +1,14 @@
-import React from "react";
+import React, {useContext} from "react";
 import {Interest} from "./Interest/Interest";
 import styles from "./InterestList.module.css"
-import setting_styles from "../SearchSettings.module.css"
-import SettingsHeader from "../../../../../UI/SettingsHeader/SettingsHeader";
+import setting_styles from "../../SearchSettings.module.css"
+import SettingsHeader from "../../../../../../UI/SettingsHeader/SettingsHeader";
 import PlusBtn from "./PlusBtn/PlusBtn";
+import {InterestContext} from "../../../../../../../context/InterestContext/InterestContext";
 
-const InterestList = ({
-                          userInterests, remove, setInterestModalWindowVisibility
-                      }) => {
+const InterestList = ({remove, setVisible}) => {
+
+    const {userInterests} = useContext(InterestContext);
 
     return (
         <div className={setting_styles.setting_content}>
@@ -16,7 +17,7 @@ const InterestList = ({
                 {userInterests.map(curr_interest =>
                     <Interest key={curr_interest} is_editable={true} remove={remove}>{curr_interest}</Interest>
                 )}
-                <PlusBtn onClick={() => setInterestModalWindowVisibility(true)}/>
+                <PlusBtn onClick={() => setVisible(true)}/>
             </div>
         </div>
     )

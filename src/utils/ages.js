@@ -1,17 +1,3 @@
-/*
-*
-def get_noun(number, one, two, five):
-    n = abs(number) % 100
-    if 5 <= n <= 20:
-        return five
-
-    n %= 10
-    if n == 1:
-        return one
-    if 2 <= n <= 4:
-        return two
-    return five*/
-
 import dayjs from "dayjs";
 
 export const getNoun = (number, one, two, five) => {

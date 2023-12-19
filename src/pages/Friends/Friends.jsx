@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext, useEffect} from 'react';
 import Sidebar from "../../components/Sidebar/Sidebar";
 import '../../App.css'
 import FriendList from "../../components/FriendList/FriendList";
@@ -8,9 +8,6 @@ import {UserContext} from "../../context/UserContext/UserContext";
 import {AuthContext} from "../../context/AuthContext/AuthContext";
 
 const Friends = () => {
-
-    const [FriendModalWindowVisibility, setFriendModalWindowVisibility] = useState(false);
-
     const {fetchFriendLists} = useContext(FriendContext)
     const {fetchUserInfo} = useContext(UserContext);
     const {token, setToken, removeToken} = useContext(AuthContext);
@@ -29,10 +26,7 @@ const Friends = () => {
                 <FriendPageSideBarContent/>
             </Sidebar>
 
-            <FriendList
-                FriendModalWindowVisibility={FriendModalWindowVisibility}
-                setFriendModalWindowVisibility={setFriendModalWindowVisibility}
-            />
+            <FriendList/>
         </div>
     );
 };

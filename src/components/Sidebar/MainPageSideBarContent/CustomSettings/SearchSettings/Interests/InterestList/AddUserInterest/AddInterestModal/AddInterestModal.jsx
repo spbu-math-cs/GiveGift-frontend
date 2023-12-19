@@ -1,5 +1,5 @@
 import React from 'react';
-import ModalWindow from "../../../../../../../UI/ModalWindow/ModalWindow";
+import ModalWindow from "../../../../../../../../UI/ModalWindow/ModalWindow";
 
 const AddInterestModal = ({children, visible, setVisible}) => {
 

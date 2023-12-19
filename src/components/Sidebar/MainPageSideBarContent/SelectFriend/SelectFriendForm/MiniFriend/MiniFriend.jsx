@@ -1,7 +1,7 @@
 import styles from "./MiniFriend.module.css";
-import default_user_logo from "../../../../../assets/user.svg";
+import default_user_logo from "../../../../../../assets/user.svg";
 import React, {useContext} from "react";
-import {AuthContext} from "../../../../../context/AuthContext/AuthContext";
+import {AuthContext} from "../../../../../../context/AuthContext/AuthContext";
 
 const MiniFriend = ({friend_id, nickname, generateIdeas, setIsNewUser, setVisible}) => {
     const {token} = useContext(AuthContext);

@@ -1,17 +1,19 @@
-import SearchBar from "../../../UI/SearchBar/SearchBar";
+import SearchBar from "../../../../UI/SearchBar/SearchBar";
 import styles from './SelectFriendForm.module.css'
 import React, {useContext, useState} from "react";
-import {useFriendSearch} from "../../../../hooks/useFriendSearch";
+import {useFriendSearch} from "../../../../../hooks/useFriendSearch";
 import MiniFriend from "./MiniFriend/MiniFriend";
-import {FriendContext} from "../../../../context/FriendContext/FriendContext";
-import {IdeasContext} from "../../../../context/IdeasContext/IdeasContext";
+import {FriendContext} from "../../../../../context/FriendContext/FriendContext";
+import {IdeasContext} from "../../../../../context/IdeasContext/IdeasContext";
+import {UserContext} from "../../../../../context/UserContext/UserContext";
 
-const SelectFriendForm = ({setIsNewUser, setVisible}) => {
+const SelectFriendForm = ({setVisible}) => {
 
     const [searchQuery, setSearchQuery] = useState('');
 
     const {friends} = useContext(FriendContext);
     const {generateIdeas} = useContext(IdeasContext);
+    const {setIsNewUser} = useContext(UserContext);
 
     const searchResults = useFriendSearch(friends, searchQuery);
 

@@ -4,7 +4,7 @@ import profile_pic from "../../../assets/user.svg";
 import {get_prettified_age} from "../../../utils/ages";
 import {
     Interest
-} from "../../Sidebar/MainPageSideBarContent/CustomSettings/SearchSettings/InterestList/Interest/Interest";
+} from "../../Sidebar/MainPageSideBarContent/CustomSettings/SearchSettings/Interests/InterestList/Interest/Interest";
 import ViewAccActionBtn from "../../UI/Button/ViewAccActionBtn/ViewAccActionBtn";
 
 const ViewAccInfo = (props) => {

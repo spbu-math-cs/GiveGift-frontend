@@ -3,6 +3,7 @@ import Slider from '@mui/material/Slider';
 import {TextField, ThemeProvider} from "@mui/material";
 import styles from "./RangeSlider.module.css"
 import {redTheme} from "../muiThemes/themes";
+import {maxPrice, minPrice} from "../../../utils/constants";
 
 
 export default function RangeSlider(props) {
@@ -13,8 +14,8 @@ export default function RangeSlider(props) {
                     getAriaLabel={() => "range_slider"}
                     value={props.priceRangeValue}
                     onChange={props.handlePriceRangeChange}
-                    min={props.minPrice}
-                    max={props.maxPrice}
+                    min={minPrice}
+                    max={maxPrice}
                 />
                 <div className={styles.range_slider_inputs}>
                     <TextField

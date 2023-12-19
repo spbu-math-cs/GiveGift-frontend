@@ -5,7 +5,7 @@ import {useFriendSearch} from "../../hooks/useFriendSearch";
 import FriendSearch from "../FriendSearch/FriendSearch";
 import {FriendContext} from "../../context/FriendContext/FriendContext";
 
-const FriendList = ({FriendModalWindowVisibility, setFriendModalWindowVisibility}) => {
+const FriendList = () => {
 
     const [searchQuery, setSearchQuery] = useState('');
 
@@ -21,8 +21,6 @@ const FriendList = ({FriendModalWindowVisibility, setFriendModalWindowVisibility
                     <FriendSearch
                         searchQuery={searchQuery}
                         setSearchQuery={setSearchQuery}
-                        FriendModalWindowVisibility={FriendModalWindowVisibility}
-                        setFriendModalWindowVisibility={setFriendModalWindowVisibility}
                     />
 
                     <div className={styles.friend_list}>

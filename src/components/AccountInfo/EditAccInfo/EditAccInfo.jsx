@@ -9,12 +9,12 @@ import FriendActionButton from "../../UI/Button/FriendActionButton/FriendActionB
 import SaveRoundedIcon from "@mui/icons-material/SaveRounded";
 import {
     Interest
-} from "../../Sidebar/MainPageSideBarContent/CustomSettings/SearchSettings/InterestList/Interest/Interest";
-import PlusBtn from "../../Sidebar/MainPageSideBarContent/CustomSettings/SearchSettings/InterestList/PlusBtn/PlusBtn";
+} from "../../Sidebar/MainPageSideBarContent/CustomSettings/SearchSettings/Interests/InterestList/Interest/Interest";
+import PlusBtn from "../../Sidebar/MainPageSideBarContent/CustomSettings/SearchSettings/Interests/InterestList/PlusBtn/PlusBtn";
 import AddInterestModal
-    from "../../Sidebar/MainPageSideBarContent/CustomSettings/SearchSettings/InterestList/AddUserInterest/AddInterestModal/AddInterestModal";
+    from "../../Sidebar/MainPageSideBarContent/CustomSettings/SearchSettings/Interests/InterestList/AddUserInterest/AddInterestModal/AddInterestModal";
 import AddUserInterestForm
-    from "../../Sidebar/MainPageSideBarContent/CustomSettings/SearchSettings/InterestList/AddUserInterest/AddUserInterestForm/AddUserInterestForm";
+    from "../../Sidebar/MainPageSideBarContent/CustomSettings/SearchSettings/Interests/InterestList/AddUserInterest/AddUserInterestForm/AddUserInterestForm";
 import {InterestContext} from "../../../context/InterestContext/InterestContext";
 import {AuthContext} from "../../../context/AuthContext/AuthContext";
 import {UserContext} from "../../../context/UserContext/UserContext";
