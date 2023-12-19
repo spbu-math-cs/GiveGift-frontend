@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {Alert} from "@mui/material";
 import styles from "../AccountInfo.module.css";
 import profile_pic from "../../../assets/user.svg";
@@ -7,13 +7,16 @@ import {
     Interest
 } from "../../Sidebar/MainPageSideBarContent/CustomSettings/SearchSettings/InterestList/Interest/Interest";
 import ViewAccActionBtn from "../../UI/Button/ViewAccActionBtn/ViewAccActionBtn";
+import {UserContext} from "../../../context";
 
 const ViewAccInfo = (props) => {
+    const {isSetUserInfoLoading, userInfoError, setUserInfoError} = useContext(UserContext);
+
     return (
         <div className={`${styles.acc_info_content} fast_fadein`}>
-            {!props.isSetUserInfoLoading && props.userInfoError &&
-                <Alert onClose={() => props.setUserInfoError("")} severity="error">
-                    {props.userInfoError.data}
+            {!isSetUserInfoLoading && userInfoError &&
+                <Alert onClose={() => setUserInfoError("")} severity="error">
+                    {userInfoError.data}
                 </Alert>
             }
             <div className={styles.acc_main_info}>
@@ -25,18 +28,7 @@ const ViewAccInfo = (props) => {
                     }
 
                     <ViewAccActionBtn accInfo={props.accInfo}
-                                      acceptFriendRequest={props.acceptFriendRequest}
-                                      token={props.token}
-                                      rejectFriendRequest={props.rejectFriendRequest}
-                                      myID={props.myID}
                                       setIsEdit={props.setIsEdit}
-                                      myFriends={props.myFriends}
-                                      myOutgoingRequests={props.myOutgoingRequests}
-                                      revokeFriendRequest={props.revokeFriendRequest}
-                                      myIncomingRequests={props.myIncomingRequests}
-                                      sendFriendRequest={props.sendFriendRequest}
-                                      generateIdeas={props.generateIdeas}
-                                      removeFriend={props.removeFriend}
                     />
 
                 </div>

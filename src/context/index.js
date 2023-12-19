@@ -3,12 +3,17 @@ import {useFetching} from "../hooks/useFetching";
 import FriendService from "../API/FriendService";
 import IdeaService from "../API/IdeaService";
 import InterestService from "../API/InterestService";
+import UserService from "../API/UserService";
+import {isTokenError} from "../utils/checkers";
+import useToken from "../hooks/useToken";
 
 export const FriendContext = createContext(null);
 
 export const IdeasContext = createContext(null);
 
 export const InterestContext = createContext(null);
+
+export const UserContext = createContext(null);
 
 export const FriendContextProvider = ({children}) => {
     const [friends, setFriends] = useState([]);
@@ -103,4 +108,57 @@ export const InterestContextProvider = ({children}) => {
     }>
         {children}
     </InterestContext.Provider>);
+}
+
+export const UserContextProvider = ({children}) => {
+    const {token, removeToken, setToken} = useToken();
+
+    const [userInfo, setUserInfo] = useState({})
+
+    const myID = userInfo.id;
+
+    const [fetchUserInfo, ,] = useFetching(async (token) => {
+        try {
+            const response = await UserService.getUserInfo(token, 0);
+            const {access_token, ...userData} = response.data;
+            access_token && setToken(access_token);
+            setUserInfo(userData);
+        } catch (err) {
+            isTokenError(err.response) && removeToken()
+        }
+    })
+
+    const [changeUserInfo, isChangeUserInfoLoading, changeUserInfoError, setChangeUserInfoError] = useFetching(async (token, accInfo) => {
+        await UserService.changeUserInfo(token, accInfo);
+        setUserInfo(accInfo);
+    })
+
+    const [signUpUser, , signUpError] = useFetching(async (nickname, email, password) => {
+        const response = await UserService.signUp(nickname, email, password);
+        setToken(response.data['access_token']);
+    })
+
+    const [loginUser, , loginError] = useFetching(async (email, password) => {
+        const response = await UserService.login(email, password);
+        setToken(response.data['access_token']);
+    })
+
+    const [logout, ,] = useFetching(async (token) => {
+        await UserService.logout(token)
+    })
+
+    return (<UserContext.Provider value={
+        {
+            token, removeToken, setToken,
+            userInfo, setUserInfo, myID,
+            fetchUserInfo,
+            changeUserInfo, isChangeUserInfoLoading, changeUserInfoError,
+            setChangeUserInfoError,
+            signUpUser, signUpError,
+            loginUser, loginError,
+            logout
+        }
+    }>
+        {children}
+    </UserContext.Provider>)
 }

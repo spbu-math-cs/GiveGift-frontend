@@ -1,8 +1,11 @@
 import styles from "./MiniFriend.module.css";
 import default_user_logo from "../../../../../assets/user.svg";
-import React from "react";
+import React, {useContext} from "react";
+import {UserContext} from "../../../../../context";
 
-const MiniFriend = ({friend_id, nickname, token, generateIdeas, setIsNewUser, setVisible}) => {
+const MiniFriend = ({friend_id, nickname, generateIdeas, setIsNewUser, setVisible}) => {
+    const {token} = useContext(UserContext);
+
     return (
         <div className={styles.mini_friend}>
             <div className={styles.mini_friend_info}>

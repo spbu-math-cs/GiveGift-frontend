@@ -3,9 +3,9 @@ import styles from './SelectFriendForm.module.css'
 import React, {useContext, useState} from "react";
 import {useFriendSearch} from "../../../../hooks/useFriendSearch";
 import MiniFriend from "./MiniFriend/MiniFriend";
-import {FriendContext, IdeasContext} from "../../../../context";
+import {FriendContext, IdeasContext, UserContext} from "../../../../context";
 
-const SelectFriendForm = ({token, setIsNewUser, setVisible}) => {
+const SelectFriendForm = ({setIsNewUser, setVisible}) => {
 
     const [searchQuery, setSearchQuery] = useState('');
 
@@ -23,7 +23,6 @@ const SelectFriendForm = ({token, setIsNewUser, setVisible}) => {
                     <MiniFriend key={friend.id}
                                 friend_id={friend.id}
                                 nickname={friend.nickname}
-                                token={token}
                                 generateIdeas={generateIdeas}
                                 setIsNewUser={setIsNewUser}
                                 setVisible={setVisible}/>

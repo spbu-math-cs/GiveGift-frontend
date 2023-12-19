@@ -3,7 +3,7 @@ import {redTheme} from "../muiThemes/themes";
 import {Fade, Menu, ThemeProvider} from "@mui/material";
 import DropDownAccList from "./DropDownAccList/DropDownAccList";
 
-const DropDownAccMenu = ({open, handleClose, anchorEl, token, removeToken, logout}) => {
+const DropDownAccMenu = ({open, handleClose, anchorEl}) => {
     return (
         <ThemeProvider theme={redTheme}>
             <Menu
@@ -26,7 +26,7 @@ const DropDownAccMenu = ({open, handleClose, anchorEl, token, removeToken, logou
                 transformOrigin={{horizontal: 'right', vertical: 'top'}}
                 anchorOrigin={{horizontal: 'right', vertical: 'bottom'}}
             >
-                <DropDownAccList handleClose={handleClose} logout={logout} token={token} removeToken={removeToken}/>
+                <DropDownAccList handleClose={handleClose}/>
             </Menu>
         </ThemeProvider>
     );

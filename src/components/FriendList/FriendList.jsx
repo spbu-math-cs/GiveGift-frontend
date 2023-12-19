@@ -6,7 +6,7 @@ import FriendSearch from "../FriendSearch/FriendSearch";
 import {FriendContext} from "../../context";
 
 
-const FriendList = ({token, FriendModalWindowVisibility, setFriendModalWindowVisibility}) => {
+const FriendList = ({FriendModalWindowVisibility, setFriendModalWindowVisibility}) => {
 
     const [searchQuery, setSearchQuery] = useState('');
 
@@ -24,12 +24,11 @@ const FriendList = ({token, FriendModalWindowVisibility, setFriendModalWindowVis
                         setSearchQuery={setSearchQuery}
                         FriendModalWindowVisibility={FriendModalWindowVisibility}
                         setFriendModalWindowVisibility={setFriendModalWindowVisibility}
-                        token={token}
                     />
 
                     <div className={styles.friend_list}>
                         {searchResults.map(friend =>
-                            <Friend key={friend.id} nickname={friend.nickname} friend_id={friend.id} token={token}/>
+                            <Friend key={friend.id} nickname={friend.nickname} friend_id={friend.id}/>
                         )}
                     </div>
                 </div>

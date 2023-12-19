@@ -14,6 +14,7 @@ const CustomSettings = (props) => {
                 optionInterests={props.optionInterests}
                 remove={props.remove}
                 add={props.add}
+
                 InterestModalWindowVisibility={props.InterestModalWindowVisibility}
                 setInterestModalWindowVisibility={props.setInterestModalWindowVisibility}
 

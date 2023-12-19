@@ -1,13 +1,16 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import styles from "../FriendList/FriendList.module.css";
 import SearchBar from "../UI/SearchBar/SearchBar";
 import ActiveButton from "../UI/Button/ActiveButton/ActiveButton";
 import PersonAddRoundedIcon from "@mui/icons-material/PersonAddRounded";
 import AddFriendModal from "../FriendList/AddUserFriend/AddFriendModal/AddFriendModal";
 import AddUserFriendForm from "../FriendList/AddUserFriend/AddUserFriendForm/AddUserFriendForm";
+import {UserContext} from "../../context";
 
 const FriendSearch = (props) => {
     const [showAlert, setShowAlert] = useState(false);
+
+    const {token} = useContext(UserContext);
 
     return (
         <>
@@ -25,7 +28,7 @@ const FriendSearch = (props) => {
             </div>
             <AddFriendModal visible={props.FriendModalWindowVisibility}
                             setVisible={props.setFriendModalWindowVisibility}>
-                <AddUserFriendForm token={props.token}
+                <AddUserFriendForm token={token}
                                    showAlert={showAlert}
                                    setShowAlert={setShowAlert}
                 />

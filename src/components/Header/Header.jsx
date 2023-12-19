@@ -1,15 +1,17 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import styles from './Header.module.css';
 import {NavLink, useNavigate} from "react-router-dom";
 import default_user_logo from '../../assets/user.svg'
 import DropDownAccMenu from "../UI/DropDownAccMenu/DropDownAccMenu";
 import {Avatar, IconButton} from "@mui/material";
 import UserInfo from "./UserInfo/UserInfo";
+import {UserContext} from "../../context";
 
-const Header = ({token, logout, removeToken, userInfo}) => {
+const Header = () => {
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const {token, userInfo} = useContext(UserContext);
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
@@ -25,7 +27,9 @@ const Header = ({token, logout, removeToken, userInfo}) => {
             <div className={styles.account_settings}>
                 <div className={styles.acc_main_info}>
                     <IconButton id="account-menu-button"
-                                onClick={(e) => {token ? handleClick(e) : navigate('/login')}}
+                                onClick={(e) => {
+                                    token ? handleClick(e) : navigate('/login')
+                                }}
                                 size="small"
                                 aria-controls={open ? 'account-menu' : undefined}
                                 aria-haspopup="true"
@@ -36,11 +40,7 @@ const Header = ({token, logout, removeToken, userInfo}) => {
                                 sx={{width: 50, height: 50}}/>
                     </IconButton>
 
-                    {token
-                        ? <DropDownAccMenu open={open} handleClose={handleClose} anchorEl={anchorEl} logout={logout}
-                                           token={token} removeToken={removeToken}/>
-                        : <></>
-                    }
+                    {token && <DropDownAccMenu open={open} handleClose={handleClose} anchorEl={anchorEl}/>}
 
                     <UserInfo userInfo={userInfo}/>
                 </div>

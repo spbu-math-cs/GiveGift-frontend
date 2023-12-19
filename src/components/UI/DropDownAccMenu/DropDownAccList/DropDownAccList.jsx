@@ -1,12 +1,15 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {NavLink} from "react-router-dom";
 import styles from "../DropDownAccMenu.module.css";
 import {Divider, MenuItem} from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
 import PeopleAltRoundedIcon from "@mui/icons-material/PeopleAltRounded";
 import LogoutIcon from "@mui/icons-material/Logout";
+import {UserContext} from "../../../../context";
 
-const DropDownAccList = ({handleClose, logout, token, removeToken}) => {
+const DropDownAccList = ({handleClose}) => {
+    const {token, removeToken, logout} = useContext(UserContext);
+
     return (
         <>
             <NavLink end to='/account/0' className={styles.acc_menu_item_link}>

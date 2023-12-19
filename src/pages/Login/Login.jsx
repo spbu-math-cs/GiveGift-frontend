@@ -3,10 +3,10 @@ import styles from './Login.module.css'
 import LoginForm from "../../components/LoginForm/LoginForm";
 import '../../App.css'
 
-function Login({setToken}) {
+function Login() {
     return (
         <div className={`${styles.login} app-wrapper-content slider`}>
-            <LoginForm setToken={setToken}/>
+            <LoginForm/>
         </div>
     );
 }

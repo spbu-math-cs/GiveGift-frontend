@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import styles from "../AccountInfo.module.css";
 import profile_pic from "../../../assets/user.svg";
 import {TextField} from "@mui/material";
@@ -15,13 +15,18 @@ import AddInterestModal
     from "../../Sidebar/MainPageSideBarContent/CustomSettings/SearchSettings/InterestList/AddUserInterest/AddInterestModal/AddInterestModal";
 import AddUserInterestForm
     from "../../Sidebar/MainPageSideBarContent/CustomSettings/SearchSettings/InterestList/AddUserInterest/AddUserInterestForm/AddUserInterestForm";
+import {InterestContext, UserContext} from "../../../context";
 
 const EditAccInfo = (props) => {
+
+    const {allInterests} = useContext(InterestContext);
+    const {token} = useContext(UserContext);
+
     const addUserInterest = (newInterests) => {
         props.setAccInfo(prevAccInfo => {
                 let accInfoCopy = Object.assign({}, prevAccInfo);
                 //accInfoCopy.interests = [...accInfoCopy.interests, ...newInterests];
-                accInfoCopy.interests = [...accInfoCopy.interests, ...newInterests.filter(i => props.allInterests.includes(i))];
+                accInfoCopy.interests = [...accInfoCopy.interests, ...newInterests.filter(i => allInterests.includes(i))];
 
                 return accInfoCopy;
             }
@@ -77,7 +82,7 @@ const EditAccInfo = (props) => {
                     <FriendActionButton
                         onClick={(e) => {
                             e.preventDefault();
-                            props.saveAccChanges(props.token, props.accInfo);
+                            props.saveAccChanges(token, props.accInfo);
                         }}>
                         <SaveRoundedIcon color="white"/>
                         <span>Сохранить изменения</span>
@@ -119,7 +124,7 @@ const EditAccInfo = (props) => {
                     <AddInterestModal visible={props.InterestModalWindowVisibility}
                                       setVisible={props.setInterestModalWindowVisibility}>
                         <AddUserInterestForm
-                            optionInterests={props.allInterests.filter(item => !props.accInfo.interests.includes(item))}
+                            optionInterests={allInterests.filter(item => !props.accInfo.interests.includes(item))}
                             add={addUserInterest}/>
                     </AddInterestModal>
                 </div>

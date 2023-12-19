@@ -4,16 +4,16 @@ import Ideas from "../../components/Ideas/Ideas";
 import React, {useContext, useEffect, useState} from "react";
 import {checkPrice} from "../../utils/checkers";
 import GettingStarted from "../../components/UI/GettingStarted/GettingStarted";
-import {FriendContext, InterestContext} from "../../context";
+import {FriendContext, InterestContext, UserContext} from "../../context";
 
 const Main = ({
-                  token,
                   InterestModalWindowVisibility,
                   setInterestModalWindowVisibility
               }) => {
 
     const {fetchFriendLists} = useContext(FriendContext);
     const {fetchInterests, allInterests} = useContext(InterestContext);
+    const {token} = useContext(UserContext);
 
     useEffect(() => {
         fetchInterests();
@@ -22,6 +22,7 @@ const Main = ({
     }, []); // eslint-disable-line
 
 
+    // TODO: возможно можно в хук обернуть поведение с локалсторейдж (useLocalStorage)
     const [userInterests, setUserInterests] = useState([])
 
     useEffect(() => {
@@ -79,8 +80,10 @@ const Main = ({
             <MainPageSideBarContent
                 userInterests={userInterests}
                 optionInterests={optionInterests}
+
                 remove={removeUserInterest}
                 add={addUserInterest}
+
                 InterestModalWindowVisibility={InterestModalWindowVisibility}
                 setInterestModalWindowVisibility={setInterestModalWindowVisibility}
 
@@ -92,8 +95,6 @@ const Main = ({
                 ideaGenProperties={ideaGenProperties}
 
                 setIsNewUser={setIsNewUser}
-
-                token={token}
 
                 SelectFriendModalWindowVisibility={SelectFriendModalWindowVisibility}
                 setSelectFriendModalWindowVisibility={setSelectFriendModalWindowVisibility}

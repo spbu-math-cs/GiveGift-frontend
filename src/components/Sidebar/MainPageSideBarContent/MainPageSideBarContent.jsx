@@ -13,15 +13,13 @@ const MainPageSideBarContent = (props) => {
             <SelectFriendModal visible={props.SelectFriendModalWindowVisibility}
                                setVisible={props.setSelectFriendModalWindowVisibility}>
                 <SelectFriendForm
-                    token={props.token}
                     setIsNewUser={props.setIsNewUser}
                     setVisible={props.setSelectFriendModalWindowVisibility}
                 />
             </SelectFriendModal>
 
             <SelectFriendTextBtn isIdeasLoading={props.isIdeasLoading}
-                                 setVisible={props.setSelectFriendModalWindowVisibility}
-                                 isLoggedIn={Boolean(props.token)}/>
+                                 setVisible={props.setSelectFriendModalWindowVisibility}/>
 
             <Separator>или</Separator>
 
@@ -30,6 +28,7 @@ const MainPageSideBarContent = (props) => {
                 optionInterests={props.optionInterests}
                 remove={props.remove}
                 add={props.add}
+
                 InterestModalWindowVisibility={props.InterestModalWindowVisibility}
                 setInterestModalWindowVisibility={props.setInterestModalWindowVisibility}
 

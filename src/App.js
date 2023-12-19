@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
 import './App.css';
 import Header from "./components/Header/Header";
@@ -6,37 +6,12 @@ import SignUp from "./pages/SignUp/SignUp";
 import Login from "./pages/Login/Login";
 import Main from "./pages/Main/Main";
 import Account from "./pages/Account/Account";
-import useToken from "./hooks/useToken";
-import {useFetching} from "./hooks/useFetching";
-import UserService from "./API/UserService";
 import Friends from "./pages/Friends/Friends";
-import {isTokenError} from "./utils/checkers";
-import {FriendContextProvider, IdeasContextProvider, InterestContextProvider} from "./context";
+import {FriendContextProvider, IdeasContextProvider, InterestContextProvider, UserContext} from "./context";
 
 function App() {
-    const {token, removeToken, setToken} = useToken();
 
-    const [userInfo, setUserInfo] = useState({})
-
-    const [fetchUserInfo, ,] = useFetching(async (token) => {
-        try {
-            const response = await UserService.getUserInfo(token, 0);
-            const {access_token, ...userData} = response.data;
-            access_token && setToken(access_token);
-            setUserInfo(userData);
-        } catch (err) {
-            isTokenError(err.response) && removeToken()
-        }
-    })
-
-    const [setUserAccInfo, isSetUserInfoLoading, userInfoError, setUserInfoError] = useFetching(async (token, accInfo) => {
-        await UserService.setUserInfo(token, accInfo);
-        setUserInfo(accInfo);
-    })
-
-    const [logout, ,] = useFetching(async (token) => {
-        await UserService.logout(token)
-    })
+    const {token, fetchUserInfo, setUserInfo} = useContext(UserContext);
 
     useEffect(() => {
         token ? fetchUserInfo(token) : setUserInfo({});
@@ -49,26 +24,21 @@ function App() {
         <BrowserRouter>
             <FriendContextProvider>
                 <div className="app-wrapper">
-                    <Header logout={logout}
-                            userInfo={userInfo}
-                            removeToken={removeToken} token={token}
-                    />
-
+                    <Header/>
                     <Routes>
                         <Route path='/' element={
                             <FriendContextProvider>
                                 <InterestContextProvider>
                                     <IdeasContextProvider>
-                                        <Main token={token}
-                                              InterestModalWindowVisibility={InterestModalWindowVisibility}
+                                        <Main InterestModalWindowVisibility={InterestModalWindowVisibility}
                                               setInterestModalWindowVisibility={setInterestModalWindowVisibility}
                                         />
                                     </IdeasContextProvider>
                                 </InterestContextProvider>
                             </FriendContextProvider>
                         }/>
-                        <Route path='login' element={<Login setToken={setToken}/>}/>
-                        <Route path='signup' element={<SignUp setToken={setToken}/>}/>
+                        <Route path='login' element={<Login/>}/>
+                        <Route path='signup' element={<SignUp/>}/>
 
                         {token ?
                             <>
@@ -76,7 +46,7 @@ function App() {
                                 <Route path='friends' element={
                                     <FriendContextProvider>
                                         <IdeasContextProvider>
-                                            <Friends token={token} fetchUserInfo={fetchUserInfo}/>
+                                            <Friends/>
                                         </IdeasContextProvider>
                                     </FriendContextProvider>}
                                 />
@@ -84,18 +54,8 @@ function App() {
                                     <FriendContextProvider>
                                         <InterestContextProvider>
                                             <IdeasContextProvider>
-                                                <Account userInfo={userInfo}
-                                                         token={token}
-                                                         fetchUserInfo={fetchUserInfo}
-                                                         InterestModalWindowVisibility={InterestModalWindowVisibility}
+                                                <Account InterestModalWindowVisibility={InterestModalWindowVisibility}
                                                          setInterestModalWindowVisibility={setInterestModalWindowVisibility}
-
-                                                         setUserInfo={setUserInfo}
-
-                                                         setUserAccInfo={setUserAccInfo}
-                                                         userInfoError={userInfoError}
-                                                         isSetUserInfoLoading={isSetUserInfoLoading}
-                                                         setUserInfoError={setUserInfoError}
                                                 />
                                             </IdeasContextProvider>
                                         </InterestContextProvider>

@@ -4,12 +4,13 @@ import default_user_logo from "../../../assets/user.svg";
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import {IconButton} from "@mui/material";
 import {useNavigate} from "react-router-dom";
-import {FriendContext, IdeasContext} from "../../../context";
+import {FriendContext, IdeasContext, UserContext} from "../../../context";
 
-const Friend = ({friend_id, token, nickname}) => {
+const Friend = ({friend_id, nickname}) => {
 
     const {removeFriend} = useContext(FriendContext);
     const {generateIdeas} = useContext(IdeasContext);
+    const {token} = useContext(UserContext);
 
     const navigate = useNavigate()
 

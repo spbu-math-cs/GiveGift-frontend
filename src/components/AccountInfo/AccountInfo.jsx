@@ -1,12 +1,15 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import styles from "./AccountInfo.module.css";
 import Error from "../UI/Error/Error";
 import {ThemeProvider} from "@mui/material";
 import {redTheme} from "../UI/muiThemes/themes";
 import EditAccInfo from "./EditAccInfo/EditAccInfo";
 import ViewAccInfo from "./ViewAccInfo/ViewAccInfo";
+import {UserContext} from "../../context";
 
 const AccountInfo = (props) => {
+
+    const {isChangeUserInfoLoading} = useContext(UserContext)
 
     return (
         <ThemeProvider theme={redTheme}>
@@ -14,27 +17,22 @@ const AccountInfo = (props) => {
                 <div className={`${styles.acc_info_wrapper_bubble} slider`}>
                     {props.accInfoError
                         ? <Error/>
-                        : !props.isAccInfoLoading && !props.isSetUserInfoLoading &&
+                        : !props.isAccInfoLoading && !isChangeUserInfoLoading &&
                         <>
                             {props.isEdit
                                 ? <EditAccInfo
                                                accInfo={props.accInfo}
                                                setAccInfo={props.setAccInfo}
                                                saveAccChanges={props.saveAccChanges}
-                                               token={props.token}
                                                isEdit={props.isEdit}
+
                                                setInterestModalWindowVisibility={props.setInterestModalWindowVisibility}
                                                InterestModalWindowVisibility={props.InterestModalWindowVisibility}
-                                               allInterests={props.allInterests}
+
                                 />
-                                : <ViewAccInfo isSetUserInfoLoading={props.isSetUserInfoLoading}
-                                               userInfoError={props.userInfoError}
-                                               setUserInfoError={props.setUserInfoError}
+                                : <ViewAccInfo
                                                accInfo={props.accInfo}
-                                               myID={props.myID}
                                                setIsEdit={props.setIsEdit}
-                                               token={props.token}
-                                               generateIdeas={props.generateIdeas}
                                 />}
                         </>
                     }

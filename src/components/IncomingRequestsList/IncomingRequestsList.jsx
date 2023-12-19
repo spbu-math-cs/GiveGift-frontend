@@ -3,11 +3,13 @@ import UserRequest from "../UserRequest/UserRequest";
 import {IconButton} from "@mui/material";
 import MoreHorizRoundedIcon from '@mui/icons-material/MoreHorizRounded';
 import MoreUserRequestMenu from "./MoreUserRequestMenu/MoreUserRequestMenu";
-import {FriendContext} from "../../context";
+import {FriendContext, UserContext} from "../../context";
 
-const IncomingRequestsList = ({token}) => {
+const IncomingRequestsList = () => {
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
+
+    const {token} = useContext(UserContext);
 
     const {incomingRequests, rejectFriendRequest, acceptFriendRequest} = useContext(FriendContext);
 

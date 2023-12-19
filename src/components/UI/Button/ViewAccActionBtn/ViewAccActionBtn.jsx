@@ -9,7 +9,7 @@ import styles from './ViewAccActionBtn.module.css'
 import CardGiftcardRoundedIcon from "@mui/icons-material/CardGiftcardRounded";
 import PersonRemoveRoundedIcon from "@mui/icons-material/PersonRemoveRounded";
 import {useNavigate} from "react-router-dom";
-import {FriendContext} from "../../../../context";
+import {FriendContext, IdeasContext, UserContext} from "../../../../context";
 
 const ViewAccActionBtn = (props) => {
     const [anchorEl, setAnchorEl] = useState(null);
@@ -26,6 +26,10 @@ const ViewAccActionBtn = (props) => {
         friends
     } = useContext(FriendContext);
 
+    const {generateIdeas} = useContext(IdeasContext);
+
+    const {myID, token} = useContext(UserContext);
+
     const navigate = useNavigate()
 
     const handleClick = (event) => {
@@ -33,11 +37,11 @@ const ViewAccActionBtn = (props) => {
     };
     const handleClose = (isAccepted, user_id) => {
         setAnchorEl(null);
-        (isAccepted) ? acceptFriendRequest(props.token, user_id) : rejectFriendRequest(props.token, user_id);
+        (isAccepted) ? acceptFriendRequest(token, user_id) : rejectFriendRequest(token, user_id);
     };
 
     return (<>
-        {props.accInfo.id === props.myID
+        {props.accInfo.id === myID
             ?
             <FriendActionButton
                 onClick={() => {
@@ -49,7 +53,7 @@ const ViewAccActionBtn = (props) => {
             : friends.findIndex((myFriend, _) => myFriend.id === props.accInfo.id) === -1
                 ? outgoingRequests.findIndex((myFriend, _) => myFriend.id === props.accInfo.id) !== -1
                     ? <FriendActionButton
-                        onClick={() => revokeFriendRequest(props.token, props.accInfo.id)}>
+                        onClick={() => revokeFriendRequest(token, props.accInfo.id)}>
                         <CancelRoundedIcon color="white"/>
                         <span>Отозвать заявку</span>
                     </FriendActionButton>
@@ -66,20 +70,20 @@ const ViewAccActionBtn = (props) => {
                                                  anchorEl={anchorEl}/>
                         </>
                         : <FriendActionButton
-                            onClick={() => sendFriendRequest(props.token, props.accInfo.id)}>
+                            onClick={() => sendFriendRequest(token, props.accInfo.id)}>
                             <PersonAddRoundedIcon color="white"/>
                             <span>Добавить в друзья</span>
                         </FriendActionButton>
                 : <div className={styles.friend_main_activities}>
-                    <FriendActionButton onClick={() => props.generateIdeas({
+                    <FriendActionButton onClick={() => generateIdeas({
                         friend_id: props.accInfo.id,
-                        token: props.token
+                        token: token
                     }) && navigate('/')}>
                         <CardGiftcardRoundedIcon color="white"/>
                         <span>Подобрать подарок</span>
                     </FriendActionButton>
                     <FriendActionButton
-                        onClick={() => removeFriend(props.token, props.accInfo.id)}>
+                        onClick={() => removeFriend(token, props.accInfo.id)}>
                         <PersonRemoveRoundedIcon color="white"/>
                     </FriendActionButton>
                 </div>

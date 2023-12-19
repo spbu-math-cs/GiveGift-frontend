@@ -6,7 +6,7 @@ import {useParams} from "react-router-dom";
 import {useFetching} from "../../hooks/useFetching";
 import UserService from "../../API/UserService";
 import {isObjectEmpty} from "../../utils/checkers";
-import {FriendContext, InterestContext} from "../../context";
+import {FriendContext, InterestContext, UserContext} from "../../context";
 
 
 function Account(props) {
@@ -15,22 +15,25 @@ function Account(props) {
     const [isEdit, setIsEdit] = useState(false);
     const {fetchFriendLists} = useContext(FriendContext);
     const {fetchInterests} = useContext(InterestContext);
+    const {fetchUserInfo, token, setUserAccInfo} = useContext(UserContext);
 
 
+    // todo: возможно можно воткнуть в контекст
     const [fetchAccInfo, isAccInfoLoading, accInfoError] = useFetching(async (token, id) => {
         const response = await UserService.getUserInfo(token, id);
         setAccInfo(response.data)
     })
 
     const saveAccChanges = () => {
-        props.setUserAccInfo(props.token, accInfo);
+        setUserAccInfo(token, accInfo);
         setIsEdit(false);
     }
+    //-------
 
     useEffect(() => {
-        props.fetchUserInfo(props.token);
-        fetchAccInfo(props.token, id);
-        fetchFriendLists(props.token);
+        fetchUserInfo(token);
+        fetchAccInfo(token, id);
+        fetchFriendLists(token);
         isEdit && fetchInterests();
     }, [id]);  // eslint-disable-line
 
@@ -41,20 +44,16 @@ function Account(props) {
             <Sidebar header={'Друзья'}>
                 <AccountPageSideBarContent
                     accFriends={accInfo.friends}
-                    token={props.token}
-                    myID={props.userInfo.id}
                     isAccInfoLoading={!accInfoError && (isAccInfoLoading || isObjectEmpty(accInfo))}
                 />
             </Sidebar>
 
             <AccountInfo isAccInfoLoading={!accInfoError && (isAccInfoLoading || isObjectEmpty(accInfo))}
-                         token={props.token}
 
                          accInfo={accInfo}
                          setAccInfo={setAccInfo}
                          accInfoError={accInfoError}
 
-                         myID={props.userInfo.id}
                          isEdit={isEdit}
                          setIsEdit={setIsEdit}
 
@@ -62,15 +61,16 @@ function Account(props) {
                          setInterestModalWindowVisibility={props.setInterestModalWindowVisibility}
 
                          saveAccChanges={saveAccChanges}
-                         setUserInfo={props.setUserInfo}
-                         userInfo={props.userInfo}
-                         isSetUserInfoLoading={props.isSetUserInfoLoading}
-                         userInfoError={props.userInfoError}
-                         setUserInfoError={props.setUserInfoError}
-                         setUserAccInfo={props.setUserAccInfo}
             />
         </div>
     );
 }
+/*
+*          setUserInfo={props.setUserInfo}
+                         userInfo={props.userInfo}
+                         isSetUserInfoLoading={props.isSetUserInfoLoading}
+                         userInfoError={props.userInfoError}
+                         setUserInfoError={props.setUserInfoError}
+                         setUserAccInfo={props.setUserAccInfo}*/
 
 export default Account;

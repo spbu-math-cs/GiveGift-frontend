@@ -4,13 +4,14 @@ import styles from './AccountPageSideBarContent.module.css'
 import SearchBar from "../../UI/SearchBar/SearchBar";
 import {useFriendSearch} from "../../../hooks/useFriendSearch";
 import {NavLink, useNavigate} from "react-router-dom";
-import {FriendContext, IdeasContext} from "../../../context";
+import {FriendContext, IdeasContext, UserContext} from "../../../context";
 
-const AccountPageSideBarContent = ({accFriends, myID, isAccInfoLoading, token}) => {
+const AccountPageSideBarContent = ({accFriends, isAccInfoLoading, token}) => {
 
     const navigate = useNavigate();
     const {sendFriendRequest, friends} = useContext(FriendContext);
     const {generateIdeas} = useContext(IdeasContext);
+    const {myID} = useContext(UserContext);
 
     const [searchQuery, setSearchQuery] = useState('');
     const searchResults = useFriendSearch(accFriends, searchQuery);
