@@ -61,7 +61,6 @@ const EditAccInfo = ({setIsEdit}) => {
         fetchInfo().catch(console.error);
     }, []); // eslint-disable-line
 
-    console.log(accInfo);
     return (
         <form className={`${styles.acc_info_content} fast_fadein`}>
             {!isChangeUserInfoLoading && changeUserInfoError &&
