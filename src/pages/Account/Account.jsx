@@ -11,7 +11,7 @@ import {InterestContext} from "../../context/InterestContext/InterestContext";
 import {UserContext} from "../../context/UserContext/UserContext";
 import {AuthContext} from "../../context/AuthContext/AuthContext";
 
-function Account(props) {
+function Account() {
     const {id} = useParams();
     const [accInfo, setAccInfo] = useState({});
     const [isEdit, setIsEdit] = useState(false);
@@ -20,6 +20,9 @@ function Account(props) {
     const {fetchInterests} = useContext(InterestContext);
     const {fetchUserInfo, changeUserInfo} = useContext(UserContext);
     const {token} = useContext(AuthContext);
+
+    const [InterestModalWindowVisibility, setInterestModalWindowVisibility] = useState(false);
+
 
     // todo: возможно можно воткнуть в контекст
     const [fetchAccInfo, isAccInfoLoading, accInfoError] = useFetching(async (token, id) => {
@@ -62,8 +65,8 @@ function Account(props) {
                          isEdit={isEdit}
                          setIsEdit={setIsEdit}
 
-                         InterestModalWindowVisibility={props.InterestModalWindowVisibility}
-                         setInterestModalWindowVisibility={props.setInterestModalWindowVisibility}
+                         InterestModalWindowVisibility={InterestModalWindowVisibility}
+                         setInterestModalWindowVisibility={setInterestModalWindowVisibility}
 
                          saveAccChanges={saveAccChanges}
             />

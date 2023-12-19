@@ -9,14 +9,14 @@ import {InterestContext} from "../../context/InterestContext/InterestContext";
 import {AuthContext} from "../../context/AuthContext/AuthContext";
 import {useLocalStorage} from "../../hooks/useLocalStorage";
 
-const Main = ({
-                  InterestModalWindowVisibility,
-                  setInterestModalWindowVisibility
-              }) => {
+const Main = () => {
 
     const {fetchFriendLists} = useContext(FriendContext);
     const {fetchInterests, allInterests} = useContext(InterestContext);
     const {token} = useContext(AuthContext);
+
+
+    const [InterestModalWindowVisibility, setInterestModalWindowVisibility] = useState(false);
 
     const [userInterests, setUserInterests,] = useLocalStorage('userInterests', []);
     const [isNewUser, setIsNewUser,] = useLocalStorage('isNewUser', true);
