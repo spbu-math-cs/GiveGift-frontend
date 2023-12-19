@@ -16,7 +16,7 @@ const ViewAccInfo = ({setIsEdit}) => {
             <div className={styles.acc_main_info}>
                 <img className={styles.acc_profile_pic} src={profile_pic} alt={'user'}/>
                 <div className={styles.main_info_desc}>
-                    <span style={{fontSize: 25}}>{accInfo.nickname}</span>
+                    <span style={{fontSize: 25}}>{accInfo.nickname}<span style={{color: "grey"}}>#{accInfo.id}</span></span>
                     {accInfo.birth_date &&
                         <span>{get_prettified_age(accInfo.birth_date)}</span>
                     }
