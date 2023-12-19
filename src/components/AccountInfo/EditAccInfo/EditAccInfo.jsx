@@ -21,13 +21,13 @@ import {AuthContext} from "../../../context/AuthContext/AuthContext";
 import {UserContext} from "../../../context/UserContext/UserContext";
 import {AccContext} from "../../../context/AccContext/AccContext";
 
-const EditAccInfo = ({saveAccChanges}) => {
+const EditAccInfo = ({setIsEdit}) => {
 
     const {allInterests, fetchInterests} = useContext(InterestContext);
     const {token} = useContext(AuthContext);
-    const {isChangeUserInfoLoading, changeUserInfoError} = useContext(UserContext);
+    const {isChangeUserInfoLoading, changeUserInfoError, changeUserInfo} = useContext(UserContext);
     const {accInfo, setAccInfo} = useContext(AccContext);
-    
+
     const [InterestModalWindowVisibility, setInterestModalWindowVisibility] = useState(false);
 
     const addUserInterest = (newInterests) => {
@@ -47,6 +47,10 @@ const EditAccInfo = ({saveAccChanges}) => {
             accInfoCopy.interests = accInfoCopy.interests.filter(i => i !== interest);
             return accInfoCopy;
         })
+    }
+
+    const saveAccChanges = async () => {
+        await changeUserInfo(token, accInfo, setIsEdit);
     }
 
     useEffect(() => {
@@ -102,7 +106,7 @@ const EditAccInfo = ({saveAccChanges}) => {
                     <FriendActionButton
                         onClick={(e) => {
                             e.preventDefault();
-                            saveAccChanges(token, accInfo);
+                            saveAccChanges(token, accInfo).catch(console.error);
                         }}>
                         <SaveRoundedIcon color="white"/>
                         <span>Сохранить изменения</span>

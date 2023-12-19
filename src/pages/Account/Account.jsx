@@ -14,16 +14,9 @@ function Account() {
     const [isEdit, setIsEdit] = useState(false);
 
     const {fetchFriendLists} = useContext(FriendContext);
-    const {fetchUserInfo, changeUserInfo} = useContext(UserContext);
+    const {fetchUserInfo} = useContext(UserContext);
     const {token} = useContext(AuthContext);
-
-    // todo: возможно можно воткнуть в контекст
     const {accInfo, fetchAccInfo, accInfoError, isAccInfoLoading} = useContext(AccContext)
-
-    const saveAccChanges = () => {
-        changeUserInfo(token, accInfo, setIsEdit);
-    }
-    //-------
 
     useEffect(() => {
         const fetchInfo = async () => {
@@ -45,11 +38,7 @@ function Account() {
                 />
             </Sidebar>
 
-            <AccountInfo isEdit={isEdit}
-                         setIsEdit={setIsEdit}
-
-                         saveAccChanges={saveAccChanges}
-            />
+            <AccountInfo isEdit={isEdit} setIsEdit={setIsEdit}/>
         </div>
     );
 }

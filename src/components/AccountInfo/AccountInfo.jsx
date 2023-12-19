@@ -9,9 +9,9 @@ import {UserContext} from "../../context/UserContext/UserContext";
 import {AccContext} from "../../context/AccContext/AccContext";
 import {isObjectEmpty} from "../../utils/checkers";
 
-const AccountInfo = ({isEdit, setIsEdit, saveAccChanges}) => {
+const AccountInfo = ({isEdit, setIsEdit}) => {
 
-    const {isChangeUserInfoLoading} = useContext(UserContext)
+    const {isChangeUserInfoLoading} = useContext(UserContext);
     const {accInfo, accInfoError, isAccInfoLoading} = useContext(AccContext);
 
     return (
@@ -23,8 +23,9 @@ const AccountInfo = ({isEdit, setIsEdit, saveAccChanges}) => {
                         : !isAccInfoLoading && !isObjectEmpty(accInfo) && !isChangeUserInfoLoading &&
                         <>
                             {isEdit
-                                ? <EditAccInfo saveAccChanges={saveAccChanges}/>
-                                : <ViewAccInfo setIsEdit={setIsEdit}/>}
+                                ? <EditAccInfo setIsEdit={setIsEdit}/>
+                                : <ViewAccInfo setIsEdit={setIsEdit}/>
+                            }
                         </>
                     }
                 </div>
