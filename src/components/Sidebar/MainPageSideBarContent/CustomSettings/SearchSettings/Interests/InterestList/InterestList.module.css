@@ -2,5 +2,5 @@
     display: flex;
     flex-wrap: wrap;
     gap: 5px 10px;
-    max-height: 4.5em;
+    max-height: 3em;
 }
