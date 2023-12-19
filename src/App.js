@@ -11,7 +11,6 @@ import {UserContext} from "./context/UserContext/UserContext";
 import {AuthContext} from "./context/AuthContext/AuthContext";
 
 function App() {
-
     const {fetchUserInfo, setUserInfo} = useContext(UserContext);
     const {token, setToken, removeToken} = useContext(AuthContext);
 
@@ -19,9 +18,7 @@ function App() {
         token ? fetchUserInfo(token, setToken, removeToken) : setUserInfo({});
     }, [token]); // eslint-disable-line
 
-
     const [InterestModalWindowVisibility, setInterestModalWindowVisibility] = useState(false);
-
 
     return (
         <BrowserRouter>

@@ -1,5 +1,5 @@
 import React, {createContext} from "react";
-import useToken from "../../hooks/useToken";
+import {useToken} from "../../hooks/useToken";
 import {useFetching} from "../../hooks/useFetching";
 import UserService from "../../API/UserService";
 

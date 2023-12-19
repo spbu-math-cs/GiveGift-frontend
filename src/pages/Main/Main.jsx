@@ -7,6 +7,7 @@ import GettingStarted from "../../components/UI/GettingStarted/GettingStarted";
 import {FriendContext} from "../../context/FriendContext/FriendContext";
 import {InterestContext} from "../../context/InterestContext/InterestContext";
 import {AuthContext} from "../../context/AuthContext/AuthContext";
+import {useLocalStorage} from "../../hooks/useLocalStorage";
 
 const Main = ({
                   InterestModalWindowVisibility,
@@ -17,41 +18,14 @@ const Main = ({
     const {fetchInterests, allInterests} = useContext(InterestContext);
     const {token} = useContext(AuthContext);
 
+    const [userInterests, setUserInterests,] = useLocalStorage('userInterests', []);
+    const [isNewUser, setIsNewUser,] = useLocalStorage('isNewUser', true);
+
     useEffect(() => {
         fetchInterests();
 
         token && fetchFriendLists(token);
     }, []); // eslint-disable-line
-
-
-    // TODO: возможно можно в хук обернуть поведение с локалсторейдж (useLocalStorage)
-    const [userInterests, setUserInterests] = useState([])
-
-    useEffect(() => {
-        const userInterests = JSON.parse(localStorage.getItem('userInterests'));
-        if (userInterests) {
-            setUserInterests(userInterests);
-        }
-    }, []);
-
-    useEffect(() => {
-        localStorage.setItem('userInterests', JSON.stringify(userInterests));
-    }, [userInterests]);
-
-    // Если юзер новый - покажем приветственный экран, а после первой генерации отключим его
-    const [isNewUser, setIsNewUser] = useState(true);
-
-    useEffect(() => {
-        const isNewUser = JSON.parse(localStorage.getItem('isNewUser'));
-        if (isNewUser !== null) {
-            setIsNewUser(isNewUser);
-        }
-    }, []);
-
-    useEffect(() => {
-        localStorage.setItem('isNewUser', JSON.stringify(isNewUser));
-    }, [isNewUser]);
-    // ----------------------------------------
 
     const removeUserInterest = (interest) => {
         setUserInterests(userInterests.filter(i => i !== interest))
