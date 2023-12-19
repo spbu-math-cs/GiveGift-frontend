@@ -3,17 +3,18 @@ import Sidebar from "../../components/Sidebar/Sidebar";
 import '../../App.css'
 import FriendList from "../../components/FriendList/FriendList";
 import FriendPageSideBarContent from "../../components/Sidebar/FriendPageSideBarContent/FriendPageSideBarContent";
-import {FriendContext, UserContext} from "../../context";
+import {AuthContext, FriendContext, UserContext} from "../../context";
 
 const Friends = () => {
 
     const [FriendModalWindowVisibility, setFriendModalWindowVisibility] = useState(false);
 
     const {fetchFriendLists} = useContext(FriendContext)
-    const {token, fetchUserInfo} = useContext(UserContext);
+    const {fetchUserInfo} = useContext(UserContext);
+    const {token, setToken, removeToken} = useContext(AuthContext);
 
     useEffect(() => {
-        fetchUserInfo(token);
+        fetchUserInfo(token, setToken, removeToken);
         fetchFriendLists(token);
     }, []); // eslint-disable-line
 

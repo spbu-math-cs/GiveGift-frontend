@@ -15,6 +15,8 @@ export const InterestContext = createContext(null);
 
 export const UserContext = createContext(null);
 
+export const AuthContext = createContext(null);
+
 export const FriendContextProvider = ({children}) => {
     const [friends, setFriends] = useState([]);
 
@@ -111,13 +113,12 @@ export const InterestContextProvider = ({children}) => {
 }
 
 export const UserContextProvider = ({children}) => {
-    const {token, removeToken, setToken} = useToken();
 
     const [userInfo, setUserInfo] = useState({})
 
     const myID = userInfo.id;
 
-    const [fetchUserInfo, ,] = useFetching(async (token) => {
+    const [fetchUserInfo, ,] = useFetching(async (token, setToken, removeToken) => {
         try {
             const response = await UserService.getUserInfo(token, 0);
             const {access_token, ...userData} = response.data;
@@ -128,10 +129,25 @@ export const UserContextProvider = ({children}) => {
         }
     })
 
-    const [changeUserInfo, isChangeUserInfoLoading, changeUserInfoError, setChangeUserInfoError] = useFetching(async (token, accInfo) => {
+    const [changeUserInfo, isChangeUserInfoLoading, changeUserInfoError] = useFetching(async (token, accInfo, setIsEdit) => {
         await UserService.changeUserInfo(token, accInfo);
         setUserInfo(accInfo);
+        setIsEdit(false);
     })
+
+    return (<UserContext.Provider value={
+        {
+            userInfo, setUserInfo, myID,
+            fetchUserInfo,
+            changeUserInfo, isChangeUserInfoLoading, changeUserInfoError
+        }
+    }>
+        {children}
+    </UserContext.Provider>)
+}
+
+export const AuthContextProvider = ({children}) => {
+    const {token, removeToken, setToken} = useToken();
 
     const [signUpUser, , signUpError] = useFetching(async (nickname, email, password) => {
         const response = await UserService.signUp(nickname, email, password);
@@ -147,18 +163,14 @@ export const UserContextProvider = ({children}) => {
         await UserService.logout(token)
     })
 
-    return (<UserContext.Provider value={
+    return (<AuthContext.Provider value={
         {
             token, removeToken, setToken,
-            userInfo, setUserInfo, myID,
-            fetchUserInfo,
-            changeUserInfo, isChangeUserInfoLoading, changeUserInfoError,
-            setChangeUserInfoError,
             signUpUser, signUpError,
             loginUser, loginError,
             logout
         }
     }>
         {children}
-    </UserContext.Provider>)
+    </AuthContext.Provider>);
 }

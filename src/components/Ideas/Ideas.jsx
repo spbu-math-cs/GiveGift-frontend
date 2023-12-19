@@ -6,7 +6,7 @@ import {IdeasContext} from "../../context";
 
 
 const Ideas = () => {
-    const {ideas, isIdeasLoading, ideaError} = useContext(IdeasContext)
+    const {ideas, isIdeasLoading, ideaError} = useContext(IdeasContext);
     return (
         <>
             {isIdeasLoading

@@ -2,12 +2,12 @@ import React, {useContext} from 'react';
 import {IconButton} from "@mui/material";
 import UserRequest from "../UserRequest/UserRequest";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
-import {FriendContext, UserContext} from "../../context";
+import {AuthContext, FriendContext} from "../../context";
 
 
 const OutgoingRequestsList = () => {
     const {outgoingRequests, revokeFriendRequest} = useContext(FriendContext)
-    const {token} = useContext(UserContext);
+    const {token} = useContext(AuthContext);
 
     return (
         <>

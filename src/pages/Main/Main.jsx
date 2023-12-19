@@ -4,7 +4,7 @@ import Ideas from "../../components/Ideas/Ideas";
 import React, {useContext, useEffect, useState} from "react";
 import {checkPrice} from "../../utils/checkers";
 import GettingStarted from "../../components/UI/GettingStarted/GettingStarted";
-import {FriendContext, InterestContext, UserContext} from "../../context";
+import {AuthContext, FriendContext, InterestContext} from "../../context";
 
 const Main = ({
                   InterestModalWindowVisibility,
@@ -13,7 +13,7 @@ const Main = ({
 
     const {fetchFriendLists} = useContext(FriendContext);
     const {fetchInterests, allInterests} = useContext(InterestContext);
-    const {token} = useContext(UserContext);
+    const {token} = useContext(AuthContext);
 
     useEffect(() => {
         fetchInterests();

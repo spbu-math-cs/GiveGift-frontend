@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import styles from "../AccountInfo.module.css";
 import profile_pic from "../../../assets/user.svg";
-import {TextField} from "@mui/material";
+import {Alert, TextField} from "@mui/material";
 import {DateField, LocalizationProvider} from "@mui/x-date-pickers";
 import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
@@ -15,19 +15,19 @@ import AddInterestModal
     from "../../Sidebar/MainPageSideBarContent/CustomSettings/SearchSettings/InterestList/AddUserInterest/AddInterestModal/AddInterestModal";
 import AddUserInterestForm
     from "../../Sidebar/MainPageSideBarContent/CustomSettings/SearchSettings/InterestList/AddUserInterest/AddUserInterestForm/AddUserInterestForm";
-import {InterestContext, UserContext} from "../../../context";
+import {AuthContext, InterestContext, UserContext} from "../../../context";
 
 const EditAccInfo = (props) => {
 
     const {allInterests} = useContext(InterestContext);
-    const {token} = useContext(UserContext);
+    const {token} = useContext(AuthContext);
+    const {isChangeUserInfoLoading, changeUserInfoError} = useContext(UserContext);
 
     const addUserInterest = (newInterests) => {
         props.setAccInfo(prevAccInfo => {
                 let accInfoCopy = Object.assign({}, prevAccInfo);
                 //accInfoCopy.interests = [...accInfoCopy.interests, ...newInterests];
                 accInfoCopy.interests = [...accInfoCopy.interests, ...newInterests.filter(i => allInterests.includes(i))];
-
                 return accInfoCopy;
             }
         )
@@ -44,6 +44,11 @@ const EditAccInfo = (props) => {
 
     return (
         <form className={`${styles.acc_info_content} fast_fadein`}>
+            {!isChangeUserInfoLoading && changeUserInfoError &&
+                <Alert severity="error">
+                    {changeUserInfoError.data}
+                </Alert>
+            }
             <div className={styles.acc_main_info}>
                 <img className={styles.acc_profile_pic} src={profile_pic} alt={'user'}/>
                 <div className={styles.main_info_desc} style={{gridRowGap: 10}}>

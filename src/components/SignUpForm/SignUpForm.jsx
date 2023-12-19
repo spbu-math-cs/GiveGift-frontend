@@ -6,7 +6,7 @@ import styles from './SignUpForm.module.css'
 import EmailInput from "../UI/Input/EmailInput/EmailInput";
 import PasswordInput from "../UI/Input/PasswordInput/PasswordInput";
 import SignUpButton from "../UI/Button/SignUpButton/SignUpButton";
-import {UserContext} from "../../context";
+import {AuthContext} from "../../context";
 
 
 function SignUpForm() {
@@ -14,7 +14,7 @@ function SignUpForm() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    const {signUpUser, signUpError} = useContext(UserContext);
+    const {signUpUser, signUpError} = useContext(AuthContext);
 
     return (
         <form className={styles.signUpForm}>

@@ -6,13 +6,13 @@ import {redTheme} from "../UI/muiThemes/themes";
 import PasswordInput from "../UI/Input/PasswordInput/PasswordInput";
 import EmailInput from "../UI/Input/EmailInput/EmailInput";
 import LoginButton from "../UI/Button/LoginButton/LoginButton";
-import {UserContext} from "../../context";
+import {AuthContext} from "../../context";
 
 function LoginForm() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    const {loginUser, loginError} = useContext(UserContext);
+    const {loginUser, loginError} = useContext(AuthContext);
 
     return (
 

@@ -9,7 +9,7 @@ import styles from './ViewAccActionBtn.module.css'
 import CardGiftcardRoundedIcon from "@mui/icons-material/CardGiftcardRounded";
 import PersonRemoveRoundedIcon from "@mui/icons-material/PersonRemoveRounded";
 import {useNavigate} from "react-router-dom";
-import {FriendContext, IdeasContext, UserContext} from "../../../../context";
+import {AuthContext, FriendContext, IdeasContext, UserContext} from "../../../../context";
 
 const ViewAccActionBtn = (props) => {
     const [anchorEl, setAnchorEl] = useState(null);
@@ -27,8 +27,8 @@ const ViewAccActionBtn = (props) => {
     } = useContext(FriendContext);
 
     const {generateIdeas} = useContext(IdeasContext);
-
-    const {myID, token} = useContext(UserContext);
+    const {myID} = useContext(UserContext);
+    const {token} = useContext(AuthContext);
 
     const navigate = useNavigate()
 

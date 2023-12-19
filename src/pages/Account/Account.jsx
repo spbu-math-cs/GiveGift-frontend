@@ -6,17 +6,18 @@ import {useParams} from "react-router-dom";
 import {useFetching} from "../../hooks/useFetching";
 import UserService from "../../API/UserService";
 import {isObjectEmpty} from "../../utils/checkers";
-import {FriendContext, InterestContext, UserContext} from "../../context";
+import {AuthContext, FriendContext, InterestContext, UserContext} from "../../context";
 
 
 function Account(props) {
     const {id} = useParams();
     const [accInfo, setAccInfo] = useState({});
     const [isEdit, setIsEdit] = useState(false);
+
     const {fetchFriendLists} = useContext(FriendContext);
     const {fetchInterests} = useContext(InterestContext);
-    const {fetchUserInfo, token, setUserAccInfo} = useContext(UserContext);
-
+    const {fetchUserInfo, changeUserInfo} = useContext(UserContext);
+    const {token} = useContext(AuthContext);
 
     // todo: возможно можно воткнуть в контекст
     const [fetchAccInfo, isAccInfoLoading, accInfoError] = useFetching(async (token, id) => {
@@ -25,8 +26,7 @@ function Account(props) {
     })
 
     const saveAccChanges = () => {
-        setUserAccInfo(token, accInfo);
-        setIsEdit(false);
+        changeUserInfo(token, accInfo, setIsEdit);
     }
     //-------
 
@@ -65,12 +65,5 @@ function Account(props) {
         </div>
     );
 }
-/*
-*          setUserInfo={props.setUserInfo}
-                         userInfo={props.userInfo}
-                         isSetUserInfoLoading={props.isSetUserInfoLoading}
-                         userInfoError={props.userInfoError}
-                         setUserInfoError={props.setUserInfoError}
-                         setUserAccInfo={props.setUserAccInfo}*/
 
 export default Account;

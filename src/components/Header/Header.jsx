@@ -5,13 +5,14 @@ import default_user_logo from '../../assets/user.svg'
 import DropDownAccMenu from "../UI/DropDownAccMenu/DropDownAccMenu";
 import {Avatar, IconButton} from "@mui/material";
 import UserInfo from "./UserInfo/UserInfo";
-import {UserContext} from "../../context";
+import {AuthContext, UserContext} from "../../context";
 
 const Header = () => {
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
     const navigate = useNavigate();
-    const {token, userInfo} = useContext(UserContext);
+    const {userInfo} = useContext(UserContext);
+    const {token} = useContext(AuthContext);
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };

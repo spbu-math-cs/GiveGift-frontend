@@ -1,5 +1,4 @@
-import React, {useContext} from 'react';
-import {Alert} from "@mui/material";
+import React from 'react';
 import styles from "../AccountInfo.module.css";
 import profile_pic from "../../../assets/user.svg";
 import {get_prettified_age} from "../../../utils/ages";
@@ -7,18 +6,10 @@ import {
     Interest
 } from "../../Sidebar/MainPageSideBarContent/CustomSettings/SearchSettings/InterestList/Interest/Interest";
 import ViewAccActionBtn from "../../UI/Button/ViewAccActionBtn/ViewAccActionBtn";
-import {UserContext} from "../../../context";
 
 const ViewAccInfo = (props) => {
-    const {isSetUserInfoLoading, userInfoError, setUserInfoError} = useContext(UserContext);
-
     return (
         <div className={`${styles.acc_info_content} fast_fadein`}>
-            {!isSetUserInfoLoading && userInfoError &&
-                <Alert onClose={() => setUserInfoError("")} severity="error">
-                    {userInfoError.data}
-                </Alert>
-            }
             <div className={styles.acc_main_info}>
                 <img className={styles.acc_profile_pic} src={profile_pic} alt={'user'}/>
                 <div className={styles.main_info_desc}>
