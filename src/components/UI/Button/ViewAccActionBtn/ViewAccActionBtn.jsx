@@ -13,8 +13,9 @@ import {FriendContext} from "../../../../context/FriendContext/FriendContext";
 import {IdeasContext} from "../../../../context/IdeasContext/IdeasContext";
 import {UserContext} from "../../../../context/UserContext/UserContext";
 import {AuthContext} from "../../../../context/AuthContext/AuthContext";
+import {AccContext} from "../../../../context/AccContext/AccContext";
 
-const ViewAccActionBtn = (props) => {
+const ViewAccActionBtn = ({setIsEdit}) => {
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
 
@@ -32,6 +33,7 @@ const ViewAccActionBtn = (props) => {
     const {generateIdeas} = useContext(IdeasContext);
     const {myID} = useContext(UserContext);
     const {token} = useContext(AuthContext);
+    const {accInfo} = useContext(AccContext);
 
     const navigate = useNavigate()
 
@@ -44,42 +46,42 @@ const ViewAccActionBtn = (props) => {
     };
 
     return (<>
-        {props.accInfo.id === myID
+        {accInfo.id === myID
             ?
             <FriendActionButton
                 onClick={() => {
-                    props.setIsEdit(true);
+                    setIsEdit(true);
                 }}>
                 <EditRoundedIcon color="white"/>
                 <span>Изменить профиль</span>
             </FriendActionButton>
-            : friends.findIndex((myFriend, _) => myFriend.id === props.accInfo.id) === -1
-                ? outgoingRequests.findIndex((myFriend, _) => myFriend.id === props.accInfo.id) !== -1
+            : friends.findIndex((myFriend, _) => myFriend.id === accInfo.id) === -1
+                ? outgoingRequests.findIndex((myFriend, _) => myFriend.id === accInfo.id) !== -1
                     ? <FriendActionButton
-                        onClick={() => revokeFriendRequest(token, props.accInfo.id)}>
+                        onClick={() => revokeFriendRequest(token, accInfo.id)}>
                         <CancelRoundedIcon color="white"/>
                         <span>Отозвать заявку</span>
                     </FriendActionButton>
-                    : incomingRequests.findIndex((myFriend, _) => myFriend.id === props.accInfo.id) !== -1
+                    : incomingRequests.findIndex((myFriend, _) => myFriend.id === accInfo.id) !== -1
                         ? <>
                             <FriendActionButton
                                 onClick={handleClick}>
                                 <PeopleOutlineRoundedIcon color="white"/>
                                 <span>Ответить на заявку</span>
                             </FriendActionButton>
-                            <MoreUserRequestMenu user_id={props.accInfo.id}
+                            <MoreUserRequestMenu user_id={accInfo.id}
                                                  open={open}
                                                  handleClose={handleClose}
                                                  anchorEl={anchorEl}/>
                         </>
                         : <FriendActionButton
-                            onClick={() => sendFriendRequest(token, props.accInfo.id)}>
+                            onClick={() => sendFriendRequest(token, accInfo.id)}>
                             <PersonAddRoundedIcon color="white"/>
                             <span>Добавить в друзья</span>
                         </FriendActionButton>
                 : <div className={styles.friend_main_activities}>
                     <FriendActionButton onClick={() => generateIdeas({
-                        friend_id: props.accInfo.id,
+                        friend_id: accInfo.id,
                         token: token
                     }) && navigate('/')}>
                         <CardGiftcardRoundedIcon color="white"/>
@@ -87,7 +89,7 @@ const ViewAccActionBtn = (props) => {
                     </FriendActionButton>
 
                     <FriendActionButton
-                        onClick={() => removeFriend(token, props.accInfo.id)}>
+                        onClick={() => removeFriend(token, accInfo.id)}>
                         <PersonRemoveRoundedIcon color="white"/>
                     </FriendActionButton>
                 </div>

@@ -21,7 +21,7 @@ const ViewAccInfo = ({setIsEdit}) => {
                         <span>{get_prettified_age(accInfo.birth_date)}</span>
                     }
 
-                    <ViewAccActionBtn accInfo={accInfo} setIsEdit={setIsEdit}/>
+                    <ViewAccActionBtn setIsEdit={setIsEdit}/>
                 </div>
             </div>
             <div className={styles.acc_info_part}>
