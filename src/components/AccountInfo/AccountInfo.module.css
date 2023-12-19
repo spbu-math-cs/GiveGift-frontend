@@ -53,16 +53,6 @@
     max-height: calc(1.5em * 3);
 }
 
-.copyIcon {
-    color: white;
-}
-
-.copyIcon:hover {
-    color: #fcdfdf;
-
-    transition-duration: 0.4s;
-}
-
 .main_info_desc {
     display: grid;
     grid-row-gap: 5px;
