@@ -6,31 +6,25 @@ import {redTheme} from "../UI/muiThemes/themes";
 import EditAccInfo from "./EditAccInfo/EditAccInfo";
 import ViewAccInfo from "./ViewAccInfo/ViewAccInfo";
 import {UserContext} from "../../context/UserContext/UserContext";
+import {AccContext} from "../../context/AccContext/AccContext";
+import {isObjectEmpty} from "../../utils/checkers";
 
-const AccountInfo = (props) => {
+const AccountInfo = ({isEdit, setIsEdit, saveAccChanges}) => {
 
     const {isChangeUserInfoLoading} = useContext(UserContext)
+    const {accInfo, accInfoError, isAccInfoLoading} = useContext(AccContext);
 
     return (
         <ThemeProvider theme={redTheme}>
             <div className={`${styles.acc_info_wrapper}`}>
                 <div className={`${styles.acc_info_wrapper_bubble} slider`}>
-                    {props.accInfoError
+                    {accInfoError
                         ? <Error/>
-                        : !props.isAccInfoLoading && !isChangeUserInfoLoading &&
+                        : !isAccInfoLoading && !isObjectEmpty(accInfo) && !isChangeUserInfoLoading &&
                         <>
-                            {props.isEdit
-                                ? <EditAccInfo
-                                               accInfo={props.accInfo}
-                                               setAccInfo={props.setAccInfo}
-                                               saveAccChanges={props.saveAccChanges}
-                                               isEdit={props.isEdit}
-
-                                />
-                                : <ViewAccInfo
-                                               accInfo={props.accInfo}
-                                               setIsEdit={props.setIsEdit}
-                                />}
+                            {isEdit
+                                ? <EditAccInfo saveAccChanges={saveAccChanges}/>
+                                : <ViewAccInfo setIsEdit={setIsEdit}/>}
                         </>
                     }
                 </div>

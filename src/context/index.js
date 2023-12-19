@@ -4,18 +4,21 @@ import {IdeasContextProvider} from "./IdeasContext/IdeasContext";
 import {UserContextProvider} from "./UserContext/UserContext";
 import {InterestContextProvider} from "./InterestContext/InterestContext";
 import {AuthContextProvider} from "./AuthContext/AuthContext";
+import {AccContextProvider} from "./AccContext/AccContext";
 
 
 export const AppContext = ({children}) => {
     return (<AuthContextProvider>
         <UserContextProvider>
-            <FriendContextProvider>
-                <InterestContextProvider>
-                    <IdeasContextProvider>
-                        {children}
-                    </IdeasContextProvider>
-                </InterestContextProvider>
-            </FriendContextProvider>
+            <AccContextProvider>
+                <FriendContextProvider>
+                    <InterestContextProvider>
+                        <IdeasContextProvider>
+                            {children}
+                        </IdeasContextProvider>
+                    </InterestContextProvider>
+                </FriendContextProvider>
+            </AccContextProvider>
         </UserContextProvider>
     </AuthContextProvider>);
 }

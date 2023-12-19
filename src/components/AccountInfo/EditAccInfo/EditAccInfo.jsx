@@ -19,17 +19,19 @@ import AddUserInterestForm
 import {InterestContext} from "../../../context/InterestContext/InterestContext";
 import {AuthContext} from "../../../context/AuthContext/AuthContext";
 import {UserContext} from "../../../context/UserContext/UserContext";
+import {AccContext} from "../../../context/AccContext/AccContext";
 
-const EditAccInfo = (props) => {
+const EditAccInfo = ({saveAccChanges}) => {
 
     const {allInterests, fetchInterests} = useContext(InterestContext);
     const {token} = useContext(AuthContext);
     const {isChangeUserInfoLoading, changeUserInfoError} = useContext(UserContext);
-
+    const {accInfo, setAccInfo} = useContext(AccContext);
+    
     const [InterestModalWindowVisibility, setInterestModalWindowVisibility] = useState(false);
 
     const addUserInterest = (newInterests) => {
-        props.setAccInfo(prevAccInfo => {
+        setAccInfo(prevAccInfo => {
                 let accInfoCopy = Object.assign({}, prevAccInfo);
                 //accInfoCopy.interests = [...accInfoCopy.interests, ...newInterests];
                 accInfoCopy.interests = [...accInfoCopy.interests, ...newInterests.filter(i => allInterests.includes(i))];
@@ -40,7 +42,7 @@ const EditAccInfo = (props) => {
     }
 
     const removeUserInterest = (interest) => {
-        props.setAccInfo(prevAccInfo => {
+        setAccInfo(prevAccInfo => {
             let accInfoCopy = Object.assign({}, prevAccInfo);
             accInfoCopy.interests = accInfoCopy.interests.filter(i => i !== interest);
             return accInfoCopy;
@@ -49,7 +51,7 @@ const EditAccInfo = (props) => {
 
     useEffect(() => {
         const fetchInfo = async () => {
-            props.isEdit && await fetchInterests();
+            await fetchInterests();
         }
 
         fetchInfo().catch(console.error);
@@ -69,9 +71,9 @@ const EditAccInfo = (props) => {
                         label="Имя"
                         inputProps={{style: {fontSize: 25, fontWeight: 700}}}
                         size={'small'}
-                        value={props.accInfo.nickname}
+                        value={accInfo.nickname}
                         onChange={(event) => {
-                            props.setAccInfo(prevAccInfo => {
+                            setAccInfo(prevAccInfo => {
                                 let accInfoCopy = Object.assign({}, prevAccInfo);
                                 accInfoCopy.nickname = event.target.value;
                                 return accInfoCopy;
@@ -83,11 +85,11 @@ const EditAccInfo = (props) => {
                         <DateField
                             label="Дата рождения"
                             size={'small'}
-                            value={dayjs(props.accInfo.birth_date)}
+                            value={dayjs(accInfo.birth_date)}
                             style={{width: "fit-content"}}
                             inputProps={{style: {fontSize: 15}}}
                             onChange={(newDate) => {
-                                props.setAccInfo(prevAccInfo => {
+                                setAccInfo(prevAccInfo => {
                                     let accInfoCopy = Object.assign({}, prevAccInfo);
                                     accInfoCopy.birth_date = newDate.toString();
                                     return accInfoCopy;
@@ -100,7 +102,7 @@ const EditAccInfo = (props) => {
                     <FriendActionButton
                         onClick={(e) => {
                             e.preventDefault();
-                            props.saveAccChanges(token, props.accInfo);
+                            saveAccChanges(token, accInfo);
                         }}>
                         <SaveRoundedIcon color="white"/>
                         <span>Сохранить изменения</span>
@@ -111,9 +113,9 @@ const EditAccInfo = (props) => {
                 <span className={styles.info_part_header}>О себе</span>
 
                 <TextField
-                    value={props.accInfo.about}
+                    value={accInfo.about}
                     onChange={(event) => {
-                        props.setAccInfo(prevAccInfo => {
+                        setAccInfo(prevAccInfo => {
                             let accInfoCopy = Object.assign({}, prevAccInfo);
                             accInfoCopy.about = event.target.value;
                             return accInfoCopy;
@@ -129,10 +131,10 @@ const EditAccInfo = (props) => {
                 <span className={styles.info_part_header}>Интересы</span>
                 <div className={styles.acc_tags}>
                     {
-                        props.accInfo.interests.map(interest =>
+                        accInfo.interests.map(interest =>
                             <Interest key={interest}
                                       remove={removeUserInterest}
-                                      is_editable={props.isEdit}>{interest}</Interest>
+                                      is_editable={false}>{interest}</Interest>
                         )
                     }
                     <PlusBtn onClick={() => {
@@ -142,7 +144,7 @@ const EditAccInfo = (props) => {
                     <AddInterestModal visible={InterestModalWindowVisibility}
                                       setVisible={setInterestModalWindowVisibility}>
                         <AddUserInterestForm
-                            optionInterests={allInterests.filter(item => !props.accInfo.interests.includes(item))}
+                            optionInterests={allInterests.filter(item => !accInfo.interests.includes(item))}
                             add={addUserInterest}/>
                     </AddInterestModal>
                 </div>
