@@ -1,10 +1,10 @@
 import React, {useContext, useState} from 'react';
-import UserRequest from "../UserRequest/UserRequest";
+import UserRequest from "../../../UserRequest/UserRequest";
 import {IconButton} from "@mui/material";
 import MoreHorizRoundedIcon from '@mui/icons-material/MoreHorizRounded';
 import MoreUserRequestMenu from "./MoreUserRequestMenu/MoreUserRequestMenu";
-import {AuthContext} from "../../context/AuthContext/AuthContext";
-import {FriendContext} from "../../context/FriendContext/FriendContext";
+import {AuthContext} from "../../../../context/AuthContext/AuthContext";
+import {FriendContext} from "../../../../context/FriendContext/FriendContext";
 
 const IncomingRequestsList = () => {
     const [anchorEl, setAnchorEl] = useState(null);

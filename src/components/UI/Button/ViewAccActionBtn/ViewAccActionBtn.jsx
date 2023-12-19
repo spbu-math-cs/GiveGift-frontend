@@ -3,7 +3,7 @@ import FriendActionButton from "../FriendActionButton/FriendActionButton";
 import EditRoundedIcon from "@mui/icons-material/EditRounded";
 import CancelRoundedIcon from "@mui/icons-material/CancelRounded";
 import PeopleOutlineRoundedIcon from "@mui/icons-material/PeopleOutlineRounded";
-import MoreUserRequestMenu from "../../../IncomingRequestsList/MoreUserRequestMenu/MoreUserRequestMenu";
+import MoreUserRequestMenu from "../../../Sidebar/FriendPageSideBarContent/IncomingRequestsList/MoreUserRequestMenu/MoreUserRequestMenu";
 import PersonAddRoundedIcon from "@mui/icons-material/PersonAddRounded";
 import styles from './ViewAccActionBtn.module.css'
 import CardGiftcardRoundedIcon from "@mui/icons-material/CardGiftcardRounded";

@@ -1,11 +1,11 @@
 import React, {useContext} from 'react';
 import {Navigate, Route, Routes} from "react-router-dom";
-import Main from "../../pages/Main/Main";
-import Friends from "../../pages/Friends/Friends";
-import Account from "../../pages/Account/Account";
-import Login from "../../pages/Login/Login";
-import SignUp from "../../pages/SignUp/SignUp";
-import {AuthContext} from "../../context/AuthContext/AuthContext";
+import Main from "../pages/Main/Main";
+import Friends from "../pages/Friends/Friends";
+import Account from "../pages/Account/Account";
+import Login from "../pages/Login/Login";
+import SignUp from "../pages/SignUp/SignUp";
+import {AuthContext} from "../context/AuthContext/AuthContext";
 
 const AppRouter = () => {
     const {token} = useContext(AuthContext);

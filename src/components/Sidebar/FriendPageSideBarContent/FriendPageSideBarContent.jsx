@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import styles from "./FriendPageSideBarContent.module.css";
-import IncomingRequestsList from "../../IncomingRequestsList/IncomingRequestsList";
-import OutgoingRequestsList from "../../OutgoingRequestsList/OutgoingRequestsList";
+import IncomingRequestsList from "./IncomingRequestsList/IncomingRequestsList";
+import OutgoingRequestsList from "./OutgoingRequestsList/OutgoingRequestsList";
 
 const FriendPageSideBarContent = () => {
     const activeClass = 'active_request_list';
