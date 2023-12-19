@@ -14,7 +14,6 @@ const MainPageSideBarContent = (props) => {
                                setVisible={props.setSelectFriendModalWindowVisibility}>
                 <SelectFriendForm
                     token={props.token}
-                    generateIdeas={props.generateIdeas}
                     setIsNewUser={props.setIsNewUser}
                     setVisible={props.setSelectFriendModalWindowVisibility}
                 />
@@ -39,9 +38,7 @@ const MainPageSideBarContent = (props) => {
                 priceRangeValue={props.priceRangeValue}
                 handlePriceRangeChange={props.handlePriceRangeChange}
 
-                isIdeasLoading={props.isIdeasLoading}
                 setIsNewUser={props.setIsNewUser}
-                generateIdeas={props.generateIdeas}
                 ideaGenProperties={props.ideaGenProperties}
             />
         </div>

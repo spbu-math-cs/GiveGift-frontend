@@ -4,21 +4,16 @@ import Ideas from "../../components/Ideas/Ideas";
 import React, {useContext, useEffect, useState} from "react";
 import {checkPrice} from "../../utils/checkers";
 import GettingStarted from "../../components/UI/GettingStarted/GettingStarted";
-import {FriendContext} from "../../context";
+import {FriendContext, InterestContext} from "../../context";
 
 const Main = ({
                   token,
-                  ideas,
-                  generateIdeas,
-                  isIdeasLoading,
-                  ideaError,
-                  allInterests,
-                  fetchInterests,
                   InterestModalWindowVisibility,
                   setInterestModalWindowVisibility
               }) => {
 
     const {fetchFriendLists} = useContext(FriendContext);
+    const {fetchInterests, allInterests} = useContext(InterestContext);
 
     useEffect(() => {
         fetchInterests();
@@ -72,7 +67,6 @@ const Main = ({
         setPriceRangeValue(checkPrice(minPrice, maxPrice, newValue));
     };
 
-
     const [SelectFriendModalWindowVisibility, setSelectFriendModalWindowVisibility] = useState(false);
 
     const ideaGenProperties = {
@@ -95,8 +89,6 @@ const Main = ({
                 priceRangeValue={priceRangeValue}
                 handlePriceRangeChange={handlePriceRangeChange}
 
-                isIdeasLoading={isIdeasLoading}
-                generateIdeas={generateIdeas}
                 ideaGenProperties={ideaGenProperties}
 
                 setIsNewUser={setIsNewUser}
@@ -109,11 +101,7 @@ const Main = ({
         </Sidebar>
         {isNewUser
             ? <GettingStarted/>
-            : <Ideas
-                ideas={ideas}
-                isIdeasLoading={isIdeasLoading}
-                ideaError={ideaError}
-            />
+            : <Ideas/>
         }
     </div>);
 }

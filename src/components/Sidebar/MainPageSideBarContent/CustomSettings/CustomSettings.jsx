@@ -1,9 +1,12 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import styles from "./CustomSettings.module.css";
 import SearchSettings from "./SearchSettings/SearchSettings";
 import ActiveButton from "../../../UI/Button/ActiveButton/ActiveButton";
+import {IdeasContext} from "../../../../context";
 
 const CustomSettings = (props) => {
+    const {generateIdeas, isIdeasLoading} = useContext(IdeasContext)
+
     return (
         <div className={styles.custom_settings}>
             <SearchSettings
@@ -20,10 +23,10 @@ const CustomSettings = (props) => {
                 handlePriceRangeChange={props.handlePriceRangeChange}
             />
 
-            <ActiveButton className={styles.mainpage_sidebar_btn} disabled={props.isIdeasLoading}
+            <ActiveButton className={styles.mainpage_sidebar_btn} disabled={isIdeasLoading}
                           onClick={() => {
                               props.setIsNewUser(false);
-                              props.generateIdeas({userIdeaProperties: props.ideaGenProperties})
+                              generateIdeas({userIdeaProperties: props.ideaGenProperties})
                           }}>
                 Выдай идею!
             </ActiveButton>

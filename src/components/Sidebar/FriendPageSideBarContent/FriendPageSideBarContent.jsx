@@ -3,9 +3,7 @@ import styles from "./FriendPageSideBarContent.module.css";
 import IncomingRequestsList from "../../IncomingRequestsList/IncomingRequestsList";
 import OutgoingRequestsList from "../../OutgoingRequestsList/OutgoingRequestsList";
 
-const FriendPageSideBarContent = ({
-                                      token
-                                  }) => {
+const FriendPageSideBarContent = ({token}) => {
     const activeClass = 'active_request_list';
 
     const [incomingRequestsClasses, setIncomingRequestsClasses] = useState([styles.request_tab_item, activeClass]);

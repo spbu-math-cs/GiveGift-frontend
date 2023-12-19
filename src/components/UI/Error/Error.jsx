@@ -1,8 +1,8 @@
 import React from 'react';
-import styles from "./IdeasError.module.css"
+import styles from "./Error.module.css"
 import error_img from "../../../assets/mascot_error.png";
 
-const IdeasError = ({errorMsg}) => {
+const Error = ({errorMsg}) => {
     console.error(errorMsg);
     return (
         <div className="slider fadein" style={{display: "grid"}}>
@@ -17,4 +17,4 @@ const IdeasError = ({errorMsg}) => {
     );
 };
 
-export default IdeasError;
+export default Error;

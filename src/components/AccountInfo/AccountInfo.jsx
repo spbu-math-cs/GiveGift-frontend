@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from "./AccountInfo.module.css";
-import IdeasError from "../UI/IdeasError/IdeasError";
+import Error from "../UI/Error/Error";
 import {ThemeProvider} from "@mui/material";
 import {redTheme} from "../UI/muiThemes/themes";
 import EditAccInfo from "./EditAccInfo/EditAccInfo";
@@ -13,7 +13,7 @@ const AccountInfo = (props) => {
             <div className={`${styles.acc_info_wrapper}`}>
                 <div className={`${styles.acc_info_wrapper_bubble} slider`}>
                     {props.accInfoError
-                        ? <IdeasError/>
+                        ? <Error/>
                         : !props.isAccInfoLoading && !props.isSetUserInfoLoading &&
                         <>
                             {props.isEdit

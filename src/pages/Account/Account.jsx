@@ -6,7 +6,7 @@ import {useParams} from "react-router-dom";
 import {useFetching} from "../../hooks/useFetching";
 import UserService from "../../API/UserService";
 import {isObjectEmpty} from "../../utils/checkers";
-import {FriendContext} from "../../context";
+import {FriendContext, InterestContext} from "../../context";
 
 
 function Account(props) {
@@ -14,6 +14,8 @@ function Account(props) {
     const [accInfo, setAccInfo] = useState({});
     const [isEdit, setIsEdit] = useState(false);
     const {fetchFriendLists} = useContext(FriendContext);
+    const {fetchInterests} = useContext(InterestContext);
+
 
     const [fetchAccInfo, isAccInfoLoading, accInfoError] = useFetching(async (token, id) => {
         const response = await UserService.getUserInfo(token, id);
@@ -22,7 +24,6 @@ function Account(props) {
 
     const saveAccChanges = () => {
         props.setUserAccInfo(props.token, accInfo);
-        //props.setUserInfo(accInfo);
         setIsEdit(false);
     }
 
@@ -30,7 +31,7 @@ function Account(props) {
         props.fetchUserInfo(props.token);
         fetchAccInfo(props.token, id);
         fetchFriendLists(props.token);
-        isEdit && props.fetchInterests();
+        isEdit && fetchInterests();
     }, [id]);  // eslint-disable-line
 
     // TODO: подумать над async
@@ -43,23 +44,23 @@ function Account(props) {
                     token={props.token}
                     myID={props.userInfo.id}
                     isAccInfoLoading={!accInfoError && (isAccInfoLoading || isObjectEmpty(accInfo))}
-                    generateIdeas={props.generateIdeas}
                 />
             </Sidebar>
 
             <AccountInfo isAccInfoLoading={!accInfoError && (isAccInfoLoading || isObjectEmpty(accInfo))}
                          token={props.token}
+
                          accInfo={accInfo}
                          setAccInfo={setAccInfo}
                          accInfoError={accInfoError}
 
                          myID={props.userInfo.id}
-                         generateIdeas={props.generateIdeas}
                          isEdit={isEdit}
                          setIsEdit={setIsEdit}
-                         allInterests={props.allInterests}
+
                          InterestModalWindowVisibility={props.InterestModalWindowVisibility}
                          setInterestModalWindowVisibility={props.setInterestModalWindowVisibility}
+
                          saveAccChanges={saveAccChanges}
                          setUserInfo={props.setUserInfo}
                          userInfo={props.userInfo}

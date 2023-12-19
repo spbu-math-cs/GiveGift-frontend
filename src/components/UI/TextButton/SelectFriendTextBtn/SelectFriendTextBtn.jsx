@@ -1,9 +1,11 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import styles from "./SelectFriendTextBtn.module.css";
 import friend from "../../../../assets/friend.png";
+import {IdeasContext} from "../../../../context";
 
-const SelectFriendTextBtn = ({isIdeasLoading, setVisible, isLoggedIn}) => {
+const SelectFriendTextBtn = ({setVisible, isLoggedIn}) => {
 
+    const {isIdeasLoading} = useContext(IdeasContext)
     const rootClasses = [styles.select_friend_text_btn]
 
     if (!isIdeasLoading) {

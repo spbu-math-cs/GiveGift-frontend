@@ -10,10 +10,8 @@ import useToken from "./hooks/useToken";
 import {useFetching} from "./hooks/useFetching";
 import UserService from "./API/UserService";
 import Friends from "./pages/Friends/Friends";
-import IdeaService from "./API/IdeaService";
 import {isTokenError} from "./utils/checkers";
-import InterestService from "./API/InterestService";
-import {FriendContextProvider} from "./context";
+import {FriendContextProvider, IdeasContextProvider, InterestContextProvider} from "./context";
 
 function App() {
     const {token, removeToken, setToken} = useToken();
@@ -31,7 +29,6 @@ function App() {
         }
     })
 
-    // TODO: баг с отправкой и последующим обновлением данных аккаунта: несвоевременное обновление
     const [setUserAccInfo, isSetUserInfoLoading, userInfoError, setUserInfoError] = useFetching(async (token, accInfo) => {
         await UserService.setUserInfo(token, accInfo);
         setUserInfo(accInfo);
@@ -45,26 +42,6 @@ function App() {
         token ? fetchUserInfo(token) : setUserInfo({});
     }, [token]); // eslint-disable-line
 
-    const [ideas, setIdeas] = useState([])
-
-    const [generateIdeas, isIdeasLoading, ideaError] = useFetching(async ({
-                                                                              userIdeaProperties,
-                                                                              friend_id,
-                                                                              token
-                                                                          }) => {
-        const response = await
-            ((friend_id && token)
-                ? IdeaService.getIdeasForFriend(token, friend_id)
-                : IdeaService.getIdeas(userIdeaProperties));
-        setIdeas(response.data);
-    })
-
-    const [allInterests, setAllInterests] = useState([])
-
-    const [fetchInterests, ,] = useFetching(async () => {
-        const response = await InterestService.getAll();
-        setAllInterests(response.data && response.data['all_interests']);
-    })
 
     const [InterestModalWindowVisibility, setInterestModalWindowVisibility] = useState(false);
 
@@ -74,20 +51,20 @@ function App() {
                 <div className="app-wrapper">
                     <Header logout={logout}
                             userInfo={userInfo}
-                            removeToken={removeToken} token={token}/>
+                            removeToken={removeToken} token={token}
+                    />
 
                     <Routes>
                         <Route path='/' element={
                             <FriendContextProvider>
-                                <Main token={token} ideas={ideas}
-                                      generateIdeas={generateIdeas}
-                                      isIdeasLoading={isIdeasLoading}
-                                      ideaError={ideaError}
-                                      allInterests={allInterests}
-                                      fetchInterests={fetchInterests}
-                                      InterestModalWindowVisibility={InterestModalWindowVisibility}
-                                      setInterestModalWindowVisibility={setInterestModalWindowVisibility}
-                                />
+                                <InterestContextProvider>
+                                    <IdeasContextProvider>
+                                        <Main token={token}
+                                              InterestModalWindowVisibility={InterestModalWindowVisibility}
+                                              setInterestModalWindowVisibility={setInterestModalWindowVisibility}
+                                        />
+                                    </IdeasContextProvider>
+                                </InterestContextProvider>
                             </FriendContextProvider>
                         }/>
                         <Route path='login' element={<Login setToken={setToken}/>}/>
@@ -98,28 +75,31 @@ function App() {
 
                                 <Route path='friends' element={
                                     <FriendContextProvider>
-                                        <Friends token={token}
-                                                 generateIdeas={generateIdeas}
-                                                 fetchUserInfo={fetchUserInfo}
-                                        /></FriendContextProvider>}
+                                        <IdeasContextProvider>
+                                            <Friends token={token} fetchUserInfo={fetchUserInfo}/>
+                                        </IdeasContextProvider>
+                                    </FriendContextProvider>}
                                 />
                                 <Route path='account/:id' element={
                                     <FriendContextProvider>
-                                        <Account userInfo={userInfo}
-                                                 generateIdeas={generateIdeas}
-                                                 token={token}
-                                                 fetchUserInfo={fetchUserInfo}
-                                                 allInterests={allInterests}
-                                                 fetchInterests={fetchInterests}
-                                                 InterestModalWindowVisibility={InterestModalWindowVisibility}
-                                                 setInterestModalWindowVisibility={setInterestModalWindowVisibility}
+                                        <InterestContextProvider>
+                                            <IdeasContextProvider>
+                                                <Account userInfo={userInfo}
+                                                         token={token}
+                                                         fetchUserInfo={fetchUserInfo}
+                                                         InterestModalWindowVisibility={InterestModalWindowVisibility}
+                                                         setInterestModalWindowVisibility={setInterestModalWindowVisibility}
 
-                                                 setUserInfo={setUserInfo}
-                                                 setUserAccInfo={setUserAccInfo}
-                                                 userInfoError={userInfoError}
-                                                 isSetUserInfoLoading={isSetUserInfoLoading}
-                                                 setUserInfoError={setUserInfoError}
-                                        /></FriendContextProvider>}
+                                                         setUserInfo={setUserInfo}
+
+                                                         setUserAccInfo={setUserAccInfo}
+                                                         userInfoError={userInfoError}
+                                                         isSetUserInfoLoading={isSetUserInfoLoading}
+                                                         setUserInfoError={setUserInfoError}
+                                                />
+                                            </IdeasContextProvider>
+                                        </InterestContextProvider>
+                                    </FriendContextProvider>}
                                 />
                             </> : <></>
                         }

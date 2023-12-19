@@ -6,8 +6,7 @@ import FriendSearch from "../FriendSearch/FriendSearch";
 import {FriendContext} from "../../context";
 
 
-const FriendList = ({removeFriend, token, generateIdeas,
-                        FriendModalWindowVisibility, setFriendModalWindowVisibility}) => {
+const FriendList = ({token, FriendModalWindowVisibility, setFriendModalWindowVisibility}) => {
 
     const [searchQuery, setSearchQuery] = useState('');
 
@@ -30,8 +29,7 @@ const FriendList = ({removeFriend, token, generateIdeas,
 
                     <div className={styles.friend_list}>
                         {searchResults.map(friend =>
-                            <Friend key={friend.id} nickname={friend.nickname} friend_id={friend.id} token={token}
-                                    generateIdeas={generateIdeas} removeFriend={removeFriend}/>
+                            <Friend key={friend.id} nickname={friend.nickname} friend_id={friend.id} token={token}/>
                         )}
                     </div>
                 </div>
