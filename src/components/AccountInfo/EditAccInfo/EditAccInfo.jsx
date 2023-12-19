@@ -61,6 +61,7 @@ const EditAccInfo = ({setIsEdit}) => {
         fetchInfo().catch(console.error);
     }, []); // eslint-disable-line
 
+    console.log(accInfo);
     return (
         <form className={`${styles.acc_info_content} fast_fadein`}>
             {!isChangeUserInfoLoading && changeUserInfoError &&
@@ -138,7 +139,7 @@ const EditAccInfo = ({setIsEdit}) => {
                         accInfo.interests.map(interest =>
                             <Interest key={interest}
                                       remove={removeUserInterest}
-                                      is_editable={false}>{interest}</Interest>
+                                      is_editable={true}>{interest}</Interest>
                         )
                     }
                     <PlusBtn onClick={() => {

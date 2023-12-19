@@ -26,10 +26,9 @@ const ViewAccInfo = ({setIsEdit}) => {
             </div>
             <div className={styles.acc_info_part}>
                 <span className={styles.info_part_header}>О себе</span>
-                {accInfo.about ?
-                    <span className={styles.acc_description}>{accInfo.about}</span>
-                    : <span className={styles.acc_description}
-                            style={{color: "grey"}}>Здесь ничего нет</span>
+                {accInfo.about
+                    ? <p className={`${styles.acc_description} slider`}>{accInfo.about}</p>
+                    : <p className={styles.acc_description} style={{color: "grey"}}>Здесь ничего нет</p>
                 }
             </div>
 

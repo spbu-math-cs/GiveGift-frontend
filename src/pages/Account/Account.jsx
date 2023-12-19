@@ -27,8 +27,6 @@ function Account() {
         fetchInfo().catch(console.error)
     }, [id]);  // eslint-disable-line
 
-    // TODO: подумать над async
-
     return (
         <div className={'app-wrapper-content content-with-sidebar'}>
             <Sidebar header={'Друзья'}>

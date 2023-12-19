@@ -46,7 +46,11 @@
 }
 
 .acc_description {
+    margin: 0;
+    white-space: pre-line;
     font-weight: 500;
+    line-height: 1.5em;
+    max-height: calc(1.5em * 3);
 }
 
 .copyIcon {
