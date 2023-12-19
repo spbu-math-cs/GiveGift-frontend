@@ -5,7 +5,7 @@ import {ThemeProvider} from "@mui/material";
 import {redTheme} from "../UI/muiThemes/themes";
 import EditAccInfo from "./EditAccInfo/EditAccInfo";
 import ViewAccInfo from "./ViewAccInfo/ViewAccInfo";
-import {UserContext} from "../../context";
+import {UserContext} from "../../context/UserContext/UserContext";
 
 const AccountInfo = (props) => {
 

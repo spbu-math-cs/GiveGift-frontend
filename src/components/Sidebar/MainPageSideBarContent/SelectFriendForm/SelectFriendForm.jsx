@@ -3,7 +3,8 @@ import styles from './SelectFriendForm.module.css'
 import React, {useContext, useState} from "react";
 import {useFriendSearch} from "../../../../hooks/useFriendSearch";
 import MiniFriend from "./MiniFriend/MiniFriend";
-import {FriendContext, IdeasContext, UserContext} from "../../../../context";
+import {FriendContext} from "../../../../context/FriendContext/FriendContext";
+import {IdeasContext} from "../../../../context/IdeasContext/IdeasContext";
 
 const SelectFriendForm = ({setIsNewUser, setVisible}) => {
 

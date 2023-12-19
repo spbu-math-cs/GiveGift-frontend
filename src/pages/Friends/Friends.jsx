@@ -3,7 +3,9 @@ import Sidebar from "../../components/Sidebar/Sidebar";
 import '../../App.css'
 import FriendList from "../../components/FriendList/FriendList";
 import FriendPageSideBarContent from "../../components/Sidebar/FriendPageSideBarContent/FriendPageSideBarContent";
-import {AuthContext, FriendContext, UserContext} from "../../context";
+import {FriendContext} from "../../context/FriendContext/FriendContext";
+import {UserContext} from "../../context/UserContext/UserContext";
+import {AuthContext} from "../../context/AuthContext/AuthContext";
 
 const Friends = () => {
 

@@ -5,7 +5,7 @@ import ActiveButton from "../UI/Button/ActiveButton/ActiveButton";
 import PersonAddRoundedIcon from "@mui/icons-material/PersonAddRounded";
 import AddFriendModal from "../FriendList/AddUserFriend/AddFriendModal/AddFriendModal";
 import AddUserFriendForm from "../FriendList/AddUserFriend/AddUserFriendForm/AddUserFriendForm";
-import {AuthContext} from "../../context";
+import {AuthContext} from "../../context/AuthContext/AuthContext";
 
 const FriendSearch = (props) => {
     const [showAlert, setShowAlert] = useState(false);

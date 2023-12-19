@@ -6,7 +6,7 @@ import {redTheme} from "../UI/muiThemes/themes";
 import PasswordInput from "../UI/Input/PasswordInput/PasswordInput";
 import EmailInput from "../UI/Input/EmailInput/EmailInput";
 import LoginButton from "../UI/Button/LoginButton/LoginButton";
-import {AuthContext} from "../../context";
+import {AuthContext} from "../../context/AuthContext/AuthContext";
 
 function LoginForm() {
     const [email, setEmail] = useState('')

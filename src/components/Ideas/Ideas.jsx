@@ -2,8 +2,7 @@ import React, {useContext} from 'react';
 import Loader from "../UI/Loader/Loader";
 import IdeaList from "./IdeaList/IdeaList";
 import Error from "../UI/Error/Error";
-import {IdeasContext} from "../../context";
-
+import {IdeasContext} from "../../context/IdeasContext/IdeasContext";
 
 const Ideas = () => {
     const {ideas, isIdeasLoading, ideaError} = useContext(IdeasContext);

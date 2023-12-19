@@ -5,7 +5,9 @@ import default_user_logo from '../../assets/user.svg'
 import DropDownAccMenu from "../UI/DropDownAccMenu/DropDownAccMenu";
 import {Avatar, IconButton} from "@mui/material";
 import UserInfo from "./UserInfo/UserInfo";
-import {AuthContext, UserContext} from "../../context";
+import {UserContext} from "../../context/UserContext/UserContext";
+import {AuthContext} from "../../context/AuthContext/AuthContext";
+
 
 const Header = () => {
     const [anchorEl, setAnchorEl] = useState(null);

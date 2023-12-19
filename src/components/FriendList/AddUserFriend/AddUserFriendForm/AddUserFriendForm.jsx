@@ -4,8 +4,7 @@ import TextField from "@mui/material/TextField";
 import CheckBtn from "../../../UI/Button/CheckBtn/CheckBtn";
 import {Alert, FormGroup, ThemeProvider} from "@mui/material";
 import {redTheme} from "../../../UI/muiThemes/themes";
-import {FriendContext} from "../../../../context";
-
+import {FriendContext} from "../../../../context/FriendContext/FriendContext";
 
 const AddUserFriendForm = ({token, showAlert, setShowAlert}) => {
 

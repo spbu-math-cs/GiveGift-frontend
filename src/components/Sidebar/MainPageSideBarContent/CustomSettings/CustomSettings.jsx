@@ -2,7 +2,7 @@ import React, {useContext} from 'react';
 import styles from "./CustomSettings.module.css";
 import SearchSettings from "./SearchSettings/SearchSettings";
 import ActiveButton from "../../../UI/Button/ActiveButton/ActiveButton";
-import {IdeasContext} from "../../../../context";
+import {IdeasContext} from "../../../../context/IdeasContext/IdeasContext";
 
 const CustomSettings = (props) => {
     const {generateIdeas, isIdeasLoading} = useContext(IdeasContext)

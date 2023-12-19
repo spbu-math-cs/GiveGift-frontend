@@ -7,7 +7,8 @@ import Login from "./pages/Login/Login";
 import Main from "./pages/Main/Main";
 import Account from "./pages/Account/Account";
 import Friends from "./pages/Friends/Friends";
-import {AuthContext, IdeasContextProvider, InterestContextProvider, UserContext} from "./context";
+import {UserContext} from "./context/UserContext/UserContext";
+import {AuthContext} from "./context/AuthContext/AuthContext";
 
 function App() {
 
@@ -22,7 +23,6 @@ function App() {
     const [InterestModalWindowVisibility, setInterestModalWindowVisibility] = useState(false);
 
 
-    // TODO: для каждой страницы сделать отдельный провайдер для красоты
     return (
         <BrowserRouter>
 
@@ -31,34 +31,23 @@ function App() {
 
                 <Routes>
                     <Route path='/' element={
-                        <InterestContextProvider>
-                            <IdeasContextProvider>
-                                <Main InterestModalWindowVisibility={InterestModalWindowVisibility}
-                                      setInterestModalWindowVisibility={setInterestModalWindowVisibility}
-                                />
-                            </IdeasContextProvider>
-                        </InterestContextProvider>
+                        <Main InterestModalWindowVisibility={InterestModalWindowVisibility}
+                              setInterestModalWindowVisibility={setInterestModalWindowVisibility}
+                        />
                     }/>
 
-                    {token ?
-                        <>
-                            <Route path='friends' element={
-                                <IdeasContextProvider>
-                                    <Friends/>
-                                </IdeasContextProvider>}
+                    {token
+                        ? <>
+                            <Route path='friends' element={<Friends/>}
                             />
                             <Route path='account/:id' element={
-                                <InterestContextProvider>
-                                    <IdeasContextProvider>
-                                        <Account InterestModalWindowVisibility={InterestModalWindowVisibility}
-                                                 setInterestModalWindowVisibility={setInterestModalWindowVisibility}
-                                        />
-                                    </IdeasContextProvider>
-                                </InterestContextProvider>
+                                <Account InterestModalWindowVisibility={InterestModalWindowVisibility}
+                                         setInterestModalWindowVisibility={setInterestModalWindowVisibility}
+                                />
                             }
                             />
-                        </> :
-                        <>
+                        </>
+                        : <>
                             <Route path='login' element={<Login/>}/>
                             <Route path='signup' element={<SignUp/>}/>
                         </>

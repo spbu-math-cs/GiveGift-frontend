@@ -4,7 +4,9 @@ import Ideas from "../../components/Ideas/Ideas";
 import React, {useContext, useEffect, useState} from "react";
 import {checkPrice} from "../../utils/checkers";
 import GettingStarted from "../../components/UI/GettingStarted/GettingStarted";
-import {AuthContext, FriendContext, InterestContext} from "../../context";
+import {FriendContext} from "../../context/FriendContext/FriendContext";
+import {InterestContext} from "../../context/InterestContext/InterestContext";
+import {AuthContext} from "../../context/AuthContext/AuthContext";
 
 const Main = ({
                   InterestModalWindowVisibility,

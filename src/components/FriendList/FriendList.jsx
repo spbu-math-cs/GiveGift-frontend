@@ -3,8 +3,7 @@ import styles from './FriendList.module.css'
 import Friend from "./Friend/Friend";
 import {useFriendSearch} from "../../hooks/useFriendSearch";
 import FriendSearch from "../FriendSearch/FriendSearch";
-import {FriendContext} from "../../context";
-
+import {FriendContext} from "../../context/FriendContext/FriendContext";
 
 const FriendList = ({FriendModalWindowVisibility, setFriendModalWindowVisibility}) => {
 

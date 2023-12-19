@@ -6,7 +6,7 @@ import styles from './SignUpForm.module.css'
 import EmailInput from "../UI/Input/EmailInput/EmailInput";
 import PasswordInput from "../UI/Input/PasswordInput/PasswordInput";
 import SignUpButton from "../UI/Button/SignUpButton/SignUpButton";
-import {AuthContext} from "../../context";
+import {AuthContext} from "../../context/AuthContext/AuthContext";
 
 
 function SignUpForm() {

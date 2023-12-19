@@ -1,7 +1,8 @@
 import React, {useContext} from 'react';
 import styles from "./SelectFriendTextBtn.module.css";
 import friend from "../../../../assets/friend.png";
-import {AuthContext, IdeasContext} from "../../../../context";
+import {IdeasContext} from "../../../../context/IdeasContext/IdeasContext";
+import {AuthContext} from "../../../../context/AuthContext/AuthContext";
 
 const SelectFriendTextBtn = ({setVisible}) => {
 

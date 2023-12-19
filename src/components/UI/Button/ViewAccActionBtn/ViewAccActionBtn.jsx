@@ -9,7 +9,10 @@ import styles from './ViewAccActionBtn.module.css'
 import CardGiftcardRoundedIcon from "@mui/icons-material/CardGiftcardRounded";
 import PersonRemoveRoundedIcon from "@mui/icons-material/PersonRemoveRounded";
 import {useNavigate} from "react-router-dom";
-import {AuthContext, FriendContext, IdeasContext, UserContext} from "../../../../context";
+import {FriendContext} from "../../../../context/FriendContext/FriendContext";
+import {IdeasContext} from "../../../../context/IdeasContext/IdeasContext";
+import {UserContext} from "../../../../context/UserContext/UserContext";
+import {AuthContext} from "../../../../context/AuthContext/AuthContext";
 
 const ViewAccActionBtn = (props) => {
     const [anchorEl, setAnchorEl] = useState(null);
@@ -82,6 +85,7 @@ const ViewAccActionBtn = (props) => {
                         <CardGiftcardRoundedIcon color="white"/>
                         <span>Подобрать подарок</span>
                     </FriendActionButton>
+
                     <FriendActionButton
                         onClick={() => removeFriend(token, props.accInfo.id)}>
                         <PersonRemoveRoundedIcon color="white"/>

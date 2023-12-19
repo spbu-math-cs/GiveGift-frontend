@@ -5,7 +5,7 @@ import {Divider, MenuItem} from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
 import PeopleAltRoundedIcon from "@mui/icons-material/PeopleAltRounded";
 import LogoutIcon from "@mui/icons-material/Logout";
-import {AuthContext} from "../../../../context";
+import {AuthContext} from "../../../../context/AuthContext/AuthContext";
 
 const DropDownAccList = ({handleClose}) => {
     const {token, removeToken, logout} = useContext(AuthContext);

@@ -6,8 +6,10 @@ import {useParams} from "react-router-dom";
 import {useFetching} from "../../hooks/useFetching";
 import UserService from "../../API/UserService";
 import {isObjectEmpty} from "../../utils/checkers";
-import {AuthContext, FriendContext, InterestContext, UserContext} from "../../context";
-
+import {FriendContext} from "../../context/FriendContext/FriendContext";
+import {InterestContext} from "../../context/InterestContext/InterestContext";
+import {UserContext} from "../../context/UserContext/UserContext";
+import {AuthContext} from "../../context/AuthContext/AuthContext";
 
 function Account(props) {
     const {id} = useParams();

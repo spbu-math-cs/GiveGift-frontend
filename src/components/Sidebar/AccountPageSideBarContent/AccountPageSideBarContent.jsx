@@ -4,7 +4,10 @@ import styles from './AccountPageSideBarContent.module.css'
 import SearchBar from "../../UI/SearchBar/SearchBar";
 import {useFriendSearch} from "../../../hooks/useFriendSearch";
 import {NavLink, useNavigate} from "react-router-dom";
-import {AuthContext, FriendContext, IdeasContext, UserContext} from "../../../context";
+import {FriendContext} from "../../../context/FriendContext/FriendContext";
+import {IdeasContext} from "../../../context/IdeasContext/IdeasContext";
+import {UserContext} from "../../../context/UserContext/UserContext";
+import {AuthContext} from "../../../context/AuthContext/AuthContext";
 
 const AccountPageSideBarContent = ({accFriends, isAccInfoLoading}) => {
 

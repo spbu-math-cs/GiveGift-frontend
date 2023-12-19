@@ -15,7 +15,9 @@ import AddInterestModal
     from "../../Sidebar/MainPageSideBarContent/CustomSettings/SearchSettings/InterestList/AddUserInterest/AddInterestModal/AddInterestModal";
 import AddUserInterestForm
     from "../../Sidebar/MainPageSideBarContent/CustomSettings/SearchSettings/InterestList/AddUserInterest/AddUserInterestForm/AddUserInterestForm";
-import {AuthContext, InterestContext, UserContext} from "../../../context";
+import {InterestContext} from "../../../context/InterestContext/InterestContext";
+import {AuthContext} from "../../../context/AuthContext/AuthContext";
+import {UserContext} from "../../../context/UserContext/UserContext";
 
 const EditAccInfo = (props) => {
 

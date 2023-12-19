@@ -4,7 +4,9 @@ import default_user_logo from "../../../assets/user.svg";
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import {IconButton} from "@mui/material";
 import {useNavigate} from "react-router-dom";
-import {AuthContext, FriendContext, IdeasContext} from "../../../context";
+import {FriendContext} from "../../../context/FriendContext/FriendContext";
+import {IdeasContext} from "../../../context/IdeasContext/IdeasContext";
+import {AuthContext} from "../../../context/AuthContext/AuthContext";
 
 const Friend = ({friend_id, nickname}) => {
 

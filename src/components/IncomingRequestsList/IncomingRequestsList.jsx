@@ -3,7 +3,8 @@ import UserRequest from "../UserRequest/UserRequest";
 import {IconButton} from "@mui/material";
 import MoreHorizRoundedIcon from '@mui/icons-material/MoreHorizRounded';
 import MoreUserRequestMenu from "./MoreUserRequestMenu/MoreUserRequestMenu";
-import {AuthContext, FriendContext} from "../../context";
+import {AuthContext} from "../../context/AuthContext/AuthContext";
+import {FriendContext} from "../../context/FriendContext/FriendContext";
 
 const IncomingRequestsList = () => {
     const [anchorEl, setAnchorEl] = useState(null);
