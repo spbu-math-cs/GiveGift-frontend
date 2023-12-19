@@ -22,9 +22,11 @@ const Main = ({
     const [isNewUser, setIsNewUser,] = useLocalStorage('isNewUser', true);
 
     useEffect(() => {
-        fetchInterests();
-
-        token && fetchFriendLists(token);
+        const fetchInfo = async () => {
+            await fetchInterests();
+            token && await fetchFriendLists(token);
+        }
+        fetchInfo().catch(console.error);
     }, []); // eslint-disable-line
 
     const removeUserInterest = (interest) => {

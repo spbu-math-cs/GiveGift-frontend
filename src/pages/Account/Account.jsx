@@ -33,10 +33,13 @@ function Account(props) {
     //-------
 
     useEffect(() => {
-        fetchUserInfo(token);
-        fetchAccInfo(token, id);
-        fetchFriendLists(token);
-        isEdit && fetchInterests();
+        const fetchInfo = async () => {
+            await fetchUserInfo(token);
+            await fetchAccInfo(token, id);
+            await fetchFriendLists(token);
+            isEdit && await fetchInterests();
+        }
+        fetchInfo().catch(console.error)
     }, [id]);  // eslint-disable-line
 
     // TODO: подумать над async

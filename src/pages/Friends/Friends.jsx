@@ -16,8 +16,11 @@ const Friends = () => {
     const {token, setToken, removeToken} = useContext(AuthContext);
 
     useEffect(() => {
-        fetchUserInfo(token, setToken, removeToken);
-        fetchFriendLists(token);
+        const fetchInfo = async () => {
+            await fetchUserInfo(token, setToken, removeToken);
+            await fetchFriendLists(token);
+        }
+        fetchInfo().catch(console.error)
     }, []); // eslint-disable-line
 
     return (

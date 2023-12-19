@@ -15,7 +15,10 @@ function App() {
     const {token, setToken, removeToken} = useContext(AuthContext);
 
     useEffect(() => {
-        token ? fetchUserInfo(token, setToken, removeToken) : setUserInfo({});
+        const updateInfo = async () => {
+            token ? await fetchUserInfo(token, setToken, removeToken) : setUserInfo({});
+        }
+        updateInfo().catch(console.error);
     }, [token]); // eslint-disable-line
 
     const [InterestModalWindowVisibility, setInterestModalWindowVisibility] = useState(false);
