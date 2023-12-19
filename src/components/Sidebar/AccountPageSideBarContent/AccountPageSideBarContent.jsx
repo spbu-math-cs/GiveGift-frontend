@@ -1,16 +1,24 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import user_icon from '../../../assets/user.svg'
 import styles from './AccountPageSideBarContent.module.css'
 import SearchBar from "../../UI/SearchBar/SearchBar";
 import {useFriendSearch} from "../../../hooks/useFriendSearch";
 import {NavLink, useNavigate} from "react-router-dom";
+import {FriendContext} from "../../../context/FriendContext/FriendContext";
+import {IdeasContext} from "../../../context/IdeasContext/IdeasContext";
+import {UserContext} from "../../../context/UserContext/UserContext";
+import {AuthContext} from "../../../context/AuthContext/AuthContext";
 
-const AccountPageSideBarContent = ({myFriends, generateIdeas, userFriends, myID, isAccInfoLoading, token, sendFriendRequest}) => {
+const AccountPageSideBarContent = ({accFriends, isAccInfoLoading}) => {
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const {sendFriendRequest, friends} = useContext(FriendContext);
+    const {generateIdeas} = useContext(IdeasContext);
+    const {myID} = useContext(UserContext);
+    const {token} = useContext(AuthContext);
 
     const [searchQuery, setSearchQuery] = useState('');
-    const searchResults = useFriendSearch(userFriends, searchQuery);
+    const searchResults = useFriendSearch(accFriends, searchQuery);
 
     return (
         <div>
@@ -23,7 +31,8 @@ const AccountPageSideBarContent = ({myFriends, generateIdeas, userFriends, myID,
                             <div className={styles.friend_info}>
                                 <NavLink to={`/account/${friend.id}`} className={styles.friend_nickname}
                                          key={friend.id}>{friend.nickname}</NavLink>
-                                {myFriends.findIndex((myFriend, _) => myFriend.id === friend.id) !== -1 || friend.id === myID ?
+                                {friends.findIndex((myFriend, _) => myFriend.id === friend.id) !== -1 || friend.id === myID ?
+                                    friend.id !== myID &&
                                     <span className={styles.friend_suggestion} onClick={() => generateIdeas({
                                         friend_id: friend.id,
                                         token: token

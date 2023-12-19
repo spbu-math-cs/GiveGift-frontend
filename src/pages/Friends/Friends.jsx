@@ -1,47 +1,32 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect} from 'react';
 import Sidebar from "../../components/Sidebar/Sidebar";
 import '../../App.css'
 import FriendList from "../../components/FriendList/FriendList";
 import FriendPageSideBarContent from "../../components/Sidebar/FriendPageSideBarContent/FriendPageSideBarContent";
+import {FriendContext} from "../../context/FriendContext/FriendContext";
+import {UserContext} from "../../context/UserContext/UserContext";
+import {AuthContext} from "../../context/AuthContext/AuthContext";
 
-const Friends = (props) => {
-
-    const [FriendModalWindowVisibility, setFriendModalWindowVisibility] = useState(false);
+const Friends = () => {
+    const {fetchFriendLists} = useContext(FriendContext)
+    const {fetchUserInfo} = useContext(UserContext);
+    const {token, setToken, removeToken} = useContext(AuthContext);
 
     useEffect(() => {
-        props.fetchUserInfo(props.token);
-        props.fetchFriendLists(props.token);
+        const fetchInfo = async () => {
+            await fetchUserInfo(token, setToken, removeToken);
+            await fetchFriendLists(token);
+        }
+        fetchInfo().catch(console.error)
     }, []); // eslint-disable-line
 
     return (
         <div className={'app-wrapper-content content-with-sidebar'}>
             <Sidebar header={'Заявки в друзья'}>
-                <FriendPageSideBarContent
-                    incomingRequests={props.incomingRequests}
-                    setIncomingRequests={props.setIncomingRequests}
-                    outgoingRequests={props.outgoingRequests}
-                    setOutgoingRequests={props.setOutgoingRequests}
-
-                    revokeFriendRequest={props.revokeFriendRequest}
-                    token={props.token}
-
-                    acceptFriendRequest={props.acceptFriendRequest}
-                    rejectFriendRequest={props.rejectFriendRequest}
-                />
+                <FriendPageSideBarContent/>
             </Sidebar>
 
-            <FriendList
-                FriendModalWindowVisibility={FriendModalWindowVisibility}
-                setFriendModalWindowVisibility={setFriendModalWindowVisibility}
-                friendList={props.friends}
-                sendFriendRequest={props.sendFriendRequest}
-                isSendRequestLoading={props.isSendRequestLoading}
-                sendRequestError={props.sendRequestError}
-
-                removeFriend={props.removeFriend}
-                generateIdeas={props.generateIdeas}
-                token={props.token}
-            />
+            <FriendList/>
         </div>
     );
 };

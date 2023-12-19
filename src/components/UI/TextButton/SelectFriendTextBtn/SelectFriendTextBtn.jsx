@@ -1,8 +1,13 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import styles from "./SelectFriendTextBtn.module.css";
 import friend from "../../../../assets/friend.png";
+import {IdeasContext} from "../../../../context/IdeasContext/IdeasContext";
+import {AuthContext} from "../../../../context/AuthContext/AuthContext";
 
-const SelectFriendTextBtn = ({isIdeasLoading, setVisible, isLoggedIn}) => {
+const SelectFriendTextBtn = ({setVisible}) => {
+
+    const {isIdeasLoading} = useContext(IdeasContext);
+    const {token} = useContext(AuthContext);
 
     const rootClasses = [styles.select_friend_text_btn]
 
@@ -13,7 +18,7 @@ const SelectFriendTextBtn = ({isIdeasLoading, setVisible, isLoggedIn}) => {
     return (
         <div className={rootClasses.join(' ')}
              onClick={() => {
-                 isLoggedIn
+                 token
                      ? rootClasses.includes('active_btn') && setVisible(true)
                      : alert('Сначала войдите в аккаунт!')
              }}>

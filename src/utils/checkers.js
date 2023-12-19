@@ -11,7 +11,7 @@ export const checkPrice = (minPrice, maxPrice, newPrice) => {
     ];
 }
 
-export const isTokenError = (error) => { // TODO: хммммммм мб переименовать
+export const isAuthError = (error) => {
     return error && error.status === 401
 }
 

@@ -1,27 +1,20 @@
-import React, {useState} from 'react';
-import {NavLink, useNavigate} from "react-router-dom";
-import {useFetching} from "../../hooks/useFetching";
-import UserService from "../../API/UserService";
+import React, {useContext, useState} from 'react';
+import {NavLink} from "react-router-dom";
 import {Alert, OutlinedInput, ThemeProvider} from "@mui/material";
 import {redTheme} from "../UI/muiThemes/themes";
 import styles from './SignUpForm.module.css'
 import EmailInput from "../UI/Input/EmailInput/EmailInput";
 import PasswordInput from "../UI/Input/PasswordInput/PasswordInput";
 import SignUpButton from "../UI/Button/SignUpButton/SignUpButton";
+import {AuthContext} from "../../context/AuthContext/AuthContext";
 
 
-function SignUpForm(props) {
-    const navigate = useNavigate()
-
-    const [signUpUser, , signUpError] = useFetching(async (nickname, email, password) => {
-        const response = await UserService.signUp(nickname, email, password);
-        props.setToken(response.data['access_token']);
-        navigate('/');
-    })
-
+function SignUpForm() {
     const [nickname, setNickname] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+
+    const {signUpUser, signUpError} = useContext(AuthContext);
 
     return (
         <form className={styles.signUpForm}>

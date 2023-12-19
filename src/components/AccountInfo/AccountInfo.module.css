@@ -28,15 +28,9 @@
     margin-bottom: 10px;
 }
 
-.friend_main_activities {
-    display: flex;
-    column-gap: 5px;
-}
-
 .acc_info_content {
     display: grid;
-    width: 90%;
-    justify-content: start;
+    width: inherit;
     margin: 30px 0;
     grid-row-gap: 20px;
 }
@@ -52,17 +46,11 @@
 }
 
 .acc_description {
+    margin: 0;
+    white-space: pre-line;
     font-weight: 500;
-}
-
-.copyIcon {
-    color: white;
-}
-
-.copyIcon:hover {
-    color: #fcdfdf;
-
-    transition-duration: 0.4s;
+    line-height: 1.5em;
+    max-height: calc(1.5em * 3);
 }
 
 .main_info_desc {

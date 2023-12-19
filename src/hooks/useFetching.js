@@ -6,14 +6,15 @@ export const useFetching = (callback) => {
 
     const fetching = async (...args) => {
         try {
-            setIsLoading(true)
-            await callback(...args)
+            setIsLoading(true);
+            setError('');
+            await callback(...args);
         } catch (e) {
             setError(e.response);
         } finally {
-            setIsLoading(false)
+            setIsLoading(false);
         }
     }
 
-    return [fetching, isLoading, error]
+    return [fetching, isLoading, error];
 }

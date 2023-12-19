@@ -1,25 +1,18 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import styles from './LoginForm.module.css';
-import {NavLink, useNavigate} from "react-router-dom";
-import {useFetching} from "../../hooks/useFetching";
-import UserService from "../../API/UserService";
+import {NavLink} from "react-router-dom";
 import {Alert, ThemeProvider} from "@mui/material";
 import {redTheme} from "../UI/muiThemes/themes";
 import PasswordInput from "../UI/Input/PasswordInput/PasswordInput";
 import EmailInput from "../UI/Input/EmailInput/EmailInput";
 import LoginButton from "../UI/Button/LoginButton/LoginButton";
+import {AuthContext} from "../../context/AuthContext/AuthContext";
 
-function LoginForm(props) {
-    const navigate = useNavigate()
-
-    const [loginUser, , loginError] = useFetching(async (email, password) => {
-        const response = await UserService.login(email, password);
-        props.setToken(response.data['access_token']);
-        navigate('/');
-    })
-
+function LoginForm() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+
+    const {loginUser, loginError} = useContext(AuthContext);
 
     return (
 

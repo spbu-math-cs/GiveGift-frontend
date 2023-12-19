@@ -1,17 +1,17 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import styles from './FriendList.module.css'
 import Friend from "./Friend/Friend";
 import {useFriendSearch} from "../../hooks/useFriendSearch";
 import FriendSearch from "../FriendSearch/FriendSearch";
+import {FriendContext} from "../../context/FriendContext/FriendContext";
 
-
-const FriendList = ({removeFriend, friendList, sendFriendRequest, sendRequestError,
-                        isSendRequestLoading, token, generateIdeas,
-                        FriendModalWindowVisibility, setFriendModalWindowVisibility}) => {
+const FriendList = () => {
 
     const [searchQuery, setSearchQuery] = useState('');
 
-    const searchResults = useFriendSearch(friendList, searchQuery);
+    const {friends} = useContext(FriendContext);
+
+    const searchResults = useFriendSearch(friends, searchQuery);
 
     return (
         <div className={`${styles.friend_list_wrapper}`}>
@@ -21,18 +21,11 @@ const FriendList = ({removeFriend, friendList, sendFriendRequest, sendRequestErr
                     <FriendSearch
                         searchQuery={searchQuery}
                         setSearchQuery={setSearchQuery}
-                        FriendModalWindowVisibility={FriendModalWindowVisibility}
-                        setFriendModalWindowVisibility={setFriendModalWindowVisibility}
-                        sendFriendRequest={sendFriendRequest}
-                        sendRequestError={sendRequestError}
-                        isSendRequestLoading={isSendRequestLoading}
-                        token={token}
                     />
 
                     <div className={styles.friend_list}>
                         {searchResults.map(friend =>
-                            <Friend key={friend.id} nickname={friend.nickname} friend_id={friend.id} token={token}
-                                    generateIdeas={generateIdeas} removeFriend={removeFriend}/>
+                            <Friend key={friend.id} nickname={friend.nickname} friend_id={friend.id}/>
                         )}
                     </div>
                 </div>

@@ -1,60 +1,42 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import AccountInfo from "../../components/AccountInfo/AccountInfo";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import AccountPageSideBarContent from "../../components/Sidebar/AccountPageSideBarContent/AccountPageSideBarContent";
 import {useParams} from "react-router-dom";
-import {useFetching} from "../../hooks/useFetching";
-import UserService from "../../API/UserService";
 import {isObjectEmpty} from "../../utils/checkers";
+import {FriendContext} from "../../context/FriendContext/FriendContext";
+import {UserContext} from "../../context/UserContext/UserContext";
+import {AuthContext} from "../../context/AuthContext/AuthContext";
+import {AccContext} from "../../context/AccContext/AccContext";
 
+function Account() {
+    const {id} = useParams();
+    const [isEdit, setIsEdit] = useState(false);
 
-function Account(props) {
-    const {id} = useParams()
-    const [accInfo, setAccInfo] = useState({})
-
-    const [fetchAccInfo, isAccInfoLoading, accInfoError] = useFetching(async (token, id) => {
-        const response = await UserService.getUserInfo(token, id);
-        setAccInfo(response.data)
-    })
+    const {fetchFriendLists} = useContext(FriendContext);
+    const {fetchUserInfo} = useContext(UserContext);
+    const {token} = useContext(AuthContext);
+    const {accInfo, fetchAccInfo, accInfoError, isAccInfoLoading} = useContext(AccContext)
 
     useEffect(() => {
-        props.fetchUserInfo(props.token);
-        fetchAccInfo(props.token, id);
-        props.fetchFriendLists(props.token);
+        const fetchInfo = async () => {
+            await fetchUserInfo(token);
+            await fetchAccInfo(token, id);
+            await fetchFriendLists(token);
+        }
+        fetchInfo().catch(console.error)
     }, [id]);  // eslint-disable-line
 
     return (
         <div className={'app-wrapper-content content-with-sidebar'}>
             <Sidebar header={'Друзья'}>
                 <AccountPageSideBarContent
-                    userFriends={accInfo.friends}
-                    myFriends={props.myFriends}
-                    token={props.token}
-                    myID={props.userInfo.id}
-                    sendFriendRequest={props.sendFriendRequest}
+                    accFriends={accInfo.friends}
                     isAccInfoLoading={!accInfoError && (isAccInfoLoading || isObjectEmpty(accInfo))}
-                    generateIdeas={props.generateIdeas}
                 />
-
             </Sidebar>
 
-
-            <AccountInfo isAccInfoLoading={!accInfoError && (isAccInfoLoading || isObjectEmpty(accInfo))}
-                         token={props.token}
-                         accInfo={accInfo}
-                         accInfoError={accInfoError}
-                         sendFriendRequest={props.sendFriendRequest}
-                         revokeFriendRequest={props.revokeFriendRequest}
-                         myFriends={props.myFriends}
-                         acceptFriendRequest={props.acceptFriendRequest}
-                         rejectFriendRequest={props.rejectFriendRequest}
-                         myOutgoingRequests={props.myOutgoingRequests}
-                         myIncomingRequests={props.myIncomingRequests}
-                         removeFriend={props.removeFriend}
-                         myID={props.userInfo.id}
-                         generateIdeas={props.generateIdeas}
-            />
-
+            <AccountInfo isEdit={isEdit} setIsEdit={setIsEdit}/>
         </div>
     );
 }
