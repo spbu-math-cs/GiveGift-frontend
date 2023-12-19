@@ -1,20 +1,17 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import styles from "./AddUserFriendForm.module.css"
 import TextField from "@mui/material/TextField";
 import CheckBtn from "../../../UI/Button/CheckBtn/CheckBtn";
 import {Alert, FormGroup, ThemeProvider} from "@mui/material";
 import {redTheme} from "../../../UI/muiThemes/themes";
+import {FriendContext} from "../../../../context";
 
 
-const AddUserFriendForm = ({
-                               sendFriendRequest,
-                               sendRequestError,
-                               isSendRequestLoading,
-                               token,
-                               showAlert, setShowAlert
-                           }) => {
+const AddUserFriendForm = ({token, showAlert, setShowAlert}) => {
 
     const [friendID, setFriendID] = useState('');
+
+    const {sendFriendRequest, sendRequestError, isSendRequestLoading} = useContext(FriendContext);
 
     const addNewUserFriend = (e) => {
         e.preventDefault();

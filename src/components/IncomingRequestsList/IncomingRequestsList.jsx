@@ -1,12 +1,15 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import UserRequest from "../UserRequest/UserRequest";
 import {IconButton} from "@mui/material";
 import MoreHorizRoundedIcon from '@mui/icons-material/MoreHorizRounded';
 import MoreUserRequestMenu from "./MoreUserRequestMenu/MoreUserRequestMenu";
+import {FriendContext} from "../../context";
 
-const IncomingRequestsList = ({incomingRequests, rejectFriendRequest, acceptFriendRequest, token}) => {
+const IncomingRequestsList = ({token}) => {
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
+
+    const {incomingRequests, rejectFriendRequest, acceptFriendRequest} = useContext(FriendContext);
 
     const [selectedUserID, setSelectedUserID] = useState();
     const handleClick = (event, user_id) => {

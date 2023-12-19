@@ -7,17 +7,17 @@ import SelectFriendModal from "./SelectFriendModal/SelectFriendModal";
 import SelectFriendForm from "./SelectFriendForm/SelectFriendForm";
 
 const MainPageSideBarContent = (props) => {
-
     return (
         <div className={styles.mainpage_sidebar_content}>
 
             <SelectFriendModal visible={props.SelectFriendModalWindowVisibility}
                                setVisible={props.setSelectFriendModalWindowVisibility}>
-                <SelectFriendForm friendList={props.friends}
-                                  token={props.token}
-                                  generateIdeas={props.generateIdeas}
-                                  setIsNewUser={props.setIsNewUser}
-                                  setVisible={props.setSelectFriendModalWindowVisibility}/>
+                <SelectFriendForm
+                    token={props.token}
+                    generateIdeas={props.generateIdeas}
+                    setIsNewUser={props.setIsNewUser}
+                    setVisible={props.setSelectFriendModalWindowVisibility}
+                />
             </SelectFriendModal>
 
             <SelectFriendTextBtn isIdeasLoading={props.isIdeasLoading}

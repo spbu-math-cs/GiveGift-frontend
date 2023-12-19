@@ -32,15 +32,9 @@ const AccountInfo = (props) => {
                                                setUserInfoError={props.setUserInfoError}
                                                accInfo={props.accInfo}
                                                myID={props.myID}
-                                               myFriends={props.myFriends}
                                                setIsEdit={props.setIsEdit}
-                                               myOutgoingRequests={props.myOutgoingRequests}
-                                               revokeFriendRequest={props.revokeFriendRequest}
                                                token={props.token}
-                                               myIncomingRequests={props.myIncomingRequests}
-                                               sendFriendRequest={props.sendFriendRequest}
                                                generateIdeas={props.generateIdeas}
-                                               removeFriend={props.removeFriend}
                                 />}
                         </>
                     }

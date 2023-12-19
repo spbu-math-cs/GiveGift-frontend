@@ -1,17 +1,29 @@
 import Sidebar from "../../components/Sidebar/Sidebar";
 import MainPageSideBarContent from "../../components/Sidebar/MainPageSideBarContent/MainPageSideBarContent";
 import Ideas from "../../components/Ideas/Ideas";
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {checkPrice} from "../../utils/checkers";
 import GettingStarted from "../../components/UI/GettingStarted/GettingStarted";
+import {FriendContext} from "../../context";
 
-const Main = ({token, ideas, userInfo, generateIdeas, fetchUserInfo, isIdeasLoading, ideaError, allInterests, fetchInterests,
-              InterestModalWindowVisibility, setInterestModalWindowVisibility}) => {
+const Main = ({
+                  token,
+                  ideas,
+                  generateIdeas,
+                  isIdeasLoading,
+                  ideaError,
+                  allInterests,
+                  fetchInterests,
+                  InterestModalWindowVisibility,
+                  setInterestModalWindowVisibility
+              }) => {
+
+    const {fetchFriendLists} = useContext(FriendContext);
 
     useEffect(() => {
         fetchInterests();
 
-        token && fetchUserInfo(token);
+        token && fetchFriendLists(token);
     }, []); // eslint-disable-line
 
 
@@ -91,7 +103,6 @@ const Main = ({token, ideas, userInfo, generateIdeas, fetchUserInfo, isIdeasLoad
 
                 token={token}
 
-                friends={userInfo.friends}
                 SelectFriendModalWindowVisibility={SelectFriendModalWindowVisibility}
                 setSelectFriendModalWindowVisibility={setSelectFriendModalWindowVisibility}
             />

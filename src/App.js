@@ -11,9 +11,9 @@ import {useFetching} from "./hooks/useFetching";
 import UserService from "./API/UserService";
 import Friends from "./pages/Friends/Friends";
 import IdeaService from "./API/IdeaService";
-import FriendService from "./API/FriendService";
 import {isTokenError} from "./utils/checkers";
 import InterestService from "./API/InterestService";
+import {FriendContextProvider} from "./context";
 
 function App() {
     const {token, removeToken, setToken} = useToken();
@@ -59,45 +59,6 @@ function App() {
         setIdeas(response.data);
     })
 
-    const [friends, setFriends] = useState([]);
-
-    const [incomingRequests, setIncomingRequests] = useState([]);
-    const [outgoingRequests, setOutgoingRequests] = useState([]);
-
-    const [fetchFriendLists, ,] = useFetching(async (token) => {
-        const response = await FriendService.getAllFriendLists(token);
-        setFriends(response.data['friends']);
-        setIncomingRequests(response.data['incoming_requests']);
-        setOutgoingRequests(response.data['outgoing_requests']);
-    })
-
-
-    // TODO: так-то это все в хук отдельный можно все впихнуть
-    const [sendFriendRequest, isSendRequestLoading, sendRequestError] = useFetching(async (token, friend_id) => {
-        await FriendService.sendFriendRequest(token, friend_id);
-        await fetchFriendLists(token);
-    })
-
-    const [revokeFriendRequest, , revokeRequestError] = useFetching(async (token, friend_id) => {
-        await FriendService.revokeFriendRequest(token, friend_id);
-        await fetchFriendLists(token);
-    })
-
-    const [acceptFriendRequest, , acceptFriendRequestError] = useFetching(async (token, friend_id) => {
-        await FriendService.acceptFriendRequest(token, friend_id);
-        await fetchFriendLists(token);
-    })
-
-    const [rejectFriendRequest, , rejectFriendRequestError] = useFetching(async (token, friend_id) => {
-        await FriendService.rejectFriendRequest(token, friend_id);
-        await fetchFriendLists(token);
-    })
-
-    const [removeFriend, , removeFriendError] = useFetching(async (token, friend_id) => {
-        await FriendService.removeFriend(token, friend_id);
-        await fetchFriendLists(token);
-    })
-
     const [allInterests, setAllInterests] = useState([])
 
     const [fetchInterests, ,] = useFetching(async () => {
@@ -109,86 +70,66 @@ function App() {
 
     return (
         <BrowserRouter>
-            <div className="app-wrapper">
-                <Header logout={logout}
-                        userInfo={userInfo}
-                        removeToken={removeToken} token={token}/>
+            <FriendContextProvider>
+                <div className="app-wrapper">
+                    <Header logout={logout}
+                            userInfo={userInfo}
+                            removeToken={removeToken} token={token}/>
 
-                <Routes>
-                    <Route path='/' element={
-                        <Main token={token} ideas={ideas}
-                              generateIdeas={generateIdeas}
-                              isIdeasLoading={isIdeasLoading}
-                              ideaError={ideaError}
-                              userInfo={userInfo}
-                              fetchUserInfo={fetchUserInfo}
-                              allInterests={allInterests}
-                              fetchInterests={fetchInterests}
-                              InterestModalWindowVisibility={InterestModalWindowVisibility}
-                              setInterestModalWindowVisibility={setInterestModalWindowVisibility}
+                    <Routes>
+                        <Route path='/' element={
+                            <FriendContextProvider>
+                                <Main token={token} ideas={ideas}
+                                      generateIdeas={generateIdeas}
+                                      isIdeasLoading={isIdeasLoading}
+                                      ideaError={ideaError}
+                                      allInterests={allInterests}
+                                      fetchInterests={fetchInterests}
+                                      InterestModalWindowVisibility={InterestModalWindowVisibility}
+                                      setInterestModalWindowVisibility={setInterestModalWindowVisibility}
+                                />
+                            </FriendContextProvider>
+                        }/>
+                        <Route path='login' element={<Login setToken={setToken}/>}/>
+                        <Route path='signup' element={<SignUp setToken={setToken}/>}/>
+
+                        {token ?
+                            <>
+
+                                <Route path='friends' element={
+                                    <FriendContextProvider>
+                                        <Friends token={token}
+                                                 generateIdeas={generateIdeas}
+                                                 fetchUserInfo={fetchUserInfo}
+                                        /></FriendContextProvider>}
+                                />
+                                <Route path='account/:id' element={
+                                    <FriendContextProvider>
+                                        <Account userInfo={userInfo}
+                                                 generateIdeas={generateIdeas}
+                                                 token={token}
+                                                 fetchUserInfo={fetchUserInfo}
+                                                 allInterests={allInterests}
+                                                 fetchInterests={fetchInterests}
+                                                 InterestModalWindowVisibility={InterestModalWindowVisibility}
+                                                 setInterestModalWindowVisibility={setInterestModalWindowVisibility}
+
+                                                 setUserInfo={setUserInfo}
+                                                 setUserAccInfo={setUserAccInfo}
+                                                 userInfoError={userInfoError}
+                                                 isSetUserInfoLoading={isSetUserInfoLoading}
+                                                 setUserInfoError={setUserInfoError}
+                                        /></FriendContextProvider>}
+                                />
+                            </> : <></>
+                        }
+                        <Route
+                            path="*"
+                            element={<Navigate to="/" replace/>}
                         />
-                    }/>
-                    <Route path='login' element={<Login setToken={setToken}/>}/>
-                    <Route path='signup' element={<SignUp setToken={setToken}/>}/>
-
-                    {token ?
-                        <>
-                            <Route path='friends' element={
-                                <Friends token={token}
-                                         friends={friends}
-                                         generateIdeas={generateIdeas}
-                                         incomingRequests={incomingRequests}
-                                         outgoingRequests={outgoingRequests}
-                                         sendFriendRequest={sendFriendRequest}
-                                         isSendRequestLoading={isSendRequestLoading}
-                                         sendRequestError={sendRequestError}
-                                         revokeFriendRequest={revokeFriendRequest}
-                                         revokeRequestError={revokeRequestError}
-                                         acceptFriendRequest={acceptFriendRequest}
-                                         acceptFriendRequestError={acceptFriendRequestError}
-                                         rejectFriendRequest={rejectFriendRequest}
-                                         rejectFriendRequestError={rejectFriendRequestError}
-                                         removeFriend={removeFriend}
-                                         removeFriendError={removeFriendError}
-                                         fetchFriendLists={fetchFriendLists}
-                                         fetchUserInfo={fetchUserInfo}
-                                />}
-                            />
-                            <Route path='account/:id' element={
-                                <Account userInfo={userInfo}
-                                         generateIdeas={generateIdeas}
-                                         token={token}
-                                         sendFriendRequest={sendFriendRequest}
-                                         isSendRequestLoading={isSendRequestLoading}
-                                         revokeFriendRequest={revokeFriendRequest}
-                                         acceptFriendRequest={acceptFriendRequest}
-                                         rejectFriendRequest={rejectFriendRequest}
-                                         removeFriend={removeFriend}
-                                         fetchFriendLists={fetchFriendLists}
-                                         myFriends={friends}
-                                         myIncomingRequests={incomingRequests}
-                                         myOutgoingRequests={outgoingRequests}
-                                         fetchUserInfo={fetchUserInfo}
-                                         allInterests={allInterests}
-                                         fetchInterests={fetchInterests}
-                                         InterestModalWindowVisibility={InterestModalWindowVisibility}
-                                         setInterestModalWindowVisibility={setInterestModalWindowVisibility}
-
-                                         setUserInfo={setUserInfo}
-                                         setUserAccInfo={setUserAccInfo}
-                                         userInfoError={userInfoError}
-                                         isSetUserInfoLoading={isSetUserInfoLoading}
-                                         setUserInfoError={setUserInfoError}
-                                />}
-                            />
-                        </> : <></>
-                    }
-                    <Route
-                        path="*"
-                        element={<Navigate to="/" replace/>}
-                    />
-                </Routes>
-            </div>
+                    </Routes>
+                </div>
+            </FriendContextProvider>
         </BrowserRouter>
     );
 }

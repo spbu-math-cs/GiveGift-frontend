@@ -25,11 +25,7 @@ const FriendSearch = (props) => {
             </div>
             <AddFriendModal visible={props.FriendModalWindowVisibility}
                             setVisible={props.setFriendModalWindowVisibility}>
-                <AddUserFriendForm sendFriendRequest={props.sendFriendRequest}
-                                   sendRequestError={props.sendRequestError}
-                                   isSendRequestLoading={props.isSendRequestLoading}
-                                   token={props.token}
-                                   sendRequestResponseData={props.sendRequestResponseData}
+                <AddUserFriendForm token={props.token}
                                    showAlert={showAlert}
                                    setShowAlert={setShowAlert}
                 />

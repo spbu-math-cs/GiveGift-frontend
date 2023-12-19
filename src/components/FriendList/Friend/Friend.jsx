@@ -1,11 +1,15 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import styles from './Friend.module.css'
 import default_user_logo from "../../../assets/user.svg";
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import {IconButton} from "@mui/material";
 import {useNavigate} from "react-router-dom";
+import {FriendContext} from "../../../context";
 
-const Friend = ({friend_id, token, generateIdeas, removeFriend, nickname}) => {
+const Friend = ({friend_id, token, generateIdeas, nickname}) => {
+
+    const {removeFriend} = useContext(FriendContext);
+
     const navigate = useNavigate()
 
     return (
@@ -16,7 +20,8 @@ const Friend = ({friend_id, token, generateIdeas, removeFriend, nickname}) => {
                     src={default_user_logo} alt="user"/>
 
                 <div style={{display: 'grid'}}>
-                    <span className={styles.friend_nickname} onClick={() => navigate(`/account/${friend_id}`)}>{nickname}</span>
+                    <span className={styles.friend_nickname}
+                          onClick={() => navigate(`/account/${friend_id}`)}>{nickname}</span>
                     <span className={styles.friend_action} onClick={() => generateIdeas({
                         friend_id: friend_id,
                         token: token

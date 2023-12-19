@@ -4,11 +4,6 @@ import IncomingRequestsList from "../../IncomingRequestsList/IncomingRequestsLis
 import OutgoingRequestsList from "../../OutgoingRequestsList/OutgoingRequestsList";
 
 const FriendPageSideBarContent = ({
-                                      incomingRequests,
-                                      outgoingRequests,
-                                      revokeFriendRequest,
-                                      acceptFriendRequest,
-                                      rejectFriendRequest,
                                       token
                                   }) => {
     const activeClass = 'active_request_list';
@@ -35,13 +30,8 @@ const FriendPageSideBarContent = ({
 
             <div className={styles.requests_list}>
                 {incomingRequestsClasses.includes(activeClass)
-                    ? <IncomingRequestsList incomingRequests={incomingRequests}
-                                            acceptFriendRequest={acceptFriendRequest}
-                                            rejectFriendRequest={rejectFriendRequest}
-                                            token={token}/>
-                    : <OutgoingRequestsList outgoingRequests={outgoingRequests}
-                                            revokeFriendRequest={revokeFriendRequest}
-                                            token={token}
+                    ? <IncomingRequestsList token={token}/>
+                    : <OutgoingRequestsList token={token}
                     />
                 }
             </div>
