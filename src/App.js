@@ -4,7 +4,7 @@ import './App.css';
 import Header from "./components/Header/Header";
 import {UserContext} from "./context/UserContext/UserContext";
 import {AuthContext} from "./context/AuthContext/AuthContext";
-import AppRouter from "./components/AppRouter";
+import AppRouter from "./components/AppRouter/AppRouter";
 
 function App() {
     const {fetchUserInfo, setUserInfo} = useContext(UserContext);
