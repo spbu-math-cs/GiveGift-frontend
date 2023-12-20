@@ -4,7 +4,7 @@
 
 ### `npm install`
 
-Устанавливает зависимости, указанные в файле [package-lock.json](package-lock.json)
+Устанавливает зависимости, указанные в файле [package.json](package.json)
 
 ### `npm start`
 
