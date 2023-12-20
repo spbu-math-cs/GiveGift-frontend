@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useContext, useEffect} from "react";
 import AccountInfo from "../../components/AccountInfo/AccountInfo";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import AccountPageSideBarContent from "../../components/Sidebar/AccountPageSideBarContent/AccountPageSideBarContent";
@@ -11,8 +11,6 @@ import {AccContext} from "../../context/AccContext/AccContext";
 
 function Account() {
     const {id} = useParams();
-    const [isEdit, setIsEdit] = useState(false);
-
     const {fetchFriendLists} = useContext(FriendContext);
     const {fetchUserInfo} = useContext(UserContext);
     const {token} = useContext(AuthContext);
@@ -36,7 +34,7 @@ function Account() {
                 />
             </Sidebar>
 
-            <AccountInfo isEdit={isEdit} setIsEdit={setIsEdit}/>
+            <AccountInfo/>
         </div>
     );
 }
