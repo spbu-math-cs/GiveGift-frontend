@@ -1,5 +1,4 @@
 .add_friend_form {
-    display: grid;
-    grid-row-gap: 20px;
+  display: grid;
+  grid-row-gap: 20px;
 }
-

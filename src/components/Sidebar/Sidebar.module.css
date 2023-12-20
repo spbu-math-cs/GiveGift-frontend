@@ -1,21 +1,21 @@
 .sidebar {
-    display: grid;
-    justify-items: center;
-    grid-area: sidebar;
-    background-color: #fbf8f4;
+  display: grid;
+  justify-items: center;
+  grid-area: sidebar;
+  background-color: #fbf8f4;
 }
 
 .sidebar_content {
-    grid-row-gap: 20px;
-    display: grid;
-    width: 80%;
-    margin-top: 20px;
-    grid-template-rows: min-content auto;
+  grid-row-gap: 20px;
+  display: grid;
+  width: 80%;
+  margin-top: 20px;
+  grid-template-rows: min-content auto;
 }
 
 .sidebar_header {
-    color: #373737;
-    font-family: Montserrat, sans-serif;
-    font-size: 25px;
-    font-weight: 700;
+  color: #373737;
+  font-family: Montserrat, sans-serif;
+  font-size: 25px;
+  font-weight: 700;
 }

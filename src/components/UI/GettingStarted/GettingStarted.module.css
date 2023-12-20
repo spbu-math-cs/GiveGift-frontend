@@ -1,34 +1,34 @@
 .getting_started {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    row-gap: 20px;
-    flex-direction: column;
-    margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  row-gap: 20px;
+  flex-direction: column;
+  margin: 20px 0;
 }
 
 .getting_started img {
-    height: 240px;
-    width: 240px;
+  height: 240px;
+  width: 240px;
 }
 
 .hello_text {
-    margin-left: 5px;
-    font-family: Montserrat, sans-serif;
-    letter-spacing: 0;
-    display: grid;
-    justify-items: center;
-    color: #350000;
+  margin-left: 5px;
+  font-family: Montserrat, sans-serif;
+  letter-spacing: 0;
+  display: grid;
+  justify-items: center;
+  color: #350000;
 }
 
 .hello_text .main {
-    font-size: 25px;
-    font-weight: 700;
-    margin-bottom: 5px;
+  font-size: 25px;
+  font-weight: 700;
+  margin-bottom: 5px;
 }
 
 .hello_text .secondary {
-    font-size: 18px;
-    font-weight: 600;
-    margin-top: 5px;
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 5px;
 }

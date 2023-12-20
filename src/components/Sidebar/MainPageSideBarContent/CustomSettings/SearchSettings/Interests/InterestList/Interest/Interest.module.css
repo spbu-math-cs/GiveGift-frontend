@@ -1,28 +1,27 @@
 .interest {
-    background-color: #fa6131;
-    color: #ffffff;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
-    border-radius: 7px;
-    height: 30px;
+  background-color: #fa6131;
+  color: #ffffff;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  border-radius: 7px;
+  height: 30px;
 
-    display: grid;
-    align-content: center;
+  display: grid;
+  align-content: center;
 }
 
 .interest_content {
-    display: flex;
-    align-items: center;
-    margin: 10px;
-    column-gap: 7px;
+  display: flex;
+  align-items: center;
+  margin: 10px;
+  column-gap: 7px;
 }
 
 .xBtn {
-    display: grid;
-    justify-self: end;
-    margin-top: 1px;
-    cursor: pointer;
-    height: 8px;
-    width: 8px;
+  display: grid;
+  justify-self: end;
+  margin-top: 1px;
+  cursor: pointer;
+  height: 8px;
+  width: 8px;
 }
-
