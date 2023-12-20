@@ -1,35 +1,35 @@
 .request_tab {
-    display: flex;
-    background-color: #f4f2ef;
-    color: #a6a6a6;
-    height: 2.5em;
-    border-radius: 5px 5px 0 0;
+  display: flex;
+  background-color: #f4f2ef;
+  color: #a6a6a6;
+  height: 2.5em;
+  border-radius: 5px 5px 0 0;
 
-    font-family: Montserrat, sans-serif;
-    font-size: 15px;
-    font-weight: 600;
+  font-family: Montserrat, sans-serif;
+  font-size: 15px;
+  font-weight: 600;
 }
 
 .request_tab_item {
-    display: grid;
-    width: 50%;
-    justify-items: center;
-    align-items: center;
+  display: grid;
+  width: 50%;
+  justify-items: center;
+  align-items: center;
 }
 
 .friend_requests {
-    background-color: white;
-    border-radius: 5px 5px 0 0;
+  background-color: white;
+  border-radius: 5px 5px 0 0;
 }
 
 .requests_list {
-    margin: 10px;
-    display: grid;
-    grid-row-gap: 10px;
+  margin: 10px;
+  display: grid;
+  grid-row-gap: 10px;
 }
 
 :global(.active_request_list) {
-    background-color: #fff;
-    color: #ff6332;
-    border-radius: 5px 5px 0 0;
+  background-color: #fff;
+  color: #ff6332;
+  border-radius: 5px 5px 0 0;
 }

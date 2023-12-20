@@ -1,21 +1,19 @@
-import React from 'react';
-import styles from './MainPageSideBarContent.module.css'
+import React from "react";
+import styles from "./MainPageSideBarContent.module.css";
 import Separator from "../../UI/Separator/Separator";
 import CustomSettings from "./CustomSettings/CustomSettings";
 import SelectFriend from "./SelectFriend/SelectFriend";
 
 const MainPageSideBarContent = () => {
+  return (
+    <div className={styles.mainpage_sidebar_content}>
+      <SelectFriend />
 
-    return (
-        <div className={styles.mainpage_sidebar_content}>
+      <Separator>или</Separator>
 
-            <SelectFriend/>
-
-            <Separator>или</Separator>
-
-            <CustomSettings/>
-        </div>
-    );
+      <CustomSettings />
+    </div>
+  );
 };
 
 export default MainPageSideBarContent;

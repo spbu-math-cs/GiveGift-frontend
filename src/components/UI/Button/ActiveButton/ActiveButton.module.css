@@ -1,24 +1,24 @@
 .active_btn {
-    background-color: #FF6332;
-    color: white;
+  background-color: #ff6332;
+  color: white;
 
-    border: none;
-    text-align: center;
-    cursor: pointer;
-    padding: 0;
+  border: none;
+  text-align: center;
+  cursor: pointer;
+  padding: 0;
 
-    border-radius: 10px;
+  border-radius: 10px;
 
-    font-family: 'Montserrat', 'sans-serif';
-    font-weight: 600;
-    font-size: 25px;
+  font-family: "Montserrat", "sans-serif";
+  font-weight: 600;
+  font-size: 25px;
 }
 
 .active_btn:disabled {
-    cursor: default;
+  cursor: default;
 }
 
 .active_btn:hover:not([disabled]) {
-    background-color: #cb451a;
-    transition-duration: 0.4s;
+  background-color: #cb451a;
+  transition-duration: 0.4s;
 }

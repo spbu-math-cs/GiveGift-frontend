@@ -1,20 +1,20 @@
 export const checkPrice = (minPrice, maxPrice, newPrice) => {
-    let [newStartPrice, newEndPrice] = newPrice;
+  let [newStartPrice, newEndPrice] = newPrice;
 
-    if (newEndPrice < newStartPrice) {
-        newStartPrice = newEndPrice - 1;
-    }
+  if (newEndPrice < newStartPrice) {
+    newStartPrice = newEndPrice - 1;
+  }
 
-    return [
-        (newStartPrice < minPrice) ? minPrice : newStartPrice,
-        (newEndPrice > maxPrice) ? maxPrice : newEndPrice
-    ];
-}
+  return [
+    newStartPrice < minPrice ? minPrice : newStartPrice,
+    newEndPrice > maxPrice ? maxPrice : newEndPrice,
+  ];
+};
 
 export const isAuthError = (error) => {
-    return error && error.status === 401
-}
+  return error && error.status === 401;
+};
 
 export const isObjectEmpty = (object) => {
-    return Object.keys(object).length === 0
-}
+  return Object.keys(object).length === 0;
+};

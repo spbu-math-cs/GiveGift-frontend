@@ -1,16 +1,16 @@
 .plusBtn {
-    background-color: #fa6131;
-    border-radius: 50%;
-    cursor: pointer;
+  background-color: #fa6131;
+  border-radius: 50%;
+  cursor: pointer;
 
-    display: grid;
-    justify-content: center;
-    align-content: center;
-    width: 30px;
-    height: 30px;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  width: 30px;
+  height: 30px;
 }
 
 .plusBtn img {
-    width: 16px;
-    height: 16px;
+  width: 16px;
+  height: 16px;
 }

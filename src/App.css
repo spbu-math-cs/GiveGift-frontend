@@ -1,56 +1,55 @@
 .app-wrapper {
-    display: grid;
-    grid-template-areas:
-          "header"
-          "content";
-    grid-template-rows: 80px calc(100vh - 80px);
+  display: grid;
+  grid-template-areas:
+    "header"
+    "content";
+  grid-template-rows: 80px calc(100vh - 80px);
 }
 
 .app-wrapper-content {
-    grid-area: content;
-    background: rgba(192, 150, 111, 0.20);
-    word-break: break-word;
+  grid-area: content;
+  background: rgba(192, 150, 111, 0.2);
+  word-break: break-word;
 }
 
 .content-with-sidebar {
-    display: grid;
-    grid-template-areas: "sidebar main_content";
-    grid-template-columns: minmax(25%, 300px) auto;
+  display: grid;
+  grid-template-areas: "sidebar main_content";
+  grid-template-columns: minmax(25%, 300px) auto;
 }
 
 .slider {
-    overflow: auto;
+  overflow: auto;
 }
 
 .slider::-webkit-scrollbar {
-    height: 7px;
-    width: 7px;
+  height: 7px;
+  width: 7px;
 }
 
 .slider::-webkit-scrollbar-track {
-    background-color: #d9d9d9;
-    border-radius: 100px;
+  background-color: #d9d9d9;
+  border-radius: 100px;
 }
 
 .slider::-webkit-scrollbar-thumb {
-    background-color: #beb4b3;
-    border-radius: 100px;
+  background-color: #beb4b3;
+  border-radius: 100px;
 }
 
-
 .fadein {
-    animation: fadein 1s linear;
+  animation: fadein 1s linear;
 }
 
 .fast_fadein {
-    animation: fadein 0.2s linear;
+  animation: fadein 0.2s linear;
 }
 
 @keyframes fadein {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

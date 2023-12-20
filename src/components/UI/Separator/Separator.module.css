@@ -1,28 +1,30 @@
 .separator {
-    display: flex;
-    align-items: center;
-    text-align: center;
+  display: flex;
+  align-items: center;
+  text-align: center;
 }
 
 .separator::before,
 .separator::after {
-    content: '';
-    flex: 1;
-    border-bottom: 2px solid #ADADAD;
+  content: "";
+  flex: 1;
+  border-bottom: 2px solid #adadad;
 }
 
 .separator:not(:empty)::before {
-    margin-right: .25em;
+  margin-right: 0.25em;
 }
 
 .separator:not(:empty)::after {
-    margin-left: .25em;
+  margin-left: 0.25em;
 }
 
 .separator_text {
-    color: #ADADAD;
-    font-feature-settings: 'clig' off, 'liga' off;
-    font-family: Montserrat, sans-serif;
-    font-size: 15px;
-    font-weight: 600;
+  color: #adadad;
+  font-feature-settings:
+    "clig" off,
+    "liga" off;
+  font-family: Montserrat, sans-serif;
+  font-size: 15px;
+  font-weight: 600;
 }
