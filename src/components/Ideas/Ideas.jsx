@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import Loader from "../UI/Loader/Loader";
-import IdeaList from "./IdeaList/IdeaList";
+import ProductsList from "./ProductsList/ProductsList";
 import Error from "../UI/Error/Error";
 import { IdeasContext } from "../../context/IdeasContext/IdeasContext";
 
@@ -13,7 +13,7 @@ const Ideas = () => {
       ) : ideaError ? (
         <Error errorMsg={ideaError} />
       ) : (
-        <IdeaList ideas={ideas} />
+        <ProductsList products={ideas} />
       )}
     </>
   );

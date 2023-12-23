@@ -1,9 +1,9 @@
 import React from "react";
-import styles from "./Idea.module.css";
-import MarketButton from "../../UI/Button/MarketButton/MarketButton";
+import styles from "./Product.module.css";
+import MarketButton from "../../../UI/Button/MarketButton/MarketButton";
 
 // <span className={styles.description}>{children}</span>
-const Idea = ({ title, img_link, market_link }) => {
+const Product = ({ title, img_link, market_link }) => {
   return (
     <div className={styles.idea}>
       <div className={styles.ideaContent}>
@@ -16,4 +16,4 @@ const Idea = ({ title, img_link, market_link }) => {
   );
 };
 
-export default Idea;
+export default Product;

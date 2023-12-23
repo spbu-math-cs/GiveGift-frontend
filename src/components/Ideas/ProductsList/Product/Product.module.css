@@ -21,10 +21,14 @@
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    height: calc(var(--line-height) * 2em);
+    line-height: var(--line-height);
+
+    --line-height: 1.2;
 }
 
 .idea:hover .ideaContent .title {
-    display: contents;
+    display: table;
 }
 
 .idea:hover {

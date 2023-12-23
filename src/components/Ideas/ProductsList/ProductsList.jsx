@@ -1,25 +1,27 @@
-import styles from "./IdeaList.module.css";
-import Idea from "../Idea/Idea";
+import styles from "./ProductsList.module.css";
+import Product from "./Product/Product";
 import NotFound from "../../UI/NotFound/NotFound";
 import React from "react";
 
 /*
  * */
-const IdeaList = ({ ideas }) => {
+const ProductsList = ({ products }) => {
   return (
     <>
-      {ideas && ideas.length === 0 ? (
+      {products && products.length === 0 ? (
         <NotFound />
       ) : (
         <div className={`${styles.idea_list} fadein slider`}>
-
+          <span className={styles.found_ideas_header}>
+            По вашему запросу найдено
+          </span>
           <div className={styles.ideas}>
-            {ideas.map(
+            {products.map(
               (
                 idea,
                 ind, // Имеем право юзать индекс в мапе как key, т.к. контент не будет удаляться/изменяться до нажатия на кнопку генерации, а при нажатии весь прошлый контент уйдет, что позволяет нам сказать, что такой key-статичен и уникален
               ) => (
-                <Idea
+                <Product
                   key={ind}
                   market_link={idea.market_link}
                   title={idea.title}
@@ -34,4 +36,4 @@ const IdeaList = ({ ideas }) => {
   );
 };
 
-export default IdeaList;
+export default ProductsList;

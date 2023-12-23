@@ -1,6 +1,6 @@
 .found_ideas_header {
   grid-area: found_header;
-  margin: 20px 30px 0;
+  margin: 20px 30px;
   color: #796964;
   font-feature-settings:
     "clig" off,
@@ -15,14 +15,13 @@
 .ideas {
   grid-area: ideas;
   display: grid;
-
   grid-template-columns: repeat(auto-fit, 260px);
-  grid-template-rows: repeat(auto-fit, 450px);
+  grid-template-rows: repeat(auto-fit, 445px);
   align-content: start;
   justify-content: center;
   grid-gap: 25px 20px;
 
-  margin: 20px 0;
+  margin-bottom: 20px;
 }
 
 .idea_list {
