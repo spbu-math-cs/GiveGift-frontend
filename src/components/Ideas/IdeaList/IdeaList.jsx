@@ -3,6 +3,8 @@ import Idea from "../Idea/Idea";
 import NotFound from "../../UI/NotFound/NotFound";
 import React from "react";
 
+/*
+ * */
 const IdeaList = ({ ideas }) => {
   return (
     <>
@@ -10,9 +12,7 @@ const IdeaList = ({ ideas }) => {
         <NotFound />
       ) : (
         <div className={`${styles.idea_list} fadein slider`}>
-          <span className={styles.found_ideas_header}>
-            По вашему запросу найдено
-          </span>
+
           <div className={styles.ideas}>
             {ideas.map(
               (
@@ -24,9 +24,7 @@ const IdeaList = ({ ideas }) => {
                   market_link={idea.market_link}
                   title={idea.title}
                   img_link={idea.img_link}
-                >
-                  {idea.description}
-                </Idea>
+                />
               ),
             )}
           </div>
