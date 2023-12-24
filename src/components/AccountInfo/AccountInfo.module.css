@@ -37,7 +37,7 @@
 
 .acc_info_part {
   display: grid;
-  grid-row-gap: 5px;
+  grid-row-gap: 10px;
 }
 
 .info_part_header {
@@ -57,7 +57,7 @@
   display: grid;
   grid-row-gap: 5px;
   font-weight: 700;
-  font-size: 20px;
+  font-size: 25px;
   letter-spacing: 1px;
 }
 
@@ -66,4 +66,13 @@
   flex-wrap: wrap;
   column-gap: 10px;
   row-gap: 5px;
+}
+
+.acc_nickname {
+  color: #373737;
+}
+
+.acc_age {
+  color: dimgray;
+  font-size: 0.7em;
 }
