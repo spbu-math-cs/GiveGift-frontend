@@ -2,6 +2,8 @@
     background-color: #fff;
     border-radius: 10px;
     height: fit-content;
+    transform: scale(1);
+    transition: transform .3s;
 }
 
 /*TODO: MEDIA-ЗАПРОСЫ*/
@@ -14,7 +16,7 @@
 }
 
 .ideaContent .title {
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 700;
     color: #373737;
     display: -webkit-box;
@@ -34,7 +36,8 @@
 .idea:hover {
     box-shadow: 0 4px 70px 0 rgba(0, 0, 0, 0.2);
     z-index: 3;
-    width: 103%;
+    transform: scale(1.05);
+    transition: transform .3s;
 }
 
 

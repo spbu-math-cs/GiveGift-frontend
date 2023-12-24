@@ -2,6 +2,7 @@ import React from "react";
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
 import { TextField, ThemeProvider } from "@mui/material";
 import { redTheme } from "../muiThemes/themes";
+import { grey } from "@mui/material/colors";
 
 const SearchBar = ({ searchQuery, setSearchQuery, size = "large" }) => {
   return (
@@ -13,10 +14,18 @@ const SearchBar = ({ searchQuery, setSearchQuery, size = "large" }) => {
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           size={size}
-          sx={{ width: "fill-available" }}
+          sx={{
+            width: "fill-available",
+            input: {
+              "&::placeholder": {
+                opacity: 1,
+                color: grey[700],
+              },
+            },
+          }}
           InputProps={{
             endAdornment: (
-              <SearchRoundedIcon fontSize={size} style={{ color: "#afafaf" }} />
+              <SearchRoundedIcon fontSize={size} style={{ color: grey[700] }} />
             ),
             style: {
               borderRadius: "15px",

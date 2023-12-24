@@ -1,35 +1,35 @@
 .found_ideas_header {
-  grid-area: found_header;
-  margin: 20px 30px;
-  color: #796964;
-  font-feature-settings:
-    "clig" off,
+    grid-area: found_header;
+    margin: 20px 30px;
+    color: #796964;
+    font-feature-settings: "clig" off,
     "liga" off;
-  font-family: Montserrat, sans-serif;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 100%;
+    font-family: Montserrat, sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%;
 }
 
 .ideas {
-  grid-area: ideas;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, 260px);
-  grid-template-rows: repeat(auto-fit, 445px);
-  align-content: start;
-  justify-content: center;
-  grid-gap: 25px 20px;
+    grid-area: ideas;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 200px);
+    grid-template-rows: repeat(auto-fit, 350px);
+    align-content: start;
+    justify-content: center;
+    grid-gap: 15px 10px;
 
-  margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 .idea_list {
-  display: grid;
-  grid-area: main_content;
-  grid-template-areas:
+    display: grid;
+    grid-area: main_content;
+    grid-template-areas:
     "found_header"
     "ideas";
+    grid-template-rows: min-content auto;
 }
 
 /*TODO: MEDIA-ЗАПРОСЫ*/

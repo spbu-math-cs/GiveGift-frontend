@@ -1,6 +1,6 @@
 .user_friendlist {
   display: grid;
-  grid-row-gap: 10px;
+  grid-row-gap: 15px;
 }
 
 .friend {
