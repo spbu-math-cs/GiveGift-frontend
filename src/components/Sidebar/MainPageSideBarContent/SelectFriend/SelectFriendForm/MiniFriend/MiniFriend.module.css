@@ -21,6 +21,7 @@
 }
 
 .mini_friend_nickname {
+  text-decoration: none;
   color: #373737;
   font-size: 23px;
   cursor: pointer;
@@ -30,11 +31,6 @@
   text-decoration: underline 2px;
 }
 
-.mini_friend_id {
-  color: #7e7c7a;
-  font-size: 23px;
-  cursor: pointer;
-}
 
 .mini_friend_action {
   background-color: #ff6332;

@@ -6,6 +6,16 @@
   overflow: hidden;
 }
 
+.acc_id {
+  color: dimgray;
+  margin-left: 1px;
+  display: none;
+}
+
+.acc_main_info:hover .acc_id {
+  display: inline-block;
+}
+
 .acc_info_wrapper_bubble {
   width: 90%;
   margin-top: calc((100% - 90%) / 2);
@@ -29,10 +39,11 @@
 }
 
 .acc_info_content {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   width: inherit;
   margin: 30px 0;
-  grid-row-gap: 20px;
+  row-gap: 15px;
 }
 
 .acc_info_part {

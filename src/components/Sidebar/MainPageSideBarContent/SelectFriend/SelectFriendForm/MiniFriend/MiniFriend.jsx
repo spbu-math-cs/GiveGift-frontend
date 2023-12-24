@@ -2,6 +2,7 @@ import styles from "./MiniFriend.module.css";
 import default_user_logo from "../../../../../../assets/user.svg";
 import React, { useContext } from "react";
 import { AuthContext } from "../../../../../../context/AuthContext/AuthContext";
+import { NavLink } from "react-router-dom";
 
 const MiniFriend = ({
   friend_id,
@@ -22,16 +23,12 @@ const MiniFriend = ({
         />
 
         <span>
-          <span
+          <NavLink
+            to={`/account/${friend_id}`}
             className={styles.mini_friend_nickname}
-            onClick={() => {
-              alert("Друг");
-            }}
           >
             {nickname}
-          </span>
-
-          <span className={styles.mini_friend_id}>#{friend_id}</span>
+          </NavLink>
         </span>
       </div>
 

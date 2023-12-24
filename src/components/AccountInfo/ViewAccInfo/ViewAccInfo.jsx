@@ -18,7 +18,7 @@ const ViewAccInfo = ({ setIsEdit }) => {
           alt={"user"}
         />
         <div className={styles.main_info_desc}>
-          <span className={styles.acc_nickname}>{accInfo.nickname}</span>
+          <span className={styles.acc_nickname}>{accInfo.nickname}<span className={styles.acc_id}>#{accInfo.id}</span></span>
           {accInfo.birth_date && (
             <span className={styles.acc_age}>{get_prettified_age(accInfo.birth_date)}</span>
           )}
