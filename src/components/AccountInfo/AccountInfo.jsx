@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import styles from "./AccountInfo.module.css";
 import Error from "../UI/Error/Error";
 import { ThemeProvider } from "@mui/material";
@@ -9,9 +9,7 @@ import { UserContext } from "../../context/UserContext/UserContext";
 import { AccContext } from "../../context/AccContext/AccContext";
 import { isObjectEmpty } from "../../utils/checkers";
 
-const AccountInfo = () => {
-  const [isEdit, setIsEdit] = useState(false);
-
+const AccountInfo = ({ isEdit, setIsEdit }) => {
   const { isChangeUserInfoLoading } = useContext(UserContext);
   const { accInfo, accInfoError, isAccInfoLoading } = useContext(AccContext);
 

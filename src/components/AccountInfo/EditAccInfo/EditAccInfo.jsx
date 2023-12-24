@@ -92,7 +92,7 @@ const EditAccInfo = ({ setIsEdit }) => {
             localeText={{
               fieldDayPlaceholder: () => "ДД",
               fieldMonthPlaceholder: () => "ММ",
-              fieldYearPlaceholder: () => "ГГГГ"
+              fieldYearPlaceholder: () => "ГГГГ",
             }}
           >
             <DateField
@@ -113,8 +113,7 @@ const EditAccInfo = ({ setIsEdit }) => {
           </LocalizationProvider>
 
           <FriendActionButton
-            onClick={(e) => {
-              e.preventDefault();
+            onClick={() => {
               saveAccChanges(token, accInfo).catch(console.error);
             }}
           >

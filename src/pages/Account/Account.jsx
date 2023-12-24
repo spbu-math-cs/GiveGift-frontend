@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import AccountInfo from "../../components/AccountInfo/AccountInfo";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import AccountPageSideBarContent from "../../components/Sidebar/AccountPageSideBarContent/AccountPageSideBarContent";
@@ -17,7 +17,10 @@ function Account() {
   const { accInfo, fetchAccInfo, accInfoError, isAccInfoLoading } =
     useContext(AccContext);
 
+  const [isEdit, setIsEdit] = useState(false);
+
   useEffect(() => {
+    setIsEdit(false);
     const fetchInfo = async () => {
       await fetchUserInfo(token);
       await fetchAccInfo(token, id);
@@ -37,7 +40,7 @@ function Account() {
         />
       </Sidebar>
 
-      <AccountInfo />
+      <AccountInfo isEdit={isEdit} setIsEdit={setIsEdit} />
     </div>
   );
 }
