@@ -87,17 +87,24 @@ const EditAccInfo = ({ setIsEdit }) => {
             }}
           />
 
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <LocalizationProvider
+            dateAdapter={AdapterDayjs}
+            localeText={{
+              fieldDayPlaceholder: () => "ДД",
+              fieldMonthPlaceholder: () => "ММ",
+              fieldYearPlaceholder: () => "ГГГГ"
+            }}
+          >
             <DateField
               label="Дата рождения"
               size={"small"}
-              value={dayjs(accInfo.birth_date)}
+              value={accInfo.birth_date ? dayjs(accInfo.birth_date) : null}
               style={{ width: "fit-content" }}
               inputProps={{ style: { fontSize: 15 } }}
               onChange={(newDate) => {
                 setAccInfo((prevAccInfo) => {
                   let accInfoCopy = Object.assign({}, prevAccInfo);
-                  accInfoCopy.birth_date = newDate.toString();
+                  accInfoCopy.birth_date = newDate ? newDate.toString() : null;
                   return accInfoCopy;
                 });
               }}
