@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react";
-import user_icon from "../../../assets/user.svg";
 import styles from "./AccountPageSideBarContent.module.css";
 import SearchBar from "../../UI/SearchBar/SearchBar";
 import { useFriendSearch } from "../../../hooks/useFriendSearch";
@@ -8,6 +7,7 @@ import { FriendContext } from "../../../context/FriendContext/FriendContext";
 import { IdeasContext } from "../../../context/IdeasContext/IdeasContext";
 import { UserContext } from "../../../context/UserContext/UserContext";
 import { AuthContext } from "../../../context/AuthContext/AuthContext";
+import { avatarSrc } from "../../../utils/avatarSrc";
 
 const AccountPageSideBarContent = ({ accFriends, isAccInfoLoading }) => {
   const navigate = useNavigate();
@@ -31,7 +31,7 @@ const AccountPageSideBarContent = ({ accFriends, isAccInfoLoading }) => {
           <div className={styles.user_friendlist}>
             {searchResults.map((friend) => (
               <div key={friend.id} className={`${styles.friend}`}>
-                <img src={user_icon} alt={"friend"} />
+                <img src={avatarSrc(friend.avatar)} alt={"friend"} />
                 <div className={styles.friend_info}>
                   <NavLink
                     to={`/account/${friend.id}`}

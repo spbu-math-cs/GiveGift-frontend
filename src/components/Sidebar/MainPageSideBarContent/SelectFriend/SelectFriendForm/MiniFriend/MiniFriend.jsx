@@ -1,24 +1,22 @@
 import styles from "./MiniFriend.module.css";
-import default_user_logo from "../../../../../../assets/user.svg";
 import React, { useContext } from "react";
 import { AuthContext } from "../../../../../../context/AuthContext/AuthContext";
 import { NavLink } from "react-router-dom";
+import { IdeasContext } from "../../../../../../context/IdeasContext/IdeasContext";
+import { UserContext } from "../../../../../../context/UserContext/UserContext";
+import { avatarSrc } from "../../../../../../utils/avatarSrc";
 
-const MiniFriend = ({
-  friend_id,
-  nickname,
-  generateIdeas,
-  setIsNewUser,
-  setVisible,
-}) => {
+const MiniFriend = ({ friend_id, nickname, avatar, setVisible }) => {
   const { token } = useContext(AuthContext);
+  const { generateIdeas } = useContext(IdeasContext);
+  const { setIsNewUser } = useContext(UserContext);
 
   return (
     <div className={styles.mini_friend}>
       <div className={styles.mini_friend_info}>
         <img
           className={styles.mini_friend_icon}
-          src={default_user_logo}
+          src={avatarSrc(avatar)}
           alt="user"
         />
 

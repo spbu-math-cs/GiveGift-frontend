@@ -1,12 +1,12 @@
 import React, { useContext, useState } from "react";
 import styles from "./Header.module.css";
 import { NavLink, useNavigate } from "react-router-dom";
-import default_user_logo from "../../assets/user.svg";
 import DropDownAccMenu from "../UI/DropDownAccMenu/DropDownAccMenu";
 import { Avatar, IconButton } from "@mui/material";
 import UserInfo from "./UserInfo/UserInfo";
 import { UserContext } from "../../context/UserContext/UserContext";
 import { AuthContext } from "../../context/AuthContext/AuthContext";
+import { avatarSrc } from "../../utils/avatarSrc";
 
 const Header = () => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -33,6 +33,7 @@ const Header = () => {
           <IconButton
             id="account-menu-button"
             onClick={(e) => {
+              console.log(userInfo)
               token ? handleClick(e) : navigate("/login");
             }}
             size="small"
@@ -41,7 +42,7 @@ const Header = () => {
             aria-expanded={open ? "true" : undefined}
           >
             <Avatar
-              src={default_user_logo}
+              src={avatarSrc(userInfo.avatar)}
               alt="user"
               sx={{ width: 50, height: 50 }}
             />
