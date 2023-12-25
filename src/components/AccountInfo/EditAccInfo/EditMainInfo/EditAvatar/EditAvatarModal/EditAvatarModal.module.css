@@ -1,0 +1,17 @@
+.crop_modal_montent {
+    display: grid;
+    grid-row-gap: 10px;
+}
+
+.size_slider {
+    display: flex;
+    column-gap: 10px;
+    align-items: center;
+}
+
+.save_avatar_changes_btn {
+    width: fit-content;
+    padding: 10px 15px;
+    justify-self: end;
+    font-size: 1.5em;
+}

@@ -15,7 +15,7 @@
 }
 
 .active_btn:disabled {
-  cursor: default;
+  cursor: wait;
 }
 
 .active_btn:hover:not([disabled]) {

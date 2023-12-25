@@ -6,7 +6,7 @@ const ModalWindow = ({ children, setVisible, visible, title }) => {
   const rootClasses = [styles.add_interest_modal];
 
   if (visible) {
-    rootClasses.push("active_modal");
+    rootClasses.push("active_modal slider");
   }
 
   return (

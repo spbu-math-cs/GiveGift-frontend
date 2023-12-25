@@ -1,56 +1,25 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import styles from "../AccountInfo.module.css";
-import profile_pic from "../../../assets/user.svg";
-import { Alert, TextField } from "@mui/material";
-import { DateField, LocalizationProvider } from "@mui/x-date-pickers";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import dayjs from "dayjs";
+import { Alert } from "@mui/material";
 import FriendActionButton from "../../UI/Button/FriendActionButton/FriendActionButton";
 import SaveRoundedIcon from "@mui/icons-material/SaveRounded";
-import { Interest } from "../../Sidebar/MainPageSideBarContent/CustomSettings/SearchSettings/Interests/InterestList/Interest/Interest";
-import PlusBtn from "../../Sidebar/MainPageSideBarContent/CustomSettings/SearchSettings/Interests/InterestList/PlusBtn/PlusBtn";
-import AddInterestModal from "../../Sidebar/MainPageSideBarContent/CustomSettings/SearchSettings/Interests/InterestList/AddUserInterest/AddInterestModal/AddInterestModal";
-import AddUserInterestForm from "../../Sidebar/MainPageSideBarContent/CustomSettings/SearchSettings/Interests/InterestList/AddUserInterest/AddUserInterestForm/AddUserInterestForm";
 import { InterestContext } from "../../../context/InterestContext/InterestContext";
 import { AuthContext } from "../../../context/AuthContext/AuthContext";
 import { UserContext } from "../../../context/UserContext/UserContext";
 import { AccContext } from "../../../context/AccContext/AccContext";
+import EditMainInfo from "./EditMainInfo/EditMainInfo";
+import EditOtherInfo from "./EditOtherInfo/EditOtherInfo";
 
 const EditAccInfo = ({ setIsEdit }) => {
-  const { allInterests, fetchInterests } = useContext(InterestContext);
+  const { fetchInterests } = useContext(InterestContext);
   const { token } = useContext(AuthContext);
   const { isChangeUserInfoLoading, changeUserInfoError, changeUserInfo } =
     useContext(UserContext);
-  const { accInfo, setAccInfo } = useContext(AccContext);
+  const { accInfo } = useContext(AccContext);
 
-  const [InterestModalWindowVisibility, setInterestModalWindowVisibility] =
-    useState(false);
-
-  const addUserInterest = (newInterests) => {
-    setAccInfo((prevAccInfo) => {
-      let accInfoCopy = Object.assign({}, prevAccInfo);
-      //accInfoCopy.interests = [...accInfoCopy.interests, ...newInterests];
-      accInfoCopy.interests = [
-        ...accInfoCopy.interests,
-        ...newInterests.filter((i) => allInterests.includes(i)),
-      ];
-      return accInfoCopy;
-    });
-    setInterestModalWindowVisibility(false);
-  };
-
-  const removeUserInterest = (interest) => {
-    setAccInfo((prevAccInfo) => {
-      let accInfoCopy = Object.assign({}, prevAccInfo);
-      accInfoCopy.interests = accInfoCopy.interests.filter(
-        (i) => i !== interest,
-      );
-      return accInfoCopy;
-    });
-  };
-
-  const saveAccChanges = async () => {
-    await changeUserInfo(token, accInfo, setIsEdit);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    changeUserInfo(token, accInfo, setIsEdit);
   };
 
   useEffect(() => {
@@ -66,110 +35,16 @@ const EditAccInfo = ({ setIsEdit }) => {
       {!isChangeUserInfoLoading && changeUserInfoError && (
         <Alert severity="error">{changeUserInfoError.data}</Alert>
       )}
-      <div className={styles.acc_main_info}>
-        <img
-          className={styles.acc_profile_pic}
-          src={profile_pic}
-          alt={"user"}
-        />
-        <div className={styles.main_info_desc} style={{ gridRowGap: 10 }}>
-          <TextField
-            label="Имя"
-            inputProps={{ style: { fontSize: 25, fontWeight: 700 } }}
-            size={"small"}
-            value={accInfo.nickname}
-            onChange={(event) => {
-              setAccInfo((prevAccInfo) => {
-                let accInfoCopy = Object.assign({}, prevAccInfo);
-                accInfoCopy.nickname = event.target.value;
-                return accInfoCopy;
-              });
-            }}
-          />
 
-          <LocalizationProvider
-            dateAdapter={AdapterDayjs}
-            localeText={{
-              fieldDayPlaceholder: () => "ДД",
-              fieldMonthPlaceholder: () => "ММ",
-              fieldYearPlaceholder: () => "ГГГГ",
-            }}
-          >
-            <DateField
-              label="Дата рождения"
-              size={"small"}
-              value={accInfo.birth_date ? dayjs(accInfo.birth_date) : null}
-              style={{ width: "fit-content" }}
-              inputProps={{ style: { fontSize: 15 } }}
-              onChange={(newDate) => {
-                setAccInfo((prevAccInfo) => {
-                  let accInfoCopy = Object.assign({}, prevAccInfo);
-                  accInfoCopy.birth_date = newDate ? newDate.toString() : null;
-                  return accInfoCopy;
-                });
-              }}
-              format="DD-MM-YYYY"
-            />
-          </LocalizationProvider>
+      <EditMainInfo />
 
-          <FriendActionButton
-            onClick={() => {
-              saveAccChanges(token, accInfo).catch(console.error);
-            }}
-          >
-            <SaveRoundedIcon color="white" />
-            <span>Сохранить изменения</span>
-          </FriendActionButton>
-        </div>
-      </div>
-      <div className={styles.acc_info_part}>
-        <span className={styles.info_part_header}>О себе</span>
+      <EditOtherInfo />
 
-        <TextField
-          value={accInfo.about}
-          onChange={(event) => {
-            setAccInfo((prevAccInfo) => {
-              let accInfoCopy = Object.assign({}, prevAccInfo);
-              accInfoCopy.about = event.target.value;
-              return accInfoCopy;
-            });
-          }}
-          multiline
-          rows={2}
-          inputProps={{ className: "slider" }}
-        />
-      </div>
-
-      <div className={styles.acc_info_part}>
-        <span className={styles.info_part_header}>Интересы</span>
-        <div className={styles.acc_tags}>
-          {accInfo.interests.map((interest) => (
-            <Interest
-              key={interest}
-              remove={removeUserInterest}
-              is_editable={true}
-            >
-              {interest}
-            </Interest>
-          ))}
-          <PlusBtn
-            onClick={() => {
-              setInterestModalWindowVisibility(true);
-            }}
-          />
-
-          <AddInterestModal
-            visible={InterestModalWindowVisibility}
-            setVisible={setInterestModalWindowVisibility}
-          >
-            <AddUserInterestForm
-              optionInterests={allInterests.filter(
-                (item) => !accInfo.interests.includes(item),
-              )}
-              add={addUserInterest}
-            />
-          </AddInterestModal>
-        </div>
+      <div className={styles.form_submit_button}>
+        <FriendActionButton onClick={handleSubmit}>
+          <SaveRoundedIcon color="white" />
+          <span>Сохранить</span>
+        </FriendActionButton>
       </div>
     </div>
   );

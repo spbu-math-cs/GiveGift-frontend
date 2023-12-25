@@ -28,9 +28,9 @@ export const UserContextProvider = ({ children }) => {
 
   const [changeUserInfo, isChangeUserInfoLoading, changeUserInfoError] =
     useFetching(async (token, accInfo, setIsEdit) => {
-      await UserService.changeUserInfo(token, accInfo);
       setUserInfo(accInfo);
       setIsEdit(false);
+      await UserService.changeUserInfo(token, accInfo);
     });
 
   return (
