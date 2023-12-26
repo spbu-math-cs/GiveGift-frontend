@@ -17,4 +17,17 @@ export default class InterestService {
       },
     });
   }
+
+  static async deleteInterests(deleteInterests, token) {
+    const interests = {
+      new_interests: [],
+      edit_interests: deleteInterests.map(key => ({ interest_name: key, new_name: "" })),
+    }
+
+    return await axios.post("http://127.0.0.1:5000/edit_interest", interests, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  }
 }

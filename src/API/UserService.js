@@ -49,4 +49,20 @@ export default class UserService {
       },
     });
   }
+
+  static async addAdmin(token, id) {
+    return await axios.post(`http://127.0.0.1:5000/add_admin`, [id], {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  }
+
+  static async deleteAdmin(token, id) {
+    return await axios.post(`http://127.0.0.1:5000/delete_admin`, [id], {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  }
 }
