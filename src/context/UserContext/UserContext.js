@@ -26,6 +26,18 @@ export const UserContextProvider = ({ children }) => {
     },
   );
 
+  const [addAdmin, ,] = useFetching(
+    async(token, id) => {
+      await UserService.addAdmin(token, id)
+    }
+  );
+
+  const [deleteAdmin, ,] = useFetching(
+    async(token, id) => {
+      await UserService.deleteAdmin(token, id)
+    }
+  );
+
   return (
     <UserContext.Provider
       value={{
@@ -35,6 +47,8 @@ export const UserContextProvider = ({ children }) => {
         fetchUserInfo,
         isNewUser,
         setIsNewUser,
+        addAdmin,
+        deleteAdmin
       }}
     >
       {children}

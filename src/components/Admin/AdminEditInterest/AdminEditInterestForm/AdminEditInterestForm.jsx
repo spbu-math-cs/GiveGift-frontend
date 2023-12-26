@@ -14,7 +14,7 @@ const AdminEditInterestForm = ({ setVisible }) => {
   const [deletedInterests, setDeletedInterests] = useState([]);
 
   const { token } = useContext(AuthContext);
-  const { allInterests, addInterest, addInterestError } =
+  const { allInterests, addInterest, deleteInterests } =
     useContext(InterestContext);
 
   return (
@@ -31,6 +31,7 @@ const AdminEditInterestForm = ({ setVisible }) => {
           <AdminCheckBtn
             onClick={(e) => {
               e.preventDefault();
+              setNewInterest("")
               addInterest(newInterest, token);
             }}
           />
@@ -49,7 +50,13 @@ const AdminEditInterestForm = ({ setVisible }) => {
               <TextField {...params} label="Удалить интересы..." />
             )}
           />
-          <AdminDeleteBtn onClick={() => alert("ok")} />
+          <AdminDeleteBtn
+            onClick={(e) => {
+              e.preventDefault();
+              setDeletedInterests([])
+              deleteInterests(deletedInterests, token);
+            }}
+          />
         </FormGroup>
       </ThemeProvider>
     </form>
