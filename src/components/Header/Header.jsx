@@ -33,7 +33,6 @@ const Header = () => {
           <IconButton
             id="account-menu-button"
             onClick={(e) => {
-              console.log(userInfo)
               token ? handleClick(e) : navigate("/login");
             }}
             size="small"
