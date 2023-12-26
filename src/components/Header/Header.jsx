@@ -21,7 +21,6 @@ const Header = () => {
     setAnchorEl(null);
   };
 
-  // TODO: Если у пользователя собственный profilepic, отображать его
   return (
     <div className={styles.header}>
       <NavLink className={styles.logo} to="/">

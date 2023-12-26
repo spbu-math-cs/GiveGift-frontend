@@ -21,7 +21,6 @@ export default class FriendService {
     );
   }
 
-  // TODO: delete-запрос не должен содержать data, поэтому friend_id лучше впихивать в ссылку
   static async revokeFriendRequest(token, friend_id) {
     return await axios.delete("http://127.0.0.1:5000/outgoing_friend_request", {
       data: {
