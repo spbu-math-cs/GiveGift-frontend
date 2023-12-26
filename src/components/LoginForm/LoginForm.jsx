@@ -20,7 +20,7 @@ function LoginForm() {
 
       {loginError ? (
         <ThemeProvider theme={redTheme}>
-          <Alert severity="error" style={{ borderRadius: "10px" }}>
+          <Alert severity="error" style={{ borderRadius: "10px",  whiteSpace: 'pre-line' }}>
             {loginError.data}
           </Alert>
         </ThemeProvider>

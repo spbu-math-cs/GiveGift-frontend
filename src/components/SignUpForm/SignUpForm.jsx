@@ -19,14 +19,12 @@ function SignUpForm() {
     <form className={styles.signUpForm}>
       <span className={styles.signUpHeader}>Регистрация</span>
 
-      {signUpError ? (
+      {signUpError && (
         <ThemeProvider theme={redTheme}>
-          <Alert severity="error" style={{ borderRadius: "10px" }}>
+          <Alert severity="error" style={{ borderRadius: "10px", whiteSpace: 'pre-line'}}>
             {signUpError.data}
           </Alert>
         </ThemeProvider>
-      ) : (
-        <></>
       )}
 
       <ThemeProvider theme={redTheme}>
