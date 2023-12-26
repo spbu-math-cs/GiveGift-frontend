@@ -7,11 +7,13 @@ export const IdeasContext = createContext(null);
 export const IdeasContextProvider = ({ children }) => {
   const [ideas, setIdeas] = useState([]);
 
+  const [isAdult, setIsAdult] = useState(false);
+
   const [generateIdeas, isIdeasLoading, ideaError] = useFetching(
     async ({ userIdeaProperties, friend_id, token }) => {
       const response = await (friend_id && token
-        ? IdeaService.getIdeasForFriend(token, friend_id)
-        : IdeaService.getIdeas(userIdeaProperties));
+        ? IdeaService.getIdeasForFriend(token, friend_id, isAdult)
+        : IdeaService.getIdeas(userIdeaProperties, isAdult));
       setIdeas(response.data);
     },
   );
@@ -23,6 +25,8 @@ export const IdeasContextProvider = ({ children }) => {
         generateIdeas,
         isIdeasLoading,
         ideaError,
+        isAdult,
+        setIsAdult,
       }}
     >
       {children}
