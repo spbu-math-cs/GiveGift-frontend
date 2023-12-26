@@ -13,8 +13,8 @@ export const InterestContextProvider = ({ children }) => {
     setAllInterests(response.data && response.data["all_interests"]);
   });
 
-  const [addInterest, ,addInterestError] = useFetching(async (interest) => {
-    await InterestService.addNew(interest);
+  const [addInterest, , addInterestError] = useFetching(async (interest, token) => {
+    await InterestService.addNew(interest, token);
     await fetchInterests();
   });
 

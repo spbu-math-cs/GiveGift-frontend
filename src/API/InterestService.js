@@ -5,12 +5,16 @@ export default class InterestService {
     return await axios.get("http://127.0.0.1:5000/get_all_interests");
   }
 
-  static async addNew(interest) {
+  static async addNew(interest, token) {
     const interests = {
       new_interests: [interest],
       edit_interests: [],
-    }
+    };
 
-    return await axios.post("http://127.0.0.1:5000/edit_interest", interests);
+    return await axios.post("http://127.0.0.1:5000/edit_interest", interests, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
   }
 }

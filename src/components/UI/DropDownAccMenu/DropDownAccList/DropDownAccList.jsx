@@ -38,7 +38,7 @@ const DropDownAccList = ({ handleClose, setVisible }) => {
       </NavLink>
 
       {
-        (userInfo.is_admin === "True")
+        (userInfo.is_admin)
           ? <div onClick={() => setVisible(true)} className={styles.acc_menu_item_admin}>
               <MenuItem
                 onClick={handleClose}

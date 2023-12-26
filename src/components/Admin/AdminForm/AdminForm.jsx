@@ -13,7 +13,7 @@ const AdminForm = () => {
   const [AdminAdminsVisibility, setAdminAdminsVisibility] = useState(false);
 
   return (
-    <form className={styles.admin_menu}>
+    <div className={styles.admin_menu}>
       <ThemeProvider theme={redTheme}>
         <div className={styles.admin_menu_item}
              onClick={() => {setAdminInterestVisibility(true)}}>
@@ -42,7 +42,7 @@ const AdminForm = () => {
         <></>
       </AdminEditAdminsModal>
 
-    </form>
+    </div>
   );
 };
 
