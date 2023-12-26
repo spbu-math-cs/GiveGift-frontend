@@ -4,10 +4,13 @@ import styles from "../DropDownAccMenu.module.css";
 import { Divider, MenuItem } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
 import PeopleAltRoundedIcon from "@mui/icons-material/PeopleAltRounded";
+import SettingsIcon from "@mui/icons-material/Settings";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { AuthContext } from "../../../../context/AuthContext/AuthContext";
+import {UserContext} from "../../../../context/UserContext/UserContext";
 
-const DropDownAccList = ({ handleClose }) => {
+const DropDownAccList = ({ handleClose, setVisible }) => {
+  const { userInfo } = useContext(UserContext);
   const { token, removeToken, logout } = useContext(AuthContext);
 
   return (
@@ -33,6 +36,21 @@ const DropDownAccList = ({ handleClose }) => {
           <span>Друзья</span>
         </MenuItem>
       </NavLink>
+
+      {
+        (userInfo.is_admin === true)
+          ? <div onClick={() => setVisible(true)} className={styles.acc_menu_item_admin}>
+              <MenuItem
+                onClick={handleClose}
+                className={styles.acc_menu_item}
+                disableRipple
+              >
+                <SettingsIcon />
+                <span>Админ</span>
+              </MenuItem>
+            </div>
+          : <></>
+      }
 
       <Divider sx={{ my: 0.5 }} />
 

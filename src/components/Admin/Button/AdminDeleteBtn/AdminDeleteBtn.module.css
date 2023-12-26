@@ -1,0 +1,16 @@
+.adminDeleteBtn {
+  background-color: #9370D8;
+  border-radius: 0 15px 15px 0 !important;
+  cursor: pointer;
+
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  width: 70px;
+  height: 100%;
+}
+
+.adminDeleteBtn img {
+  width: 16px;
+  height: 16px;
+}

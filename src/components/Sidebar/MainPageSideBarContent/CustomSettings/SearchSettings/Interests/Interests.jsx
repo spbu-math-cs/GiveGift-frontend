@@ -20,6 +20,7 @@ const Interests = () => {
     ]);
     setInterestModalWindowVisibility(false);
   };
+
   const optionInterests = allInterests.filter(
     (item) => !userInterests.includes(item),
   );

@@ -1,14 +1,14 @@
 import React, { useContext } from "react";
 import styles from "./Friend.module.css";
-import default_user_logo from "../../../assets/user.svg";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import { IconButton } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { FriendContext } from "../../../context/FriendContext/FriendContext";
 import { IdeasContext } from "../../../context/IdeasContext/IdeasContext";
 import { AuthContext } from "../../../context/AuthContext/AuthContext";
+import { avatarSrc } from "../../../utils/avatarSrc";
 
-const Friend = ({ friend_id, nickname }) => {
+const Friend = ({ friend_id, nickname, avatar }) => {
   const navigate = useNavigate();
 
   const { removeFriend } = useContext(FriendContext);
@@ -20,7 +20,7 @@ const Friend = ({ friend_id, nickname }) => {
       <div className={styles.friend_info}>
         <img
           className={styles.friend_icon}
-          src={default_user_logo}
+          src={avatarSrc(avatar)}
           alt="user"
         />
 

@@ -26,12 +26,17 @@ export const UserContextProvider = ({ children }) => {
     },
   );
 
-  const [changeUserInfo, isChangeUserInfoLoading, changeUserInfoError] =
-    useFetching(async (token, accInfo, setIsEdit) => {
-      await UserService.changeUserInfo(token, accInfo);
-      setUserInfo(accInfo);
-      setIsEdit(false);
-    });
+  const [addAdmin, ,] = useFetching(
+    async(token, id) => {
+      await UserService.addAdmin(token, id)
+    }
+  );
+
+  const [deleteAdmin, ,] = useFetching(
+    async(token, id) => {
+      await UserService.deleteAdmin(token, id)
+    }
+  );
 
   return (
     <UserContext.Provider
@@ -40,11 +45,10 @@ export const UserContextProvider = ({ children }) => {
         setUserInfo,
         myID,
         fetchUserInfo,
-        changeUserInfo,
-        isChangeUserInfoLoading,
-        changeUserInfoError,
         isNewUser,
         setIsNewUser,
+        addAdmin,
+        deleteAdmin
       }}
     >
       {children}

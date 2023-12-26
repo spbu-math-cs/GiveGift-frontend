@@ -20,3 +20,26 @@ export const get_prettified_age = (birthday) => {
   const age = calculateAge(birthday);
   return `${age} ${getNoun(age, "год", "года", "лет")}`;
 };
+
+const ruMonths = {
+  0: "января",
+  1: "февраля",
+  2: "марта",
+  3: "апреля",
+  4: "мая",
+  5: "июня",
+  6: "июля",
+  7: "августа",
+  8: "сентября",
+  9: "октября",
+  10: "ноября",
+  11: "декабря",
+};
+
+export const get_prettified_birthday = (birthday) => {
+  birthday = dayjs(birthday);
+  const day = birthday.date(),
+    month = birthday.month(),
+    year = birthday.year();
+  return `${day} ${ruMonths[month]}, ${year} года`;
+};

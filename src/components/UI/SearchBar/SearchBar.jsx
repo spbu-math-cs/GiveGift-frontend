@@ -13,10 +13,18 @@ const SearchBar = ({ searchQuery, setSearchQuery, size = "large" }) => {
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           size={size}
-          sx={{ width: "fill-available" }}
+          sx={{
+            width: "fill-available",
+            input: {
+              "&::placeholder": {
+                opacity: 1,
+                color: "dimgrey",
+              },
+            },
+          }}
           InputProps={{
             endAdornment: (
-              <SearchRoundedIcon fontSize={size} style={{ color: "#afafaf" }} />
+              <SearchRoundedIcon fontSize={size} style={{ color: "dimgrey" }} />
             ),
             style: {
               borderRadius: "15px",

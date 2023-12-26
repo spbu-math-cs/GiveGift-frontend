@@ -25,14 +25,15 @@
 .add_interest_modal .content {
   display: grid;
   grid-row-gap: 30px;
-  padding: 20px 30px 45px 30px;
+  padding: 20px 30px 30px 30px;
   background: white;
   border-radius: 16px;
   min-width: 250px;
 }
 
 :global(.active_modal) {
-  display: flex;
+  padding: 20px 0;
+  display: inline-grid;
   justify-content: center;
   align-items: center;
 }

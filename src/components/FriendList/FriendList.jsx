@@ -26,6 +26,7 @@ const FriendList = () => {
               <Friend
                 key={friend.id}
                 nickname={friend.nickname}
+                avatar={friend.avatar}
                 friend_id={friend.id}
               />
             ))}

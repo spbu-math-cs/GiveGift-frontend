@@ -20,6 +20,11 @@
   color: inherit;
 }
 
+.acc_menu_item_admin {
+  text-decoration: none;
+  color: #9370D8;
+}
+
 .acc_menu_item {
   display: flex;
   column-gap: 7px;

@@ -1,17 +1,17 @@
 .market_button {
-  width: 100%;
+    width: 100%;
 }
 
 .market_button_content {
-  margin: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  column-gap: 5px;
-  font-size: 17px;
+    margin: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 7px;
+    font-size: 15px;
 }
 
 .market_button_content img {
-  width: 32px;
-  height: 32px;
+    width: 2em;
+    height: 2em;
 }

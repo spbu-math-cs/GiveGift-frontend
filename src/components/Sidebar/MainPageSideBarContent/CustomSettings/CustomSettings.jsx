@@ -6,10 +6,12 @@ import { IdeasContext } from "../../../../context/IdeasContext/IdeasContext";
 import { UserContext } from "../../../../context/UserContext/UserContext";
 import { maxPrice, minPrice } from "../../../../utils/constants";
 import { checkPrice } from "../../../../utils/checkers";
+import { InterestContext } from "../../../../context/InterestContext/InterestContext";
 
 const CustomSettings = () => {
   const { generateIdeas, isIdeasLoading } = useContext(IdeasContext);
-  const { setIsNewUser, userInterests } = useContext(UserContext);
+  const { setIsNewUser } = useContext(UserContext);
+  const { userInterests } = useContext(InterestContext);
 
   const [priceRangeValue, setPriceRangeValue] = useState([minPrice, maxPrice]);
 

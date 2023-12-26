@@ -11,6 +11,15 @@ export const checkPrice = (minPrice, maxPrice, newPrice) => {
   ];
 };
 
+export const checkZoom = (minScale, maxScale, newScale) => {
+  if (minScale > newScale) {
+    newScale = minScale;
+  } else if (newScale > maxScale) {
+    newScale = maxScale;
+  }
+  return newScale
+};
+
 export const isAuthError = (error) => {
   return error && error.status === 401;
 };
