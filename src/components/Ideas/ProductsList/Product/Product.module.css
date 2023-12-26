@@ -6,8 +6,6 @@
     transition: transform .3s;
 }
 
-/*TODO: MEDIA-ЗАПРОСЫ*/
-
 .ideaContent {
     display: flex;
     flex-direction: column;
