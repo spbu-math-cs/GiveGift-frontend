@@ -1,26 +1,15 @@
 import React, { useContext, useEffect } from "react";
 import styles from "../AccountInfo.module.css";
 import { Alert } from "@mui/material";
-import FriendActionButton from "../../UI/Button/FriendActionButton/FriendActionButton";
-import SaveRoundedIcon from "@mui/icons-material/SaveRounded";
 import { InterestContext } from "../../../context/InterestContext/InterestContext";
-import { AuthContext } from "../../../context/AuthContext/AuthContext";
-import { UserContext } from "../../../context/UserContext/UserContext";
 import { AccContext } from "../../../context/AccContext/AccContext";
 import EditMainInfo from "./EditMainInfo/EditMainInfo";
 import EditOtherInfo from "./EditOtherInfo/EditOtherInfo";
+import EditActionButtons from "./EditActionButtons/EditActionButtons";
 
 const EditAccInfo = ({ setIsEdit }) => {
   const { fetchInterests } = useContext(InterestContext);
-  const { token } = useContext(AuthContext);
-  const { isChangeAccInfoLoading, changeAccInfoError, changeAccInfo } =
-    useContext(AccContext);
-  const { setUserInfo } = useContext(UserContext);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    changeAccInfo(token, setIsEdit, setUserInfo);
-  };
+  const { isChangeAccInfoLoading, changeAccInfoError } = useContext(AccContext);
 
   useEffect(() => {
     const fetchInfo = async () => {
@@ -40,12 +29,7 @@ const EditAccInfo = ({ setIsEdit }) => {
 
       <EditOtherInfo />
 
-      <div className={styles.form_submit_button}>
-        <FriendActionButton onClick={handleSubmit}>
-          <SaveRoundedIcon color="white" />
-          <span>Сохранить</span>
-        </FriendActionButton>
-      </div>
+      <EditActionButtons setIsEdit={setIsEdit} />
     </div>
   );
 };

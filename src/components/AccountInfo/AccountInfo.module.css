@@ -84,9 +84,10 @@
     cursor: pointer;
 }
 
-.form_submit_button {
-    display: grid;
-    justify-items: end;
+.edit_action_buttons {
+    display: flex;
+    column-gap: 10px;
+    justify-content: flex-end;
     margin-top: 10px;
 }
 
