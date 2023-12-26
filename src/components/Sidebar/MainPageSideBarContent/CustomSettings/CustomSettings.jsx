@@ -5,7 +5,7 @@ import ActiveButton from "../../../UI/Button/ActiveButton/ActiveButton";
 import { IdeasContext } from "../../../../context/IdeasContext/IdeasContext";
 import { UserContext } from "../../../../context/UserContext/UserContext";
 import { maxPrice, minPrice } from "../../../../utils/constants";
-import {checkPrice} from "../../../../utils/checkers";
+import { checkPrice } from "../../../../utils/checkers";
 import { InterestContext } from "../../../../context/InterestContext/InterestContext";
 
 const CustomSettings = () => {

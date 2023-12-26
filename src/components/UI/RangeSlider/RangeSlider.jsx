@@ -5,14 +5,17 @@ import styles from "./RangeSlider.module.css";
 import { redTheme } from "../muiThemes/themes";
 import { maxPrice, minPrice } from "../../../utils/constants";
 
-export default function RangeSlider(props) {
+export default function RangeSlider({
+  priceRangeValue,
+  handlePriceRangeChange,
+}) {
   return (
     <ThemeProvider theme={redTheme}>
       <div className={styles.range_slider_content}>
         <Slider
           getAriaLabel={() => "range_slider"}
-          value={props.priceRangeValue}
-          onChange={props.handlePriceRangeChange}
+          value={priceRangeValue}
+          onChange={handlePriceRangeChange}
           min={minPrice}
           max={maxPrice}
         />
@@ -24,11 +27,11 @@ export default function RangeSlider(props) {
             InputLabelProps={{ shrink: true }}
             sx={{ width: "100px" }}
             size={"small"}
-            value={props.priceRangeValue[0]}
+            value={priceRangeValue[0].toString()}
             onChange={(e) => {
-              props.handlePriceRangeChange(e, [
+              handlePriceRangeChange(e, [
                 Number(e.target.value),
-                props.priceRangeValue[1],
+                Number(priceRangeValue[1]),
               ]);
             }}
           />
@@ -39,10 +42,10 @@ export default function RangeSlider(props) {
             InputLabelProps={{ shrink: true }}
             sx={{ width: "100px" }}
             size={"small"}
-            value={props.priceRangeValue[1]}
+            value={priceRangeValue[1].toString()}
             onChange={(e) => {
-              props.handlePriceRangeChange(e, [
-                props.priceRangeValue[0],
+              handlePriceRangeChange(e, [
+                Number(priceRangeValue[0]),
                 Number(e.target.value),
               ]);
             }}
