@@ -7,6 +7,7 @@ import AdminEditInterestModal
 import AdminEditInterestForm
   from "../AdminEditInterest/AdminEditInterestForm/AdminEditInterestForm";
 import AdminEditAdminsModal from "../AdminEditAdmins/AdminEditAdminsModal/AdminEditAdminsModal";
+import AdminEditAdminsForm from "../AdminEditAdmins/AdminEditAdminsForm/AdminEditAdminsForm";
 
 const AdminForm = () => {
   const [AdminInterestVisibility, setAdminInterestVisibility] = useState(false);
@@ -39,7 +40,7 @@ const AdminForm = () => {
         visible={AdminAdminsVisibility}
         setVisible={setAdminAdminsVisibility}
       >
-        <></>
+        <AdminEditAdminsForm/>
       </AdminEditAdminsModal>
 
     </div>
