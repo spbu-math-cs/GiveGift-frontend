@@ -13,6 +13,11 @@ export const InterestContextProvider = ({ children }) => {
     setAllInterests(response.data && response.data["all_interests"]);
   });
 
+  const [addInterest, ,addInterestError] = useFetching(async (interest) => {
+    await InterestService.addNew(interest);
+    await fetchInterests();
+  });
+
   const [userInterests, setUserInterests] = useLocalStorage(
     "userInterests",
     [],
@@ -25,6 +30,8 @@ export const InterestContextProvider = ({ children }) => {
         fetchInterests,
         userInterests,
         setUserInterests,
+        addInterest,
+        addInterestError,
       }}
     >
       {children}

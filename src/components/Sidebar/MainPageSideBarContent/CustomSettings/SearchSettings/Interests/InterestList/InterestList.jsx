@@ -6,7 +6,7 @@ import SettingsHeader from "../../../../../../UI/SettingsHeader/SettingsHeader";
 import PlusBtn from "./PlusBtn/PlusBtn";
 import { InterestContext } from "../../../../../../../context/InterestContext/InterestContext";
 
-const InterestList = ({ remove, setVisible }) => {
+const InterestList = ({ remove, setVisible, setAdminVisible }) => {
   const { userInterests } = useContext(InterestContext);
 
   return (

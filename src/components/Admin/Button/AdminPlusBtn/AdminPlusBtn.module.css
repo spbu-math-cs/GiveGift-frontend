@@ -1,0 +1,16 @@
+.adminPlusBtn {
+  background-color: black;
+  border-radius: 50%;
+  cursor: pointer;
+
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  width: 30px;
+  height: 30px;
+}
+
+.adminPlusBtn img {
+  width: 16px;
+  height: 16px;
+}

@@ -1,0 +1,5 @@
+.search_users_form {
+  display: grid;
+  grid-row-gap: 20px;
+  justify-items: end;
+}

@@ -1,9 +1,13 @@
-import React from "react";
+import React, {useState} from "react";
 import { redTheme } from "../muiThemes/themes";
 import { Fade, Menu, ThemeProvider } from "@mui/material";
 import DropDownAccList from "./DropDownAccList/DropDownAccList";
+import AdminModal from "../../Admin/AdminModal/AdminModal";
+import AdminForm from "../../Admin/AdminForm/AdminForm";
 
 const DropDownAccMenu = ({ open, handleClose, anchorEl }) => {
+  const [AdminModalVisibility, setAdminModalVisibility] = useState(false);
+
   return (
     <ThemeProvider theme={redTheme}>
       <Menu
@@ -26,8 +30,15 @@ const DropDownAccMenu = ({ open, handleClose, anchorEl }) => {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
-        <DropDownAccList handleClose={handleClose} />
+        <DropDownAccList handleClose={handleClose} setVisible={setAdminModalVisibility} />
       </Menu>
+
+      <AdminModal
+        visible={AdminModalVisibility}
+        setVisible={setAdminModalVisibility}
+      >
+        <AdminForm/>
+      </AdminModal>
     </ThemeProvider>
   );
 };
