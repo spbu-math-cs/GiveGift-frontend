@@ -14,6 +14,14 @@ export const AccContextProvider = ({ children }) => {
     },
   );
 
+  const [changeAccInfo, isChangeAccInfoLoading, changeAccInfoError] =
+    useFetching(async (token, setIsEdit, setUserInfo) => {
+      const response = await UserService.changeUserInfo(token, accInfo);
+      setAccInfo(response.data);
+      setUserInfo(response.data);
+      setIsEdit(false);
+    });
+
   return (
     <AccContext.Provider
       value={{
@@ -22,6 +30,9 @@ export const AccContextProvider = ({ children }) => {
         fetchAccInfo,
         isAccInfoLoading,
         accInfoError,
+        changeAccInfo,
+        isChangeAccInfoLoading,
+        changeAccInfoError,
       }}
     >
       {children}

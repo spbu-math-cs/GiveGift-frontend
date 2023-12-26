@@ -26,13 +26,6 @@ export const UserContextProvider = ({ children }) => {
     },
   );
 
-  const [changeUserInfo, isChangeUserInfoLoading, changeUserInfoError] =
-    useFetching(async (token, accInfo, setIsEdit) => {
-      setUserInfo(accInfo);
-      setIsEdit(false);
-      await UserService.changeUserInfo(token, accInfo);
-    });
-
   return (
     <UserContext.Provider
       value={{
@@ -40,9 +33,6 @@ export const UserContextProvider = ({ children }) => {
         setUserInfo,
         myID,
         fetchUserInfo,
-        changeUserInfo,
-        isChangeUserInfoLoading,
-        changeUserInfoError,
         isNewUser,
         setIsNewUser,
       }}

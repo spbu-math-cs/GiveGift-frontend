@@ -13,13 +13,13 @@ import EditOtherInfo from "./EditOtherInfo/EditOtherInfo";
 const EditAccInfo = ({ setIsEdit }) => {
   const { fetchInterests } = useContext(InterestContext);
   const { token } = useContext(AuthContext);
-  const { isChangeUserInfoLoading, changeUserInfoError, changeUserInfo } =
-    useContext(UserContext);
-  const { accInfo } = useContext(AccContext);
+  const { isChangeAccInfoLoading, changeAccInfoError, changeAccInfo } =
+    useContext(AccContext);
+  const { setUserInfo } = useContext(UserContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    changeUserInfo(token, accInfo, setIsEdit);
+    changeAccInfo(token, setIsEdit, setUserInfo);
   };
 
   useEffect(() => {
@@ -32,8 +32,8 @@ const EditAccInfo = ({ setIsEdit }) => {
 
   return (
     <div className={`${styles.acc_info_content} fast_fadein`}>
-      {!isChangeUserInfoLoading && changeUserInfoError && (
-        <Alert severity="error">{changeUserInfoError.data}</Alert>
+      {!isChangeAccInfoLoading && changeAccInfoError && (
+        <Alert severity="error">{changeAccInfoError.data}</Alert>
       )}
 
       <EditMainInfo />

@@ -1,15 +1,15 @@
 import React, { useContext, useRef, useState } from "react";
 import AddAPhotoOutlinedIcon from "@mui/icons-material/AddAPhotoOutlined";
-import profile_pic from "../../../../../assets/user.svg";
 import EditAvatarModal from "./EditAvatarModal/EditAvatarModal";
 import styles from "../../../AccountInfo.module.css";
 import { AccContext } from "../../../../../context/AccContext/AccContext";
+import { avatarSrc } from "../../../../../utils/avatarSrc";
 
 const EditAvatar = () => {
   const { accInfo, setAccInfo } = useContext(AccContext);
   const inputFileRef = useRef(null);
 
-  const [avatarPreview, setAvatarPreview] = useState(accInfo.avatar ? accInfo.avatar : profile_pic);
+  const [avatarPreview, setAvatarPreview] = useState(avatarSrc(accInfo.avatar));
   const [src, setSrc] = useState(null); // Для модалки
   const [isImageModalVisible, setIsImageModalVisible] = useState(false);
 
